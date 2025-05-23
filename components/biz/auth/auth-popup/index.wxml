@@ -1,0 +1,38 @@
+<t-popup bindclose="closePopup" placement="bottom" visible="{{show}}">
+    <view slot="close_icon">
+        <image class="popup-close" src="{{closeIcon}}"></image>
+    </view>
+    <view class="content">
+        <view class="popup-title">
+            <image class="popup-logo" src="{{POPUP_LOGO}}"></image>
+            <view class="popup-tit">
+                <text class="popup-tit-t">{{i18n.t('components.BizForUse',$_locale)}}</text>
+                <text>{{i18n.t('components.BizForUse1',$_locale)}}</text>
+            </view>
+        </view>
+        <view class="popup-wxlogintip"> {{!hasUser?i18n.t('components.BizWxLogin',$_locale):i18n.t('components.BizBindWxPhone',$_locale)}} </view>
+        <view class="popup-btn" wx:if="{{!hasUser}}">
+            <view class="popup-refuse-btn">
+                <view>{{i18n.t('components.BizWxRefuse',$_locale)}}</view>
+                <navigator class="disagreePrivacy" openType="exit" target="miniProgram"></navigator>
+            </view>
+            <user-container bind:getuserinfo="updateUser" style="width:50%">
+                <view bind:tap="handleAuthor" class="popup-but">
+                    <view>{{i18n.t('components.BizWxAuthorization',$_locale)}}</view>
+                </view>
+            </user-container>
+        </view>
+        <view class="popup-btn" wx:elif="{{!hasPhone}}">
+            <view class="popup-refuse-btn">
+                <view>{{i18n.t('components.BizWxRefuse',$_locale)}}</view>
+                <navigator class="disagreePrivacy" openType="exit" target="miniProgram"></navigator>
+            </view>
+            <phone-container bind:getphonenumber="bindPhone" style="width:50%">
+                <view bind:tap="handleAuthor" class="popup-but">
+                    <view>{{i18n.t('components.BizWxAuthorization',$_locale)}}</view>
+                </view>
+            </phone-container>
+        </view>
+    </view>
+</t-popup>
+<phone-err-popup id="phoneErrPopup" show="{{showPhoneErrPopup}}"></phone-err-popup>

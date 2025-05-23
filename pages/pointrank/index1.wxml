@@ -1,0 +1,50 @@
+<view class="container">
+  
+  <view class="topLeadersList">
+    <view class="leader" wx:for="{{dataTopList}}" wx:key="index">
+      <view class="containerImage">
+        <image class="image" loading="lazy" src="{{item.avatar?BASE_URL+item.avatar:defaultPerson}}" />
+        <view class="crown">
+          <image src="../../images/{{index+1}}.png" mode="scaleToFill" />
+        </view>
+        <view class="leaderName">{{item.nickName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="rank-item user-people">
+    <view class="rank-img">
+      <image src="{{user.avatar ? user.avatar:defaultPerson }}"></image>
+    </view>
+    <view class='rank-point'>
+      <view class="rank-name">{{user.nickName ? user.nickName: user.phonenumber}}</view>
+      <view class="rank-price">
+        积分：
+        <text class='grade'>{{user.pointsBalance}}</text>
+      </view>
+    </view>
+    <view class="rank-uv">
+      <view>第 {{user.top}} 名</view>
+      <image src="../../images/home/{{user.top}}.png" />
+    </view>
+  </view>
+  <scroll-view class="scroll-view" scroll-y>
+    <view class="rank_block">
+      <view class="rank-item" wx:for="{{dataList}}" wx:key="item">
+        <view class="rank-img">
+          <image src='{{item.avatar ? BASE_URL+ item.avatar: "../../images/home/default.png"}}' />
+        </view>
+        <view class='rank-point'>
+          <view class="rank-name">{{item.nickName}}</view>
+          <view class="rank-price">
+            积分：
+            <text class='grade'>{{item.pointsBalance}}</text>
+          </view>
+        </view>
+        <view class="rank-uv" wx:if="{{item.top<=3}}">
+          <view>第 {{item.top}} 名</view>
+          <image src="../../images/home/{{item.top}}.png" />
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

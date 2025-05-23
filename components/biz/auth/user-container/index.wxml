@@ -1,0 +1,3 @@
+<button bindgetuserinfo="getUserInfo" class="reset-button" hoverClass="none" lang="{{lang}}" openType="getUserInfo">
+    <slot></slot>
+</button>

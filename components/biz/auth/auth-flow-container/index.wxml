@@ -1,0 +1,9 @@
+<phone-popup bind:getphonenumber="bindPhone" id="phone-popup"></phone-popup>
+<view class="auth-flow-container">
+    <user-container bind:getuserinfo="updateUser" wx:if="{{!hasUser}}">
+        <slot></slot>
+    </user-container>
+    <phone-container bind:getphonenumber="bindPhone" wx:elif="{{!hasPhone}}">
+        <slot></slot>
+    </phone-container>
+</view>

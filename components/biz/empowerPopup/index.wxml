@@ -1,0 +1,25 @@
+<t-popup placement="bottom" visible="{{visible}}">
+    <view class="root {{memType===1?'normal-bg':'premium-bg'}} {{memType}}">
+        <view class="header">{{i18n.t('registerMembership.authorizedPopupTitle',$_locale)}}</view>
+        <view class="body">
+            <view class="agreement-line">
+                <image catchtap="agreementToggle" class="icon-selected" data-type="membershipAgreement" src="{{commonUrl+(membershipAgreement?'selected-icon.png':'unchecked-icon.png')}}"></image>
+                <view class="agreement-text">
+                    <view>{{i18n.t('components.BizAgree',$_locale)}}</view>
+                    <view bind:tap="toMemberRules" class="highlight">{{i18n.t('terms.samLink',$_locale)}}</view>
+                </view>
+            </view>
+            <view class="agreement-line">
+                <image catchtap="agreementToggle" class="icon-selected" data-type="documentAgreement" src="{{commonUrl+(documentAgreement?'selected-icon.png':'unchecked-icon.png')}}"></image>
+                <view class="agreement-text">
+                    <view>{{i18n.t('components.BizAgree',$_locale)}}</view>
+                    <view bind:tap="toDocumentAgreement" class="highlight">{{i18n.t('terms.personalLink',$_locale)}}</view>
+                </view>
+            </view>
+        </view>
+        <view bind:tap="agree" class="btn">{{i18n.t('registerMembership.popupAgreeBtn',$_locale)}}</view>
+        <image bind:tap="close" class="close-icon" src="{{closeIcon}}"></image>
+        <image class="bg-icon" src="{{registerUrl+(memType===1?'normal-popup-bg-icon.png':'premium-popup-bg-icon.png')}}"></image>
+    </view>
+</t-popup>
+<wxs module="i18n" src="../../../i18n/locales.wxs"/>

@@ -1,0 +1,20 @@
+<t-popup placement="center" visible="{{visible}}">
+    <view class="setting-popup">
+        <view class="setting-popup__header">
+            <text class="setting-popup__title">{{i18n.t('swx.tips',$_locale)}}</text>
+        </view>
+        <view class="setting-popup__body">
+            <view class="setting-popup__content"> {{content}}，{{i18n.t('components.BizPhoneRight',$_locale)}}“ <text class="dot"></text>
+                <text class="dot"></text>
+                <text class="dot"></text> {{i18n.t('components.BizSetOpenTest',$_locale)}} </view>
+        </view>
+        <view class="setting-popup__footer">
+            <view class="cancel-button-container button">
+                <button bind:tap="handleClose" class="button__original cancel-button"> {{i18n.t('callPhonePopup.cancel',$_locale)}} </button>
+            </view>
+            <view class="setting-button-container button">
+                <button bindopensetting="handleOpenSetting" class="button__original setting-button" openType="openSetting"> {{i18n.t('auth.setting',$_locale)}} </button>
+            </view>
+        </view>
+    </view>
+</t-popup>

@@ -1,0 +1,230 @@
+<!-- pages/order/index.wxml -->
+<wxs module="getDate" src="./state.wxs"></wxs>
+<t-tabs defaultValue="{{defaultValue}}" value='{{value}}' sticky stickyProps="{{stickyProps}}" bind:change="onTabsChange" bind:click="onTabsClick" bind:scroll="onStickyScroll" t-class="custom-tabs">
+    <t-tab-panel label="全部" value="all">
+        <scroll-view class="scroll-y" lower-threshold='30' scroll-y bindscrolltolower="onReachBottom">
+            <view wx:if="{{goodList.length ===0}}" class='no-list'>
+                <view class="blank">暂无订单</view>
+            </view>
+            <view class='container' wx:else>
+                <view class="con_first" wx:for="{{goodList}}" wx:key="item.id">
+                    <view class='list-top' bindtap="detail" data-index="{{item}}">
+                        <view class='turn-order'>
+                            快递单号:<text bindtap="viewCopyTextClick" data-text="{{item.courierNumber}}"  wx:if='{{item.courierNumber}}'>{{item.courierNumber ? item.courierNumber:''}} 复制</text> 
+                        </view>
+                        <view class='turn-pay'>{{getDate.judgmentState(item.status)}}</view>
+                    </view>
+                    <view class='good-view'>
+                        <image src="{{BASE_URL + item.commodityPicture}}"></image>
+                        <view class='good-view-content'>
+                            <view>{{item.commodityName}}</view>
+                        </view>
+                        <view class='total'>
+                            <view style="color: #ea4233;">
+                                <text class='commodityPrice'>￥{{item.commodityPrice}}</text>
+                            </view>
+                            <view>×{{item.commodityAmount}}</view>
+                        </view>
+                    </view>
+                    <view style="display: flex;" class='pay-botttom'>
+                        <view class='pay-time'>快递公司：{{item.courierCompanyName ? item.courierCompanyName:''}}</view>
+                        <view class='pay-price'>
+                            应付
+                            <text class='commodityPrice'>￥ {{item.actualPayment}}</text>
+                        </view>
+                    </view>
+                    <view style="display: flex;" class='list-bottom pay-time-flex'>
+                        <view class='pay-time'>收件人姓名：{{item.addressName}}</view>
+                        <view class='pay-time'>收件人电话：{{item.addressPhone}}</view>
+                    </view>
+                    <view style="display: flex;" class='list-bottom pay-time-flex'>
+                        <view class='pay-time'>下单时间：{{item.paymentTime}}</view>
+                        <view class='pay-time'>发货时间：{{item.deliveryTime ? item.deliveryTime:''}}</view>
+                    </view>
+                    <view class='list-bottom' style="display:flex;">
+                         <view class='order-num'>订单号:<text bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}"  wx:if='{{item.orderNumber}}'>{{item.orderNumber }} 复制</text></view>
+                        <view class='list-bottom-container' wx:if="{{item.status == 2}}" style="flex:1;text-align:end;">
+                            <view class="con_zise check-state" bindtap="orderChcek" data-id="{{item.keyId}}" data-index="{{index}}">
+                                确认收货
+                            </view>
+                        </view>
+                    </view>
+                    <view class='list-bottom' style="display:flex;">
+                        <view class='order-num'>地址: {{item.addressDetail}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </t-tab-panel>
+    <t-tab-panel label="待发货" value="1">
+        <view class="custom-panel__content">
+            <scroll-view class="scroll-y" lower-threshold='30' scroll-y bindscrolltolower="onReachBottom">
+                <view wx:if="{{goodList.length ===0}}" class='no-list'>
+                    <view class="blank">暂无订单</view>
+                </view>
+                <view class='container' wx:else>
+                    <view class="con_first" wx:for="{{goodList}}" wx:key="item.id">
+                        <view class='list-top' bindtap="detail" data-index="{{item}}">
+                            <view class='turn-order'>
+                                快递单号:<text bindtap="viewCopyTextClick"  data-text="{{item.courierNumber}}" wx:if='{{item.courierNumber}}'>{{item.courierNumber ? item.courierNumber:''}} 复制</text>
+                            </view>
+                            <view class='turn-pay'>{{getDate.judgmentState(item.status)}}</view>
+                        </view>
+                        <view class='good-view'>
+                            <image src="{{BASE_URL + item.commodityPicture}}"></image>
+                            <view class='good-view-content'>
+                                <view>{{item.commodityName}}</view>
+                            </view>
+                            <view class='total'>
+                                <view style="color: #ea4233;">
+                                    <text class='commodityPrice'>￥{{item.commodityPrice}}</text>
+                                </view>
+                                <view>×{{item.commodityAmount}}</view>
+                            </view>
+                        </view>
+                        <view style="display: flex;" class='pay-botttom'>
+                            <view class='pay-time'>快递公司：{{item.courierCompanyName}}</view>
+                            <view class='pay-price'>
+                                应付
+                                <text class='commodityPrice'>￥ {{item.actualPayment}}</text>
+                            </view>
+                        </view>
+                        <view style="display: flex;" class='list-bottom pay-time-flex'>
+                            <view class='pay-time'>收件人姓名：{{item.addressName}}</view>
+                            <view class='pay-time'>收件人电话：{{item.addressPhone}}</view>
+                        </view>
+                        <view style="display: flex;" class='list-bottom pay-time-flex'>
+                            <view class='pay-time'>下单时间：{{item.paymentTime}}</view>
+                            <view class='pay-time'>发货时间：{{item.deliveryTime}}</view>
+                        </view>
+                        <view class='list-bottom' style="display:flex;">
+                             <view class='order-num'>订单号:<text bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}" wx:if='{{item.orderNumber}}'>{{item.orderNumber }} 复制</text></view>
+                            <view class='list-bottom-container' wx:if="{{item.status == 2}}" style="flex:1;text-align:end;">
+                                <view class="con_zise check-state" bindtap="orderChcek" data-id="{{item.keyId}}" data-index="{{index}}">
+                                    确认收货
+                                </view>
+                            </view>
+                        </view>
+                        <view class='list-bottom' style="display:flex;">
+                            <view class='order-num'>地址: {{item.addressDetail}}</view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </t-tab-panel>
+    <t-tab-panel label="待收货" value="2">
+        <view class="custom-panel__content">
+            <scroll-view class="scroll-y" scroll-y lower-threshold='30' bindscrolltolower="onReachBottom">
+                <view wx:if="{{goodList.length ===0}}" class='no-list'>
+                    <view class="blank">暂无订单</view>
+                </view>
+                  <view class='container' wx:else>
+                <view class="con_first" wx:for="{{goodList}}" wx:key="item.id">
+                    <view class='list-top' bindtap="detail" data-index="{{item}}">
+                        <view class='turn-order'>
+                           快递单号:<text bindtap="viewCopyTextClick" data-text="{{item.courierNumber}}" wx:if='{{item.courierNumber}}'>{{item.courierNumber ? item.courierNumber:''}} 复制</text>
+                        </view>
+                        <view class='turn-pay'>{{getDate.judgmentState(item.status)}}</view>
+                    </view>
+                    <view class='good-view'>
+                        <image src="{{BASE_URL + item.commodityPicture}}"></image>
+                        <view class='good-view-content'>
+                            <view>{{item.commodityName}}</view>
+                        </view>
+                        <view class='total'>
+                            <view style="color: #ea4233;">
+                                <text class='commodityPrice'>￥{{item.commodityPrice}}</text>
+                            </view>
+                            <view>×{{item.commodityAmount}}</view>
+                        </view>
+                    </view>
+                    <view style="display: flex;" class='pay-botttom'>
+                        <view class='pay-time'>快递公司：{{item.courierCompanyName}}</view>
+                        <view class='pay-price'>
+                            应付
+                            <text class='commodityPrice'>￥ {{item.actualPayment}}</text>
+                        </view>
+                    </view>
+                    <view style="display: flex;" class='list-bottom pay-time-flex'>
+                        <view class='pay-time'>收件人姓名：{{item.addressName}}</view>
+                        <view class='pay-time'>收件人电话：{{item.addressPhone}}</view>
+                    </view>
+                    <view style="display: flex;" class='list-bottom pay-time-flex'>
+                        <view class='pay-time'>下单时间：{{item.paymentTime}}</view>
+                        <view class='pay-time'>发货时间：{{item.deliveryTime}}</view>
+                    </view>
+                    <view class='list-bottom' style="display:flex;">
+                         <view class='order-num'>订单号:<text bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}" wx:if='{{item.orderNumber}}'>{{item.orderNumber }} 复制</text></view>
+                        <view class='list-bottom-container' wx:if="{{item.status == 2}}" style="flex:1;text-align:end;">
+                            <view class="con_zise check-state" bindtap="orderChcek" data-id="{{item.keyId}}" data-index="{{index}}">
+                                确认收货
+                            </view>
+                        </view>
+                    </view>
+                    <view class='list-bottom' style="display:flex;">
+                        <view class='order-num'>地址: {{item.addressDetail}}</view>
+                    </view>
+                </view>
+            </view>
+            </scroll-view>
+        </view>
+    </t-tab-panel>
+    <t-tab-panel label="已收货" value="3">
+        <view class="custom-panel__content">
+            <scroll-view class="scroll-y" lower-threshold='30' scroll-y bindscrolltolower="onReachBottom">
+                <view wx:if="{{goodList.length ===0}}" class='no-list'>
+                    <view class="blank">暂无订单</view>
+                </view>
+                    <view class='container' wx:else>
+                <view class="con_first" wx:for="{{goodList}}" wx:key="item.id">
+                    <view class='list-top' bindtap="detail" data-index="{{item}}">
+                        <view class='turn-order'>
+                             快递单号:<text bindtap="viewCopyTextClick"  data-text="{{item.courierNumber}}" wx:if='{{item.courierNumber}}'>{{item.courierNumber ? item.courierNumber:''}} 复制</text>
+                        </view>
+                        <view class='turn-pay'>{{getDate.judgmentState(item.status)}}</view>
+                    </view>
+                    <view class='good-view'>
+                        <image src="{{BASE_URL + item.commodityPicture}}"></image>
+                        <view class='good-view-content'>
+                            <view>{{item.commodityName}}</view>
+                        </view>
+                        <view class='total'>
+                            <view style="color: #ea4233;">
+                                <text class='commodityPrice'>￥{{item.commodityPrice}}</text>
+                            </view>
+                            <view>×{{item.commodityAmount}}</view>
+                        </view>
+                    </view>
+                    <view style="display: flex;" class='pay-botttom'>
+                        <view class='pay-time'>快递公司：{{item.courierCompanyName}}</view>
+                        <view class='pay-price'>
+                            应付
+                            <text class='commodityPrice'>￥ {{item.actualPayment}}</text>
+                        </view>
+                    </view>
+                    <view style="display: flex;" class='list-bottom pay-time-flex'>
+                        <view class='pay-time'>收件人姓名：{{item.addressName}}</view>
+                        <view class='pay-time'>收件人电话：{{item.addressPhone}}</view>
+                    </view>
+                    <view style="display: flex;" class='list-bottom pay-time-flex'>
+                        <view class='pay-time'>下单时间：{{item.paymentTime}}</view>
+                        <view class='pay-time'>发货时间：{{item.deliveryTime}}</view>
+                    </view>
+                    <view class='list-bottom' style="display:flex;">
+                         <view class='order-num'>订单号:<text bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}" wx:if='{{item.orderNumber}}'>{{item.orderNumber }} 复制</text></view>
+                        <view class='list-bottom-container' wx:if="{{item.status == 2}}" style="flex:1;text-align:end;">
+                            <view class="con_zise check-state" bindtap="orderChcek" data-id="{{item.keyId}}" data-index="{{index}}">
+                                确认收货
+                            </view>
+                        </view>
+                    </view>
+                    <view class='list-bottom' style="display:flex;">
+                        <view class='order-num'>地址: {{item.addressDetail}}</view>
+                    </view>
+                </view>
+            </view>
+            </scroll-view>
+        </view>
+    </t-tab-panel>
+</t-tabs>

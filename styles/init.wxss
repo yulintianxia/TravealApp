@@ -1,0 +1,208 @@
+.flex {
+  justify-content: space-between;
+}
+.flex,
+.flex-reverse {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-reverse {
+  flex-direction: column;
+  justify-content: center;
+}
+.flex-align {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+}
+view {
+  box-sizing: border-box;
+}
+.font-size_36 {
+  font-size: 36rpx;
+}
+.font-size_34 {
+  font-size: 34rpx;
+}
+.font-size_30 {
+  font-size: 30rpx;
+}
+.font-size_26,
+.font-size_28 {
+  font-size: 26rpx;
+}
+.font-size_24 {
+  font-size: 24rpx;
+}
+.font-size_32 {
+  font-size: 32rpx;
+}
+.margin-top_60 {
+  margin-top: 60rpx;
+}
+.margin-top_18 {
+  margin-top: 18rpx;
+}
+.margin-top_20 {
+  margin-top: 20rpx;
+}
+.margin-top_12 {
+  margin-top: 12rpx;
+}
+.ellipse {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+radio .wx-radio-input {
+  height: 36rpx;
+  width: 36rpx;
+}
+.order-detail-dialog .diallog__header {
+  font-weight: 500;
+}
+.order-detail-dialog-content .text {
+  color: #4f5356;
+  display: block;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+  text-align: start;
+}
+.order-detail-dialog-content .text:last-child {
+  margin-top: 20rpx;
+}
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+  overflow: hidden;
+}
+.wr-toast__content.enter {
+  border-radius: 0rpx !important;
+}
+.t-dialog {
+  background-color: #fff;
+  overflow: hidden;
+  width: 622rpx;
+}
+.t-dialog .t-dialog__content {
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 188rpx !important;
+  padding: 48rpx 30rpx !important;
+}
+.t-dialog .t-dialog__header {
+  color: #333;
+  font-size: 32rpx !important;
+  font-weight: 700;
+  text-align: center;
+}
+.t-dialog .t-dialog__message {
+  -webkit-overflow-scrolling: touch;
+  color: #666;
+  font-size: 28rpx;
+  margin-top: 24rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+  text-align: center;
+}
+.t-dialog .t-dialog__message.no-title {
+  margin-top: 0;
+}
+.t-dialog .t-dialog__message-text {
+  word-wrap: break-word;
+}
+.t-dialog .t-dialog__message--left {
+  text-align: left;
+}
+.t-dialog .t-dialog__message--right {
+  text-align: right;
+}
+.t-dialog .t-dialog__footer {
+  display: -webkit-flex;
+  display: flex;
+}
+.t-dialog .dialog--t-dialog__button {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0;
+  color: #999;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1;
+  font-size: 32rpx;
+  justify-content: center;
+  line-height: 38rpx;
+  padding: 30rpx 48rpx;
+}
+.t-dialog .dialog--t-dialog__button-confirm {
+  border-left: none;
+  color: #fa550f;
+}
+.t-dialog .dialog__cancel,
+.t-dialog .dialog__confirm {
+  border: 0 !important;
+}
+.t-dialog .dialog-bounce-enter {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.7);
+}
+.t-dialog .dialog-bounce-leave-active {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.9);
+}
+.t-dialog .t-dialog .dialog__button::after {
+  border-color: #dce0e4;
+  border-radius: 0;
+}
+.t-dialog .hairline,
+.t-dialog .hairline--bottom,
+.t-dialog .hairline--left,
+.t-dialog .hairline--right,
+.t-dialog .hairline--surround,
+.t-dialog .hairline--top,
+.t-dialog .hairline--top-bottom {
+  position: relative;
+}
+.t-dialog .hairline--bottom::after,
+.t-dialog .hairline--left::after,
+.t-dialog .hairline--right::after,
+.t-dialog .hairline--surround::after,
+.t-dialog .hairline--top-bottom::after,
+.t-dialog .hairline--top::after,
+.t-dialog .hairline::after {
+  border: 0 solid #dce0e4;
+  bottom: -50%;
+  box-sizing: border-box;
+  content: " ";
+  left: -50%;
+  pointer-events: none;
+  position: absolute;
+  right: -50%;
+  top: -50%;
+  transform: scale(0.5);
+  transform-origin: center;
+}
+.t-dialog .hairline--top::after {
+  border-top-width: 1px;
+}
+.t-dialog .hairline--left::after {
+  border-left-width: 1px;
+}
+.t-dialog .hairline--right::after {
+  border-right-width: 1px;
+}
+.t-dialog .hairline--bottom::after {
+  border-bottom-width: 1px;
+}
+.t-dialog .hairline--top-bottom::after {
+  border-width: 1px 0;
+}
+.t-dialog .hairline--surround::after {
+  border-width: 1px;
+}

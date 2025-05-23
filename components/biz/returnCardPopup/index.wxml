@@ -1,0 +1,9 @@
+<view class="{{scene===1?'return-card-popup':'return-card-popup-cart'}}" wx:if="{{showReturnCardPopup&&returnCardInfo}}">
+    <image class="card-bg" src="{{returnCardPopupBg}}" wx:if="{{scene===1}}"></image>
+    <view class="tip-text">{{returnCardInfo.returnCardPromptCopy}}</view>
+    <view bind:tap="closePopup" class="close" wx:if="{{scene===2&&!returnCardInfo.canGoToRenew}}">
+        <image class="img" src="{{returnCardPopupCloseIcon}}"></image>
+    </view>
+    <view bindtap="goRenew" class="button" wx:if="{{returnCardInfo.canGoToRenew}}"> {{i18n.t('bindMembership.renewalButtonText',$_locale)}} </view>
+    <view bindtap="closePopup" class="button" wx:if="{{scene===1&&!returnCardInfo.canGoToRenew}}"> {{i18n.t('activityRules.know',$_locale)}} </view>
+</view>

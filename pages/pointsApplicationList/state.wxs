@@ -1,0 +1,16 @@
+var  status={
+    "0":"待审核",
+    "1":"审核通过",
+    "2":"审核拒绝",
+    "9":"撤销"
+  }
+  var filter = {
+    judgmentState: function (num) {
+      console.log('numnum', num, status[num])
+      return(status[num])
+    }
+  }
+  module.exports = {
+    judgmentState: filter.judgmentState
+  }
+  //不支持es6语法只能通过：进行暴露

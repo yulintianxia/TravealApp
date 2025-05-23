@@ -1,0 +1,4 @@
+<view class="invite" style="top: {{customNav?top:'14'}}rpx;" wx:if="{{showPopover}}">
+    <text decode="true">{{title}}</text>
+    <image bind:tap="onHide" class="tip-icon" src="{{tipClose}}"></image>
+</view>

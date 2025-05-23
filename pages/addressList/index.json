@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group"
+  },
+  "navigationBarTitleText": "地址管理",
+  "backgroundColor": "#F8F8F8",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff"
+}

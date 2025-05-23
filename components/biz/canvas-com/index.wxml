@@ -1,0 +1,2 @@
+<canvas id="myCanvas" style="width:{{width}}rpx;height:{{height}}rpx;position:{{position}};top:{{top}}rpx" type="2d"></canvas>
+<wxs module="i18n" src="../../../i18n/locales.wxs"/>

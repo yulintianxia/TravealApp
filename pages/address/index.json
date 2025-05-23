@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea"
+  },
+  "navigationBarTitleText": "地址",
+  "backgroundColor": "#F8F8F8",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff"
+}

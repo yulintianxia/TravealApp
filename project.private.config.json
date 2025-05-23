@@ -1,0 +1,134 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "mytripApp",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/pointUse/index",
+          "pathName": "pages/pointUse/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointsApplication/index",
+          "pathName": "pages/pointsApplication/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointsApplication/index",
+          "pathName": "pages/pointsApplication/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointsApplicationList/index",
+          "pathName": "pages/pointsApplicationList/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointUse/index",
+          "pathName": "pages/pointUse/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointsApplication/index",
+          "pathName": "pages/pointsApplication/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/myHome/index",
+          "pathName": "pages/myHome/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/vip/index",
+          "pathName": "pages/vip/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/myHome/index",
+          "pathName": "pages/myHome/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "libVersion": "3.7.7"
+}

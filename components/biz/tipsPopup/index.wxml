@@ -1,0 +1,12 @@
+<t-popup placement="center" visible="{{visible}}">
+    <view class="con">
+        <view class="title flex-reverse">
+            <text>{{tipsText}}</text>
+        </view>
+        <view class="buttons">
+            <view bind:tap="cancelPopup" class="cancel">
+                <text>{{i18n.t('activityRules.know',$_locale)}}</text>
+            </view>
+        </view>
+    </view>
+</t-popup>

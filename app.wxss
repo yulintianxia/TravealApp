@@ -1,0 +1,77 @@
+@import "/styles/init.wxss";
+@import "/styles/goodsList.wxss";
+@import "/styles/design.wxss";
+
+:root {
+  --td-switch-checked-color: #22bee5 !important;
+}
+/* @import "/components/biz/design-module/design-module-external.wxss"; */
+page {
+  font-family: PingFangSC-Regular\, PingFang SC;
+}
+.multi-ellipsis {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  width: auto;
+  word-break: break-all;
+}
+.ellipsis,
+.multi-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis {
+  white-space: nowrap;
+}
+button[disabled] {
+  background-color: rgba(1, 101, 184, 0.3) !important;
+  border-color: rgba(1, 101, 184, 0.3) !important;
+  color: #fff !important;
+}
+button {
+  border-radius: 0;
+}
+button::after {
+  display: none;
+}
+.safe-area {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.agree-toast .wr-toast__content {
+  padding: 28rpx 24rpx;
+}
+.left-icon-back {
+  font-size: 50rpx;
+}
+.slot-title {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  padding-right: 40rpx;
+  text-overflow: ellipsis;
+  width: 100%;
+  word-break: break-all;
+}
+.sams-t-toast .t-toast__content {
+  max-width: 600rpx;
+  min-width: 250rpx;
+}
+.sams-t-toast .t-toast__content .t-toast__row-text,
+.sams-t-toast .t-toast__row {
+  text-align: center;
+}
+.grayscale {
+  filter: grayscale(100%);
+}
+

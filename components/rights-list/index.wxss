@@ -1,0 +1,119 @@
+
+.banner {
+  display: -webkit-flex;
+  display: flex;
+  height: 858rpx;
+  margin: 0-24rpx 40rpx;
+}
+.banner image {
+  flex-shrink: 0;
+  height: 322rpx;
+  width: 702rpx;
+}
+.banner view.card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  margin-bottom: 40rpx;
+  margin-top: 40rpx;
+  padding: 24rpx;
+  position: relative;
+  width: 702rpx;
+}
+.banner view.card .card-title {
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 44rpx;
+}
+.banner view.card .card-sub-title {
+  color: #898e92;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 34rpx;
+}
+.member-benefit {
+  margin-bottom: 24rpx;
+  margin-top: 24rpx;
+}
+.member-benefit .benefit-list {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: auto;
+  /* min-height: 430rpx; */
+  min-height: 240rpx;
+  overflow: hidden;
+  transition: all 0.3s;
+  width: 662rpx;
+}
+.member-benefit .benefit-item {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12rpx;
+  min-height: 178rpx;
+  text-align: center;
+  width: 25%;
+}
+.member-benefit .benefit-item .image {
+  position: relative;
+}
+.member-benefit .benefit-item .image > image {
+  height: 80rpx;
+  vertical-align: middle;
+  width: 80rpx;
+}
+.member-benefit .benefit-item .image .badge {
+  background-color: #de1c24;
+  border-radius: 4rpx 4rpx 4rpx 0;
+  bottom: 50%;
+  color: #fff;
+  font-size: 20rpx;
+  font-weight: 600;
+  height: 28rpx;
+  left: 50%;
+  line-height: 28rpx;
+  padding: 0 4rpx;
+  position: absolute;
+  transform: translate(20rpx, -20rpx);
+}
+.member-benefit .benefit-item .title {
+  color: #222427;
+  font-size: 24rpx;
+  font-weight: 400;
+  line-height: 34rpx;
+  margin-bottom: 4rpx;
+  margin-top: 12rpx;
+}
+.member-benefit .benefit-item .sub-title {
+  color: #4f5356;
+  display: inline-block;
+  font-size: 22rpx;
+  font-weight: 400;
+  height: 60rpx;
+  line-height: 32rpx;
+  opacity: 0.6;
+}
+.member-benefit.expanded .benefit-list {
+  height: 570rpx;
+}
+.member-benefit .toggle {
+  color: #acb1b6;
+  font-size: 22rpx;
+  font-weight: 400;
+  line-height: 32rpx;
+  padding-top: 12rpx;
+  text-align: center;
+}
+.member-benefit .toggle image {
+  height: 16rpx;
+  margin-left: 12rpx;
+  width: 22rpx;
+}
+
+.tips {
+  font-size: 12px;
+}

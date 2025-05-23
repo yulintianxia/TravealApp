@@ -1,0 +1,24 @@
+<t-popup bindclose="hide" placement="bottom" visible="{{show}}">
+    <view class="popup-content">
+        <view class="popup-head">
+            <image class="popup-logo" src="{{POPUP_LOGO}}"></image>
+            <text class="popup-title">{{merchantDesc}}</text>
+            <text>{{i18n.t('components.BizApplicationUse',$_locale)}}</text>
+        </view>
+        <view class="popup-type">{{i18n.t('components.BizYourPhone',$_locale)}}</view>
+        <view class="popup-body" style="height: 150rpx">
+            <view class="popup-step" style="border:none;height: auto;">
+                <t-checkbox-group bind:change="onCheckboxChange" defaultValue="{{checkboxItems}}" tClass="checkbox-group" wx:for="{{checkboxItems}}">
+                    <t-checkbox label="{{item.name}}" value="{{item.value}}"></t-checkbox>
+                </t-checkbox-group>
+                <text class="step2-tit">{{i18n.t('components.BizAgree',$_locale)}}</text>
+                <text class="step2-rule">《{{i18n.t('components.BizRule',$_locale)}}》</text>
+            </view>
+        </view>
+        <view class="pupop-but">
+            <phone-container bind:getphonenumber="getPhone" disabled="{{!checkboxItems[0].checked}}" style="width: 100%">
+                <view class="wx-but">{{i18n.t('components.BizWxAuthorization',$_locale)}}</view>
+            </phone-container>
+        </view>
+    </view>
+</t-popup>

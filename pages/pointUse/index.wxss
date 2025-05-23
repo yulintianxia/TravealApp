@@ -1,0 +1,74 @@
+/* pages/order/order.wxss */
+body,
+page {
+  background: #f7f7f7;
+}
+.order {
+  height: 100vh;
+}
+
+/* .order::after{
+  display: block;
+  content: '';
+  height: vh;
+} */
+
+.order .order-list {
+  padding: 32rpx;
+}
+.order .order-list .order-item {
+  position: relative;
+  background: #fff;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  border-radius: 32rpx;
+}
+.order .order-list .order-item:last-child {
+  margin-bottom: 0;
+}
+.order .order-list .order-item .order-title {
+  display: flex;
+  align-items: center;
+  color: #000f1a;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 32rpx;
+}
+.order .order-list .order-item .order-title .icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 16rpx;
+}
+.order .order-list .order-item .order-title .points {
+  flex-grow: 1;
+  text-align: right;
+  font-size: 32rpx;
+}
+.order .order-list .order-item .order-title .points.success {
+  color: #f2c261;
+}
+.order .order-list .order-item .order-title .points.pay {
+  color: #ff3b30;
+}
+.order .order-list .order-item .order-title .points.fail {
+  color: #b1b2b2;
+}
+.order .order-list .order-item .order-dd {
+  color: #7e7f80;
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+  line-height: 36rpx;
+}
+.order .order-list .order-item .copy {
+  position: absolute;
+  bottom: 40rpx;
+  right: 32rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.blank {
+  margin-top: 300rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #888;
+}

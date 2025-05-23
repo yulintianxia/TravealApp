@@ -1,0 +1,11 @@
+<view class="error-overlay custom-class" hidden="{{!visible}}" style="z-index:{{zIndex}};">
+    <image bind:tap="bindIconTap" class="error-image" mode="widthFix" src="{{icon||'../../../assets/common/request-error.png'}}"></image>
+    <view class="message-text">
+        <block wx:if="{{!isConnected||networkType==='none'}}"> {{i18n.t('components.BizNetWordError',$_locale)}} </block>
+        <block wx:elif="{{message}}">{{message}}</block>
+    </view>
+    <t-button bind:tap="refresh" content="{{refreshText||i18n.t('components.BizNetWordRefreshText',$_locale)}}" tClass="refresh-button" theme="default"></t-button>
+    <scroll-view scrollY class="dev-response-text" wx:if="{{devMode}}">
+        <text>{{responseText}}</text>
+    </scroll-view>
+</view>

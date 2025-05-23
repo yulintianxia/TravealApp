@@ -1,0 +1,1 @@
+{"component":true,"usingComponents":{"t-popup":"../../../../miniprogram_npm/tdesign-miniprogram/popup/popup","user-container":"../user-container/index","phone-container":"../phone-container/index","phone-err-popup":"../phone-err-popup/index","base-page":"../../base-page/index","place-holder":"../../../place-holder/index"}}

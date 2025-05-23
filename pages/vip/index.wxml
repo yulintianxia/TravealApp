@@ -1,0 +1,66 @@
+<view class="become-member  {{showTab?'':'hidden-tab'}}">
+    <scroll-view bindscroll="onScoll" class="scroll-box" enhanced="{{true}}" scrollY="{{true}}" showScrollbar="{{false}}">
+        <view class="top-bg" style="background-image:{{bgUrl}}"></view>
+        <view class="swiper-container">
+            <swiper autoplay="{{false}}" bindchange="swiperChange" class="swiper-card-box" duration="{{300}}" indicatorDots="{{false}}" snapToEdge="{{true}}">
+                <swiper-item wx:for="{{levelList}}" class='swiper-card-item'>
+                    <block wx:if="{{vipData.levelId == item.keyId}}">
+                        <view>
+                            <image class="banner-img" src='{{BASE_URL+ item.icon}}'></image>
+                            <view class='swiper-position-explain'>
+                                <view>
+                                    <text class='level-grade'>{{vipData.username}}</text>
+                                </view>
+                                <view class='level_img'>
+                                    <view>
+                                        <image bindtap="handleSetting" class="logo_img" src="{{vipData.imgurl ? BASE_URL + vipData.imgurl: defaultPerson}}"></image>
+                                    </view>
+                                    <view class='vip-container'>
+                                        <view class='level-has'>{{vipData.levelname}}</view>
+                                        <view class='level-point'>积分: {{vipData.mypoint}}</view>
+                                    </view>
+                                </view>
+                                <view class='levle-remark'>{{vipData.remark}}</view>
+                            </view>
+                            <view class='position-icon-right'>
+                                <view>
+                                    <image class="avatar" src="../../images/home/logo.png" />
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <image class="banner-img" src="{{BASE_URL+ item.icon}}"></image>
+                        <view class='swiper-position-explain'>
+                            <view>
+                                <text class='level-grade'>{{vipTitle}}</text>
+                            </view>
+                            <view class='level_img'>
+                                <view>
+                                    <image class="logo_img" src="../../images/home/grade.png"></image>
+                                </view>
+                                <view >
+                                    <view class='level-has'>{{item.name}}</view>
+                                    <view class='level-point'>
+                                        范围:{{item.pointsStart}}-{{item.pointsEnd}}
+                                    </view>
+                                </view>
+                            </view>
+                            <view class='levle-remark'>{{item.remark}}</view>
+                        </view>
+                        <view class='position-icon-right'>
+                            <view>
+                                <image class="avatar" src="../../images/home/logo.png" />
+                            </view>
+                        </view>
+                    </block>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="swiper-container-2" style="width:{{NavList.length * 750}}rpx; margin-left: -{{current* 750}}rpx">
+            <view class="ordinary-content" wx:for="{{NavList}}" data-index='{{index}}' wx:key="index">
+                <rights-list class="rightList{{index}}"></rights-list>
+            </view>
+        </view>
+    </scroll-view>
+</view>

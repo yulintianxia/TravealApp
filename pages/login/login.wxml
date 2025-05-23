@@ -1,0 +1,65 @@
+<!-- pages/login/login.wxml -->
+<view class="login-page">
+    <view class="login-container">
+        <view class="logo-container">
+            <image src="../../images/home/logo.png" mode="scaleToFill" class="login_logo" />
+        </view>
+        <block wx:if="{{type =='LOGIN'}}">
+            <view class="input-container">
+                <view class="input-view">
+                    <t-input label="号码" placeholder="请输入手机号" borderless="{{true}}" class="phone-input" placeholder-style="{{placeholderStyleColor}}" maxlength="{{phoneLength}}" placeholder="请输入手机号" value="{{username}}" bindblur="bindPhone" />
+                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" maxlength="{{phoneLength}}" placeholder="请输入手机号" value="{{username}}" bindinput="bindPhone" /> -->
+                </view>
+                <view class="input-view password-input-view">
+                    <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
+                    <t-input label="密码" class="phone-input" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindblur="bindPassword" />
+                </view>
+                <view class="input-btn">
+                    <view class='register-view'>
+                        <view class='register' bindtap="register">注册</view>
+                        <!-- <view class='register' bindtap="changePassword">修改密码</view> -->
+                    </view>
+                    <view bindtap="login" class="login-btn submit">登录</view>
+                </view>
+            </view>
+        </block>
+        <block wx:elif="{{type =='REGISTER'}}">
+            <view class="input-container">
+                <view class="input-view">
+                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}"  maxlength="{{phoneLength}}" placeholder="请输入手机号" value="{{username}}" bindinput="bindPhone" /> -->
+                    <t-input label="号码" placeholder="请输入手机号" class="phone-input" placeholder-style="{{placeholderStyleColor}}" maxlength="{{phoneLength}}" placeholder="请输入手机号" borderless="{{true}}" value="{{username}}" bindblur="bindPhone" />
+                </view>
+                <view class="input-view">
+                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入昵称" value="{{nickName}}" bindinput="bingNickName" /> -->
+                    <t-input label="昵称" placeholder="请输入昵称" class="phone-input" placeholder-style="{{placeholderStyleColor}}" maxlength="{{phoneLength}}" placeholder="请输入昵称" borderless="{{true}}" value="{{nickName}}" bindblur="bingNickName" />
+                </view>
+                <view class="input-view password-input-view">
+                    <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
+                    <t-input class="phone-input" label="密码" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" borderless="{{true}}" type="password" bindblur="bindPassword" />
+                </view>
+                <view class="input-btn">
+                    <view class='register-view'>
+                        <view class='register' bindtap="checkLogin">去登陆</view>
+                    </view>
+                    <view bindtap="registerBtn" class="login-btn submit">注册</view>
+                </view>
+            </view>
+        </block>
+        <block wx:elif="{{type =='CHANGEPWD'}}">
+            <view class="input-container">
+                <view class="input-view">
+                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入旧密码" value="{{oldPassword}}" data-key='oldPassword' bindinput="bindOld" /> -->
+                    <t-input label="旧密码" borderless="{{true}}" class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入旧密码" value="{{oldPassword}}" data-key='oldPassword' bindblur="bindOld" />
+                </view>
+                <view class="input-view">
+                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" /> -->
+                    <!-- <input class="phone-input" borderless="{{true}}"  label="新密码"  placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" /> -->
+                    <t-input label="新密码" borderless="{{true}}" class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" />
+                </view>
+                <view class="input-btn">
+                    <view bindtap="submitPwd" class="login-btn submit">确定</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

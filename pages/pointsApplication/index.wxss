@@ -1,0 +1,359 @@
+.redact-address {
+  background: #f3f3f3;
+  margin-bottom: 24rpx;
+  /* height: 100vh; */
+  margin-top: 20rpx;
+}
+
+.redact-address::after {
+  content: '';
+  display: block;
+  height: 14vh;
+}
+
+.possess-layout {
+  padding: 20rpx;
+}
+.address-msg {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  border-top: 2rpx solid #efefef;
+  font-size: 14px;
+  color: #333333;
+  padding: 4rpx 10rpx;
+}
+
+.address-msg.user-name {
+  border-radius: 10px 10px 0 0;
+}
+
+.address-right image {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.address-rights {
+  display: flex;
+  align-items: center;
+}
+
+.address-rights image {
+  width: 26rpx;
+  height: 32rpx;
+  margin-right: 13rpx;
+}
+
+.address-rights view {
+  font-size: 14px;
+}
+
+.address-msg:last-child {
+  border-bottom: none;
+}
+
+.section {
+  width: 58%;
+}
+
+.phcolor {
+  color: #999999;
+}
+
+.item-msg {
+  width: 20%;
+  margin-right: 15rpx;
+}
+
+.img {
+  width: 35rpx;
+  height: 35rpx;
+  align-self: center;
+}
+
+.address-right {
+  width: 100rpx;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* 标签 */
+.label {
+  display: flex;
+  height: 90rpx;
+  align-items: center;
+  /* margin-top: 33rpx; */
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
+  padding: 0 14rpx;
+}
+
+.label-title {
+  font-size: 14px;
+  color: #333333;
+  margin-right: 100rpx;
+}
+
+.label .label-list {
+  display: flex;
+}
+
+.label .label-list .labels {
+  /* height: 40rpx;
+    width: 96rpx;
+    border: 1px solid #EEEEEE;
+    margin-right: 37rpx;
+    text-align: center;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #000000;
+    border-radius: 20rpx; */
+  display: inline-block;
+  padding: 4rpx 10rpx 2rpx 14rpx;
+  margin: 2rpx 0 0 10rpx;
+  font-size: 24rpx;
+  color: #000000;
+  border-radius: 10rpx;
+  border: 1rpx solid #22bee5;
+  margin-right: 50rpx;
+}
+
+.labels-active {
+  /* background: #F73C41 !important;
+    color: #FFFFFF !important; */
+
+  /* background: #22bee5 !important; */
+  color: #22bee5 !important;
+}
+
+/* 默认设置 */
+.default-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 14rpx;
+  margin-top: 20rpx;
+}
+
+.defaul-setting-left {
+  margin-bottom: 20rpx;
+}
+
+.defaul-setting-left view:nth-child(1) {
+  font-size: 14px;
+  color: #333333;
+  margin-bottom: 25rpx;
+}
+
+.defaul-setting-left view:nth-child(2) {
+  font-size: 12px;
+  color: #333333;
+}
+
+.defaul-setting-right {
+  height: 64rpx;
+  width: 105rpx;
+}
+
+.btn {
+  width: 680rpx;
+  height: 88rpx;
+  background: #22bee5;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 55rpx;
+  left: 35rpx;
+  border-radius: 41.5rpx;
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 88rpx;
+  z-index:100;
+}
+.btn.btngrey{
+    background: grey;
+}
+
+/* 城市选择 */
+.picker {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 12;
+  background-color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0rpx;
+}
+
+.picker-view {
+  width: 100%;
+  display: flex;
+  z-index: 12;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0rpx;
+  height: 40vh;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+}
+
+.gangedBtn {
+  border-top: 1px solid #efefef;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 66rpx;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  text-align: center;
+  color: black;
+  font-size: 0.8rem;
+  display: flex;
+  background: white;
+  justify-content: space-between;
+}
+
+.cont {
+  width: 100%;
+  height: 389rpx;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+
+.address {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.city-cancel {
+  color: gray;
+}
+
+.address-msg.address-input {
+  min-height: 100rpx;
+  height: auto;
+}
+
+.address-input textarea {
+  height: auto;
+}
+
+
+.textarea-class {
+  /* height: 148rpx; */
+  /* min-height: 100rpx; */
+  padding-top: 20rpx;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+  padding-right: 14rpx;
+  /* 这行代码可以让已输入的文字居中 */
+  /* text-align: center;  */
+}
+
+/* 对于placeholder文字的居中，可以通过伪元素来实现 */
+.textarea-class::-webkit-input-placeholder {
+  line-height: 100rpx;
+}
+
+.textarea-class::-moz-placeholder {
+  line-height: 100rpx;
+}
+
+.textarea-class:-ms-input-placeholder {
+  line-height: 100rpx;
+}
+
+.textarea-class::placeholder {
+  line-height: 100rpx;
+}
+
+.custom-color {
+  --td-switch-checked-color: #22bee5;
+}
+
+.mains {
+  width: 98%;
+  border-radius: 10px;
+  margin: 0rpx auto;
+  background-color: white;
+}
+
+.input-example {
+  --td-input-vertical-padding: 24rpx;
+  background-color: var(--bg-color-demo);
+  padding: 0 20rpx;
+  border-radius: 20rpx;
+}
+
+.input-example__label {
+  color: var(--td-text-color-primary);
+  font-size: 24rpx;
+  line-height: 40rpx;
+  margin: 0 8rpx 16rpx;
+}
+
+.input-container {
+  padding-top: 20rpx;
+  /* width */
+  border-radius: 20rpx;
+}
+
+.input-label {
+  padding: 20rpx 0 20rpx 24rpx;
+}
+
+.input-upload-container {
+  background-color: var(--td-input-bg-color, var(--td-bg-color-container, var(--td-font-white-1, #ffffff)));
+  padding-bottom: 20rpx;
+  padding: var(--td-input-vertical-padding, 32rpx);
+  overflow: auto;
+}
+
+.input-cell {
+  margin: 20rpx 0;
+}
+
+.custom-label {
+  display: inline-flex;
+  width: 150rpx;
+}
+
+.custom-label::after {
+  content: '*';
+  color: red;
+  font-size: 32rpx;
+  margin-left: 4rpx;
+}
+
+.custtom-lable-title {
+  margin-bottom: 20rpx;
+  width: auto;
+}
+
+.input-upload-img-container {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.input-upload-img-container .t-grid  {
+  overflow: auto;
+}

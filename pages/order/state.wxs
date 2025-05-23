@@ -1,0 +1,18 @@
+var  status={
+    "0":"创建",
+    "1":"待发货",
+    "2":"待收货",
+    "3":"已收货",
+    "10":'取消',
+    "11": '异常',
+    "99":'关闭'
+  }
+  var filter = {
+    judgmentState: function (num) {
+      return(status[num])
+    }
+  }
+  module.exports = {
+    judgmentState: filter.judgmentState
+  }
+  //不支持es6语法只能通过：进行暴露

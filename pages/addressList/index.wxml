@@ -1,0 +1,29 @@
+<view class="viewport">
+    <scroll-view class="scroll-view" scroll-y>
+        <view wx:if="{{addressList.length}}" class="address">
+            <view class="address-list">
+                <view class="item" wx:for="{{addressList}}" wx:for-index="index" wx:for-item="item">
+                    <t-swipe-cell  disabled='{{false}}'>
+                        <view class="item-content">
+                            <view class="user">
+                                {{item.consigneeName}}
+                                <text class="contact">{{item.consigneePhone}}</text>
+                                <text wx:if="{{item.isDefault !='0'}}" class="badge">默认</text>
+                                <text wx:if="{{item.label !='3'}}" class="badge">{{labelList[item.label]}}</text>
+                            </view>
+                            <view class="locate">{{item.detailedAddress}}</view>
+                            <view class='edit' bindtap='editAddress' data-item='{{item}}'>
+                                <image src="../../images/home/edit.png"></image>
+                            </view>
+                            <view class='delete' bindtap='deleteAddress' data-id='{{item.keyId}}'>
+                                <image src="../../images/home/delete.png"></image>
+                            </view>
+                        </view>
+                    </t-swipe-cell>
+                </view>
+            </view>
+        </view>
+        <view wx:else class="blank">暂无收货地址</view>
+    </scroll-view>
+    <view class="btn" bindtap="submit">新增地址</view>
+</view>

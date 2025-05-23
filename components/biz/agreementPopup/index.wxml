@@ -1,0 +1,97 @@
+<t-popup placement="bottom" visible="{{showPrivacyPop}}">
+    <view class="privacy-content" slot="content">
+        <view class="privacy-content-core safe-area-inset-bottom">
+            <view class="title" style="margin-top: 0;"> {{showAlternativeScheme?'特别提示':popupTitle}} </view>
+            <scroll-view scrollY class="tip-content">
+                <spare-system-popup wx:if="{{showAlternativeScheme}}"></spare-system-popup>
+                <mp-html bindlinktap="agreementLink" content="{{popupConten}}" copyLink="{{false}}" wx:else></mp-html>
+                <view class="spin"></view>
+            </scroll-view>
+            <view class="agree-box">
+                <view class="agree-item" wx:if="{{hasPrivacyPolicy||hasUserServiceAgreement}}">
+                    <image catchtap="togglePrivacyVipTerms" class="icon-selected" src="{{agreeImg2+(privacyVip?'checkbox-selected.png':'checkbox.png')}}"></image>
+                    <view class="item-text-box" wx:if="{{showAlternativeScheme}}">
+                        <text catchtap="togglePrivacyVipTerms" class="font-size_26">我已阅读并同意</text>
+                        <text catchtap="toPrivacyPolicy" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}" wx:if="{{hasPrivacyPolicy}}">{{agreementNameList[3]}}</text>
+                        <text class="font-size_26 {{needAuthorization?'mr-16':''}}" wx:if="{{hasPrivacyPolicy&&hasUserServiceAgreement}}">{{needAuthorization?'、':'及'}}</text>
+                        <text catchtap="toUserServiceAgreement" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}" wx:if="{{hasUserServiceAgreement}}">{{agreementNameList[5]}}</text>
+                        <text class="font-size_26" wx:if="{{hasPrivacyPolicy&&hasUserServiceAgreement&&needAuthorization}}">及</text>
+                        <text catchtap="toWxPrivacy" class="font-size_26 note-btn" wx:if="{{needAuthorization}}">{{wxPrivacyName}}</text>
+                    </view>
+                    <view class="item-text-box" wx:else>
+                        <text catchtap="togglePrivacyVipTerms" class="font-size_26">{{i18n.t('components.BizAgree',$_locale)}}</text>
+                        <text catchtap="toPrivacyPolicy" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}" wx:if="{{hasPrivacyPolicy}}">{{agreementNameList[3]}}</text>
+                        <text class="font-size_26" wx:if="{{hasPrivacyPolicy&&hasUserServiceAgreement}}">{{i18n.t('terms.and',$_locale)}}</text>
+                        <text catchtap="toUserServiceAgreement" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}" wx:if="{{hasUserServiceAgreement}}">{{agreementNameList[5]}}</text>
+                    </view>
+                </view>
+                <view class="agree-item" wx:if="{{hasSDKLink||hasShareInformation}}">
+                    <image catchtap="togglePrivacyPersonalTerms" class="icon-selected" src="{{agreeImg2+(privacyPersonal?'checkbox-selected.png':'checkbox.png')}}"></image>
+                    <view class="item-text-box">
+                        <text catchtap="togglePrivacyPersonalTerms" class="font-size_26">{{showAlternativeScheme?'我已阅读并同意':i18n.t('components.BizAgree',$_locale)}}</text>
+                        <text catchtap="toSDKLink" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}" wx:if="{{hasSDKLink}}">{{agreementNameList[8]}}</text>
+                        <text class="font-size_26" wx:if="{{hasSDKLink&&hasShareInformation}}">{{showAlternativeScheme?'及':i18n.t('terms.and',$_locale)}}</text>
+                        <text catchtap="toShareInformation" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}" wx:if="{{hasShareInformation}}">{{agreementNameList[7]}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-container">
+                <view bind:tap="handleVisitor" class="left-btn flex-reverse">
+                    <text>{{showAlternativeScheme?'不同意，仅浏览':i18n.t('membership.refuseNew',$_locale)}}</text>
+                </view>
+                <button bind:tap="agreePrivacyPolicy" class="right-btn flex-reverse" openType="agreePrivacyAuthorization" wx:if="{{showAlternativeScheme&&needAuthorization}}"> 同意 </button>
+                <view bind:tap="agreePrivacyPolicy" class="right-btn flex-reverse" wx:else>
+                    <text>{{showAlternativeScheme?'同意':i18n.t('spareAgreement.accept',$_locale)}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</t-popup>
+<t-popup placement="bottom" visible="{{showMemberRulePop}}">
+    <view class="member-rule-content" slot="content">
+        <view class="privacy-content-core safe-area-inset-bottom" style="padding-top: 0;">
+            <view class="title" style="margin-top: 0;">
+                <view class="title-text">{{chartPopupTitle}}</view>
+            </view>
+            <scroll-view scrollY class="tip-content">
+                <mp-html bindlinktap="agreementLink" content="{{chartPopupContent}}" copyLink="{{false}}"></mp-html>
+            </scroll-view>
+            <view class="agree-box">
+                <view class="agree-item">
+                    <view class="item-text-box">
+                        <text class="font-size_26">{{i18n.t('agreementPopup.readDetail',$_locale)}}</text>
+                        <text catchtap="toMemberRules" class="font-size_26 note-btn {{$_locale==='EN'?'en':''}}">{{agreementNameList[2]}}</text>
+                    </view>
+                </view>
+            </view>
+            <view bind:tap="clickMemberKnownBtn" class="btn-container">
+                <text>{{i18n.t('bindMembership.know',$_locale)}}</text>
+            </view>
+        </view>
+    </view>
+</t-popup>
+<t-popup placement="bottom" visible="{{showWxPrivacyPop}}">
+    <view class="privacy-content" slot="content">
+        <view class="privacy-content-core safe-area-inset-bottom">
+            <view class="title" style="margin-top: 0;">{{wxPrivacyTitle}}</view>
+            <scroll-view scrollY class="tip-content">
+                <mp-html bindlinktap="agreementLink" content="{{wxPrivacyContne}}" copyLink="{{false}}"></mp-html>
+                <view class="spin"></view>
+            </scroll-view>
+            <view class="agree-box">
+                <view class="agree-item">
+                    <view class="item-text-box">
+                        <text class="font-size_26">详情请查阅</text>
+                        <text catchtap="toWxPrivacy" class="font-size_26 note-btn">{{wxPrivacyName}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-container">
+                <view bind:tap="handleVisitor" class="left-btn flex-reverse">
+                    <text>不同意，仅浏览</text>
+                </view>
+                <button bind:tap="agreeWxPrivacy" class="right-btn flex-reverse" openType="agreePrivacyAuthorization"> 同意 </button>
+            </view>
+        </view>
+    </view>
+</t-popup>

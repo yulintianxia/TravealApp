@@ -1,0 +1,15 @@
+<view class="card member-benefit track-element">
+    <view class="card-title">{{title}}尊享权益
+        <text class='tips'>(滑动上面卡片,查看其他vip权益)</text>
+    </view>
+    <view class="benefit-list">
+        <view bindtap="seeDetails" class="benefit-item" data-url="{{item.url}}" data-id='{{item.levelId}}'  wx:for="{{list}}" wx:key="index">
+            <view class="image" data-url="{{item.url}}" data-id='{{item.levelId}}'>
+                <image src="{{item.icon}}" data-url="{{item.url}}"></image>
+                <view class="badge" wx:if="{{item.badge}}"  data-id='{{item.levelId}}'  data-url="{{item.url}}">{{item.badge}}</view>
+            </view>
+            <view class="title" data-url="{{item.url}}" data-id='{{item.levelId}}' > {{item.title}}</view>
+            <!-- <text class="sub-title" data-url="{{item.url}}" data-id='{{item.levelId}}'>{{item.subTitle}}</text> -->
+        </view>
+    </view>
+</view>

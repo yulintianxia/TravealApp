@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/vipMemer/index",
+    "pages/myHome/index",
+    "pages/pointsApplication/index",
+    "pages/pointsApplicationList/index",
+    "pages/addressList/index",
+    "pages/login/login",
+    "pages/vipLevel/index",
+    "pages/pointrank/index",
+    "pages/pointUse/index",
+    "pages/index/index",
+    "pages/setting/index",
+    "pages/vip/index",
+    "pages/order/index",
+    "pages/address/index",
+    "pages/webView/index"
+  ],
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#19A0F0",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home/tabbar_home.png",
+        "selectedIconPath": "images/home/tabbar_home_hover.png"
+      },
+      {
+        "pagePath": "pages/myHome/index",
+        "text": "我的",
+        "iconPath": "images/home/tabbar_mine.png",
+        "selectedIconPath": "images/home/tabbar_mine_hover.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "正莲会员",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "componentFramework": "exparser",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "compileType": "typeScript",
+  "libVersion": "2.0.9",
+  "setting": {
+    "es6": true
+  },
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-sticky": "tdesign-miniprogram/sticky/sticky",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-input": "tdesign-miniprogram/input/input"
+  }
+}

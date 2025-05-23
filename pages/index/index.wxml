@@ -1,0 +1,5 @@
+<!-- index.wxml -->
+<view class='contianer'>
+    <image class="logo" src="../../images/home/logo.png" />
+    <view class='explain'>正莲出品，必属精品</view>
+</view>

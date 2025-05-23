@@ -1,0 +1,1 @@
+.custom-picker .t-picker{font-size:34rpx}.custom-picker .t-picker__indicator::after,.custom-picker .t-picker__indicator::before{border:none}.custom-picker .t-picker__indicator{background:#f0f2f4;border-radius:12rpx;margin:0 24rpx;width:702rpx;z-index:1}.custom-picker .t-picker-item__wrapper{position:relative;z-index:3}

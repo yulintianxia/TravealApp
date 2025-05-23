@@ -1,0 +1,8 @@
+<t-popup bind:visible-change="closeBtn" placement="center" visible="{{visible}}">
+    <view class="membersDeatils">
+        <image class="bg" src="{{language==='EN'?joinMemberEnBg:joinMemberCnBg}}"></image>
+        <view catch:tap="buyMembers" class="jionMemberBtn" data-type="0"></view>
+        <view catch:tap="buyMembers" class="bindMemberBtn" data-type="1"></view>
+        <image catch:tap="closeBtn" class="closeMempopBtn" src="{{closeIcon}}"></image>
+    </view>
+</t-popup>

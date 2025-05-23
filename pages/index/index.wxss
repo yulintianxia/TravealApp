@@ -1,0 +1,20 @@
+/**index.less**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.contianer {
+   text-align: center;
+   margin:10% auto;
+}
+.logo {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+}
+.explain {
+  margin-top:20rpx;
+  font-size: 20px;
+  font-weight: 600;
+}
