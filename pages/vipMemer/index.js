@@ -177,7 +177,6 @@ Page({
     try {
       let res = await RequestApi.getGrade({}, config);
       if (res && res.code == "200") {
-        console.log("res", res.data.levelId);
         this.setData({});
         this.setData(
           {
@@ -195,6 +194,7 @@ Page({
           }
         );
       } else {
+        console.log('cessss',111);
         wx.showToast({
           title: response.data.msg,
           duration: 2000,
@@ -203,6 +203,7 @@ Page({
         });
       }
     } catch (error) {
+      console.log('error',error);
       if (error == 401) {
         // this.isNoTurn = true;
         this.setData({ noLogin: true });
