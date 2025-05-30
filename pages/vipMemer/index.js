@@ -1,5 +1,5 @@
 // pages/vipMemer/index.js
-import { BASE_URL } from "../../config/index";
+import { BASE_URL, baseImageUrl} from "../../config/index";
 import { RequestApi } from "../../services/api";
 Page({
   /**
@@ -18,6 +18,7 @@ Page({
     backGroundImg: "",
     BASE_URL,
     noLogin: false,
+    baseImageUrl,    
   },
   turnHome: function () {
     if (!this.data.noLogin) {

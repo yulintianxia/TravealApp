@@ -15,13 +15,13 @@
                                     <view class="peak-content transitionDuration_5">
                                         <view class="peak-content_base peak_img {{current == index ? 'currentActive transitionDuration_5':''}}" style="background-image: url({{item.mountain ? BASE_URL + item.mountain: imgUrl}});"></view>
                                         <view class='cloud cur cloud0'>
-                                            <image src="https://www.yuerhoo.com.cn:8200/photo/1.png" />
+                                            <image src="/photo/1.png" />
                                         </view>
                                         <view class='cloud cur cloud1'>
-                                            <image src="https://www.yuerhoo.com.cn:8200/photo/2.png" />
+                                            <image src="{{baseImageUrl}} + /photo/2.png" />
                                         </view>
                                         <view class='cloud cur cloud2'>
-                                            <image src="https://www.yuerhoo.com.cn:8200/photo/3.png" />
+                                            <image src="{{baseImageUrl}} + /photo/3.png" />
                                         </view>
                                     </view>
                                 </view>
