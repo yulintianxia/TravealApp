@@ -1,20 +1,23 @@
-
- <view class="order">
- <scroll-view class="scroll-view" scroll-y  style="height:100vh" bindscrolltolower='bindscrolltolower'	lower-threshold="{{20}}">
-      <view class="order-list" wx:if="{{orderList.length}}">
-        <view class="order-item"  wx:for="{{orderList}}" wx:for-index="index" wx:for-item="item"  :key="index">
-          <view class="order-title">
-            <image class="icon" src="../../images/home/messageTip.png" />
-            <view>消费</view>
-            <view class="points pay">{{item.pointsNum}}</view>
-          </view>  
-            <view class="order-dd">消耗类型：{{ item.type == 1 ?'系统调整':'商品兑换' }}</view>
-             <view class="order-dd">剩余积分：{{ item.pointsBalance ? item.pointsBalance:'' }} </view>
-            <view class="order-dd">消耗时间：{{ item.createTime }} </view>
-           <view class="order-dd" bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}" wx:if="{{item.orderNumber}}">订单号：{{ item.orderNumber || '-' }} 复制</view>
-             <view class="order-dd" wx:if="{{item.remark}}">备注：{{ item.remark || '-' }}</view>
+<view class="order">
+  <scroll-view class="scroll-view" scroll-y style="height:100vh" bindscrolltolower='bindscrolltolower' lower-threshold="{{20}}">
+    <view class="order-list" wx:if="{{orderList.length}}">
+      <view class="order-item" wx:for="{{orderList}}" wx:for-index="index" wx:for-item="item" :key="index">
+        <view class="order-title">
+          <image class="icon" src="../../images/home/messageTip.png" />
+          <view>消费</view>
+          <view class="points pay">{{item.pointsNum}}</view>
         </view>
+        <view class="order-dd" wx:if="{{item.type == 1}}">消耗类型：系统调整</view>
+        <view class="order-dd" wx:elif="{{item.type == 2}}">消耗类型：商品兑换</view>
+        <view class="order-dd" wx:elif="{{item.type == 3}}">消耗类型：积分申请</view>
+        <view class="order-dd">剩余积分：{{ item.pointsBalance ? item.pointsBalance:'' }}</view>
+        <view class="order-dd">消耗时间：{{ item.createTime }}</view>
+        <view class="order-dd" bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}" wx:if="{{item.orderNumber}}">
+          订单号：{{ item.orderNumber || '-' }} 复制
+        </view>
+        <view class="order-dd" wx:if="{{item.remark}}">备注：{{ item.remark || '-' }}</view>
       </view>
-       <view wx:else class="blank">暂无积分明细</view>
-   </scroll-view>
-  </view>
+    </view>
+    <view wx:else class="blank">暂无积分明细</view>
+  </scroll-view>
+</view>

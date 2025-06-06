@@ -49,7 +49,7 @@ Page({
       },
       {
         iconUrl: "../../images/home/points.png",
-        title: "积分",
+        title: "积分明细",
         url: "/pages/pointUse/index",
       },
       {
@@ -158,6 +158,12 @@ Page({
         duration: 1000,
       });
     }
+  },
+  handleTool:function() {
+    wx.showToast({
+        title: "敬请期待新功能",
+        duration: 1000,
+      });
   },
   turnTop() {
     wx.navigateTo({

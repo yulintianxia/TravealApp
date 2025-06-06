@@ -97,7 +97,7 @@
         <text class="header-title font-weight-medium">我的工具</text>
       </view>
       <view class="module-body">
-        <view class="entry tools-entry" data-item="{{item}}" wx:for="{{toolsData}}" wx:key="id">
+        <view class="entry tools-entry" bindtap="handleTool" data-item="{{item}}" wx:for="{{toolsData}}" wx:key="id">
           <image src="{{ item.iconUrl}}"></image>
           <text class="entry-title">{{item.title}}</text>
         </view>
