@@ -70,9 +70,8 @@ Page({
           });
         }, 100);
       });
-    } else {
-      this.getplatforms();
-    }
+    } 
+    this.getplatforms();
   },
 
   handleAdd: function (e) {
