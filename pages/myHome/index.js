@@ -59,7 +59,7 @@ Page({
       },
       {
         iconUrl: "../../images/home/vergrade.png",
-        title: "我的徽章",
+        title: "我的勋章",
         url: "/myBadge",
       },
      
@@ -154,7 +154,7 @@ Page({
       this.turnWebView("/myBadge");
     } else {
       wx.showToast({
-        title: "暂无徽章",
+        title: "暂无勋章",
         duration: 1000,
       });
     }

@@ -55,7 +55,7 @@ Page({
       this.turnModal("/pages/login/login");
     }
   },
-  /* 跳转到徽章的页面 */
+  /* 跳转到勋章的页面 */
   turnBadge: function () {
     if (this.data.medalCount) {
       if (!this.data.noLogin) {

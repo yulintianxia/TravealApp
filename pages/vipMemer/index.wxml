@@ -46,7 +46,7 @@
                                 <view>
                                     <image src="../../images/home/grade.png"></image>
                                 </view>
-                                <view>徽章</view>
+                                <view>勋章</view>
                             </view>
                             <view bindtap='turnGiftPage'>
                                 <view>

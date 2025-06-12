@@ -84,8 +84,8 @@ Page({
         keyId: item.keyId,
         list: [
           {
-            title: "徽章",
-            subTitle: "会员徽章",
+            title: "勋章",
+            subTitle: "会员勋章",
             icon: "../../images/home/grade.png",
             url: "/badge",
           },
