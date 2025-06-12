@@ -11,7 +11,7 @@ Page({
     loginHeadIconStyle: "head-icon",
     isLogin: true,
     isShowUserVerify: !0,
-    imagesModule,
+    img_setting_black:'https://zhenglian.vip:8420/photo/setting.png',
     headIconTop: 0,
     headContentTop: "",
     headHeight: "",
