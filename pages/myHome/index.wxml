@@ -1,6 +1,6 @@
 <view class='view-page'>
   <view class="relative" style="height: 580rpx;">
-    <image src='{{levelInf.background ? BASE_URL + levelInfo.background:configbackgroundImg  }}' class='login-header-bg' />
+    <image src='{{levelInfo.background ? BASE_URL + levelInfo.background:configbackgroundImg  }}' class='login-header-bg' />
     <view class="{{loginHeadIconStyle}}" style="padding-top: {{headIconTop}};">
       <image bindtap="handleSetting" class="icon" data-item="{{settingData}}" data-ubt-key="{{settingData.id}}" src="{{img_setting_black}}" />
     </view>
