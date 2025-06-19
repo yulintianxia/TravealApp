@@ -6,4 +6,4 @@ export const PIC_COMMON_PATH = 'https://images4.c-ctrip.com/target/';
 export const ctripImg = 'https://m.ctrip.com/';
 export const commonBaseUrl = 'https://sam-retail-static-1302115363.file.myqcloud.com/miniapp'
 // export const H5Url ='www.zhenglian.vip:8200';
-export const H5Url ='https://www.zhenglian.vip:8420';
+export const H5Url ='https://www.zhenglian.vip/dotm';
