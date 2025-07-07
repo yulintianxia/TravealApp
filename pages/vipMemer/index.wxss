@@ -144,7 +144,7 @@
 .peak-box .line.webp {
   width: 94vw;
   height: 21vw;
-  background-image: url("https://zhenglian.vip:8420/photo/4.png");
+  background-image: url("https://www.zhenglian.vip/dotm/photo/4.png");
 }
 
 .peak-box .line .item.prev1 {

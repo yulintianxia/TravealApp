@@ -1,7 +1,7 @@
 import { imagesModule } from "../../common/imageUrlConfs.js";
 import { userConfig } from "../../common/entryConfs.js";
 import { RequestApi } from "../../services/api.js";
-import { BASE_URL } from "../../config/index";
+import { BASE_URL,baseImageUrl } from "../../config/index";
 Page({
   /**
    * 页面的初始数据
@@ -11,7 +11,7 @@ Page({
     loginHeadIconStyle: "head-icon",
     isLogin: true,
     isShowUserVerify: !0,
-    img_setting_black:'https://zhenglian.vip:8420/photo/setting.png',
+    img_setting_black:"",
     headIconTop: 0,
     headContentTop: "",
     headHeight: "",
@@ -110,6 +110,9 @@ Page({
    */
   onLoad(options) {
     this.setHeaderIconTop();
+    this.setData({
+      img_setting_black: baseImageUrl + "/setting.png",
+    });
   },
   handleJumpUrl(e) {
     let url = e.currentTarget.dataset.url;
