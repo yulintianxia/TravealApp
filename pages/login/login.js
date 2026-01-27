@@ -23,6 +23,49 @@ Page({
       username: e.detail.value,
     });
   },
+  async oneClicklogin() {
+    try {
+      // 1. 显示加载提示
+      wx.showLoading({
+        title: "登录中...",
+        mask: true,
+      });
+      // 2. 获取微信登录凭证code
+      const loginRes = await wx.login({
+        timeout: 5000, // 超时时间5秒
+      });
+      console.log("loginRes", loginRes);
+      if (loginRes.code) {
+        let res = await RequestApi.oneLogin({ code: loginRes.code });
+        // 4. 处理后端返回结果
+        if (res.statusCode === 200 && res.data.code === 0) {
+          // 登录成功，存储自定义登录态（如token）
+          wx.setStorageSync("token", res.token);
+          console.log("res", res.token);
+          wx.navigateTo({
+            // url: '/pages/index/index'
+            url: "/pages/vipMemer/index",
+          });
+        } else {
+          wx.showToast({
+            title: res.data.msg || "登录失败",
+            icon: "none",
+          });
+        }
+      } else {
+        throw new Error("获取code失败：" + loginRes.errMsg);
+      }
+    } catch (error) {
+      console.error("登录异常：", error);
+      wx.showToast({
+        title: "登录出错，请重试",
+        icon: "none",
+      });
+    } finally {
+      // 关闭加载提示
+      wx.hideLoading();
+    }
+  },
   bingNickName: function (e) {
     this.setData({
       nickName: e.detail.value,

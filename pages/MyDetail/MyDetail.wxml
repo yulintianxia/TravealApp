@@ -1,0 +1,19 @@
+<view class="medalwall-wrap">
+<view class="medalwall-header" style="text-align: center">
+<view class="tempaltePage" v-html="htmlTempalte"></view>
+</view>
+
+<!--  <div class="footer" @click="orderBuy">
+    <div>立即购买</div>
+  </div>  -->
+
+<view class="buyContainer">
+<!--  <div class="grade" @click="orderBuys">积分兑换({{ originValue }})</div>  -->
+
+<!--  <div class="grade" @click="orderBuys">{{originValue}}积分兑换</div>  -->
+
+<view class="grade" bindtap="turnGo">
+回到我的勋章
+</view>
+</view>
+</view>

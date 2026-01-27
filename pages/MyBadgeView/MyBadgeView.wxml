@@ -1,0 +1,59 @@
+<view class="medalwall-wrap" style="{{{
+    backgroundImage: `url(${bgImg})`
+}}}">
+<view class="medalwall-header" style="padding-top: 20px;text-align: center;">
+<!--  <van-row justify="center">
+            <van-col span="12">
+                <van-tabs class="check-tab" v-model:active="checkActive" @click-tab="onClickTab">
+                    <van-tab title="勋章等级" name="badge"></van-tab>
+                    <van-tab title="礼品详情" name="gift"></van-tab>
+                </van-tabs>
+            </van-col>
+        </van-row>  -->
+</view>
+
+<view class="medalwall-content" style="padding-top: 20px;">
+<!--  <div class="medalwall-top">
+            <div class='capsule' @click='checkYear(item)' v-for="(item, index) in yearList"
+                :class="[year == item ? '' : 'gray']">{{ item }}</div>
+        </div>  -->
+
+<view class="medalwall-middle">
+<swiper modules="{{modules}}" space-between="{{50}}" navigation="" pagination="{{{ clickable: true }}}" scrollbar="{{{ draggable: true }}}" @swiper="onSwiper" @slideChange="onSlideChange" class="medal-list" id="medal-list" autoplay="{{true}}">
+<swiper-slide class="" wx:for="{{ImgLists}}" wx:for-item="item" wx:for-index="index">
+<view class="medal">
+<view class="img" class="{{[reallevelId == levelId ? '' : 'menban']}}" style="{{{ backgroundImage: `url(${BASE_URL}${item.mainPicture})` }}}"></view>
+
+<view class="year">
+{{ item.year }}
+</view>
+
+<view class="title">
+{{ item.name }} {{ item.pointsPrice }}
+</view>
+
+<view class="tip">
+{{ item.explains }}
+</view>
+
+<view class="tip tipTitle">
+{{ item.remark }}
+</view>
+
+<view class="line">
+<view class="btn solid" bindtap="turnDetail" data-item="item">
+查看详情
+</view>
+</view>
+</view>
+</swiper-slide>
+</swiper>
+</view>
+
+<view class="medalwall-bottom">
+<view class="tour">
+<view wx:for="{{ImgLists}}" wx:for-item="item" wx:for-index="index" class="dot" class="{{[index == checkIndex ? 'show' : '']}}"></view>
+</view>
+</view>
+</view>
+</view>

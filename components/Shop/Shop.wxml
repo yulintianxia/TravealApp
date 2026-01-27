@@ -1,0 +1,38 @@
+<view class="container">
+<view class="address">
+<!--  arrow-direction="right"  -->
+
+<van-cell border="" label="快递 包邮 预计8小时内发货" bindtap="turnAddress" is-link="" icon="location-o"></van-cell>
+</view>
+
+<view class="goods">
+<view >
+<image class="goods-img" src="{{mainPicture}}"></image>
+</view>
+
+<view class="goods-explain">
+<view class="title">
+{{ title }}
+</view>
+
+<view class="pay-point">
+
+        共实付积分  
+
+<view >
+{{ point }}
+</view>
+</view>
+
+<view >
+<van-stepper value="{{stepValue}}"></van-stepper>
+</view>
+</view>
+</view>
+
+<view class="footer" bindtap="payGood">
+<view >
+{{ point }}积分下单
+</view>
+</view>
+</view>
