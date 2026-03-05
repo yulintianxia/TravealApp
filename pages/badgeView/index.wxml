@@ -1,0 +1,56 @@
+<view class="medalwall-wrap" style="background-image: url({{bgImg}});">
+  <view class="medalwall-header" style="padding-top: 20px;text-align: center;">
+    <van-row justify="center">
+      <van-col span="12">
+        <van-tabs class="check-tab" active="{{checkActive}}" bind:click-tab="onClickTab">
+          <van-tab title="勋章等级" name="badge"></van-tab>
+          <van-tab title="礼品详情" name="gift"></van-tab>
+        </van-tabs>
+      </van-col>
+    </van-row>
+  </view>
+  <view class="medalwall-content" style="padding-top: 64px;">
+    <view class="medalwall-top">
+      <view class="capsule {{year == item ? '' : 'gray'}}" bindtap="checkYear" data-item="{{item}}" 
+            wx:for="{{yearList}}" wx:key="index">{{item}}</view>
+    </view>
+    <view class="medalwall-middle">
+      <swiper 
+        class="medal-list"
+        indicator-dots="{{true}}"
+        indicator-active-color="#fff"
+        autoplay="{{true}}"
+        interval="5000"
+        duration="500"
+        bindchange="onSlideChange"
+        previous-margin="50rpx"
+        next-margin="50rpx"
+      >
+        <swiper-item wx:for="{{checkImgList}}" wx:key="index">
+          <view class="medal">
+            <view class="img {{reallevelId == levelId ? '' : 'menban'}}" 
+                  style="background-image: url({{BASE_URL}}{{item.mainPicture}});">
+            </view>
+            <view class="year">{{item.year}}</view>
+            <view class="title">
+              {{item.name}} {{item.pointsPrice}}
+            </view>
+            <view class="tip">{{item.explains}}</view>
+            <view class="tip tipTitle">{{item.remark}}</view>
+
+            <view class="line">
+              <button class="btn solid" bindtap="turnDetail" data-item="{{item}}">查看详情</button>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="medalwall-bottom">
+      <view class="tour">
+        <view class="dot {{index == checkIndex ? 'show' : ''}}" 
+              wx:for="{{checkImgList}}" wx:key="index">
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -13,7 +13,23 @@ App({
       }
     })
   },
+  
   globalData: {
-    userInfo: null
-  }
+    userInfo: null,
+
+  },
+   eventBus: {
+    on(event, fn) {
+      this[event] = this[event] || [];
+      this[event].push(fn);
+    },
+    off(event, fn) {
+      if (!this[event]) return;
+      this[event] = this[event].filter(f => f !== fn);
+    },
+    emit(event, data) {
+      if (!this[event]) return;
+      this[event].forEach(fn => fn(data));
+    }
+  },
 })

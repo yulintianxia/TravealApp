@@ -44,7 +44,7 @@ Page({
   turnTop: function () {
     if (!this.data.noLogin) {
       wx.navigateTo({ url: "/pages/pointrank/index" });
-    } else {
+    } else {  
       this.turnModal("/pages/login/login");
     }
   },

@@ -2,6 +2,8 @@
 @import "/styles/goodsList.wxss";
 @import "/styles/design.wxss";
 
+
+ /* "pages/detail/index", */
 :root {
   --td-switch-checked-color: #22bee5 !important;
 }

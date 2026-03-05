@@ -32,10 +32,6 @@
 }
 .t-grid__content {
   width: auto;
-
- /* overflow: auto;
- display: flex； */
-
 }
 .t-grid--card {
   margin: 0 32rpx;

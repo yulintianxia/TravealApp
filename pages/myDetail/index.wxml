@@ -1,0 +1,9 @@
+<view class="medalwall-wrap">
+  <view class="medalwall-header" style="text-align: center">
+    <view class="tempaltePage" wx:html="{{htmlTempalte}}"></view>
+  </view>
+
+  <view class="buyContainer">
+    <view class="grade" bindtap="turnGo">回到我的勋章</view>
+  </view>
+</view>

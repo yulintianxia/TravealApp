@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的勋章",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "usingComponents": {} 
+}
