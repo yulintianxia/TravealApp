@@ -23,7 +23,17 @@ Page({
       username: e.detail.value,
     });
   },
-  async oneClicklogin() {
+  async oneClicklogin(e) {
+    const { encryptedData, iv, errMsg } = e.detail;
+    // 1. 授权失败处理
+    if (errMsg !== 'getPhoneNumber:ok') {
+      wx.showToast({
+        title: '授权失败，请重新操作',
+        icon: 'none'
+      });
+      return;
+    }
+
     try {
       // 1. 显示加载提示
       wx.showLoading({

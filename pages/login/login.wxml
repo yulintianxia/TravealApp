@@ -17,9 +17,15 @@
                 <view class="input-btn">
                     <view class='register-view'>
                         <view class='register' bindtap="register">注册</view>
-                        <view class='register' bindtap="oneClicklogin">一键登录</view>
+                        <!-- <view class='register' bindtap="oneClicklogin">一键登录</view> -->
+                        <button class='register register-view-button' open-type="getPhoneNumber" bindgetphonenumber="oneClicklogin" type="primary">
+                            一键登录
+                        </button>
                     </view>
                     <view bindtap="login" class="login-btn submit">登录</view>
+                       <!-- <button class='register' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary">
+                            手机号快捷登录
+                        </button> -->
                 </view>
             </view>
         </block>

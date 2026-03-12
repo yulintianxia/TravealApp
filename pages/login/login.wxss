@@ -3,22 +3,27 @@
   min-height: 100vh;
   width: 100vw;
 }
+
 .login-page .login-container {
   overflow: hidden;
 }
+
 .login-page .login-container .logo-container {
   margin: 88rpx auto;
   text-align: center;
 }
+
 .login-page .login-container .logo-container .login_logo {
   width: 144rpx;
   height: 144rpx;
   border-radius: 50%;
 }
+
 .login-page .login-container .text-container {
   margin: 120rpx auto 112rpx;
   text-align: center;
 }
+
 .login-page .login-container .text-container view {
   height: 72rpx;
   font-size: 48rpx;
@@ -26,13 +31,16 @@
   color: #000f1a;
   line-height: 72rpx;
 }
+
 .login-page .login-container .input-container {
   width: 100%;
 }
+
 .login-page .login-container .input-container .input-view {
   margin: 0 auto;
   width: 590rpx;
 }
+
 .login-page .login-container .input-container .input-view .phone-input {
   width: 590rpx;
   /* height: 44rpx; */
@@ -44,18 +52,17 @@
   margin-bottom: 32rpx;
   box-sizing: border-box;
 }
-.login-page
-  .login-container
-  .input-container
-  .input-view
-  .phone-input.password-input {
+
+.login-page .login-container .input-container .input-view .phone-input.password-input {
   width: 386rpx;
   padding-right: 172rpx;
 }
+
 .login-page .login-container .input-container .password-input-view {
   position: relative;
   z-index: 0;
 }
+
 .login-page .login-container .input-container .password-input-view .code {
   position: absolute;
   height: 42rpx;
@@ -66,16 +73,15 @@
   right: 32rpx;
   z-index: 50;
 }
-.login-page
-  .login-container
-  .input-container
-  .password-input-view
-  .code.disabled {
+
+.login-page .login-container .input-container .password-input-view .code.disabled {
   color: #b1b2b2;
 }
+
 .login-page .login-container .input-container .password-input-view .code.abled {
   color: #22bee5;
 }
+
 .login-page .login-container .input-container .login-btn {
   width: 590rpx;
   height: 88rpx;
@@ -89,30 +95,37 @@
   text-align: center;
   background: #f0f0f0;
 }
+
 .login-page .login-container .input-container .login-btn.submit {
   background: #22bee5;
   color: white;
 }
+
 .login-page .login-container .agreement-container {
   margin: 0 auto;
   width: 590rpx;
 }
-.login-page .login-container .agreement-container > view {
+
+.login-page .login-container .agreement-container>view {
   display: flex;
   font-size: 24rpx;
   color: #b1b2b2;
 }
+
 .login-page .login-container .agreement-container .agerement-user {
   justify-content: center;
 }
+
 .login-page .login-container .agreement-container .agerement-user text {
   color: #22bee5;
 }
+
 .login-page .login-container .agreement-container .check-img {
   width: 32rpx;
   height: 32rpx;
   margin-right: 6rpx;
 }
+
 .login-page .login-container .login-extra-container {
   margin: 338rpx auto 0;
   text-align: center;
@@ -121,6 +134,7 @@
   color: #b1b2b2;
   line-height: 36rpx;
 }
+
 .login-page .login-container .login-extra-container .weixin-img-container {
   height: 88rpx;
   width: 88rpx;
@@ -132,23 +146,18 @@
   align-items: center;
   margin-bottom: 170rpx;
 }
-.login-page
-  .login-container
-  .login-extra-container
-  .weixin-img-container
-  .phone-btn {
+
+.login-page .login-container .login-extra-container .weixin-img-container .phone-btn {
   border: none;
   outline: none;
   cursor: none;
 }
-.login-page
-  .login-container
-  .login-extra-container
-  .weixin-img-container
-  .phone-btn::after {
+
+.login-page .login-container .login-extra-container .weixin-img-container .phone-btn::after {
   border: none;
   outline: none;
 }
+
 .login-page .login-container .login-extra-container .quick-btn-wrap .quick-btn {
   display: flex;
   justify-content: center;
@@ -163,17 +172,16 @@
   border-radius: 16rpx;
   border: 0;
 }
-.login-page
-  .login-container
-  .login-extra-container
-  .quick-btn-wrap
-  .quick-btn::after {
+
+.login-page .login-container .login-extra-container .quick-btn-wrap .quick-btn::after {
   border: 0;
 }
+
 .login-page .login-container .login-extra-container image {
   width: 48rpx;
   height: 48rpx;
 }
+
 .login-page .login-container .login-extra-container .extra-login {
   display: flex;
   align-items: center;
@@ -181,12 +189,15 @@
   position: relative;
   top: 4rpx;
 }
+
 .login-page .login-container .login-extra-container .extra-login:before {
   margin-right: 10rpx;
 }
+
 .login-page .login-container .login-extra-container .extra-login:after {
   margin-left: 10rpx;
 }
+
 .login-page .login-container .login-extra-container .extra-login:before,
 .login-page .login-container .login-extra-container .extra-login:after {
   content: "";
@@ -197,14 +208,28 @@
 }
 
 .input-btn .register {
- margin-right:16rpx;
+  margin-right: 16rpx;
+  height: 30px !important;
+  line-height: 30px !important;
 }
 
 .register-view {
   display: flex;
   justify-content: flex-end;
   text-align: left;
-  margin-right: 12vw;
+  margin-right: 42rpx;
   font-size: 12px;
   color: #22bee5;
+  height: 30px !important;
+  box-sizing: border-box;
+}
+
+.register-view-button {
+  height: 30px !important;
+  background: transparent !important;
+  font-size: 12px;
+  color: #22bee5 !important;
+  display: inline-block;
+  margin-left: 0px;
+  margin-right: 60rpx;
 }
