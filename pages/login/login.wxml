@@ -23,7 +23,7 @@
                         </button>
                     </view>
                     <view bindtap="login" class="login-btn submit">登录</view>
-                       <!-- <button class='register' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary">
+                    <!-- <button class='register' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary">
                             手机号快捷登录
                         </button> -->
                 </view>
@@ -43,6 +43,27 @@
                     <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
                     <t-input class="phone-input" label="密码" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" borderless="{{true}}" type="password" bindblur="bindPassword" />
                 </view>
+                <view class="input-view password-input-vie">
+                    <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
+                    <!-- <t-input class="phone-input" label="验证码" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{code}}" placeholder="请输入验证码" borderless="{{true}}" type="password" bindblur="bindCode" /> -->
+                    <t-input label="手机号" class="phone-input" placeholder="请输入手机号" maxlength="11" value="{{phoneNumber}}" type="number"  bindchange="onPhoneInput">
+                        <!-- <view slot="suffix" style="display: flex; align-items: center">
+                            <view class="suffix--line"></view>
+                            <view class="verify" style="color:red;" aria-role="button">发送验证码</view>
+                        </view> -->
+                    </t-input>
+                </view>
+
+                <view class="input-view password-input-vie">
+                    <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
+                    <!-- <t-input class="phone-input" label="验证码" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{code}}" placeholder="请输入验证码" borderless="{{true}}" type="password" bindblur="bindCode" /> -->
+                    <t-input label="验证码" class="phone-input" placeholder="输入验证码" value="{{code}}" type="number" maxlength="6" bindchange="onPhoneInput">
+                        <view slot="suffix" style="display: flex; align-items: center">
+                            <view class="suffix--line"></view>
+                            <view class="verify" style="color:#22bee5;font-size:12px;margin-right:5px;" bindtap='sendCode' aria-role="button">{{isSend ? '倒计时' + (times >= 10 ? times : '0'+ times) +'S':'发送验证码'}} </view>
+                        </view>
+                    </t-input>
+                </view>
                 <view class="input-btn">
                     <view class='register-view'>
                         <view class='register' bindtap="checkLogin">去登陆</view>
@@ -61,6 +82,17 @@
                     <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" /> -->
                     <!-- <input class="phone-input" borderless="{{true}}"  label="新密码"  placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" /> -->
                     <t-input label="新密码" borderless="{{true}}" class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" />
+                </view>
+
+                <view class="input-view password-input-vie">
+                    <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
+                    <!-- <t-input class="phone-input" label="验证码" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{code}}" placeholder="请输入验证码" borderless="{{true}}" type="password" bindblur="bindCode" /> -->
+                    <t-input label="验证码" class="phone-input" placeholder="输入验证码" value="{{code}}" type="number" maxlength="6" bindchange="onPhoneInput">
+                        <view slot="suffix" style="display: flex; align-items: center">
+                            <view class="suffix--line"></view>
+                            <view class="verify" style="color:#22bee5;font-size:12px;margin-right:5px;" bindtap='sendCode' aria-role="button">{{isSend ? '倒计时' + (times >= 10 ? times : '0'+ times) +'S':'发送验证码'}} </view>
+                        </view>
+                    </t-input>
                 </view>
                 <view class="input-btn">
                     <view bindtap="submitPwd" class="login-btn submit">确定</view>

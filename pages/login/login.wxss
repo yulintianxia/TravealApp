@@ -208,7 +208,7 @@
 }
 
 .input-btn .register {
-  margin-right: 16rpx;
+  margin-right: 36rpx;
   height: 30px !important;
   line-height: 30px !important;
 }

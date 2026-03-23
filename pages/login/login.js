@@ -13,11 +13,64 @@ Page({
     username: "",
     password: "",
     type: "LOGIN",
+    // type:'REGISTER',
     nickName: "", //用户名，
     oldPassword: "",
     newPassword: "",
+    isSend:false,
+    phoneNumber:'',
+    times:60
   },
+  // 发送code
+  bindCode(){
+      if(this.data.phoneNumber.length<11){
+        wx.showToast({
+          title: '授权失败，请重新操作',
+          icon: 'none'
+        });
+        return;
+      }
 
+  },
+  /* 获取电话号码 */
+  sendCode(){
+    
+     if(this.data.phoneNumber.length !=11){
+      wx.showToast({
+        title: '请填写正确的电话号码',
+        icon: 'none'
+      });
+      return 
+     }
+     if(this.data.times !=60){
+       return 
+     }
+     this.setData({
+      isSend:true
+     })
+     let interval1 = setInterval(()=>{
+      console.log('times',this.data.times);
+      this.setData({
+        times: this.data.times -1
+      })
+      if(this.data.times==0) {
+        clearInterval(interval1);
+        this.setData({
+          isSend:false,
+          times:60
+         })
+      }
+    },980)
+
+
+
+  },
+  /* 电话号码 */
+  onPhoneInput(e){
+    this.setData({
+      phoneNumber: e.detail.value,
+    });
+  },
   bindPhone: function (e) {
     this.setData({
       username: e.detail.value,
