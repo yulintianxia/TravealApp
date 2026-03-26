@@ -1,0 +1,96 @@
+<view class="personal-center">
+  <!-- 顶部用户信息 -->
+  <view class="user-section">
+    <image src="../../images/home/v1-bg-new.png" class="user-bg" />
+    <view class="user-info">
+      <image src="{{user.avatar || '../../images/home/default.png'}}" class="user-avatar" />
+      <view class="user-details">
+        <text class="user-name">正莲武魂</text>
+        <text class="user-level">铂金会员</text>
+        <text class="user-score">积分：3000/10000</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 功能区块 -->
+  <view class="function-section">
+    <!-- 订单分类 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-title">订单列表</text>
+      </view>
+      <view class="function-grid">
+        <view class="function-item" bindtap="goToOrder('all')">
+          <image src="../../images/home/allOrder.png" class="function-icon" />
+          <text class="function-name">全部</text>
+        </view>
+        <view class="function-item" bindtap="goToOrder('1')">
+          <image src="../../images/home/waitOrder.png" class="function-icon" />
+          <text class="function-name">待发货</text>
+        </view>
+        <view class="function-item" bindtap="goToOrder('2')">
+          <image src="../../images/home/sendOrder.png" class="function-icon" />
+          <text class="function-name">待收货</text>
+        </view>
+        <view class="function-item" bindtap="goToOrder('3')">
+          <image src="../../images/home/finish.png" class="function-icon" />
+          <text class="function-name">已完收货</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 会员商品 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-title">会员权益</text>
+      </view>
+      <view class="function-grid">
+        <view class="function-item" bindtap="goToVipCenter">
+          <image src="../../images/home/meber.png" class="function-icon" />
+          <text class="function-name">排行榜</text>
+        </view>
+        <view class="function-item" bindtap="goToPoints">
+          <image src="../../images/home/points.png" class="function-icon" />
+          <text class="function-name">积分明细</text>
+        </view>
+        <view class="function-item" bindtap="goToRank">
+          <image src="../../images/home/1.png" class="function-icon" />
+          <text class="function-name">积分申请</text>
+        </view>
+        <view class="function-item" bindtap="goToMedal">
+          <image src="../../images/home/vergrade.png" class="function-icon" />
+          <text class="function-name">我的勋章</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 我的工具 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-title">我的工具</text>
+      </view>
+      <view class="function-grid">
+        <view class="function-item" bindtap="goToWallet">
+          <image src="../../images/home/gift.png" class="function-icon" />
+          <text class="function-name">我的钱包</text>
+        </view>
+        <view class="function-item" bindtap="goToCompany">
+          <image src="../../images/home/logo.png" class="function-icon" />
+          <text class="function-name">公众号</text>
+        </view>
+        <view class="function-item" bindtap="goToCustomerService">
+          <image src="../../images/home/messageTip.png" class="function-icon" />
+          <text class="function-name">咨询客服</text>
+        </view>
+        <view class="function-item" bindtap="goToSettings">
+          <image src="../../images/home/chexiao.png" class="function-icon" />
+          <text class="function-name">设置</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 退出登录按钮 -->
+  <!-- <view class="logout-section">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view> -->
+</view>

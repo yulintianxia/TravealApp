@@ -9,6 +9,27 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/newRank/index",
+          "pathName": "pages/newRank/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/vipUpgrade/index",
+          "pathName": "pages/vipUpgrade/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/newMy/index",
+          "pathName": "pages/newMy/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/login/login",
           "pathName": "pages/login/login",
           "query": "",

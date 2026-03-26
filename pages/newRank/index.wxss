@@ -1,0 +1,679 @@
+/* 全局样式 */
+page {
+  background-color: #0a0a0a;
+  height: 100%;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #ffffff;
+}
+
+/* 排行榜容器 */
+.rank-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 顶部导航 */
+.top-nav {
+  position: relative;
+  height: 100rpx;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  z-index: 10;
+  border-bottom: 1rpx solid rgba(255, 215, 0, 0.2);
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 32rpx;
+}
+
+.action-icon {
+  width: 40rpx;
+  height: 40rpx;
+  filter: brightness(1.5);
+}
+
+/* 金色龙背景 */
+.dragon-section {
+  position: relative;
+  height: 350rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  margin-bottom: 40rpx;
+  border-bottom: 1rpx solid rgba(255, 215, 0, 0.2);
+}
+
+.dragon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.rank-badge {
+  position: absolute;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 20rpx rgba(255, 215, 0, 0.8);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16rpx 32rpx;
+  border-radius: 24rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+/* 前三名 */
+.top-three {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 40rpx 60rpx;
+  height: 320rpx;
+}
+
+.rank-first,
+.rank-second,
+.rank-third {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(10rpx);
+}
+
+.rank-first {
+  margin-top: -20rpx;
+  padding: 32rpx 24rpx;
+  border: 2rpx solid #ffd700;
+  box-shadow: 0 0 30rpx rgba(255, 215, 0, 0.5);
+}
+
+.rank-second,
+.rank-third {
+  margin-top: 40rpx;
+}
+
+.rank-number {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 16rpx;
+  text-shadow: 0 0 10rpx rgba(255, 215, 0, 0.8);
+}
+
+.rank-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #ffd700;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+  box-shadow: 0 0 20rpx rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+}
+
+.rank-avatar image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.2) saturate(1.5);
+}
+
+.rank-name {
+  font-size: 24rpx;
+  color: #ffffff;
+  margin-bottom: 8rpx;
+  text-align: center;
+  width: 120rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rank-score {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffd700;
+  text-shadow: 0 0 10rpx rgba(255, 215, 0, 0.5);
+}
+
+/* 其他排名 */
+.other-ranks {
+  flex: 1;
+  padding: 0 32rpx;
+  margin-bottom: 120rpx;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  margin-bottom: 16rpx;
+  border-radius: 12rpx;
+  padding: 24rpx 32rpx;
+  transition: all 0.3s ease;
+}
+
+.rank-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(8rpx);
+}
+
+.rank-index {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffd700;
+  margin-right: 32rpx;
+  min-width: 40rpx;
+  text-shadow: 0 0 5rpx rgba(255, 215, 0, 0.5);
+}
+
+.rank-avatar-small {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24rpx;
+  border: 2rpx solid rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+}
+
+.rank-avatar-small image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.2);
+}
+
+.rank-item .rank-name {
+  flex: 1;
+  font-size: 28rpx;
+  color: #ffffff;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+
+.rank-item .rank-score {
+  font-size: 28rpx;
+  color: #ffd700;
+  font-weight: 500;
+  text-shadow: 0 0 5rpx rgba(255, 215, 0, 0.5);
+  min-width: 160rpx;
+  text-align: right;
+}
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1rpx solid rgba(255, 215, 0, 0.2);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+.nav-item.active .nav-text {
+  color: #ffd700;
+}
+
+.nav-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+  filter: brightness(1.5);
+}
+
+.nav-item.active .nav-icon {
+  filter: brightness(2) saturate(1.5) drop-shadow(0 0 10rpx rgba(255, 215, 0, 0.8));
+}
+
+.nav-text {
+  font-size: 20rpx;
+  color: #999999;
+  transition: all 0.3s ease;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4rpx;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 2rpx;
+}
+
+/* 金色粒子效果 */
+.rank-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+  background-size: 30rpx 30rpx;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .rank-badge {
+    font-size: 40rpx;
+  }
+  
+  .rank-avatar {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .rank-score {
+    font-size: 28rpx;
+  }
+}
+
+/* 动画效果 */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10rpx);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.rank-first {
+  animation: float 3s ease-in-out infinite;
+}
+
+.rank-second,
+.rank-third {
+  animation: float 3s ease-in-out infinite 0.5s;
+}/* 全局样式 */
+page {
+  background-color: #0a0a0a;
+  height: 100%;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #ffffff;
+}
+
+/* 排行榜容器 */
+.rank-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 顶部导航 */
+.top-nav {
+  position: relative;
+  height: 100rpx;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  z-index: 10;
+  border-bottom: 1rpx solid rgba(255, 215, 0, 0.2);
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 32rpx;
+}
+
+.action-icon {
+  width: 40rpx;
+  height: 40rpx;
+  filter: brightness(1.5);
+}
+
+/* 金色龙背景 */
+.dragon-section {
+  position: relative;
+  height: 350rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  margin-bottom: 40rpx;
+  border-bottom: 1rpx solid rgba(255, 215, 0, 0.2);
+}
+
+.dragon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.rank-badge {
+  position: absolute;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 20rpx rgba(255, 215, 0, 0.8);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 16rpx 32rpx;
+  border-radius: 24rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+/* 前三名 */
+.top-three {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 40rpx 60rpx;
+  height: 320rpx;
+}
+
+.rank-first,
+.rank-second,
+.rank-third {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(10rpx);
+}
+
+.rank-first {
+  margin-top: -20rpx;
+  padding: 32rpx 24rpx;
+  border: 2rpx solid #ffd700;
+  box-shadow: 0 0 30rpx rgba(255, 215, 0, 0.5);
+}
+
+.rank-second,
+.rank-third {
+  margin-top: 40rpx;
+}
+
+.rank-number {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 16rpx;
+  text-shadow: 0 0 10rpx rgba(255, 215, 0, 0.8);
+}
+
+.rank-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #ffd700;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+  box-shadow: 0 0 20rpx rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+}
+
+.rank-avatar image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.2) saturate(1.5);
+}
+
+.rank-name {
+  font-size: 24rpx;
+  color: #ffffff;
+  margin-bottom: 8rpx;
+  text-align: center;
+  width: 120rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rank-score {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffd700;
+  text-shadow: 0 0 10rpx rgba(255, 215, 0, 0.5);
+}
+
+/* 其他排名 */
+.other-ranks {
+  flex: 1;
+  padding: 0 32rpx;
+  margin-bottom: 120rpx;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  margin-bottom: 16rpx;
+  border-radius: 12rpx;
+  padding: 24rpx 32rpx;
+  transition: all 0.3s ease;
+}
+
+.rank-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(8rpx);
+}
+
+.rank-index {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #ffd700;
+  margin-right: 32rpx;
+  min-width: 40rpx;
+  text-shadow: 0 0 5rpx rgba(255, 215, 0, 0.5);
+}
+
+.rank-avatar-small {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 24rpx;
+  border: 2rpx solid rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+}
+
+.rank-avatar-small image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.2);
+}
+
+.rank-item .rank-name {
+  flex: 1;
+  font-size: 28rpx;
+  color: #ffffff;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
+
+.rank-item .rank-score {
+  font-size: 28rpx;
+  color: #ffd700;
+  font-weight: 500;
+  text-shadow: 0 0 5rpx rgba(255, 215, 0, 0.5);
+  min-width: 160rpx;
+  text-align: right;
+}
+
+/* 底部导航 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1rpx solid rgba(255, 215, 0, 0.2);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+.nav-item.active .nav-text {
+  color: #ffd700;
+}
+
+.nav-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+  filter: brightness(1.5);
+}
+
+.nav-item.active .nav-icon {
+  filter: brightness(2) saturate(1.5) drop-shadow(0 0 10rpx rgba(255, 215, 0, 0.8));
+}
+
+.nav-text {
+  font-size: 20rpx;
+  color: #999999;
+  transition: all 0.3s ease;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 4rpx;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 2rpx;
+}
+
+/* 金色粒子效果 */
+.rank-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+  background-size: 30rpx 30rpx;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .rank-badge {
+    font-size: 40rpx;
+  }
+  
+  .rank-avatar {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .rank-score {
+    font-size: 28rpx;
+  }
+}
+
+/* 动画效果 */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10rpx);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.rank-first {
+  animation: float 3s ease-in-out infinite;
+}
+
+.rank-second,
+.rank-third {
+  animation: float 3s ease-in-out infinite 0.5s;
+}

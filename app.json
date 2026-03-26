@@ -17,9 +17,10 @@
     "pages/webView/index",
     "pages/badgeView/index",
     "pages/myBadgeView/index",
-    "pages/myDetail/index"
+    "pages/myDetail/index",
+    "pages/newMy/index",
+    "pages/newRank/index"
   ],
-
   "tabBar": {
     "color": "#666666",
     "selectedColor": "#19A0F0",
