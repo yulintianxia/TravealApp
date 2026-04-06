@@ -12,8 +12,8 @@
           "name": "pages/newRank/index",
           "pathName": "pages/newRank/index",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/vipUpgrade/index",
