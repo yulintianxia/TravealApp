@@ -19,7 +19,8 @@
     "pages/myBadgeView/index",
     "pages/myDetail/index",
     "pages/newMy/index",
-    "pages/newRank/index"
+    "pages/newRank/index",
+    "pages/checkin/index"
   ],
   "tabBar": {
     "color": "#666666",

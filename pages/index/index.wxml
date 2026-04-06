@@ -1,5 +1,77 @@
-<!-- index.wxml -->
-<view class='contianer'>
-    <image class="logo" src="../../images/home/logo.png" />
-    <view class='explain'>正莲出品，必属精品</view>
+<view class="page-bg">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+    <view class="nav-title">正莲会员</view>
+    <view class="nav-bar-btns">
+      <view class="nav-dot"></view>
+      <view class="nav-dot"></view>
+      <view class="nav-dot"></view>
+      <view class="nav-circle"></view>
+    </view>
+  </view>
+
+  <scroll-view scroll-x class="card-swiper" scroll-with-animation scroll-anchoring
+    bindscroll="onCardScroll" scroll-left="{{scrollLeft}}">
+    <view class="card-list" style="width:{{cardList.length*700}}rpx">
+      <block wx:for="{{cardList}}" wx:key="id">
+        <view class="member-card" style="background-image:url({{item.bg}})">
+          <view class="card-content">
+            <view class="card-title-row">
+              <view class="level-badge">当前等级</view>
+              <text class="level-name">{{item.levelName}}</text>
+              <text class="level-v">V{{item.level}}</text>
+            </view>
+            <view class="card-quote">{{item.quote}}</view>
+            <image class="card-deer" src="{{item.deerImg}}" mode="aspectFit"/>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+
+  <!-- 等级进度 -->
+  <view class="level-progress">
+    <view class="level-label">LV{{currentLevel+1}}</view>
+    <view class="progress-bar">
+      <view class="progress-inner" style="width:{{progress}}%"></view>
+    </view>
+    <view class="level-icons">
+      <block wx:for="{{levelIcons}}" wx:key="icon">
+        <image class="level-icon {{currentLevel==index?'active':''}}" src="{{item.icon}}" style="{{currentLevel==index?iconAnimStyle:''}}"/>
+      </block>
+    </view>
+  </view>
+
+  <!-- 会员数据 -->
+  <view class="member-stats">
+    <view class="stat-item">
+      <view class="stat-value">{{cardList[currentLevel].needPoints}}</view>
+      <view class="stat-label">所需积分</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{cardList[currentLevel].points}}</view>
+      <view class="stat-label">积分</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{cardList[currentLevel].rank}}</view>
+      <view class="stat-label">排名</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{cardList[currentLevel].medal}}</view>
+      <view class="stat-label">我的勋章</view>
+    </view>
+  </view>
+
+  <!-- 可享权益 -->
+  <view class="section-title">可享权益 <text class="section-count">{{rights.length}}项</text></view>
+  <view class="rights-card">
+    <block wx:for="{{rights}}" wx:key="title">
+      <view class="right-item">
+        <view class="right-icon">
+          <image src="{{item.icon}}"/>
+        </view>
+        <view class="right-title">{{item.title}}</view>
+      </view>
+    </block>
+  </view>
 </view>

@@ -1,52 +1,160 @@
 <!-- pages/my/my-add-address/index.wxml -->
-<view class="redact-address">
-    <view class="input-container">
-        <view class="input-example">
-            <t-input placeholder="请输入您的微信昵称" disabled="{{isRead}}" value="{{wxName}}" bindblur="bindName">
-                <view slot="label" class="custom-label">微信昵称</view>
-            </t-input>
-        </view>
-        <view class="input-example">
-            <t-input placeholder="请输入您的微信号" disabled="{{isRead}}" value="{{wxNumber}}" bindblur="bindNumber">
-                <view slot="label" class="custom-label">微信号</view>
-            </t-input>
-        </view>
-        <view class="input-example">
-            <t-input placeholder="请输入您的联系电话" disabled="{{isRead}}" value="{{phone}}" type='number' bindblur="bindPhone" maxlength="11">
-                <view slot="label" class="custom-label">联系电话</view>
-            </t-input>
-        </view>
-        <view class="input-example">
-            <t-cell t-class-center="custom-label" title="选择平台" arrow="{{!isRead}}" hover note="{{platformText}}" bind:click="onPlatformPicker" />
-        </view>
-        <view class="input-example">
-            <t-input placeholder="请输入您的订单号"  disabled="{{isRead}}" value="{{actualPayment}}" bindblur='bindOrder' type='number'>
-                <view slot="label" class="custom-label">订单号</view>
-            </t-input>
-        </view>
-        <view class="input-example">
-            <t-input placeholder="请输入您的实付金额" type='digit' disabled="{{isRead}}" value="{{paymentMoney}}" bindblur='bindMoney' type='number'>
-                <view slot="label" class="custom-label">实付金额</view>
-            </t-input>
-        </view>
-        <view class="input-example input-cell">
-            <view class='input-upload-container'>
-                <view class='custom-label custtom-lable-title'>上传图片(最多5张)</view>
-                <view class='input-upload-img-container'>
-                    <t-upload disabled="{{isRead}}" max="{{5}}" media-type="{{['video','image']}}" files="{{orderPhotoList}}" bind:add="handleAdd" bind:remove="handleRemove" />
-                </view>
-            </view>
-        </view>
-        <view class="input-example input-cell">
-            <t-textarea label="" disabled="{{isRead}}" value="{{remark}}" bindblur='bindText' maxlength="500" placeholder="请输入您的备注(最多500字)" disableDefaultPadding="{{true}}" autosize="{{autosize}}" bind:line-change="onLineChange" />
-        </view>
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px">
+    <view class="nav-inner">
+      <view class="nav-title">积分申请</view>
     </view>
+  </view>
+
+  <scroll-view class="scroll-area" scroll-y style="height:calc(100vh - {{statusBarHeight + 44}}px)">
+    <view class="form">
+
+      <!-- 微信昵称 -->
+      <view class="form-row">
+        <view class="form-label">微信昵称<text class="req">*</text></view>
+        <view class="form-value">
+          <input
+            class="form-input"
+            placeholder="请输入您的微信昵称"
+            placeholder-class="form-ph"
+            value="{{wxName}}"
+            disabled="{{isRead}}"
+            bindblur="bindName"
+          />
+        </view>
+      </view>
+
+      <!-- 微信号 -->
+      <view class="form-row">
+        <view class="form-label">微信号<text class="req">*</text></view>
+        <view class="form-value">
+          <input
+            class="form-input"
+            placeholder="请输入您的微信号"
+            placeholder-class="form-ph"
+            value="{{wxNumber}}"
+            disabled="{{isRead}}"
+            bindblur="bindNumber"
+          />
+        </view>
+      </view>
+
+      <!-- 联系电话 -->
+      <view class="form-row">
+        <view class="form-label">联系电话<text class="req">*</text></view>
+        <view class="form-value">
+          <input
+            class="form-input"
+            placeholder="请输入您的联系电话"
+            placeholder-class="form-ph"
+            type="number"
+            maxlength="11"
+            value="{{phone}}"
+            disabled="{{isRead}}"
+            bindblur="bindPhone"
+          />
+        </view>
+      </view>
+
+      <!-- 选择平台 -->
+      <view class="form-row" bindtap="onPlatformPicker">
+        <view class="form-label">选择平台<text class="req">*</text></view>
+        <view class="form-value form-select">
+          <text class="form-select-text {{platformText ? '' : 'form-ph'}}">{{platformText || '请选择平台'}}</text>
+          <view class="arrow-icon" wx:if="{{!isRead}}">
+            <text class="arrow-down"></text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 订单号 -->
+      <view class="form-row">
+        <view class="form-label">订单号<text class="req">*</text></view>
+        <view class="form-value">
+          <input
+            class="form-input"
+            placeholder="请输入您的订单号"
+            placeholder-class="form-ph"
+            type="number"
+            value="{{actualPayment}}"
+            disabled="{{isRead}}"
+            bindblur="bindOrder"
+          />
+        </view>
+      </view>
+
+      <!-- 实付金额 -->
+      <view class="form-row">
+        <view class="form-label">实付金额<text class="req">*</text></view>
+        <view class="form-value">
+          <input
+            class="form-input"
+            placeholder="请输入您的实付金额"
+            placeholder-class="form-ph"
+            type="digit"
+            value="{{paymentMoney}}"
+            disabled="{{isRead}}"
+            bindblur="bindMoney"
+          />
+        </view>
+      </view>
+
+      <!-- 上传图片 -->
+      <view class="form-block">
+        <view class="form-label">上传图片<text class="req">*</text></view>
+        <view class="upload-area">
+          <t-upload
+            disabled="{{isRead}}"
+            max="{{5}}"
+            media-type="{{['image']}}"
+            files="{{orderPhotoList}}"
+            bind:add="handleAdd"
+            bind:remove="handleRemove"
+          />
+        </view>
+      </view>
+
+      <!-- 备注信息 -->
+      <view class="form-block">
+        <view class="form-label label-no-req">备注信息</view>
+        <view class="textarea-wrap">
+          <textarea
+            class="form-textarea"
+            placeholder="请输入您的备注信息"
+            placeholder-class="form-ph"
+            value="{{remark}}"
+            disabled="{{isRead}}"
+            maxlength="500"
+            bindblur="bindText"
+          />
+          <view class="textarea-count">{{remark.length || 0}}/500</view>
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+
+  <!-- 底部按钮 -->
+  <view class="footer">
+    <view class="btn {{isRead ? 'btn-disabled' : ''}}" bindtap="submit">提交</view>
+  </view>
 </view>
-<view class="btn {{isRead?'btngrey':''}}" bindtap="submit">申请</view>
-<t-picker visible="{{visible}}" value="{{purchasePlatform}}" data-key="platform" keys="{{keys}}" title="选择平台" cancelBtn="取消" confirmBtn="确认" usingCustomNavbar bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
-    <t-picker-item options="{{platforms}}" >
-            <view wx:if="{{option.dictLabel}}" slot="label-suffix--{{index}}" class="label-suffix">
-                <t-tag size="small" theme="primary">{{option.dictLabel}}</t-tag>
-            </view>
-    </t-picker-item>
+
+<!-- 平台选择器 -->
+<t-picker
+  visible="{{visible}}"
+  value="{{purchasePlatform}}"
+  data-key="platform"
+  keys="{{keys}}"
+  title="选择平台"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  usingCustomNavbar
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{platforms}}">
+  </t-picker-item>
 </t-picker>

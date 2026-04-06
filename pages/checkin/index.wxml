@@ -1,0 +1,72 @@
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px;height:{{navBarHeight}}px;">
+    <text class="nav-title">签到中心</text>
+  </view>
+
+  <scroll-view class="main-scroll" scroll-y style="padding-top:{{statusBarHeight + navBarHeight}}px;">
+
+    <!-- 用户信息 -->
+    <view class="user-row">
+      <view class="user-left">
+        <image class="user-avatar" src="{{user.avatar ? BASE_URL + user.avatar : defaultPerson}}" mode="aspectFill"/>
+        <view class="user-meta">
+          <text class="user-nick">{{user.nickName || '用户'}}</text>
+          <view class="user-vip-row">
+            <text class="user-vip">{{levelInfo.name || '会员'}}</text>
+            <text class="user-vip-icon">✦</text>
+          </view>
+        </view>
+      </view>
+      <view class="user-right">
+        <view class="points-row">
+          <text class="points-num">{{pointsBalance}}</text>
+          <text class="points-unit">分</text>
+        </view>
+        <text class="checkin-count">已累计签到{{consecutiveDays}}天</text>
+      </view>
+    </view>
+
+    <!-- 日历 -->
+    <view class="calendar-card">
+      <!-- 星期头 -->
+      <view class="week-header">
+        <text class="week-cell" wx:for="{{weekDays}}" wx:key="*this">{{item}}</text>
+      </view>
+      <!-- 日期格子 -->
+      <view class="day-grid">
+        <view
+          class="day-cell {{item.current ? '' : 'day-dim'}} {{item.checked ? 'day-checked' : ''}} {{item.isToday && !item.checked ? 'day-today' : ''}}"
+          wx:for="{{calendarDays}}"
+          wx:key="index"
+        >
+          <text class="day-num">{{item.day}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 签到记录 -->
+    <view class="record-list">
+      <view class="record-item" wx:for="{{checkinList}}" wx:key="index">
+        <image class="record-coin" src="../../images/home/points.png" mode="aspectFit"/>
+        <view class="record-info">
+          <text class="record-title">连续签到{{item.consecutiveDays || (checkinList.length - index)}}天</text>
+          <text class="record-time">{{item.createTime || item.checkinTime || '--'}}</text>
+        </view>
+        <view class="record-score">
+          <text class="record-plus">+{{item.points || 20}}</text>
+          <text class="record-unit">积分</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="height:160rpx;"></view>
+  </scroll-view>
+
+  <!-- 底部签到按钮 -->
+  <view class="btn-wrap">
+    <view class="btn-checkin {{todayChecked ? 'btn-disabled' : ''}}" bindtap="doCheckin">
+      {{todayChecked ? '今日已签到' : '立即签到'}}
+    </view>
+  </view>
+</view>

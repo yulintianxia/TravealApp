@@ -1,97 +1,96 @@
 // pages/order/order.js
 import { RequestApi } from "../../services/api.js";
+import { BASE_URL } from "../../config/index";
+
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
+    BASE_URL,
+    statusBarHeight: 0,
+    navBarHeight: 0,
     orderList: [],
     pageNum: 1,
     pageSize: 10,
     total: 0,
+    loading: false,
+    noMore: false,
+    pointsBalance: 3020, // 先写死占位，后续接口替换
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    this.getData();
+  onLoad() {
+    this.setNavBarHeight();
+    this.getPointsInfo();
+    this.loadData(true);
   },
-  getData: async function () {
-    let params = {
-      pageNum: this.data.pageNum,
-      pageSize: this.data.pageSize,
-    };
-    let res = await RequestApi.getPointsUse(params);
-    if (res && res.rows) {
-      this.setData({
-        orderList: res.rows,
-        total: res.total,
-      });
-    } else {
-      this.setData({
-        orderList: [],
-        total: 0,
-      });
+
+  setNavBarHeight() {
+    const sysInfo = wx.getSystemInfoSync();
+    const menuBtn = wx.getMenuButtonBoundingClientRect();
+    const statusBarHeight = sysInfo.statusBarHeight || 0;
+    const navBarHeight = (menuBtn.top - statusBarHeight) * 2 + menuBtn.height;
+    this.setData({ statusBarHeight, navBarHeight });
+  },
+
+  async getPointsInfo() {
+    try {
+      const res = await RequestApi.getGrade();
+      if (res && res.code == "200") {
+        this.setData({ pointsBalance: res.data.pointsBalance || 0 });
+      }
+    } catch (e) {
+      console.error("getPointsInfo error:", e);
     }
   },
-  /* 复制粘贴 */
-  viewCopyTextClick: function (e) {
-    console.log("e", e);
-    let text = e.currentTarget.dataset.text;
-    wx.setClipboardData({
-      data: text,
-      success(res) {
-        wx.getClipboardData({
-          success(res) {
-            // console.log(res.data); // 输出复制的内容
-          },
-        });
-      },
-    });
+
+  getTypeLabel(item) {
+    if (item.type == 1) return "系统调整";
+    if (item.type == 2) return "兑换产品";
+    if (item.type == 3) return "积分申请";
+    if (item.type == 4) return "每日签到";
+    if (item.type == 5) return "完成订单";
+    return "积分变动";
   },
-  bindscrolltolower(data) {
-    if (this.data.pageNum * this.data.pageSize >= this.data.total) {
-      return;
-    } else {
-      this.setData({
-        pageNum: Number(this.data.pageNum) + 1,
+
+  async loadData(reset) {
+    if (this.data.loading) return;
+    const page = reset ? 1 : this.data.pageNum;
+    this.setData({ loading: true });
+
+    try {
+      const res = await RequestApi.getPointsUse({
+        pageNum: page,
+        pageSize: this.data.pageSize,
       });
-      this.getData();
+
+      const rows = ((res && res.rows) || []).map((item) => ({
+        ...item,
+        label: this.getTypeLabel(item),
+        displayNum: (Number(item.pointsNum) >= 0 ? "+" : "") + item.pointsNum,
+        isAdd: Number(item.pointsNum) >= 0,
+      }));
+
+      const total = (res && res.total) || 0;
+      const prev = reset ? [] : this.data.orderList;
+      const merged = prev.concat(rows);
+
+      this.setData({
+        orderList: merged,
+        total,
+        pageNum: page,
+        noMore: merged.length >= total || rows.length < this.data.pageSize,
+      });
+    } catch (e) {
+      console.error("loadData error:", e);
+      if (reset) this.setData({ orderList: [], total: 0, noMore: true });
+    } finally {
+      this.setData({ loading: false });
     }
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {},
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {},
+  bindscrolltolower() {
+    if (this.data.noMore || this.data.loading) return;
+    this.setData({ pageNum: this.data.pageNum + 1 });
+    this.loadData(false);
+  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {},
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {},
 });

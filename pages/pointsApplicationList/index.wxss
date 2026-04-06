@@ -40,13 +40,13 @@ page {
   margin-bottom: 20rpx;
 }
 
-.order .order-list .order-item .order-title .icon {
+.order .order-list .order-title .icon {
   width: 48rpx;
   height: 48rpx;
   margin-right: 16rpx;
 }
 
-.order .order-list .order-item .order-title .points {
+.order .order-list .order-title .points {
   flex-grow: 1;
   text-align: right;
   font-size: 32rpx;
@@ -137,4 +137,187 @@ page {
   font-size: 36rpx;
   text-align: center;
   line-height: 88rpx;
+}
+
+/* ========== 导航栏 ========== */
+.nav-bar {
+  background: #0b101a;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-bar-inner {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bar-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #f0f0f0;
+  letter-spacing: 2rpx;
+}
+
+/* ========== 滚动区域 ========== */
+.scroll-view {
+  flex: 1;
+}
+
+/* ========== 列表 ========== */
+.list {
+  padding: 20rpx 28rpx;
+  padding-bottom: 160rpx;
+}
+
+/* ========== 卡片 ========== */
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 24rpx;
+  padding: 28rpx 28rpx 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.card-body {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* 缩略图 */
+.card-thumb {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.card-thumb-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb-text {
+  font-size: 22rpx;
+  color: #555;
+}
+
+/* 信息区 */
+.card-info {
+  flex: 1;
+  margin-left: 24rpx;
+  overflow: hidden;
+  padding-top: 4rpx;
+}
+
+.card-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #e8e0d0;
+  margin-bottom: 10rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-remark {
+  font-size: 24rpx;
+  color: #7a7e88;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 右侧金额+状态 */
+.card-right {
+  flex-shrink: 0;
+  text-align: right;
+  margin-left: 16rpx;
+  padding-top: 4rpx;
+}
+
+.card-amount {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #efd08b;
+  font-family: 'DIN Alternate', 'PingFang SC', sans-serif;
+  line-height: 1.2;
+}
+
+.card-status {
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  color: #7a7e88;
+}
+
+/* 状态颜色 */
+.status-0 {
+  color: #efd08b;
+}
+
+.status-1 {
+  color: #7a7e88;
+}
+
+.status-2 {
+  color: #e06060;
+}
+
+.status-9 {
+  color: #555;
+}
+
+/* 底部日期 */
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14rpx;
+}
+
+.card-date {
+  font-size: 22rpx;
+  color: #5a5e68;
+}
+
+/* ========== 空状态 ========== */
+.empty {
+  padding-top: 36vh;
+  text-align: center;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #555;
+}
+
+/* ========== 底部按钮 ========== */
+.btn-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 100rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  z-index: 10;
+}
+
+.btn {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #c9b67e;
+  background: rgba(180, 160, 100, 0.2);
+  border-radius: 44rpx;
+  letter-spacing: 2rpx;
+}
+
+.btn:active {
+  background: rgba(180, 160, 100, 0.35);
 }

@@ -88,3 +88,133 @@
   width: 280rpx;
   background: #0086f6;
 }
+
+/* ========== 全局 ========== */
+page {
+  height: 100%;
+  background: #0b101a;
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0f1a 0%, #0f1b30 100%);
+  font-family: PingFang SC, -apple-system, Helvetica Neue, Arial, sans-serif;
+  color: #fff;
+}
+
+/* ========== 导航栏 ========== */
+.nav-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.94);
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #f5f7fb;
+  letter-spacing: 2rpx;
+}
+
+/* ========== 内容 ========== */
+.content {
+  padding: 20rpx 24rpx 0;
+}
+
+/* ========== 单元格 ========== */
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 112rpx;
+  padding: 0 32rpx;
+  margin-bottom: 16rpx;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.cell-hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cell-label {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.cell-right {
+  display: flex;
+  align-items: center;
+}
+
+.cell-avatar {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(201, 182, 126, 0.4);
+  margin-right: 16rpx;
+}
+
+.cell-arrow {
+  font-size: 36rpx;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* ========== 底部退出按钮 ========== */
+.btn-wrap {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  padding: 20rpx 100rpx 68rpx;
+  box-sizing: border-box;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(15, 27, 48, 0) 0%, rgba(15, 27, 48, 0.95) 40%);
+}
+
+.btn-logout {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1a1408;
+  letter-spacing: 4rpx;
+  background: linear-gradient(135deg, #e2c57a 0%, #c9a356 100%);
+  border-radius: 44rpx;
+  box-shadow: 0 8rpx 24rpx rgba(201, 163, 86, 0.3);
+}
+
+.btn-logout:active {
+  opacity: 0.85;
+}
+
+/* ========== 弹窗 ========== */
+.popup-block {
+  width: 100vw;
+  padding: 24rpx 32rpx 48rpx;
+  box-sizing: border-box;
+  background: #1a2035;
+  border-radius: 32rpx 32rpx 0 0;
+}
+
+.popup-close {
+  text-align: right;
+  font-size: 40rpx;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 8rpx 0;
+}
+
+.popup-upload {
+  display: flex;
+  justify-content: center;
+  padding: 20rpx 0;
+}

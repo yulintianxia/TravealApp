@@ -1,23 +1,69 @@
-<view class="order">
-  <scroll-view class="scroll-view" scroll-y style="height:100vh" bindscrolltolower='bindscrolltolower' lower-threshold="{{20}}">
-    <view class="order-list" wx:if="{{orderList.length}}">
-      <view class="order-item" wx:for="{{orderList}}" wx:for-index="index" wx:for-item="item" :key="index">
-        <view class="order-title">
-          <image class="icon" src="../../images/home/messageTip.png" />
-          <view>消费</view>
-          <view class="points pay">{{item.pointsNum}}</view>
-        </view>
-        <view class="order-dd" wx:if="{{item.type == 1}}">消耗类型：系统调整</view>
-        <view class="order-dd" wx:elif="{{item.type == 2}}">消耗类型：商品兑换</view>
-        <view class="order-dd" wx:elif="{{item.type == 3}}">消耗类型：积分申请</view>
-        <view class="order-dd">剩余积分：{{ item.pointsBalance ? item.pointsBalance:'' }}</view>
-        <view class="order-dd">消耗时间：{{ item.createTime }}</view>
-        <view class="order-dd" bindtap="viewCopyTextClick" data-text="{{item.orderNumber}}" wx:if="{{item.orderNumber}}">
-          订单号：{{ item.orderNumber || '-' }} 复制
-        </view>
-        <view class="order-dd" wx:if="{{item.remark}}">备注：{{ item.remark || '-' }}</view>
+<view class="page">
+  <!-- 导航栏 -->
+  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px;height:{{navBarHeight}}px;">
+    <text class="nav-title">积分明细</text>
+  </view>
+
+  <scroll-view
+    class="main-scroll"
+    scroll-y
+    style="padding-top:{{statusBarHeight + navBarHeight}}px;"
+    bindscrolltolower="bindscrolltolower"
+    lower-threshold="40"
+  >
+    <!-- 顶部积分总览 -->
+    <view class="score-header" wx:if="{{orderList.length}}">
+      <view class="score-row">
+        <text class="score-num">{{pointsBalance}}</text>
+        <text class="score-unit">分</text>
       </view>
+      <text class="score-sub">当前总积分</text>
     </view>
-    <view wx:else class="blank">暂无积分明细</view>
+
+    <!-- 有数据 -->
+    <block wx:if="{{orderList.length}}">
+      <view class="list">
+        <view class="item" wx:for="{{orderList}}" wx:key="index">
+          <!-- 左侧图标 -->
+          <view class="item-thumb">
+            <image
+              wx:if="{{item.goodsImg}}"
+              class="thumb-img square"
+              src="{{BASE_URL + item.goodsImg}}"
+              mode="aspectFill"
+            />
+            <image
+              wx:else
+              class="thumb-img coin"
+              src="../../images/home/points.png"
+              mode="aspectFit"
+            />
+          </view>
+
+          <!-- 中间信息 -->
+          <view class="item-info">
+            <text class="info-title">{{item.label}}</text>
+            <text class="info-time">{{item.createTime || '-'}}</text>
+          </view>
+
+          <!-- 右侧积分 -->
+          <text class="item-pts {{item.isAdd ? 'pts-gold' : 'pts-white'}}">{{item.displayNum}}</text>
+        </view>
+      </view>
+
+      <view class="footer" wx:if="{{noMore}}">没有更多了</view>
+      <view class="footer" wx:elif="{{loading}}">加载中...</view>
+    </block>
+
+    <!-- 空态 -->
+    <view wx:else class="empty">
+      <view class="empty-icon">
+        <view class="folder-tab"></view>
+        <view class="folder-body"></view>
+      </view>
+      <text class="empty-text">暂无积分明细</text>
+    </view>
+
+    <view style="height:100rpx;"></view>
   </scroll-view>
 </view>

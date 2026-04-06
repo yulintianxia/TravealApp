@@ -1,23 +1,53 @@
 <!-- pages/setting/setting.wxml -->
-<view class='container'>
-    <t-cell-group theme="card">
-        <t-cell title="修改头像" hover bind:tap="handlePopup">
-            <t-avatar class="avatar-example" slot="right-icon" image="{{image}}" />
-        </t-cell>
-        <t-cell title="修改密码" jump-type='navigateTo' url='/pages/login/login?type=CHANGEPWD' hover arrow />
-        <t-cell title="地址管理" jump-type='navigateTo' url='/pages/addressList/index' arrow />
-        <!-- <t-cell title="积分明细" jump-type='navigateTo' url='/pages/point/index' arrow />
-        <t-cell title="排行榜" jump-type='navigateTo' url='/pages/pointrank/index' arrow /> -->
-    </t-cell-group>
-    <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
-        <view class="block">
-            <t-icon t-class="close-btn close-btn-icon" name="close-circle" size="50rpx" color="#555" bind:tap="onClose" />
-            <view class="upload-container">
-                <t-upload mediaType="{{['image']}}" max="{{1}}" files="{{fileList}}" bind:add="handleAdd" bind:remove="handleRemove"></t-upload>
-            </view>
-        </view>
-    </t-popup>
-    <view class="logout-wrap">
-        <button bindtap="logoutHandler" class="logout">退出登录</button>
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px;height:{{navBarHeight}}px;">
+    <text class="nav-title">设置</text>
+  </view>
+
+  <view class="content" style="padding-top:{{statusBarHeight + navBarHeight}}px;">
+
+    <!-- 修改头像 -->
+    <view class="cell" bindtap="handlePopup">
+      <text class="cell-label">修改头像</text>
+      <view class="cell-right">
+        <image class="cell-avatar" src="{{image}}" mode="aspectFill"/>
+        <text class="cell-arrow">›</text>
+      </view>
     </view>
+
+    <!-- 修改昵称 -->
+    <navigator class="cell" url="/pages/myDetail/index" hover-class="cell-hover">
+      <text class="cell-label">修改昵称</text>
+      <text class="cell-arrow">›</text>
+    </navigator>
+
+    <!-- 修改密码 -->
+    <navigator class="cell" url="/pages/login/login?type=CHANGEPWD" hover-class="cell-hover">
+      <text class="cell-label">修改密码</text>
+      <text class="cell-arrow">›</text>
+    </navigator>
+
+    <!-- 地址管理 -->
+    <navigator class="cell" url="/pages/addressList/index" hover-class="cell-hover">
+      <text class="cell-label">地址管理</text>
+      <text class="cell-arrow">›</text>
+    </navigator>
+
+  </view>
+
+  <!-- 底部退出按钮 -->
+  <view class="btn-wrap">
+    <view class="btn-logout" bindtap="logoutHandler">退出登录</view>
+  </view>
+
+  <!-- 头像上传弹窗 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="popup-block">
+      <view class="popup-close" bindtap="onClose">✕</view>
+      <view class="popup-upload">
+        <t-upload mediaType="{{['image']}}" max="{{1}}" files="{{fileList}}" bind:add="handleAdd" bind:remove="handleRemove"/>
+      </view>
+    </view>
+  </t-popup>
 </view>

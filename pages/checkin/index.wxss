@@ -1,0 +1,278 @@
+/* ========== 全局 ========== */
+page {
+  height: 100%;
+  background: #0b101a;
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0f1a 0%, #0f1b30 100%);
+  font-family: PingFang SC, -apple-system, Helvetica Neue, Arial, sans-serif;
+  color: #fff;
+}
+
+/* ========== 导航栏 ========== */
+.nav-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.94);
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #f5f7fb;
+  letter-spacing: 2rpx;
+  text-decoration: underline;
+  text-underline-offset: 10rpx;
+  text-decoration-color: rgba(239, 208, 139, 0.5);
+}
+
+.main-scroll {
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ========== 用户信息行 ========== */
+.user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 36rpx;
+}
+
+.user-left {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  border: 3rpx solid rgba(201, 182, 126, 0.5);
+  flex-shrink: 0;
+}
+
+.user-meta {
+  margin-left: 20rpx;
+}
+
+.user-nick {
+  font-size: 30rpx;
+  color: #fff;
+  font-weight: 600;
+  display: block;
+}
+
+.user-vip-row {
+  display: flex;
+  align-items: center;
+  margin-top: 6rpx;
+}
+
+.user-vip {
+  font-size: 24rpx;
+  color: #efd08b;
+  font-weight: 500;
+}
+
+.user-vip-icon {
+  font-size: 22rpx;
+  color: #efd08b;
+  margin-left: 6rpx;
+}
+
+.user-right {
+  text-align: right;
+}
+
+.points-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.points-num {
+  font-size: 64rpx;
+  color: #efd08b;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+}
+
+.points-unit {
+  font-size: 28rpx;
+  color: #efd08b;
+  margin-left: 6rpx;
+  font-weight: 500;
+}
+
+.checkin-count {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(239, 208, 139, 0.7);
+  margin-top: 4rpx;
+}
+
+/* ========== 日历卡片 ========== */
+.calendar-card {
+  margin: 10rpx 24rpx 0;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 24rpx;
+  padding: 28rpx 20rpx 24rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.week-header {
+  display: flex;
+}
+
+.week-cell {
+  flex: 1;
+  text-align: center;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.55);
+  padding-bottom: 16rpx;
+}
+
+.day-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day-cell {
+  width: 14.2857%;
+  text-align: center;
+  padding: 16rpx 0;
+  box-sizing: border-box;
+}
+
+.day-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+/* 非本月日期 */
+.day-dim .day-num {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* 已签到 */
+.day-checked .day-num {
+  background: linear-gradient(135deg, #c9a96e, #a07c3e);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 今天（未签到） */
+.day-today .day-num {
+  background: rgba(255, 255, 255, 0.12);
+  color: #efd08b;
+  font-weight: 700;
+}
+
+/* ========== 签到记录 ========== */
+.record-list {
+  margin: 32rpx 24rpx 0;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.05);
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-coin {
+  width: 68rpx;
+  height: 68rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-title {
+  display: block;
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: 500;
+}
+
+.record-time {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 6rpx;
+}
+
+.record-score {
+  display: flex;
+  align-items: baseline;
+  flex-shrink: 0;
+}
+
+.record-plus {
+  font-size: 36rpx;
+  color: #efd08b;
+  font-weight: 700;
+}
+
+.record-unit {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 8rpx;
+}
+
+/* ========== 底部签到按钮 ========== */
+.btn-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 80rpx 60rpx;
+  box-sizing: border-box;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(15, 27, 48, 0) 0%, rgba(15, 27, 48, 0.95) 40%);
+}
+
+.btn-checkin {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1a1408;
+  letter-spacing: 4rpx;
+  background: linear-gradient(135deg, #e2c57a 0%, #c9a356 100%);
+  border-radius: 44rpx;
+  box-shadow: 0 8rpx 24rpx rgba(201, 163, 86, 0.3);
+}
+
+.btn-checkin:active {
+  opacity: 0.85;
+}
+
+.btn-disabled {
+  background: rgba(201, 163, 86, 0.3);
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}

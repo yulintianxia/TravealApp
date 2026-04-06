@@ -1,77 +1,75 @@
-<view class="container">
-  <view class="topLeadersList-container">
-    <view class='view-2'>
-      <view>
-        <image src="{{dataTopList[1].avatar ? BASE_URL + dataTopList[1].avatar:defaultPerson}}" mode="scaleToFill" />
-      </view>
-      <view class='nickname'>{{dataTopList[1].nickName}}</view>
-      <view class='view-2-pillar view-pillar'>
-        <view>{{dataTopList[1].pointsBalance}}</view>
-        <view>2</view>
-      </view>
-    </view>
-    <view class='view-1'>
-      <view>
-        <image src="{{dataTopList[0].avatar ? BASE_URL + dataTopList[0].avatar:defaultPerson}}" mode="scaleToFill" />
-      </view>
-      <view class='nickname'>{{dataTopList[0].nickName}}</view>
-      <view class='view-1-pillar view-pillar '>
-        <view>{{dataTopList[0].pointsBalance}}</view>
-        <view>1</view>
-      </view>
-    </view>
-    <view class='view-3'>
-      <view>
-        <image src="{{dataTopList[2].avatar ? BASE_URL + dataTopList[2].avatar:defaultPerson}}" mode="scaleToFill" />
-      </view>
-      <view class='nickname'>{{dataTopList[2].nickName}}</view>
-      <view class='view-3-pillar view-pillar'>
-        <view>{{dataTopList[2].pointsBalance}}</view>
-        <view>3</view>
-      </view>
-    </view>
-  
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px;height:{{navBarHeight}}px;">
+    <text class="nav-title">排行</text>
   </view>
-  <!-- <view class="rank-item user-people">
-    <view class="rank-img">
-      <image src="{{user.avatar ? user.avatar:defaultPerson }}"></image>
+
+  <scroll-view class="main-scroll" scroll-y style="padding-top:{{statusBarHeight + navBarHeight}}px;">
+
+    <!-- 顶部视觉大图 -->
+    <view class="hero">
+      <image class="hero-bg" src="../../images/home/v1-bg-new.png" mode="aspectFill"/>
+      <!-- 顶部左右弧形遮罩 -->
+      <view class="hero-arc"></view>
+      <!-- 底部渐变融入背景 -->
+      <view class="hero-fade"></view>
+      <view class="hero-stamp">正莲出品</view>
+      <view class="hero-title">乘龙护楼</view>
+      <view class="hero-sub">MAGIC PALACE</view>
     </view>
-    <view class='rank-point'>
-      <view class="rank-name">{{user.nickName ? user.nickName: user.phonenumber}}</view>
-      <view class="rank-price">
-        积分：
-        <text class='grade'>{{user.pointsBalance}}</text>
+
+    <!-- Top3 排名 -->
+    <view class="podium">
+      <!-- 第2名 -->
+      <view class="podium-col col-2">
+        <view class="frame frame-copper">
+          <image class="frame-avatar" src="{{topSecond.avatar ? BASE_URL + topSecond.avatar : defaultPerson}}" mode="aspectFill"/>
+        </view>
+        <text class="podium-rank podium-rank-2">2</text>
+        <text class="podium-nick podium-nick-2">{{topSecond.nickName || '--'}}</text>
+        <text class="podium-score podium-score-2">{{topSecond.pointsBalance || 0}}</text>
+      </view>
+
+      <!-- 第1名 -->
+      <view class="podium-col col-1">
+        <view class="frame frame-gold">
+          <image class="frame-avatar" src="{{topFirst.avatar ? BASE_URL + topFirst.avatar : defaultPerson}}" mode="aspectFill"/>
+        </view>
+        <text class="podium-rank podium-rank-1">1</text>
+        <text class="podium-nick podium-nick-1">{{topFirst.nickName || '--'}}</text>
+        <text class="podium-score podium-score-1">{{topFirst.pointsBalance || 0}}</text>
+      </view>
+
+      <!-- 第3名 -->
+      <view class="podium-col col-3">
+        <view class="frame frame-jade">
+          <image class="frame-avatar" src="{{topThird.avatar ? BASE_URL + topThird.avatar : defaultPerson}}" mode="aspectFill"/>
+        </view>
+        <text class="podium-rank podium-rank-3">3</text>
+        <text class="podium-nick podium-nick-3">{{topThird.nickName || '--'}}</text>
+        <text class="podium-score podium-score-3">{{topThird.pointsBalance || 0}}</text>
       </view>
     </view>
-    <view class="rank-uv">
-      <view>第 {{user.top}} 名</view>
-      <image src="../../images/home/{{user.top}}.png" />
-    </view>
-  </view> -->
-  <scroll-view class="scroll-view" scroll-y>
-    <view class="rank_block">
-      <view class="rank-item" wx:for="{{dataList}}" wx:key="item">
-        <view class='rank-index'>
-          {{index + 4}}
+
+    <!-- 第4名起的列表 -->
+    <view class="list-wrap">
+      <view
+        class="list-row {{index + 4 == 6 ? 'list-row-hl' : ''}}"
+        wx:for="{{dataList}}"
+        wx:key="index"
+      >
+        <text class="list-idx {{index + 4 == 6 ? 'list-idx-hl' : ''}}">{{index + 4}}</text>
+        <view class="list-avatar-ring">
+          <image class="list-avatar" src="{{item.avatar ? BASE_URL + item.avatar : defaultPerson}}" mode="aspectFill"/>
         </view>
-        <view class="rank-img">
-          <image src='{{item.avatar ? BASE_URL+ item.avatar: "../../images/home/default.png"}}' />
+        <text class="list-name">{{item.nickName || '--'}}</text>
+        <view class="list-score-box">
+          <text class="list-score">{{item.pointsBalance || 0}}</text>
+          <text class="list-unit">积分</text>
         </view>
-        <view class='rank-point'>
-          <view class="rank-name">{{item.nickName}}</view>
-          <!-- <view class="rank-price">
-            积分：
-            <text class='grade'>{{item.pointsBalance}}</text>
-          </view> -->
-        </view>
-        <view class="rank-uv">
-            <text class='grade'>{{item.pointsBalance}}</text>
-        </view> 
-        <!-- <view class="rank-uv" wx:if="{{item.top<=3}}">
-          <view>第 {{item.top}} 名</view>
-          <image src="../../images/home/{{item.top}}.png" />
-        </view> -->
       </view>
     </view>
+
+    <view style="height:120rpx;"></view>
   </scroll-view>
 </view>

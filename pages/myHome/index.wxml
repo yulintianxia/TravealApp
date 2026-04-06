@@ -1,107 +1,84 @@
-<view class='view-page'>
-  <view class="relative" style="height: 580rpx;">
-    <image src='{{levelInfo.background ? BASE_URL + levelInfo.background:configbackgroundImg  }}' class='login-header-bg' />
-    <view class="{{loginHeadIconStyle}}" style="padding-top: {{headIconTop}};">
-      <image bindtap="handleSetting" class="icon" data-item="{{settingData}}" data-ubt-key="{{settingData.id}}" src="{{img_setting_black}}" />
-    </view>
-    <view class="login-header-wrapper" style="top:{{headContentTop}};">
-      <view class="swiper-container">
-        <view class="swiper-card-box">
-          <view class='swiper-card-item' >
-            <image class="banner-img"  bindtap="turnLevel"  data-imgurl='{{user.avatar}}' data-mypoint="{{pointsBalance}}/{{pointsTotal}}" data-levelname="{{levelInfo.name}}" data-remark="{{levelInfo.remark}}" data-username="{{user.userName}}" src='{{BASE_URL+ levelInfo.icon}}'></image>
-            <view class='swiper-position-explain'  bindtap="turnLevel">
-              <view>
-                <text class='level-grade'>{{user.nickName}}</text>
-              </view>
-              <view class='level_img'>
-                <view>
-                  <image class="logo_img" src="{{user.avatar ? BASE_URL + user.avatar:defaultPerson}}"></image>
-                </view>
-                <view class='level-container'>
-                  <view class='level-has'>{{levelInfo.name ? levelInfo.name:'非会员'}}</view>
-                  <view class='level-point'>积分: {{pointsBalance}}/{{pointsTotal}}</view>
-                </view>
-              </view>
-              <view class='levle-remark'>{{levelInfo.remark}}</view>
+<view class="page">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+    <view class="nav-title">个人中心</view>
+  </view>
+
+  <scroll-view scroll-y class="scroll-area" style="padding-top: {{statusBarHeight + navBarHeight}}px;">
+    <!-- 用户信息卡片 -->
+    <view class="user-card" bindtap="turnLevel">
+      <image class="card-bg" src="{{levelInfo.background ? BASE_URL + levelInfo.background : configbackgroundImg}}" mode="aspectFill" />
+      <view class="card-content">
+        <view class="user-info-row">
+         <view class='user-avatar-bg'>
+          <image class="user-avatar" src="{{user.avatar ? BASE_URL + user.avatar : ''}}" />
+            <!-- <image class="user-avatar" src="{{user.avatar ? '../../images/new': ''}}" /> -->
+
+            <!-- <image class="user-avatar" src="{{configbackgroundImg}}" /> -->
+         </view>
          
-            </view>
-            <view class='position-icon-right'  bindtap="turnLevel">
-              <view>
-                <image class="avatar" src="../../images/home/logo.png" />
+          <view class="user-meta">
+            <view class="user-name-row">
+              <text class="user-name">{{user.nickName || '用户'}}</text>
+              <view class="vip-badge">
+                <text class="vip-text">{{levelInfo.name || '会员'}}</text>
+                <text class="vip-icon">✦</text>
               </view>
-              <!-- <view bindtap="turnTop" class="versionPoint">
-                <image src="../../images/home/1.png" />
-                <view>排行榜</view>
-              </view>
-              <view bindtap="turnPoint" class="versionPoint">
-                <image src="../../images/home/points.png" />
-                <view>积分</view>
-              </view> -->
             </view>
+            <text class="user-points">积分：{{pointsBalance || 0}}/{{pointsTotal || 0}}</text>
+          </view>
+        </view>
+        <view class="more-info" bindtap="handleMoreInfo">
+          <text>更多信息</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 订单列表 -->
+    <view class="section">
+      <view class="section-title">订单列表</view>
+      <view class="section-card">
+        <view class="grid-row">
+          <view class="grid-item" wx:for="{{orderList}}" wx:key="state" bindtap="handleEntryJump" data-item="{{item}}">
+            <view class="icon-circle">
+              <image src="{{item.iconUrl}}" />
+            </view>
+            <text class="grid-label">{{item.title}}</text>
           </view>
         </view>
       </view>
     </view>
-  </view>
-  <view class="home-body">
-    <!-- <view class="module-container" wx:if="{{isShowActivityCenter}}">
-      <view class="module-header">
-        <text class="header-title font-weight-medium"
-          >{{activityCenterTitleData}}</text
-        >
-        <text
-          bindtap="handleEntryJump"
-          class="header-more font-weight-regular"
-          data-item="{{activityCenterMoreData}}"
-          >{{activityCenterMoreData.title}}</text
-        >
-      </view>
-      <view class="module-body">
-        <view
-          bindtap="handleEntryJump"
-          class="entry"
-          data-item="{{item}}"
-          wx:for="{{activityCenterData}}"
-          wx:key="title"
-        >
-          <image src="{{item.iconUrl}}"></image>
-          <text class="entry-title">{{item.title}}</text>
-          <text class="entry-description">{{item.description}}</text>
-        </view>
-      </view>
-    </view> -->
-    <view class="module-container">
-      <view class="module-header">
-        <text class="header-title font-weight-medium">订单</text>
-      </view>
-      <view class="module-body">
-        <view bindtap="handleEntryJump" class="entry tools-entry" data-item="{{item}}" wx:for="{{orderList}}" wx:key="id">
-          <image src="{{ item.iconUrl}}"></image>
-          <text class="entry-title">{{item.title}}</text>
+
+    <!-- 会员权益 -->
+    <view class="section">
+      <view class="section-title">会员权益</view>
+      <view class="section-card">
+        <view class="grid-row">
+          <view class="grid-item" wx:for="{{topList}}" wx:key="url" bindtap="handleJumpUrl" data-url="{{item.url}}">
+            <view class="icon-circle">
+              <image src="{{item.iconUrl}}" />
+            </view>
+            <text class="grid-label">{{item.title}}</text>
+          </view>
         </view>
       </view>
     </view>
-    <view class="module-container">
-      <view class="module-header">
-        <text class="header-title font-weight-medium">排行</text>
-      </view>
-      <view class="module-body">
-        <view bindtap="handleJumpUrl" data-url='{{item.url}}' class="entry tools-entry" data-item="{{item}}" wx:for="{{topList}}" wx:key="id">
-          <image src="{{ item.iconUrl}}" data-url='{{item.url}}'></image>
-          <text data-url='{{item.url}}' class="entry-title">{{item.title}}</text>
+
+    <!-- 我的工具 -->
+    <view class="section">
+      <view class="section-title">我的工具</view>
+      <view class="section-card">
+        <view class="grid-row">
+          <view class="grid-item" wx:for="{{toolsData}}" wx:key="title" bindtap="handleTool" data-item="{{item}}">
+            <view class="icon-circle">
+              <image src="{{item.iconUrl}}" />
+            </view>
+            <text class="grid-label">{{item.title}}</text>
+          </view>
         </view>
       </view>
     </view>
-    <view class="module-container">
-      <view class="module-header">
-        <text class="header-title font-weight-medium">我的工具</text>
-      </view>
-      <view class="module-body">
-        <view class="entry tools-entry" bindtap="handleTool" data-item="{{item}}" wx:for="{{toolsData}}" wx:key="id">
-          <image src="{{ item.iconUrl}}"></image>
-          <text class="entry-title">{{item.title}}</text>
-        </view>
-      </view>
-    </view>
-  </view>
+
+    <view style="height: 120rpx;"></view>
+  </scroll-view>
 </view>
