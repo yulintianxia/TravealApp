@@ -81,4 +81,21 @@
 
     <view style="height: 120rpx;"></view>
   </scroll-view>
+  <!-- 功能未上线弹窗 -->
+<view class="tip-mask" wx:if="{{showTip}}" bindtap="closeTip">
+  <view class="tip-dialog" catchtap="">
+    <view class="tip-text">功能即将上线，敬请期待！</view>
+    <view class="tip-btn" bindtap="closeTip">知道了</view>
+  </view>
+</view>
+</view>
+
+
+<!-- 公众号二维码弹窗 -->
+<view class="tip-mask" wx:if="{{showQrCode}}" bindtap="closeQrPopup">
+  <view class="tip-dialog" catchtap="">
+    <image class="qr-image" src="{{chatImg}}" mode="aspectFit" />
+    <view class="qr-label">添加客服微信</view>
+    <view class="tip-btn" bindtap="closeQrPopup">知道了</view>
+  </view>
 </view>

@@ -16,7 +16,10 @@ Page({
     pointsTotal: "",
     pointsBalance: "",
     medalCount: 0,
+    showTip: false,
+    showQrCode:false,
     configbackgroundImg: "../../images/home/v1-bg-new.png",
+    chatImg: "../../images/new/wechat.png",
     orderList: [
       { iconUrl: "../../images/new/4.png", title: "全部", state: "all" },
       { iconUrl: "../../images/new/3.png", title: "待发货", state: "1" },
@@ -119,14 +122,31 @@ Page({
     wx.navigateTo({ url: "/pages/myDetail/index" });
   },
 
-  handleTool(e) {
-    const item = e.currentTarget.dataset.item;
-    if (item.title === "设置") {
-      wx.navigateTo({ url: "/pages/setting/index" });
-    } else {
-      wx.showToast({ title: "敬请期待新功能", duration: 1000 });
-    }
-  },
+  // handleTool(e) {
+  //   const item = e.currentTarget.dataset.item;
+  //   if (item.title === "设置") {
+  //     wx.navigateTo({ url: "/pages/setting/index" });
+  //   } else {
+  //     wx.showToast({ title: "敬请期待新功能", duration: 1000 });
+  //   }
+  // },
+handleTool(e) {
+  const item = e.currentTarget.dataset.item;
+  if (item.title === "设置") {
+    wx.navigateTo({ url: "/pages/setting/index" });
+  } else if (item.title === "公众号") {
+    this.setData({ showQrCode: true });
+  } else {
+    this.setData({ showTip: true });
+  }
+},
+closeQrPopup() {
+  this.setData({ showQrCode: false });
+},
+
+closeTip() {
+  this.setData({ showTip: false });
+},
 
   onShareAppMessage() {},
 });

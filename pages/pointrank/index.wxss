@@ -189,6 +189,7 @@ page {
 .col-3 .frame {
   width: 114rpx;
   height: 114rpx;
+  margin-top:-56rpx;
 }
 
 .frame-gold {
