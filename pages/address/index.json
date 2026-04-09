@@ -1,11 +1,12 @@
 {
-  "component": true,
   "usingComponents": {
     "t-switch": "tdesign-miniprogram/switch/switch",
-    "t-textarea": "tdesign-miniprogram/textarea/textarea"
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
   },
-  "navigationBarTitleText": "地址",
-  "backgroundColor": "#F8F8F8",
-  "navigationBarTextStyle": "black",
-  "navigationBarBackgroundColor": "#ffffff"
+  "navigationBarTitleText": "新增地址",
+  "backgroundColor": "#0d0d1a",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#1a1a2e",
+  "navigationStyle": "custom"
 }

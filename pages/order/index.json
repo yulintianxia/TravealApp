@@ -1,8 +1,6 @@
 {
-  "component": true,
   "navigationBarTitleText": "我的订单",
-  "usingComponents": {
-    "t-tabs": "tdesign-miniprogram/tabs/tabs",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
-  }
+  "navigationBarBackgroundColor": "#0d0e1f",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {}
 }

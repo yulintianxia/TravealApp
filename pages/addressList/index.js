@@ -9,12 +9,38 @@ Page({
     pageNum: 1,
     pageSize: 10,
     labelList: ["家", "公司", "学校"],
+    statusBarHeight: 0,
+    navBarHeight: 44,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setNavBarHeight();
+  },
+
+  setNavBarHeight() {
+    const sysInfo = wx.getSystemInfoSync();
+    let menuBtn = null;
+
+    try {
+      menuBtn = wx.getMenuButtonBoundingClientRect();
+    } catch (error) {
+      menuBtn = null;
+    }
+
+    const statusBarHeight = sysInfo.statusBarHeight || 0;
+    const navBarHeight = menuBtn
+      ? (menuBtn.top - statusBarHeight) * 2 + menuBtn.height
+      : 44;
+
+    this.setData({
+      statusBarHeight,
+      navBarHeight,
+    });
+  },
+
   /* 跳转到编辑地址的页面 */
   editAddress(e) {
     wx.navigateTo({

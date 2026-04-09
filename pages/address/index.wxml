@@ -1,54 +1,60 @@
-<!-- pages/my/my-add-address/index.wxml -->
-<view class="redact-address">
-    <view class="possess-layout">
-        <view class="mains">
-            <view class="address-msg user-name">
-                <view class="item-msg">收货人</view>
-                <view class="section">
-                    <input type="text" placeholder="请填写收货人姓名" value="{{consigneeName}}" bindblur="consigneeNameInput" placeholder-class="phcolor"></input>
-                </view>
-                <!-- <view class="address-right">
-                    <image src="../../images/home/addUser.png"></image>
-                </view> -->
-                <!-- <t-input placeholder="请输入收货人">
-                    <view slot="label" class="custom-label">收货人</view>
-                </t-input> -->
-            </view>
-            <view class="address-msg">
-                <view class="item-msg">手机号码</view>
-                <view class="section">
-                    <input type="number" placeholder="请填写收货人手机号码" value="{{consigneePhone}}" maxlength="11" bindblur="phoneInput" placeholder-class="phcolor"></input>
-                </view>
-            </view>
-            <view class="address-msg address-input">
-                <view class="item-msg">详细地址</view>
-                <view class="section">
-                    <textarea placeholder="请填写详细地址" auto-height="{{true}}" name="textarea" class="textarea-class" value="{{detailedAddress}}" placeholder-class="phcolor" bindblur="detailedAddressInput" />
-                </view>
-            </view>
-            <view class="label">
-                <view class="label-title">标签</view>
-                <view class="label-list">
-                    <block wx:for="{{labelList}}" wx:key="index">
-                        <view class="labels {{labelDefault==index? 'labels-active': ''}}" data-index="{{index}}" bindtap="chooseLabelSelect">
-                            {{item}}
-                        </view>
-                    </block>
-                </view>
-            </view>
-            <view class="default-setting">
-                <view class="defaul-setting-left">
-                    <view>设置默认地址</view>
-                    <view>提醒：每次下单会默认推荐使用该地址</view>
-                </view>
-                <view class="custom-color">
-                    <t-cell bordered="{{false}}">
-                        <t-switch bindchange="handleChange" custom-value="{{custome}}" size='small' default-value="{{isDefault}}" value="{{isDefault}}" label="{{['开', '关']}}" slot="note" />
-                    </t-cell>
-                </view>
-            </view>
-        </view>
+<!-- pages/address/index.wxml -->
+<view class="page-container">
+  <navigation-bar title="新增地址" back="{{true}}" background="#1a1a2e" color="#ffffff"></navigation-bar>
+
+  <view class="content" style="padding-top: {{statusBarHeight + navBarHeight}}px;">
+    <!-- 区域标题 -->
+    <view class="section-title">地址信息</view>
+    <view class="section-divider"></view>
+
+    <!-- 表单区域 -->
+    <view class="form-item">
+      <view class="form-label">收货人：</view>
+      <view class="form-input-wrap">
+        <input type="text" placeholder="请输入收货人姓名" value="{{consigneeName}}" bindblur="consigneeNameInput" placeholder-class="phcolor" />
+      </view>
     </view>
+
+    <view class="form-item">
+      <view class="form-label">手机号：</view>
+      <view class="form-input-wrap">
+        <input type="number" placeholder="请输入手机号码" value="{{consigneePhone}}" maxlength="11" bindblur="phoneInput" placeholder-class="phcolor" />
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="form-label">详细地址：</view>
+      <view class="form-input-wrap">
+        <textarea placeholder="请输入详细地址" auto-height="{{true}}" class="textarea-class" value="{{detailedAddress}}" placeholder-class="phcolor" bindblur="detailedAddressInput" />
+      </view>
+    </view>
+
+    <!-- 标签 -->
+    <view class="label-row">
+      <view class="label-title">标签：</view>
+      <view class="label-list">
+        <block wx:for="{{labelList}}" wx:key="index">
+          <view class="label-tag {{labelDefault==index ? 'label-active' : ''}}" data-index="{{index}}" bindtap="chooseLabelSelect">
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 默认地址 -->
+    <view class="default-section">
+      <view class="default-left">
+        <view class="default-title">默认地址：</view>
+        <view class="default-desc">每次下单会默认使用该地址</view>
+      </view>
+      <view class="default-right">
+        <t-switch bindchange="handleChange" custom-value="{{custome}}" size="small" default-value="{{isDefault}}" value="{{isDefault}}" label="{{['开', '关']}}" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="save-btn" bindtap="submit">保存</view>
 </view>
-<view class="btn" bindtap="submit">保存</view>
+
 <t-cascader visible="{{addressMenuIsShow}}" value="120119" options="{{options}}" title="请选择地址" bind:change="onChange"></t-cascader>
