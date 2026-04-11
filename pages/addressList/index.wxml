@@ -1,29 +1,38 @@
-<view class="viewport">
-    <scroll-view class="scroll-view" scroll-y>
-        <view wx:if="{{addressList.length}}" class="address">
-            <view class="address-list">
-                <view class="item" wx:for="{{addressList}}" wx:for-index="index" wx:for-item="item">
-                    <t-swipe-cell  disabled='{{false}}'>
-                        <view class="item-content">
-                            <view class="user">
-                                {{item.consigneeName}}
-                                <text class="contact">{{item.consigneePhone}}</text>
-                                <text wx:if="{{item.isDefault !='0'}}" class="badge">默认</text>
-                                <text wx:if="{{item.label !='3'}}" class="badge">{{labelList[item.label]}}</text>
-                            </view>
-                            <view class="locate">{{item.detailedAddress}}</view>
-                            <view class='edit' bindtap='editAddress' data-item='{{item}}'>
-                                <image src="../../images/home/edit.png"></image>
-                            </view>
-                            <view class='delete' bindtap='deleteAddress' data-id='{{item.keyId}}'>
-                                <image src="../../images/home/delete.png"></image>
-                            </view>
-                        </view>
-                    </t-swipe-cell>
-                </view>
-            </view>
+<!-- pages/addressList/index.wxml -->
+<view class="page-container">
+  <navigation-bar title="地址管理" back="{{true}}" background="#1a1a2e" color="#ffffff"></navigation-bar>
+
+  <view class="content" style="padding-top: {{statusBarHeight + navBarHeight}}px;">
+    <!-- 地址卡片列表 -->
+    <view class="address-card" wx:for="{{addressList}}" wx:key="keyId">
+      <!-- 顶部：姓名 + 手机号 -->
+      <view class="card-header">
+        <text class="card-name">{{item.consigneeName}}</text>
+        <text class="card-phone">{{item.consigneePhone}}</text>
+      </view>
+
+      <!-- 地址详情 -->
+      <view class="card-address">{{item.detailedAddress}}</view>
+
+      <!-- 底部：默认地址 + 编辑/删除 -->
+      <view class="card-footer">
+        <view class="card-footer-left">
+          <text class="default-label">默认地址</text>
+          <view class="default-dot {{item.isDefault == 1 ? 'dot-active' : ''}}"></view>
         </view>
-        <view wx:else class="blank">暂无收货地址</view>
-    </scroll-view>
-    <view class="btn" bindtap="submit">新增地址</view>
+        <view class="card-footer-right">
+          <view class="card-btn" bindtap="editAddress" data-item="{{item}}">编辑</view>
+          <view class="card-btn card-btn-delete" bindtap="deleteAddress" data-id="{{item.keyId}}">删除</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-tip" wx:if="{{addressList.length === 0}}">
+      <text>暂无地址，请新增</text>
+    </view>
+  </view>
+
+  <!-- 底部新增按钮 -->
+  <view class="add-btn" bindtap="submit">新增地址</view>
 </view>

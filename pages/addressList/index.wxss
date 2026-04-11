@@ -1,118 +1,135 @@
+/* pages/addressList/index.wxss */
 page {
+  background: #0d0d1a;
   height: 100%;
-  /* overflow: hidden; */
 }
 
-/* 删除按钮 */
-.delete-button {
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #0d0d1a 100%);
+  padding-bottom: 160rpx;
+}
+
+.content {
+  padding: 0 24rpx;
+}
+
+/* ========== 地址卡片 ========== */
+.address-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16rpx;
+  padding: 32rpx 28rpx;
+  margin-bottom: 24rpx;
+}
+
+/* 卡片头部：姓名 + 手机 */
+.card-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 50px;
-  height: 100%;
-  font-size: 28rpx;
-  color: #fff;
-  border-radius: 0;
-  padding: 0;
-  background-color: #cf4444;
-}
-
-.viewport {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background-color: #f4f4f4;
-}
-.viewport .scroll-view {
-  padding-top: 20rpx;
-}
-
-.address {
-  padding: 0 20rpx;
-  margin: 0 20rpx;
-  border-radius: 10rpx;
-  background-color: #fff;
-}
-.address .item-content {
-  line-height: 1;
-  padding: 40rpx 10rpx 38rpx;
-  border-bottom: 1rpx solid #ddd;
-  position: relative;
-}
-.address .item-content .edit {
-  position: absolute;
-  top: 36rpx;
-  right: 70rpx;
-  padding: 2rpx 0 2rpx 20rpx;
-  /* border-left: 1rpx solid #666; */
-  font-size: 26rpx;
-  color: #666;
-  line-height: 1;
-}
-.address .item-content .delete {
-  position: absolute;
-  top: 36rpx;
-  right: 10rpx;
-  padding: 2rpx 0 2rpx 20rpx;
-  /* border-left: 1rpx solid #666; */
-  font-size: 26rpx;
-  color: #666;
-  line-height: 1;
-}
-
-
-.address .item:last-child .item-content {
-  border: none;
-}
-.address .user {
-  font-size: 28rpx;
   margin-bottom: 20rpx;
-  color: #333;
-}
-.address .user .contact {
-  color: #666;
-}
-.address .user .badge {
-  display: inline-block;
-  padding: 4rpx 10rpx 2rpx 14rpx;
-  margin: 2rpx 0 0 10rpx;
-  font-size: 26rpx;
-  color: #22bee5;
-  border-radius: 6rpx;
-  border: 1rpx solid #22bee5;
 }
 
-.address .locate {
-  line-height: 1.6;
-  font-size: 26rpx;
-  color: #333;
-}
-
-.blank {
-  margin-top: 300rpx;
-  text-align: center;
+.card-name {
   font-size: 32rpx;
-  color: #888;
+  font-weight: bold;
+  color: #ffffff;
 }
 
-.btn {
-  width: 680rpx;
-  height: 88rpx;
-  background: #22bee5;
+.card-phone {
+  font-size: 30rpx;
   color: #ffffff;
+}
+
+/* 地址详情 */
+.card-address {
+  font-size: 26rpx;
+  color: #999999;
+  line-height: 1.6;
+  margin-bottom: 28rpx;
+}
+
+/* 卡片底部 */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.card-footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.default-label {
+  font-size: 24rpx;
+  color: #999999;
+  margin-right: 12rpx;
+}
+
+.default-dot {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  background: #444444;
+  transition: background 0.3s;
+}
+
+.default-dot.dot-active {
+  background: #c9a96e;
+}
+
+.card-footer-right {
+  display: flex;
+  gap: 20rpx;
+}
+
+.card-btn {
+  padding: 8rpx 28rpx;
+  font-size: 24rpx;
+  color: #cccccc;
+  border: 1rpx solid #555555;
+  border-radius: 8rpx;
+  background: transparent;
+}
+
+.card-btn:active {
+  opacity: 0.7;
+}
+
+.card-btn-delete {
+  color: #cccccc;
+  border-color: #555555;
+}
+
+/* ========== 空状态 ========== */
+.empty-tip {
+  text-align: center;
+  padding-top: 200rpx;
+  color: #666666;
+  font-size: 28rpx;
+}
+
+/* ========== 底部新增按钮 ========== */
+.add-btn {
   position: fixed;
-  bottom: 55rpx;
-  left: 35rpx;
-  border-radius: 41.5rpx;
-  font-size: 36rpx;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520rpx;
+  height: 88rpx;
+  background: linear-gradient(135deg, #c9a96e 0%, #b8944d 100%);
+  color: #1a1a2e;
+  font-size: 34rpx;
+  font-weight: bold;
   text-align: center;
   line-height: 88rpx;
-}
-.item-content image {
-    width:40rpx;
-    height: 40rpx;
+  border-radius: 44rpx;
+  letter-spacing: 4rpx;
 }
 
-.address-list {
-  margin-bottom: 90rpx;
+.add-btn:active {
+  opacity: 0.85;
 }

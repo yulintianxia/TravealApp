@@ -27,6 +27,8 @@ Page({
     // labelList: ["家", "公司", "学校"],            //标签
     // labelDefault: 0,              // 标签默认,
     labelList: ["家", "公司", "学校", "暂无"],
+      statusBarHeight: 0,
+  navBarHeight: 44,
     addressMenuIsShow: false,
     provinces: "",
     citys: "",
@@ -130,6 +132,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+     // 新增：计算导航栏高度
+  const sysInfo = wx.getSystemInfoSync();
+  let menuBtn = null;
+  try {
+    menuBtn = wx.getMenuButtonBoundingClientRect();
+  } catch (error) {
+    menuBtn = null;
+  }
+  const statusBarHeight = sysInfo.statusBarHeight || 0;
+  const navBarHeight = menuBtn
+    ? (menuBtn.top - statusBarHeight) * 2 + menuBtn.height
+    : 44;
+  this.setData({ statusBarHeight, navBarHeight });
     this.setData({
       keyId: "",
     });
