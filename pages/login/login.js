@@ -1,5 +1,6 @@
 // pages/login/login.js
 import { RequestApi } from "../../services/api.js";
+import { BASE_URL } from "../../config/index.js";
 Page({
   /**
    * 页面的初始数据
@@ -19,7 +20,8 @@ Page({
     newPassword: "",
     isSend:false,
     phoneNumber:'',
-    times:60
+    times:60,
+    avatar: '../../images/home/default.png'
   },
   // 发送code
   bindCode(){
@@ -193,6 +195,15 @@ Page({
     let type = options?.type;
     if (type) {
       this.changePassword();
+      wx.setNavigationBarTitle({ title: '修改密码' });
+      const user = wx.getStorageSync('user');
+      if (user) {
+        let avatar = user.avatar ? BASE_URL + user.avatar : '../../images/home/default.png';
+        this.setData({
+          avatar: avatar,
+          nickName: user.nickName || ''
+        });
+      }
     }
   },
   /* 注册 */

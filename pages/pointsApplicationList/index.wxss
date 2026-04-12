@@ -1,145 +1,16 @@
-/* pages/order/order.wxss */
-body,
+/* ========== 页面基础 ========== */
 page {
-  background: #f7f7f7;
+  background: #0b101a;
 }
 
-.order {
-  height: 100vh;
-}
-
-.order .order-list {
-  padding: 32rpx;
-  overflow-y: auto;
-}
-
-.order .order-list::after {
-  display: block;
-  content: '';
-  height: 12vh;
-}
-
-.order .order-list .order-item {
-  position: relative;
-  background: #fff;
-  padding: 32rpx;
-  margin-bottom: 32rpx;
-  border-radius: 32rpx;
-}
-
-.order .order-list .order-item:last-child {
-  margin-bottom: 0;
-}
-
-.order .order-list .order-item .order-title {
+.page {
+  min-height: 100vh;
+  background: #0b101a;
   display: flex;
-  align-items: center;
-  color: #000f1a;
-  font-size: 32rpx;
-  font-weight: bold;
-  margin-bottom: 20rpx;
+  flex-direction: column;
 }
 
-.order .order-list .order-title .icon {
-  width: 48rpx;
-  height: 48rpx;
-  margin-right: 16rpx;
-}
-
-.order .order-list .order-title .points {
-  flex-grow: 1;
-  text-align: right;
-  font-size: 32rpx;
-   color: #f2c261;
-}
-
-/* .points.pay.success {
-  color: #f2c261;
-}
-
-.points.pay.wait {
-  color: #22bee5;
-}
-
-.points.pay.fail {
-  color: red;
-} */
-
-
-
-.order .order-list .order-item .order-dd {
-  color: #7e7f80;
-  font-size: 24rpx;
-  margin-bottom: 8rpx;
-  line-height: 36rpx;
-}
-
-.order .order-list .order-item .copy {
-  position: absolute;
-  bottom: 40rpx;
-  right: 32rpx;
-  width: 32rpx;
-  height: 32rpx;
-}
-
-.blank {
-  margin-top: 300rpx;
-  text-align: center;
-  font-size: 32rpx;
-  color: #888;
-}
-
-.icon-box-img {
-  margin-right: 10rpx;
-}
-
-.pay-succes {
-  color: green;
-}
-
-.pay-fail {
-  color: red;
-}
-
-.pay-wait {
-  color: #f2c261;
-}
-
-.order-content {
-  display: flex;
-  align-items: center;
-}
-
-.order-right {
-  width: 16+vw;
-  text-align: right;
-}
-
-.order-left {
-  flex-grow: 1;
-}
-
-.order-right image {
-  width: 40rpx;
-  height: 40rpx;
-  margin-left: 16rpx;
-}
-
-.btn {
-  width: 680rpx;
-  height: 88rpx;
-  background: #22bee5;
-  color: #ffffff;
-  position: fixed;
-  bottom: 55rpx;
-  left: 35rpx;
-  border-radius: 41.5rpx;
-  font-size: 36rpx;
-  text-align: center;
-  line-height: 88rpx;
-}
-
-/* ========== 导航栏 ========== */
+/* ========== 自定义导航栏 ========== */
 .nav-bar {
   background: #0b101a;
   position: relative;
@@ -213,7 +84,7 @@ page {
 }
 
 .card-name {
-  font-size: 30rpx;
+  font-size: 28rpx;
   font-weight: 600;
   color: #e8e0d0;
   margin-bottom: 10rpx;
@@ -242,7 +113,7 @@ page {
 }
 
 .card-amount {
-  font-size: 40rpx;
+  font-size: 30rpx;
   font-weight: 700;
   color: #efd08b;
   font-family: 'DIN Alternate', 'PingFang SC', sans-serif;

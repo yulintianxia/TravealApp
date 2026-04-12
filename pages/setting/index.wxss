@@ -131,7 +131,7 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 112rpx;
+  height: 100rpx;
   padding: 0 32rpx;
   margin-bottom: 16rpx;
   background: rgba(255, 255, 255, 0.06);
@@ -186,7 +186,7 @@ page {
   text-align: center;
   font-size: 32rpx;
   font-weight: 700;
-  color: #1a1408;
+  color: white;
   letter-spacing: 4rpx;
   background: linear-gradient(135deg, #e2c57a 0%, #c9a356 100%);
   border-radius: 44rpx;

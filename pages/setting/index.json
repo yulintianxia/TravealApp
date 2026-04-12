@@ -3,7 +3,8 @@
     "t-upload": "tdesign-miniprogram/upload/upload"
   },
   "navigationBarTitleText": "设置",
-  "navigationStyle": "custom",
-  "backgroundColor": "#0b101a",
+  "navigationBarBackgroundColor": "#0d0e1f",
   "navigationBarTextStyle": "white"
 }
+
+

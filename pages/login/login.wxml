@@ -1,7 +1,7 @@
 <!-- pages/login/login.wxml -->
-<view class="login-page">
-    <view class="login-container">
-        <view class="logo-container">
+<view class="{{type == 'CHANGEPWD' ? 'changepwd-page' : 'login-page'}}">
+    <view class="{{type == 'CHANGEPWD' ? 'changepwd-container' : 'login-container'}}">
+        <view class="logo-container" wx:if="{{type != 'CHANGEPWD'}}">
             <image src="../../images/home/logo.png" mode="scaleToFill" class="login_logo" />
         </view>
         <block wx:if="{{type =='LOGIN'}}">
@@ -73,30 +73,31 @@
             </view>
         </block>
         <block wx:elif="{{type =='CHANGEPWD'}}">
-            <view class="input-container">
-                <view class="input-view">
-                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入旧密码" value="{{oldPassword}}" data-key='oldPassword' bindinput="bindOld" /> -->
-                    <t-input label="旧密码" borderless="{{true}}" class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入旧密码" value="{{oldPassword}}" data-key='oldPassword' bindblur="bindOld" />
+            <!-- 头像区域 -->
+            <view class="changepwd-avatar-wrap">
+                <image class="changepwd-avatar" src="{{avatar}}" mode="aspectFill" />
+                <text class="changepwd-nickname">{{nickName}}</text>
+            </view>
+            <!-- 表单区域 -->
+            <view class="changepwd-form">
+                <text class="changepwd-section-title">修改密码</text>
+                <view class="changepwd-input-row">
+                    <text class="changepwd-label">旧密码：</text>
+                    <input class="changepwd-input" placeholder-style="color:rgba(255,255,255,0.3)" placeholder="请输入旧密码" value="{{oldPassword}}" data-key='oldPassword' bindinput="bindOld" />
                 </view>
-                <view class="input-view">
-                    <!-- <input class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" /> -->
-                    <!-- <input class="phone-input" borderless="{{true}}"  label="新密码"  placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" /> -->
-                    <t-input label="新密码" borderless="{{true}}" class="phone-input" placeholder-style="{{placeholderStyleColor}}" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindblur="bindNew" />
+                <view class="changepwd-input-row">
+                    <text class="changepwd-label">新密码：</text>
+                    <input class="changepwd-input" placeholder-style="color:rgba(255,255,255,0.3)" placeholder="请输入新密码" value="{{newPassword}}" data-key='newPassword' bindinput="bindNew" />
                 </view>
-
-                <view class="input-view password-input-vie">
-                    <!-- <input class="phone-input password-input" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="bindPassword" /> -->
-                    <!-- <t-input class="phone-input" label="验证码" borderless="{{true}}" maxlength="{{codeLength}}" placeholder-style="{{placeholderStyleColor}}" value="{{code}}" placeholder="请输入验证码" borderless="{{true}}" type="password" bindblur="bindCode" /> -->
-                    <t-input label="验证码" class="phone-input" placeholder="输入验证码" value="{{code}}" type="number" maxlength="6" bindchange="onPhoneInput">
-                        <view slot="suffix" style="display: flex; align-items: center">
-                            <view class="suffix--line"></view>
-                            <view class="verify" style="color:#22bee5;font-size:12px;margin-right:5px;" bindtap='sendCode' aria-role="button">{{isSend ? '倒计时' + (times >= 10 ? times : '0'+ times) +'S':'发送验证码'}} </view>
-                        </view>
-                    </t-input>
+                <view class="changepwd-input-row">
+                    <text class="changepwd-label">验证码：</text>
+                    <input class="changepwd-input changepwd-code-input" placeholder-style="color:rgba(255,255,255,0.3)" placeholder="输入验证码" value="{{code}}" type="number" maxlength="6" bindinput="onPhoneInput" />
+                    <view class="changepwd-code-btn" bindtap='sendCode'>{{isSend ? '倒计时' + (times >= 10 ? times : '0'+ times) +'S':'发送验证码'}}</view>
                 </view>
-                <view class="input-btn">
-                    <view bindtap="submitPwd" class="login-btn submit">确定</view>
-                </view>
+            </view>
+            <!-- 底部确定按钮 -->
+            <view class="changepwd-btn-wrap">
+                <view class="changepwd-btn" bindtap="submitPwd">确定</view>
             </view>
         </block>
     </view>

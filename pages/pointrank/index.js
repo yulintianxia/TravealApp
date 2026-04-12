@@ -14,7 +14,7 @@ Page({
   },
 
   onLoad() {
-    this.setNavBarHeight();
+    // this.setNavBarHeight();
     this.getList();
   },
 
@@ -22,13 +22,13 @@ Page({
     this.getList().finally(() => wx.stopPullDownRefresh());
   },
 
-  setNavBarHeight() {
-    const sysInfo = wx.getSystemInfoSync();
-    const menuBtn = wx.getMenuButtonBoundingClientRect();
-    const statusBarHeight = sysInfo.statusBarHeight || 0;
-    const navBarHeight = (menuBtn.top - statusBarHeight) * 2 + menuBtn.height;
-    this.setData({ statusBarHeight, navBarHeight });
-  },
+  // setNavBarHeight() {
+  //   const sysInfo = wx.getSystemInfoSync();
+  //   const menuBtn = wx.getMenuButtonBoundingClientRect();
+  //   const statusBarHeight = sysInfo.statusBarHeight || 0;
+  //   const navBarHeight = (menuBtn.top - statusBarHeight) * 2 + menuBtn.height;
+  //   this.setData({ statusBarHeight, navBarHeight });
+  // },
 
   async getList() {
     try {

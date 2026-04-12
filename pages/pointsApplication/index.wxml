@@ -1,11 +1,11 @@
 <!-- pages/my/my-add-address/index.wxml -->
 <view class="page">
   <!-- 自定义导航栏 -->
-  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px">
+  <!-- <view class="nav-bar" style="padding-top:{{statusBarHeight}}px">
     <view class="nav-inner">
       <view class="nav-title">积分申请</view>
     </view>
-  </view>
+  </view> -->
 
   <scroll-view class="scroll-area" scroll-y style="height:calc(100vh - {{statusBarHeight + 44}}px)">
     <view class="form">
@@ -106,7 +106,7 @@
         <view class="upload-area">
           <t-upload
             disabled="{{isRead}}"
-            max="{{5}}"
+            max="{{4}}"
             media-type="{{['image']}}"
             files="{{orderPhotoList}}"
             bind:add="handleAdd"

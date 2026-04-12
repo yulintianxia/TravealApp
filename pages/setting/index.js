@@ -12,7 +12,7 @@ Page({
   },
 
   onLoad(options) {
-    this.setNavBarHeight();
+    // this.setNavBarHeight();
     const user = wx.getStorageSync("user");
     let image = user.avatar || "";
     if (image) {

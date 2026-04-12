@@ -28,7 +28,7 @@
 .t-grid {
   position: relative;
   overflow: hidden;
-  background-color: var(--td-grid-bg-color, var(--td-bg-color-container, var(--td-font-white-1, #ffffff)));
+  background-color: var(--td-grid-bg-color, var(--td-bg-color-container, var(--td-font-white-1, rgba(36, 36, 36, 1))));
 }
 .t-grid__content {
   width: auto;

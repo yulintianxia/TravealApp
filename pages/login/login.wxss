@@ -198,6 +198,128 @@
   margin-left: 10rpx;
 }
 
+/* ========== 修改密码模式 - 暗色主题 ========== */
+.changepwd-page {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, #0a0f1a 0%, #0f1b30 50%, #0b1a2e 100%);
+  font-family: PingFang SC, -apple-system, Helvetica Neue, Arial, sans-serif;
+}
+
+.changepwd-container {
+  padding-bottom: 200rpx;
+}
+
+/* 头像区域 */
+.changepwd-avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0 48rpx;
+}
+
+.changepwd-avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(201, 182, 126, 0.5);
+  box-shadow: 0 0 24rpx rgba(201, 182, 126, 0.25);
+}
+
+.changepwd-nickname {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  letter-spacing: 2rpx;
+}
+
+/* 表单区域 */
+.changepwd-form {
+  padding: 0 48rpx;
+  margin-top: 20rpx;
+}
+
+.changepwd-section-title {
+  display: block;
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  margin-bottom: 36rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 输入行 */
+.changepwd-input-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+  height: 88rpx;
+}
+
+.changepwd-label {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+  width: 140rpx;
+  flex-shrink: 0;
+  letter-spacing: 1rpx;
+}
+
+.changepwd-input {
+  flex: 1;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #ffffff;
+  border: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.changepwd-code-input {
+  flex: 1;
+  margin-right: 16rpx;
+}
+
+.changepwd-code-btn {
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: #e2c57a;
+  padding: 0 16rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  white-space: nowrap;
+}
+
+/* 底部确定按钮 */
+.changepwd-btn-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 100rpx 68rpx;
+  box-sizing: border-box;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(15, 27, 48, 0) 0%, rgba(15, 27, 48, 0.95) 40%);
+}
+
+.changepwd-btn {
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 4rpx;
+  background: linear-gradient(135deg, #e2c57a 0%, #c9a356 100%);
+  border-radius: 44rpx;
+  box-shadow: 0 8rpx 24rpx rgba(201, 163, 86, 0.3);
+}
+
+.changepwd-btn:active {
+  opacity: 0.85;
+}
+
 .login-page .login-container .login-extra-container .extra-login:before,
 .login-page .login-container .login-extra-container .extra-login:after {
   content: "";

@@ -30,7 +30,7 @@
   z-index: 11500;
   max-height: 100vh;
   transition: all 300ms ease;
-  background-color: var(--td-popup-bg-color, var(--td-bg-color-container, var(--td-font-white-1, #ffffff)));
+  background-color: var(--td-popup-bg-color, var(--td-bg-color-container, var(--td-font-white-1, rgba(255, 255, 255, 0.06))));
 }
 .t-popup__content {
   position: relative;

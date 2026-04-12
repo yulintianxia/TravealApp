@@ -13,11 +13,11 @@ Page({
     total: 0,
     loading: false,
     noMore: false,
-    pointsBalance: 3020, // 先写死占位，后续接口替换
+    pointsBalance: 0, // 先写死占位，后续接口替换
   },
 
   onLoad() {
-    this.setNavBarHeight();
+    // this.setNavBarHeight();
     this.getPointsInfo();
     this.loadData(true);
   },

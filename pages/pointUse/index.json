@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "积分明细",
-  "navigationStyle": "custom",
-  "backgroundColor": "#0b101a",
-  "navigationBarTextStyle": "white"
+  "navigationBarBackgroundColor": "#0d0e1f",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {}
 }

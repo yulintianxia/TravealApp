@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "排行",
-  "navigationStyle": "custom",
-  "backgroundColor": "#0b111d",
-  "navigationBarTextStyle": "white"
+  "navigationBarBackgroundColor": "#0d0e1f",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {}
 }
