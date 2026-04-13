@@ -107,10 +107,15 @@ Page({
           // 登录成功，存储自定义登录态（如token）
           wx.setStorageSync("token", res.token);
           console.log("res", res.token);
-          wx.navigateTo({
-            // url: '/pages/index/index'
-            url: "/pages/vipMemer/index",
-          });
+          // wx.navigateTo({
+          //   // url: '/pages/index/index'
+          //   // url: "/pages/vipMemer/index",
+          //   url:'/pages/myHome/index',
+          // });
+
+           wx.switchTab({ url: "/pages/myHome/index" });
+
+
         } else {
           wx.showToast({
             title: res.data.msg || "登录失败",
@@ -166,7 +171,7 @@ Page({
         console.log("res", res.token);
         wx.navigateTo({
           // url: '/pages/index/index'
-          url: "/pages/vipMemer/index",
+          url:'/pages/myHome/index',
         });
       }
     }, 500);

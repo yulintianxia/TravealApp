@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/vipMemer/index",
     "pages/myHome/index",
+    "pages/newMy/index",
+    "pages/vipMemer/index",
     "pages/pointsApplication/index",
     "pages/pointsApplicationList/index",
     "pages/addressList/index",
@@ -18,7 +19,6 @@
     "pages/badgeView/index",
     "pages/myBadgeView/index",
     "pages/myDetail/index",
-    "pages/newMy/index",
     "pages/newRank/index",
     "pages/checkin/index"
   ],

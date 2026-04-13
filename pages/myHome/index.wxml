@@ -13,10 +13,8 @@
          <view class='user-avatar-bg'>
           <image class="user-avatar" src="{{user.avatar ? BASE_URL + user.avatar : ''}}" />
             <!-- <image class="user-avatar" src="{{user.avatar ? '../../images/new': ''}}" /> -->
-
             <!-- <image class="user-avatar" src="{{configbackgroundImg}}" /> -->
-         </view>
-         
+         </view> 
           <view class="user-meta">
             <view class="user-name-row">
               <text class="user-name">{{user.nickName || '用户'}}</text>

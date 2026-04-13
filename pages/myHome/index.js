@@ -115,11 +115,13 @@ Page({
   },
 
   turnLevel() {
-    wx.navigateTo({ url: "/pages/vipMemer/index" });
+    // wx.navigateTo({ url: "/pages/myHome/index" });
+    wx.switchTab({ url: "/pages/myHome/index" });
   },
 
   handleMoreInfo() {
-    wx.navigateTo({ url: "/pages/myDetail/index" });
+    // wx.navigateTo({ url: "/pages/myDetail/index" });
+     wx.navigateTo({ url: "/pages/vipGrade/index" });
   },
 
   // handleTool(e) {

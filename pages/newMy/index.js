@@ -85,7 +85,7 @@ Page({
    */
   goToVipCenter() {
     wx.navigateTo({
-      url: "/pages/vipMemer/index",
+      url: "/pages/myHome/index"
     });
   },
 
