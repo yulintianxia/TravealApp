@@ -8,14 +8,17 @@
 
     <!-- 顶部视觉大图 -->
     <view class="hero">
-      <image class="hero-bg" src="../../images/home/v1-bg-new.png" mode="aspectFill"/>
-      <!-- 顶部左右弧形遮罩 -->
-      <view class="hero-arc"></view>
+      <image class="hero-bg" src="../../images/icons/output.gif" mode="aspectFill"/>
+      <!-- 顶部两侧深色弧形遮罩 -->
+      <view class="hero-arc-left"></view>
+      <view class="hero-arc-right"></view>
       <!-- 底部渐变融入背景 -->
       <view class="hero-fade"></view>
-      <view class="hero-stamp">正莲出品</view>
-      <view class="hero-title">乘龙护楼</view>
-      <view class="hero-sub">MAGIC PALACE</view>
+      <view class="hero-text-wrap">
+        <view class="hero-stamp">正莲出品</view>
+        <view class="hero-title">乘龙护楼</view>
+        <view class="hero-sub">MAGIC PALACE</view>
+      </view>
     </view>
 
     <!-- Top3 排名 -->

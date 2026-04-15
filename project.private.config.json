@@ -22,36 +22,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/login/login",
-          "pathName": "pages/login/login",
-          "query": "type=CHANGEPWD",
+          "name": "pages/levelMember/index",
+          "pathName": "pages/levelMember/index",
+          "query": "",
           "scene": null,
           "launchMode": "default"
         },
         {
-          "name": "pages/setting/index",
-          "pathName": "pages/setting/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/address/index",
-          "pathName": "pages/address/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/pointsApplication/index",
-          "pathName": "pages/pointsApplication/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/pointUse/index",
-          "pathName": "pages/pointUse/index",
+          "name": "pages/levelMember/index",
+          "pathName": "pages/levelMember/index",
           "query": "",
           "launchMode": "default",
           "scene": null

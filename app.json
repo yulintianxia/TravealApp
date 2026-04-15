@@ -3,6 +3,7 @@
     "pages/myHome/index",
     "pages/newMy/index",
     "pages/vipMemer/index",
+    "pages/levelMember/index",
     "pages/pointsApplication/index",
     "pages/pointsApplicationList/index",
     "pages/addressList/index",

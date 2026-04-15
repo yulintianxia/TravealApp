@@ -169,10 +169,12 @@ Page({
       if (res && res.token) {
         wx.setStorageSync("token", res.token);
         console.log("res", res.token);
-        wx.navigateTo({
-          // url: '/pages/index/index'
-          url:'/pages/myHome/index',
-        });
+        // wx.navigateTo({
+        //   // url: '/pages/index/index'
+        //   url:'/pages/myHome/index',
+        // });
+
+        wx.switchTab({ url: "/pages/myHome/index" });
       }
     }, 500);
   },
