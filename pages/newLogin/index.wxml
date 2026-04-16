@@ -1,0 +1,31 @@
+<view class="login-page">
+  <!-- Logo 区域 -->
+  <view class="logo-section">
+    <image class="logo-img" src="../../images/home/logo.png" mode="aspectFit"></image>
+    <view class="logo-brand">ZHENG LIAN</view>
+    <view class="logo-since">SINCE  2013</view>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="btn-section">
+    <!-- 微信一键登录 -->
+    <button class="wx-login-btn" open-type="getPhoneNumber" bindgetphonenumber="oneClicklogin">
+      <image class="wx-icon" src="../../images/new/wechat.png" mode="aspectFit"></image>
+      <text>微信账号快捷登录</text>
+    </button>
+
+    <!-- 手机号登录 -->
+    <view class="phone-login-link" bindtap="goPhoneLogin">使用手机账号登录/注册</view>
+  </view>
+
+  <!-- 协议区域 -->
+  <view class="agreement-section">
+    <view class="agreement-row" bindtap="toggleAgree">
+      <view class="agreement-check {{agreed ? 'checked' : ''}}"></view>
+      <text class="agreement-text">同意</text>
+      <text class="agreement-link" catchtap="openServiceAgreement">《正莲平台服务协议》</text>
+      <text class="agreement-text">和</text>
+      <text class="agreement-link" catchtap="openPrivacyPolicy">《隐私政策》</text>
+    </view>
+  </view>
+</view>

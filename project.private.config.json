@@ -22,11 +22,25 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/levelMember/index",
-          "pathName": "pages/levelMember/index",
+          "name": "pages/newLogin/index",
+          "pathName": "pages/newLogin/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/memberGrade/index",
+          "pathName": "pages/memberGrade/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/levelMember/index",
+          "pathName": "pages/levelMember/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/levelMember/index",

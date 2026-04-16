@@ -1,0 +1,144 @@
+<view class="member-grade-page">
+
+  <!-- 顶部卡片轮播（卡片折叠堆叠） -->
+  <view class="card-stack-container">
+    <!-- 下一张卡片：在后面露出一点 -->
+    <view wx:if="{{hasNextLevel}}" class="card-peek">
+      <view class="card-peek-bg" style="background-image: url({{nextLevelBg}})">
+        <view class="card-peek-mask"></view>
+      </view>
+    </view>
+    <!-- 当前卡片轮播 -->
+    <swiper
+      class="card-swiper"
+      autoplay="{{false}}"
+      bindchange="swiperChange"
+      current="{{current}}"
+      duration="{{400}}"
+      indicator-dots="{{false}}"
+      previous-margin="0rpx"
+      next-margin="0rpx"
+      circular="{{false}}"
+      easing-function="easeInOutCubic"
+    >
+      <swiper-item wx:for="{{levelList}}" wx:key="index">
+        <view class="card-slide">
+          <view class="card-bg" style="background-image: url({{BASE_URL}}{{item.background}})">
+            <view class="card-overlay"></view>
+            <!-- 高于用户等级的蒙版 -->
+            <view wx:if="{{index > myLevelIndex}}" class="card-lock-mask"></view>
+            <view class="card-body">
+              <view class="card-left">
+                <view class="card-tag">当前等级</view>
+                <view class="card-title">{{item.name}} <text class="card-level">V{{index + 1}}</text></view>
+                <view class="card-quote">{{item.remark}}</view>
+              </view>
+              <view class="card-right">
+                <image class="card-beast-img" src="{{item.mountain ? BASE_URL + item.mountain : ''}}" mode="aspectFit"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 等级指示器 + 进度条 -->
+  <view class="progress-section">
+    <view class="progress-indicator-wrap">
+      <view wx:for="{{levelList}}" wx:key="index" class="progress-indicator-slot">
+        <view wx:if="{{current == index}}" class="progress-indicator-inner">
+          <view class="progress-lv-label">LV{{current + 1}}</view>
+          <view class="progress-lv-arrow">▼</view>
+        </view>
+      </view>
+    </view>
+    <view class="progress-bar-wrap">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 神兽图标列表 -->
+  <view class="beast-icon-list">
+    <view wx:for="{{levelList}}" wx:key="index" class="beast-icon-item" bindtap="onBeastIconTap" data-index="{{index}}">
+      <image
+        class="beast-icon-img {{current == index ? 'beast-active' : (current > index ? 'beast-passed' : 'beast-inactive')}}"
+        src="{{levelIconList[index] || ''}}"
+        mode="aspectFit"
+      ></image>
+    </view>
+  </view>
+
+  <!-- 数据统计区域 -->
+  <view class="stats-section">
+    <view class="stats-item" bindtap="turnTop">
+      <view class="stats-value">{{pointsStart}}</view>
+      <view class="stats-label">所需积分</view>
+    </view>
+    <view class="stats-item" bindtap="turnPoint">
+      <view class="stats-value">{{pointsBalance}}</view>
+      <view class="stats-label">积分</view>
+    </view>
+    <view class="stats-item" bindtap="turnTop">
+      <view class="stats-value">{{top}}</view>
+      <view class="stats-label">排名</view>
+    </view>
+    <view class="stats-item" bindtap="turnBadge">
+      <view class="stats-value">{{medalCount}}</view>
+      <view class="stats-label">我的勋章</view>
+    </view>
+  </view>
+
+  <!-- 可享权益 -->
+  <view class="rights-section">
+    <view class="rights-header">
+      <text class="rights-title">可享权益</text>
+      <text class="rights-count">2项</text>
+    </view>
+    <view class="rights-list">
+      <view class="rights-item" bindtap="turnBadgePage">
+        <view class="rights-icon-wrap">
+          <image class="rights-icon" src="{{rightsBadgeIcon}}" mode="aspectFit"></image>
+        </view>
+        <text class="rights-name">勋章</text>
+      </view>
+      <view class="rights-item" bindtap="turnGiftPage">
+        <view class="rights-icon-wrap">
+          <image class="rights-icon" src="{{rightsGiftIcon}}" mode="aspectFit"></image>
+        </view>
+        <text class="rights-name">商品</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 神兽弹窗 -->
+  <view wx:if="{{showBeastPopup}}" class="beast-popup">
+    <view class="beast-popup-mask {{showBeastPopupAnim ? 'show' : ''}}" bindtap="closeBeastPopup"></view>
+    <view class="beast-popup-content {{showBeastPopupAnim ? 'show' : ''}}">
+      <!-- 上方大神兽图 -->
+      <view class="beast-popup-hero">
+        <image class="beast-popup-hero-img" src="{{popupLevel.mountain ? BASE_URL + popupLevel.mountain : ''}}" mode="aspectFill"></image>
+        <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask"></view>
+      </view>
+      <!-- 下方信息卡片，与神兽图重叠 -->
+      <view class="beast-popup-info">
+        <!-- 小装饰 -->
+        <view class="beast-popup-sparkle">✦</view>
+        <!-- 标题 -->
+        <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
+        <!-- 获得时间 -->
+        <view wx:if="{{popupTime}}" class="beast-popup-time">获得时间：{{popupTime}}</view>
+        <!-- 卡片背景小图 -->
+        <view class="beast-popup-card-bg-wrap">
+          <view class="beast-popup-card-bg" style="background-image: url({{BASE_URL}}{{popupLevel.background}})"></view>
+          <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>
+        </view>
+      </view>
+      <!-- 知道了按钮 -->
+      <view class="beast-popup-btn" bindtap="closeBeastPopup">知道了</view>
+    </view>
+  </view>
+
+</view>
