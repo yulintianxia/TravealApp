@@ -10,14 +10,14 @@ Page({
     pageSize: 10,
     labelList: ["家", "公司", "学校"],
     statusBarHeight: 0,
-    navBarHeight: 44,
+    navBarHeight: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setNavBarHeight();
+    // this.setNavBarHeight();
   },
 
   setNavBarHeight() {

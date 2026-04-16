@@ -90,7 +90,7 @@ page {
   padding: 8rpx 28rpx;
   font-size: 24rpx;
   color: #cccccc;
-  border: 1rpx solid #555555;
+  /* border: 1rpx solid #555555; */
   border-radius: 8rpx;
   background: transparent;
 }

@@ -28,7 +28,7 @@ Page({
     // labelDefault: 0,              // 标签默认,
     labelList: ["家", "公司", "学校", "暂无"],
       statusBarHeight: 0,
-  navBarHeight: 44,
+     navBarHeight: 0,
     addressMenuIsShow: false,
     provinces: "",
     citys: "",
