@@ -154,7 +154,7 @@ Page({
       };
       let res = await RequestApi.changePwd(params);
       if (res && res.data) {
-        wx.navigateTo({ url: "/pages/login/login" });
+        wx.navigateTo({ url: "/pages/newLogin/index" });
       }
     }, 500);
   },
@@ -240,7 +240,7 @@ Page({
         });
         wx.navigateTo({
           // url: '/pages/index/index'
-          url: "/pages/login/login",
+          url: "/pages/newLogin/index",
         });
       }
     }, 500);

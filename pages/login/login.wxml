@@ -17,14 +17,23 @@
                     <text class="dark-label">密码：</text>
                     <input class="dark-input" placeholder-style="color:rgba(255,255,255,0.3)" placeholder="请输入密码" maxlength="{{codeLength}}" value="{{password}}" type="password" bindinput="bindPassword" />
                 </view>
-                <view class="input-btn">
+                <view class="dark-input-row">
+                    <text class="dark-label">手机号：</text>
+                    <input class="dark-input" placeholder-style="color:rgba(255,255,255,0.3)" placeholder="请输入手机号" maxlength="11" value="{{phoneNumber}}" type="number" bindinput="onPhoneInput" />
+                </view>
+                <view class="dark-input-row">
+                    <text class="dark-label">验证码：</text>
+                    <input class="dark-input dark-code-input" placeholder-style="color:rgba(255,255,255,0.3)" placeholder="输入验证码" value="{{code}}" type="number" maxlength="6" bindinput="onPhoneInput" />
+                    <view class="dark-code-btn" bindtap='sendCode'>{{isSend ? '倒计时' + (times >= 10 ? times : '0'+ times) +'S':'发送验证码'}}</view>
+                </view>
+                <!-- <view class="input-btn">
                     <view class='register-view'>
                         <view class='register' bindtap="register">注册</view>
                         <button class='register register-view-button' open-type="getPhoneNumber" bindgetphonenumber="oneClicklogin" type="primary">
                             一键登录
                         </button>
                     </view>
-                </view>
+                </view> -->
             </view>
             <view class="dark-btn-wrap">
                 <view class="dark-btn" bindtap="login">登录</view>

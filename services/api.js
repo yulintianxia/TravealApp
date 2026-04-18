@@ -118,6 +118,12 @@ class ApiManager extends httpClient {
   }
 
 
+    //通过code获取手机号并登录
+ loginByWeiXinCode(data, config) {
+    return this.get("/loginByWeiXinCode", data, config);
+  }
+
+
 }
 
 const RequestApi = new ApiManager();

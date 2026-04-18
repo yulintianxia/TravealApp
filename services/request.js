@@ -68,7 +68,7 @@ class httpClient {
             mask: false,
           });
           wx.redirectTo({
-            url: "/pages/login/login",
+            url: "/pages/newLogin/index",
           });
         }
       } else if (

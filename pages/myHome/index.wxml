@@ -10,12 +10,12 @@
       <image class="card-bg" src="{{levelInfo.background ? BASE_URL + levelInfo.background : configbackgroundImg}}" mode="aspectFill" />
       <view class="card-content">
         <view class="user-info-row">
-         <view class='user-avatar-bg'>
+         <view class='user-avatar-bg' bindtap="getNews">
           <image class="user-avatar" src="{{user.avatar ? BASE_URL + user.avatar : ''}}" />
             <!-- <image class="user-avatar" src="{{user.avatar ? '../../images/new': ''}}" /> -->
             <!-- <image class="user-avatar" src="{{configbackgroundImg}}" /> -->
          </view> 
-          <view class="user-meta">
+          <view class="user-meta" bindtap="getNews">
             <view class="user-name-row">
               <text class="user-name">{{user.nickName || '用户'}}</text>
               <view class="vip-badge">

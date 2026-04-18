@@ -90,7 +90,7 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.clearStorage();
-          wx.navigateTo({ url: "/pages/login/login" });
+          wx.navigateTo({ url: "/pages/newLogin/index" });
         }
       },
     });

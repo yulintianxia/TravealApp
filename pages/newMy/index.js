@@ -165,7 +165,7 @@ Page({
         if (res.confirm) {
           wx.clearStorage();
           wx.navigateTo({
-            url: "/pages/login/login",
+            url: "/pages/newLogin/index",
           });
         }
       }

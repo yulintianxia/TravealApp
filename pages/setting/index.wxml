@@ -23,10 +23,10 @@
     </navigator>
 
     <!-- 修改密码 -->
-    <navigator class="cell" url="/pages/login/login?type=CHANGEPWD" hover-class="cell-hover">
+    <!-- <navigator class="cell" url="/pages/newLogin/index?type=CHANGEPWD" hover-class="cell-hover">
       <text class="cell-label">修改密码</text>
       <text class="cell-arrow">›</text>
-    </navigator>
+    </navigator> -->
 
     <!-- 地址管理 -->
     <navigator class="cell" url="/pages/addressList/index" hover-class="cell-hover">

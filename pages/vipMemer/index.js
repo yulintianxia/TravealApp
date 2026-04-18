@@ -24,7 +24,7 @@ Page({
     if (!this.data.noLogin) {
       wx.switchTab({ url: "/pages/myHome/index" });
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
   turnModal: function (url) {
@@ -45,14 +45,14 @@ Page({
     if (!this.data.noLogin) {
       wx.navigateTo({ url: "/pages/pointrank/index" });
     } else {  
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
   turnPoint: function () {
     if (!this.data.noLogin) {
       wx.navigateTo({ url: "/pages/pointUse/index" });
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
   /* 跳转到勋章的页面 */
@@ -61,7 +61,7 @@ Page({
       if (!this.data.noLogin) {
         wx.switchTab({ url: "/pages/myHome/index" });
       } else {
-        this.turnModal("/pages/login/login");
+        this.turnModal("/pages/newLogin/index");
       }
     }
   },
@@ -71,14 +71,14 @@ Page({
         this.seeDetails("/myBadge");
       }
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
   seeDetails: function (url) {
     if (!this.data.noLogin) {
       this.turnWebView(url);
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
   catchtouchmove: function () {

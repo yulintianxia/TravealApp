@@ -2,17 +2,20 @@
   <!-- Logo 区域 -->
   <view class="logo-section">
     <image class="logo-img" src="../../images/home/logo.png" mode="aspectFit"></image>
-    <view class="logo-brand">ZHENG LIAN</view>
-    <view class="logo-since">SINCE  2013</view>
+    <!-- <view class="logo-brand">ZHENG LIAN</view>
+    <view class="logo-since">SINCE  2013</view> -->
   </view>
 
   <!-- 按钮区域 -->
   <view class="btn-section">
     <!-- 微信一键登录 -->
-    <button class="wx-login-btn" open-type="getPhoneNumber" bindgetphonenumber="oneClicklogin">
-      <image class="wx-icon" src="../../images/new/wechat.png" mode="aspectFit"></image>
-      <text>微信账号快捷登录</text>
-    </button>
+    <view class="wx-login-wrapper">
+      <button class="wx-login-btn" open-type="getPhoneNumber" bindgetphonenumber="oneClicklogin">
+        <image class="wx-icon" src="../../images/home/wechat.png" mode="aspectFit"></image>
+        <text>微信账号快捷登录</text>
+      </button>
+      <view wx:if="{{!agreed}}" class="wx-login-mask" catchtap="onLoginBeforeAgree"></view>
+    </view>
 
     <!-- 手机号登录 -->
     <view class="phone-login-link" bindtap="goPhoneLogin">使用手机账号登录/注册</view>

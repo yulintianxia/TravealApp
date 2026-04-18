@@ -48,7 +48,7 @@ Page({
     if (!this.data.noLogin) {
       wx.navigateTo({ url: "/pages/pointrank/index" });
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
 
@@ -56,7 +56,7 @@ Page({
     if (!this.data.noLogin) {
       wx.navigateTo({ url: "/pages/vipMemer/index" });
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
 
@@ -84,7 +84,7 @@ Page({
     if (!this.data.noLogin) {
       this.turnWebView("/badge");
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
 
@@ -92,7 +92,7 @@ Page({
     if (!this.data.noLogin) {
       this.turnWebView("/gift");
     } else {
-      this.turnModal("/pages/login/login");
+      this.turnModal("/pages/newLogin/index");
     }
   },
 
