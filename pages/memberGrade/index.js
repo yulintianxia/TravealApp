@@ -94,10 +94,32 @@ Page({
     });
   },
 
+  onCurrentCardTap() {
+    this.openBeastPopupByIndex(this.data.current);
+  },
+
   onBeastIconTap(e) {
     const idx = e.currentTarget.dataset.index;
     const levelList = this.data.levelList;
     const level = levelList[idx];
+    if (!level) return;
+    const hasNext = idx + 1 < levelList.length;
+    const percent = this.getProgressPercent(levelList, idx);
+    this.setData({
+      current: idx,
+      backGroundImg: BASE_URL + level.background,
+      pointsStart: level.pointsStart,
+      levelId: level.keyId,
+      progressPercent: percent,
+      hasNextLevel: hasNext,
+      nextLevelBg: hasNext ? BASE_URL + levelList[idx + 1].background : "",
+    });
+  },
+
+  openBeastPopupByIndex(idx) {
+    const levelList = this.data.levelList;
+    const level = levelList[idx];
+    if (!level) return;
     const hasNext = idx + 1 < levelList.length;
     const percent = this.getProgressPercent(levelList, idx);
     this.setData({

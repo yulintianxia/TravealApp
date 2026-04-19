@@ -21,7 +21,7 @@
       easing-function="easeInOutCubic"
     >
       <swiper-item wx:for="{{levelList}}" wx:key="index">
-        <view class="card-slide">
+        <view class="card-slide" bindtap="onCurrentCardTap">
           <view class="card-bg" style="background-image: url({{BASE_URL}}{{item.background}})">
             <view class="card-overlay"></view>
             <view wx:if="{{index > myLevelIndex}}" class="card-lock-mask"></view>
@@ -203,11 +203,14 @@
       <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask"></view>
     </view>
     <view class="beast-popup-info">
-      <view class="beast-popup-sparkle">✦</view>
-      <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
-      <view wx:if="{{popupTime}}" class="beast-popup-time">获得时间：{{popupTime}}</view>
       <view class="beast-popup-card-bg-wrap">
-        <view class="beast-popup-card-bg" style="background-image: url({{BASE_URL}}{{popupLevel.background}})"></view>
+        <view class="beast-popup-card-bg" style="background-image: url(../../images/home/bgDate.png)">
+          <view class="beast-popup-card-text">
+            <!-- <view class="beast-popup-sparkle">✦</view> -->
+            <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
+            <view class="beast-popup-time">获得时间：2025/12/25 20:50</view>
+          </view>
+        </view>
         <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>
       </view>
     </view>
