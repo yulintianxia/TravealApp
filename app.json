@@ -26,22 +26,22 @@
     "pages/checkin/index"
   ],
   "tabBar": {
-    "color": "#666666",
-    "selectedColor": "#19A0F0",
+    "color": "#999999",
+    "selectedColor": "#FFFFFF",
     "borderStyle": "white",
-    "backgroundColor": "#FFFFFF",
+    "backgroundColor": "#242424",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/home/tabbar_home.png",
-        "selectedIconPath": "images/home/tabbar_home_hover.png"
+        "iconPath": "images/home/4.png",
+        "selectedIconPath": "images/home/2.png"
       },
       {
         "pagePath": "pages/myHome/index",
         "text": "我的",
-        "iconPath": "images/home/tabbar_mine.png",
-        "selectedIconPath": "images/home/tabbar_mine_hover.png"
+        "iconPath": "images/home/3.png",
+        "selectedIconPath": "images/home/1.png"
       }
     ]
   },

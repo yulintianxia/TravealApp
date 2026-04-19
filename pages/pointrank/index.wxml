@@ -8,17 +8,17 @@
 
     <!-- 顶部视觉大图 -->
     <view class="hero">
-      <image class="hero-bg" src='https://zhenglian.vip/dotm/zl_images/output.giff' mode="aspectFill"/>
+      <image class="hero-bg" src='{{H5Url}}/zl_images/output.gif' mode="aspectFill"/>
       <!-- 顶部两侧深色弧形遮罩 -->
-      <view class="hero-arc-left"></view>
-      <view class="hero-arc-right"></view>
+      <!-- <view class="hero-arc-left"></view>
+      <view class="hero-arc-right"></view> -->
       <!-- 底部渐变融入背景 -->
       <view class="hero-fade"></view>
-      <view class="hero-text-wrap">
+      <!-- <view class="hero-text-wrap">
         <view class="hero-stamp">正莲出品</view>
         <view class="hero-title">乘龙护楼</view>
         <view class="hero-sub">MAGIC PALACE</view>
-      </view>
+      </view> -->
     </view>
 
     <!-- Top3 排名 -->

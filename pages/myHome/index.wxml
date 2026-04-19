@@ -8,6 +8,9 @@
     <!-- 用户信息卡片 -->
     <view class="user-card" bindtap="turnLevel">
       <image class="card-bg" src="{{levelInfo.background ? BASE_URL + levelInfo.background : configbackgroundImg}}" mode="aspectFill" />
+
+
+      
       <view class="card-content">
         <view class="user-info-row">
          <view class='user-avatar-bg' bindtap="getNews">
@@ -19,11 +22,11 @@
             <view class="user-name-row">
               <text class="user-name">{{user.nickName || '用户'}}</text>
               <view class="vip-badge">
-                <text class="vip-text">{{levelInfo.name || '会员'}}</text>
+                <text class="vip-text">{{levelInfo.name +'会员' || '会员'}}</text>
                 <text class="vip-icon">✦</text>
               </view>
             </view>
-            <text class="user-points">积分：{{pointsBalance || 0}}/{{pointsTotal || 0}}</text>
+            <text class="user-points">积分： <text class='real-point'>{{pointsBalance || 0}}</text>/{{pointsTotal || 0}}</text>
           </view>
         </view>
         <view class="more-info" bindtap="handleMoreInfo">

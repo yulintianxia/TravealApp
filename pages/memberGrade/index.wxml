@@ -33,9 +33,9 @@
                 </view>
                 <view class="card-quote">{{item.remark}}</view>
               </view>
-              <view class="card-right">
+              <!-- <view class="card-right">
                 <image class="card-beast-img" src="{{item.mountain ? BASE_URL + item.mountain : ''}}" mode="aspectFit"></image>
-              </view>
+              </view> -->
             </view>
           </view>
         </view>

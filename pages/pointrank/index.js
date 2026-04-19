@@ -1,9 +1,10 @@
 import { RequestApi } from "../../services/api.js";
-import { BASE_URL } from "../../config/index";
+import { BASE_URL, H5Url} from "../../config/index";
 
 Page({
   data: {
     BASE_URL,
+    H5Url,
     defaultPerson: "../../images/home/default.png",
     statusBarHeight: 0,
     navBarHeight: 0,
