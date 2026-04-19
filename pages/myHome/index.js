@@ -127,7 +127,7 @@ Page({
 
   handleMoreInfo() {
     // wx.navigateTo({ url: "/pages/myDetail/index" });
-    wx.navigateTo({ url: "/pages/levelMember/index" });
+    wx.navigateTo({ url: "/pages/memberGrade/index" });
   },
 
   // handleTool(e) {

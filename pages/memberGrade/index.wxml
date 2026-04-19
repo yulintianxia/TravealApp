@@ -1,14 +1,13 @@
-<view class="member-grade-page">
+<!-- ========== 有等级：memberGrade 界面 ========== -->
+<view wx:if="{{hasLevel}}" class="member-grade-page">
 
   <!-- 顶部卡片轮播（卡片折叠堆叠） -->
   <view class="card-stack-container">
-    <!-- 下一张卡片：在后面露出一点 -->
     <view wx:if="{{hasNextLevel}}" class="card-peek">
       <view class="card-peek-bg" style="background-image: url({{nextLevelBg}})">
         <view class="card-peek-mask"></view>
       </view>
     </view>
-    <!-- 当前卡片轮播 -->
     <swiper
       class="card-swiper"
       autoplay="{{false}}"
@@ -25,12 +24,13 @@
         <view class="card-slide">
           <view class="card-bg" style="background-image: url({{BASE_URL}}{{item.background}})">
             <view class="card-overlay"></view>
-            <!-- 高于用户等级的蒙版 -->
             <view wx:if="{{index > myLevelIndex}}" class="card-lock-mask"></view>
             <view class="card-body">
               <view class="card-left">
-                <view class="card-tag">当前等级</view>
-                <view class="card-title">{{item.name}} <text class="card-level">V{{index + 1}}</text></view>
+                <view class="card-top-row">
+                  <view class="card-tag">当前等级</view>
+                  <view class="card-title">{{item.name}} <text class="card-level">V{{index + 1}}</text></view>
+                </view>
                 <view class="card-quote">{{item.remark}}</view>
               </view>
               <view class="card-right">
@@ -65,7 +65,7 @@
     <view wx:for="{{levelList}}" wx:key="index" class="beast-icon-item" bindtap="onBeastIconTap" data-index="{{index}}">
       <image
         class="beast-icon-img {{current == index ? 'beast-active' : (current > index ? 'beast-passed' : 'beast-inactive')}}"
-        src="{{levelIconList[index] || ''}}"
+        src="../../images/icons/{{index + 1}}-{{current == index || myLevelIndex == index ? 'on' : 'off'}}.png"
         mode="aspectFit"
       ></image>
     </view>
@@ -113,32 +113,133 @@
     </view>
   </view>
 
-  <!-- 神兽弹窗 -->
-  <view wx:if="{{showBeastPopup}}" class="beast-popup">
-    <view class="beast-popup-mask {{showBeastPopupAnim ? 'show' : ''}}" bindtap="closeBeastPopup"></view>
-    <view class="beast-popup-content {{showBeastPopupAnim ? 'show' : ''}}">
-      <!-- 上方大神兽图 -->
-      <view class="beast-popup-hero">
-        <image class="beast-popup-hero-img" src="{{popupLevel.mountain ? BASE_URL + popupLevel.mountain : ''}}" mode="aspectFill"></image>
-        <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask"></view>
+</view>
+
+<!-- ========== 无等级：levelMember 界面 ========== -->
+<view wx:else class="no-level-page">
+
+  <!-- 顶部等级卡片 -->
+  <view class="level-card" style="background-image: url({{backGroundImg}})">
+    <view class="level-card-overlay"></view>
+    <view class="level-card-content">
+      <view class="level-top-row">
+        <view class="level-tag">当前等级</view>
+        <view class="level-name">{{currentLevel.name || '新晋会员'}} <text class='level-name-v'>V{{currentLevelIndex}}</text> </view>
       </view>
-      <!-- 下方信息卡片，与神兽图重叠 -->
-      <view class="beast-popup-info">
-        <!-- 小装饰 -->
-        <view class="beast-popup-sparkle">✦</view>
-        <!-- 标题 -->
-        <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
-        <!-- 获得时间 -->
-        <view wx:if="{{popupTime}}" class="beast-popup-time">获得时间：{{popupTime}}</view>
-        <!-- 卡片背景小图 -->
-        <view class="beast-popup-card-bg-wrap">
-          <view class="beast-popup-card-bg" style="background-image: url({{BASE_URL}}{{popupLevel.background}})"></view>
-          <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>
-        </view>
-      </view>
-      <!-- 知道了按钮 -->
-      <view class="beast-popup-btn" bindtap="closeBeastPopup">知道了</view>
+      <view class="level-quote">{{currentLevel.remark || ''}}</view>
     </view>
   </view>
 
+  <!-- 积分排名 -->
+  <view class="rank-section" bindtap="turnTop">
+    <image class="rank-icon" src="{{rankIcon}}" mode="aspectFit"></image>
+    <text class="rank-label">积分排名：</text>
+    <text class="rank-value">第{{top}}名</text>
+  </view>
+
+  <!-- 当前积分和进度条 -->
+  <view class="nl-progress-section">
+    <view class="points-info">
+      <text class="points-label">当前积分</text>
+      <text class="points-value">{{pointsTotal}}</text>
+    </view>
+    <view class="nl-progress-bar-wrap">
+      <view class="nl-progress-bar">
+        <view class="nl-progress-fill" style="width: {{noLevelProgressPercent}}%"></view>
+        <view class="nl-progress-indicator" style="left: {{noLevelProgressPercent}}%">
+          <view class="nl-indicator-dot"></view>
+          <view class="nl-indicator-arrow">▼</view>
+        </view>
+        <view wx:for="{{levelList}}" wx:key="index" class="nl-progress-node" style="left: {{index / (levelList.length - 1) * 100}}%">
+          <view class="nl-node-dot {{currentLevelIndex >= index ? 'nl-node-active' : ''}}"></view>
+        </view>
+      </view>
+    </view>
+    <!-- 等级图标列表（可点击，触发神兽弹窗） -->
+    <view class="level-icon-list">
+      <view wx:for="{{levelList}}" wx:key="index" class="level-icon-item" bindtap="onBeastIconTap" data-index="{{index}}">
+        <image class="level-icon-img {{currentLevelIndex >= index ? 'icon-active' : 'icon-inactive'}}" src="../../images/icons/{{index + 1}}-{{current == index || currentLevelIndex == index ? 'on' : 'off'}}.png" mode="aspectFit"></image>
+        <text class="level-icon-points">{{item.pointsStart}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 可享权益 -->
+  <view class="nl-rights-section">
+    <view class="nl-rights-header">
+      <view class="nl-rights-title">
+        <text class="nl-rights-title-text">可享权益</text>
+        <text class="nl-rights-count">2项</text>
+      </view>
+      <view class="nl-rights-more" bindtap="showRightsPopup">
+        <text>升级可享更多权益</text>
+        <text class="nl-rights-arrow">›</text>
+      </view>
+    </view>
+    <view class="nl-rights-list">
+      <view class="nl-rights-item" bindtap="turnBadgePage">
+        <view class="nl-rights-icon-wrap">
+          <image class="nl-rights-icon" src="{{rightsBadgeIcon}}" mode="aspectFit"></image>
+        </view>
+        <text class="nl-rights-name">勋章</text>
+      </view>
+      <view class="nl-rights-item" bindtap="turnGiftPage">
+        <view class="nl-rights-icon-wrap">
+          <image class="nl-rights-icon" src="{{rightsGiftIcon}}" mode="aspectFit"></image>
+        </view>
+        <text class="nl-rights-name">商品</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- ========== 共享：神兽弹窗 ========== -->
+<view wx:if="{{showBeastPopup}}" class="beast-popup">
+  <view class="beast-popup-mask {{showBeastPopupAnim ? 'show' : ''}}" bindtap="closeBeastPopup"></view>
+  <view class="beast-popup-content {{showBeastPopupAnim ? 'show' : ''}}">
+    <view class="beast-popup-hero">
+      <image class="beast-popup-hero-img" src="{{popupLevel.mountain ? BASE_URL + popupLevel.mountain : ''}}" mode="aspectFill"></image>
+      <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask"></view>
+    </view>
+    <view class="beast-popup-info">
+      <view class="beast-popup-sparkle">✦</view>
+      <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
+      <view wx:if="{{popupTime}}" class="beast-popup-time">获得时间：{{popupTime}}</view>
+      <view class="beast-popup-card-bg-wrap">
+        <view class="beast-popup-card-bg" style="background-image: url({{BASE_URL}}{{popupLevel.background}})"></view>
+        <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>
+      </view>
+    </view>
+    <view class="beast-popup-btn" bindtap="closeBeastPopup">知道了</view>
+  </view>
+</view>
+
+<!-- ========== 共享：权益体系弹窗 ========== -->
+<view class="popup-mask {{showPopup ? 'popup-mask-show' : ''}}" bindtap="hideRightsPopup"></view>
+<view class="popup-dialog {{showPopup ? 'popup-dialog-show' : ''}}">
+  <view class="popup-dialog-body">
+    <view class="popup-title">正莲会员等级权益体系（V1-V7 正式版）</view>
+    <scroll-view scroll-y class="popup-scroll">
+      <view class="popup-section">
+        <view class="popup-section-title">总则（所有会员通用）</view>
+      </view>
+      <view class="popup-section">
+        <view class="popup-section-sub">1. 等级定义</view>
+        <view class="popup-text">· 会员等级分为：V1 白泽、V2 螣蛇、V3 陆吾、V4 麒麟、V5 凤凰、V6 四灵、V7 应龙。</view>
+        <view class="popup-text">· 等级依据近12个月实际支付金额评定，每月自动更新；升级后立即生效，降级后权益同步调整。</view>
+      </view>
+      <view class="popup-section">
+        <view class="popup-section-sub">2. 优惠规则</view>
+        <view class="popup-text">· 折扣、会员券、活动价不可叠加使用，同一订单仅享受最优一项。</view>
+        <view class="popup-text">·「现货产品」指店铺明码标价、可直接下单的成品；「定制产品」指私人定制、改制、专属设计类产品；「特殊产品」指孤品、收藏级、寺院结缘款。</view>
+      </view>
+      <view class="popup-section">
+        <view class="popup-section-sub">3. 服务范围</view>
+        <view class="popup-text">· 会员权益仅限本人使用，不可转让。</view>
+        <view class="popup-text">· 正莲保留最终解释权，权益内容可能随活动调整，以官网公示为准。</view>
+      </view>
+    </scroll-view>
+    <view class="popup-btn" bindtap="hideRightsPopup">知道了</view>
+  </view>
 </view>

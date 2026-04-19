@@ -112,6 +112,13 @@
   justify-content: flex-start;
 }
 
+.card-top-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
 .card-tag {
   display: inline-block;
   background: linear-gradient(135deg, #c9a96e, #a07c3f);
@@ -119,19 +126,18 @@
   font-size: 22rpx;
   padding: 6rpx 20rpx;
   border-radius: 8rpx;
-  margin-bottom: 20rpx;
-  width: fit-content;
+  margin-right: 16rpx;
+  flex-shrink: 0;
 }
 
 .card-title {
   font-size: 36rpx;
   font-weight: 700;
-  color: #e8d5a3;
-  margin-bottom: 24rpx;
+  color: white;
 }
 
 .card-level {
-  font-size: 36rpx;
+  font-size: 32rpx;
   font-weight: 700;
   color: #e8d5a3;
 }
@@ -487,4 +493,414 @@
 .rights-name {
   font-size: 24rpx;
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================================================================
+   无等级页面样式 (levelMember)
+   ================================================================ */
+
+.no-level-page {
+  min-height: 100vh;
+  background-color: #1a1a2e;
+  padding-bottom: 120rpx;
+}
+
+/* 顶部等级卡片 */
+.level-card {
+  position: relative;
+  width: 686rpx;
+  height: 400rpx;
+  margin: 0rpx auto 0;
+  border-radius: 24rpx;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #2a2a4a;
+}
+
+.level-card-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+.level-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 40rpx;
+}
+
+.level-top-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.level-tag {
+  display: inline-block;
+  background: linear-gradient(137.27deg, rgba(255, 202, 162, 0.85) 0%, rgba(225, 188, 122, 0.85) 100%);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.level-name {
+  font-size: 28rpx;
+  font-weight: 700;
+  /* color: #e8d5a3; */
+  color:white;
+}
+.level-name-v {
+  color: #e8d5a3;
+  font-size:32rpx;
+}
+.level-quote {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  max-width: 450rpx;
+}
+
+/* 积分排名 */
+.rank-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 27rpx auto 0;
+  padding: 16rpx 0;
+}
+
+.rank-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.rank-label {
+  font-size: 28rpx;
+  color: rgba(255,255,255,0.6);
+}
+
+.rank-value {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #e8d5a3;
+}
+
+/* 积分进度区域 */
+.nl-progress-section {
+  width: 640rpx;
+  margin: 20rpx auto 0;
+}
+
+.points-info {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 16rpx;
+}
+
+.points-label {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.5);
+  margin-right: 12rpx;
+}
+
+.points-value {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #e8d5a3;
+}
+
+.nl-progress-bar-wrap {
+  position: relative;
+  padding: 40rpx 0 20rpx;
+}
+
+.nl-progress-bar {
+  position: relative;
+  height: 8rpx;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4rpx;
+}
+
+.nl-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a96e, #e8d5a3);
+  border-radius: 4rpx;
+  transition: width 0.5s ease;
+}
+
+.nl-progress-indicator {
+  position: absolute;
+  top: -36rpx;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left 0.5s ease;
+}
+
+.nl-indicator-dot {
+  width: 16rpx;
+  height: 16rpx;
+  background: #e8d5a3;
+  border-radius: 50%;
+  box-shadow: 0 0 12rpx rgba(232,213,163,0.6);
+}
+
+.nl-indicator-arrow {
+  font-size: 18rpx;
+  color: #e8d5a3;
+  margin-top: -6rpx;
+}
+
+.nl-progress-node {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nl-node-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+.nl-node-dot.nl-node-active {
+  background: #e8d5a3;
+}
+
+/* 等级图标列表 */
+.level-icon-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24rpx;
+  padding: 0 4rpx;
+}
+
+.level-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.level-icon-img {
+  width: 72rpx;
+  height: 72rpx;
+  margin-bottom: 12rpx;
+}
+
+.level-icon-img.icon-active {
+  opacity: 1;
+}
+
+.level-icon-img.icon-inactive {
+  opacity: 0.35;
+  filter: grayscale(0.5);
+}
+
+.level-icon-points {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.5);
+}
+
+/* 可享权益（无等级版） */
+.nl-rights-section {
+  width: 686rpx;
+  margin: 48rpx auto 0;
+  background: rgba(255,255,255,0.06);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.nl-rights-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36rpx;
+}
+
+.nl-rights-title {
+  display: flex;
+  align-items: baseline;
+}
+
+.nl-rights-title-text {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.nl-rights-count {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.4);
+  margin-left: 12rpx;
+}
+
+.nl-rights-more {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: rgba(249,226,172,1);
+}
+
+.nl-rights-arrow {
+  font-size: 32rpx;
+  margin-left: 4rpx;
+  color: rgba(255,255,255,0.5);
+}
+
+.nl-rights-list {
+  display: flex;
+  gap: 36rpx;
+}
+
+.nl-rights-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nl-rights-icon-wrap {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(201,169,110,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  background: rgba(201,169,110,0.08);
+}
+
+.nl-rights-icon {
+  width: 52rpx;
+  height: 52rpx;
+}
+
+.nl-rights-name {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ================================================================
+   权益体系弹窗
+   ================================================================ */
+
+.popup-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.popup-mask.popup-mask-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600rpx;
+  height: 1128rpx;
+  transform: translate(-50%, -50%) scale(0.88);
+  z-index: 201;
+  border-radius: 28rpx;
+  overflow: hidden;
+  background: #1c1c28;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.popup-dialog.popup-dialog-show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-dialog-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  padding: 0 40rpx;
+}
+
+.popup-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: left;
+  padding: 36rpx 0 24rpx;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+
+.popup-scroll {
+  height: 800rpx;
+  flex-shrink: 0;
+}
+
+.popup-section {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(255,255,255,0.07);
+}
+
+.popup-section:last-child {
+  border-bottom: none;
+}
+
+.popup-section-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+.popup-section-sub {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 12rpx;
+  line-height: 1.6;
+}
+
+.popup-text {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.9;
+  margin-bottom: 4rpx;
+}
+
+.popup-btn {
+  flex-shrink: 0;
+  align-self: center;
+  width: 336rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #c9a76a;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 6rpx;
+  margin: 24rpx 0 40rpx;
 }

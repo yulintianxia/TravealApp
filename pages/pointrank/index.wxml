@@ -8,7 +8,7 @@
 
     <!-- 顶部视觉大图 -->
     <view class="hero">
-      <image class="hero-bg" src="../../images/icons/output.gif" mode="aspectFill"/>
+      <image class="hero-bg" src='https://zhenglian.vip/dotm/zl_images/output.giff' mode="aspectFill"/>
       <!-- 顶部两侧深色弧形遮罩 -->
       <view class="hero-arc-left"></view>
       <view class="hero-arc-right"></view>

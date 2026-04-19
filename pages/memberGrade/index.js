@@ -6,17 +6,9 @@ Page({
   data: {
     current: 0,
     levelList: [],
-    levelIconList: [
-      "../../images/icons/icon7.png",
-      "../../images/icons/icon5.png",
-      "../../images/icons/icon1.png",
-      "../../images/icons/icon2.png",
-      "../../images/icons/icon3.png",
-      "../../images/icons/icon6.png",
-      "../../images/icons/icon9.png",
-    ],
     rightsBadgeIcon: "../../images/icons/icon10.png",
     rightsGiftIcon: "../../images/icons/icon4.png",
+    rankIcon: "../../images/icons/icon8.png",
     pointsTotal: 0,
     pointsBalance: 0,
     pointsStart: 0,
@@ -27,6 +19,7 @@ Page({
     BASE_URL,
     noLogin: false,
     baseImageUrl,
+    hasLevel: false,
     progressPercent: 0,
     myLevelIndex: 0,
     nextLevelBg: "",
@@ -36,6 +29,10 @@ Page({
     popupLevel: null,
     popupIndex: 0,
     popupTime: "",
+    currentLevel: null,
+    currentLevelIndex: 0,
+    noLevelProgressPercent: 0,
+    showPopup: false,
   },
 
   turnModal: function (url) {
@@ -161,6 +158,31 @@ Page({
     });
   },
 
+  turnUpgrade: function () {
+    if (!this.data.noLogin) {
+      wx.navigateTo({ url: "/pages/vipMemer/index" });
+    } else {
+      this.turnModal("/pages/newLogin/index");
+    }
+  },
+
+  showRightsPopup: function () {
+    this.setData({ showPopup: true });
+  },
+
+  hideRightsPopup: function () {
+    this.setData({ showPopup: false });
+  },
+
+  calcProgressByPoints: function (levelList, points) {
+    if (!levelList.length) return 0;
+    const maxPoints = levelList[levelList.length - 1].pointsStart;
+    const minPoints = levelList[0].pointsStart;
+    if (points <= minPoints) return 0;
+    if (points >= maxPoints) return 100;
+    return ((points - minPoints) / (maxPoints - minPoints)) * 100;
+  },
+
   turnBadgePage: function () {
     if (!this.data.noLogin) {
       this.turnWebView("/badge");
@@ -200,9 +222,12 @@ Page({
         levelList,
         current: currentIndex,
         myLevelIndex,
+        currentLevel,
+        currentLevelIndex: currentIndex,
         backGroundImg: BASE_URL + currentLevel.background,
         pointsStart: currentLevel.pointsStart,
         progressPercent: this.getProgressPercent(levelList, currentIndex),
+        noLevelProgressPercent: this.calcProgressByPoints(levelList, this.data.pointsTotal),
         hasNextLevel: hasNext,
         nextLevelBg: hasNext ? BASE_URL + levelList[currentIndex + 1].background : "",
       });
@@ -224,6 +249,7 @@ Page({
             pointsBalance: res.data.pointsBalance,
             levelInfo: res.data.levelInfo,
             levelId: res.data.levelId ? res.data.levelId : 0,
+            hasLevel: !!res.data.levelId,
             top: res.data.top,
             medalCount: res.data.medalCount,
             noLogin: false,
