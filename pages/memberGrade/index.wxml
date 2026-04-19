@@ -125,14 +125,14 @@
 <view wx:else class="no-level-page">
 
   <!-- 顶部等级卡片 -->
-  <view class="level-card" style="background-image: url({{backGroundImg}})">
+  <view class="level-card" style="background-image: url({{backGroundImgOrigin}})">
     <view class="level-card-overlay"></view>
     <view class="level-card-content">
       <view class="level-top-row">
         <view class="level-tag">当前等级</view>
-        <view class="level-name">{{currentLevel.name || '新晋会员'}} <text class='level-name-v'>V{{currentLevelIndex}}</text> </view>
+        <view class="level-name">新晋会员<text class='level-name-v'> V0</text></view>
       </view>
-      <view class="level-quote">{{currentLevel.remark || ''}}</view>
+      <view class="level-quote">{{rearkOrgin || ''}}</view>
     </view>
   </view>
 
@@ -153,7 +153,7 @@
       <view class="nl-progress-bar">
         <view class="nl-progress-fill" style="width: {{noLevelProgressPercent}}%"></view>
         <view class="nl-progress-indicator" style="left: {{noLevelProgressPercent}}%">
-          <view class="nl-indicator-dot"></view>
+          <!-- <view class="nl-indicator-dot"></view> -->
           <view class="nl-indicator-arrow">▼</view>
         </view>
         <view wx:for="{{levelList}}" wx:key="index" class="nl-progress-node" style="left: {{index / (levelList.length - 1) * 100}}%">
@@ -163,7 +163,7 @@
     </view>
     <!-- 等级图标列表（可点击，触发神兽弹窗） -->
     <view class="level-icon-list">
-      <view wx:for="{{levelList}}" wx:key="index" class="level-icon-item" bindtap="onBeastIconTap" data-index="{{index}}">
+      <view wx:for="{{levelList}}" wx:key="index" class="level-icon-item" data-index="{{index}}">
         <image class="level-icon-img {{currentLevelIndex >= index ? 'icon-active' : 'icon-inactive'}}" src="../../images/icons/{{index + 1}}-{{current == index || currentLevelIndex == index ? 'on' : 'off'}}.png" mode="aspectFit"></image>
         <text class="level-icon-points">{{item.pointsStart}}</text>
       </view>

@@ -22,7 +22,7 @@
             <view class="user-name-row">
               <text class="user-name">{{user.nickName || '用户'}}</text>
               <view class="vip-badge">
-                <text class="vip-text">{{levelInfo.name +'会员' || '会员'}}</text>
+                <text class="vip-text">{{(levelInfo.name ? levelInfo.name +'会员' : '')  || ''}}</text>
                 <text class="vip-icon">✦</text>
               </view>
             </view>

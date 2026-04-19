@@ -587,7 +587,8 @@
 }
 .level-quote {
   font-size: 26rpx;
-  color: rgba(255,255,255,0.75);
+  /* color: rgba(255,255,255,0.75); */
+  color:white;
   line-height: 1.6;
   max-width: 450rpx;
 }
@@ -627,7 +628,8 @@
 .points-info {
   display: flex;
   align-items: baseline;
-  margin-bottom: 16rpx;
+  margin-bottom: 20rpx;
+  margin-left:-10rpx;
 }
 
 .points-label {
@@ -644,7 +646,7 @@
 
 .nl-progress-bar-wrap {
   position: relative;
-  padding: 40rpx 0 20rpx;
+  padding: 8rpx 0 16rpx;
 }
 
 .nl-progress-bar {
@@ -682,7 +684,7 @@
 .nl-indicator-arrow {
   font-size: 18rpx;
   color: #e8d5a3;
-  margin-top: -6rpx;
+  margin-top: 6rpx;
 }
 
 .nl-progress-node {
@@ -842,7 +844,7 @@
   top: 50%;
   left: 50%;
   width: 600rpx;
-  height: 1128rpx;
+  height: 1030rpx;
   transform: translate(-50%, -50%) scale(0.88);
   z-index: 201;
   border-radius: 28rpx;

@@ -9,6 +9,8 @@ Page({
     rightsBadgeIcon: "../../images/icons/icon10.png",
     rightsGiftIcon: "../../images/icons/icon4.png",
     rankIcon: "../../images/icons/icon8.png",
+    backGroundImgOrigin:"../../images/home/putong.gif",
+    rearkOrgin:'“王者有德，能辟除人间一切邪气。”',
     pointsTotal: 0,
     pointsBalance: 0,
     pointsStart: 0,
