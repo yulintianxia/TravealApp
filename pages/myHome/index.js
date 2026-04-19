@@ -18,7 +18,7 @@ Page({
     medalCount: 0,
     showTip: false,
     showQrCode: false,
-    configbackgroundImg: "../../images/home/putong.gif",
+    configbackgroundImg: "https://zhenglian.vip/dotm/zl_images/putong.gif",
     chatImg: "../../images/new/wechat.png",
     orderList: [
       { iconUrl: "../../images/new/4.png", title: "全部", state: "all" },

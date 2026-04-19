@@ -6,7 +6,7 @@ Page({
     cardList: [
       {
         id: 0,
-        bg: "../../images/home/putong.gif",
+        bg: "https://zhenglian.vip/dotm/zl_images/putong.gif",
         levelName: "白泽会员",
         level: 1,
         quote: "“知瑞·洞彻万类，福泽自宁。”——白泽",

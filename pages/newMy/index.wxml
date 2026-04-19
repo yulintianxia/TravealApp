@@ -1,7 +1,7 @@
 <view class="personal-center">
   <!-- 顶部用户信息 -->
   <view class="user-section">
-    <image src="../../images/home/putong.gif" class="user-bg" />
+    <image src="https://zhenglian.vip/dotm/zl_images/putong.gif" class="user-bg" />
     <view class="user-info">
       <image src="{{user.avatar || '../../images/home/default.png'}}" class="user-avatar" />
       <view class="user-details">
