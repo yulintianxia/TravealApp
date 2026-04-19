@@ -29,7 +29,7 @@
             <text class="user-points">积分： <text class='real-point'>{{pointsBalance || 0}}</text>/{{pointsTotal || 0}}</text>
           </view>
         </view>
-        <view class="more-info" bindtap="handleMoreInfo">
+        <view class="more-info" catchtap="handleMoreInfo">
           <text>更多信息</text>
         </view>
       </view>

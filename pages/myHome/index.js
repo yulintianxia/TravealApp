@@ -126,8 +126,12 @@ Page({
   },
 
   handleMoreInfo() {
-    // wx.navigateTo({ url: "/pages/myDetail/index" });
-    wx.navigateTo({ url: "/pages/memberGrade/index" });
+    wx.navigateTo({
+      url: "/pages/memberGrade/index",
+      // fail: () => {
+      //   wx.redirectTo({ url: "/pages/memberGrade/index" });
+      // },
+    });
   },
 
   // handleTool(e) {
