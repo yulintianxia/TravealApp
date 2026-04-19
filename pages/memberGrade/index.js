@@ -33,6 +33,8 @@ Page({
     currentLevelIndex: 0,
     noLevelProgressPercent: 0,
     showPopup: false,
+    showUpgradePopup: false,
+    showUpgradePopupAnim: false,
   },
 
   turnModal: function (url) {
@@ -186,6 +188,22 @@ Page({
     } else {
       this.turnModal("/pages/newLogin/index");
     }
+  },
+
+  showUpgradePopup() {
+    this.setData({ showUpgradePopup: true, showUpgradePopupAnim: false });
+    setTimeout(() => {
+      if (this.data.showUpgradePopup) {
+        this.setData({ showUpgradePopupAnim: true });
+      }
+    }, 30);
+  },
+
+  closeUpgradePopup() {
+    this.setData({ showUpgradePopupAnim: false });
+    setTimeout(() => {
+      this.setData({ showUpgradePopup: false });
+    }, 260);
   },
 
   showRightsPopup: function () {

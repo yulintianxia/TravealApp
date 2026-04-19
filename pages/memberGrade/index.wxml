@@ -110,6 +110,12 @@
         </view>
         <text class="rights-name">商品</text>
       </view>
+       <view class="rights-item" bindtap="showUpgradePopup">
+        <view class="rights-icon-wrap">
+          <image class="rights-icon" src="{{rightsGiftIcon}}" mode="aspectFit"></image>
+        </view>
+        <text class="rights-name">升级</text>
+      </view>
     </view>
   </view>
 
@@ -215,6 +221,28 @@
       </view>
     </view>
     <view class="beast-popup-btn" bindtap="closeBeastPopup">知道了</view>
+  </view>
+</view>
+
+<!-- ========== 共享：升级弹窗 ========== -->
+<view wx:if="{{showUpgradePopup}}" class="beast-popup">
+  <view class="beast-popup-mask {{showUpgradePopupAnim ? 'show' : ''}}" bindtap="closeUpgradePopup"></view>
+  <view class="beast-popup-content {{showUpgradePopupAnim ? 'show' : ''}}">
+    <view class="beast-popup-hero">
+      <image class="beast-popup-hero-img" src="{{currentLevel.mountain ? BASE_URL + currentLevel.mountain : ''}}" mode="aspectFill"></image>
+    </view>
+    <view class="beast-popup-info">
+      <view class="beast-popup-card-bg-wrap">
+        <view class="beast-popup-card-bg" style="background-image: url(../../images/home/bgDate.png)">
+          <view class="beast-popup-card-text">
+            <view class="upgrade-popup-congrats">恭喜升级！</view>
+            <view class="upgrade-popup-desc">您已经成功升级为</view>
+            <view class="beast-popup-title">{{currentLevel.name}} V{{currentLevelIndex + 1}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="beast-popup-btn" bindtap="closeUpgradePopup">知道了</view>
   </view>
 </view>
 
