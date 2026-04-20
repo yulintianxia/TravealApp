@@ -1,7 +1,7 @@
 import { imagesModule } from "../../common/imageUrlConfs.js";
 import { userConfig } from "../../common/entryConfs.js";
 import { RequestApi } from "../../services/api.js";
-import { BASE_URL, baseImageUrl } from "../../config/index";
+import { BASE_URL, baseImageUrl,webChatUrl } from "../../config/index";
 
 Page({
   data: {
@@ -146,9 +146,20 @@ Page({
     const item = e.currentTarget.dataset.item;
     if (item.title === "设置") {
       wx.navigateTo({ url: "/pages/setting/index" });
-    } else if (item.title === "公众号") {
+    } else if (item.title === "咨询客服") {
       this.setData({ showQrCode: true });
-    } else {
+   } else if(item.title =='公众号'){
+     wx.navigateTo({
+      url: "/pages/webView/index",
+      success: (res) => {
+        res.eventChannel.emit("webViewData", {
+          url:webChatUrl,
+          wechatCode:true,
+        });
+      },
+    });
+   }
+     else {
       this.setData({ showTip: true });
     }
   },

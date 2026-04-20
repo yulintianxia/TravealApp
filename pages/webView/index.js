@@ -1,5 +1,5 @@
 // pages/webView/index.js
-import { H5Url} from '../../config/index';
+import { H5Url } from '../../config/index';
 Page({
 
   /**
@@ -16,14 +16,26 @@ Page({
     // 监听'delivery'事件，并获取数据包
     if (eventChannel) {
       eventChannel.on("webViewData", (data) => {
-        this.setData({
-          url: `${H5Url}${data.url}?levelId=${data.levelId}&token=${wx.getStorageSync('token')}`
-        });
+        if (data?.wechatCode) {
+          console.log('公众号链接',data.url);
+          this.setData({
+            url: `${data.url}`
+          });
+
+        } else {
+          this.setData({
+            url: `${H5Url}${data.url}?levelId=${data.levelId}&token=${wx.getStorageSync('token')}`
+          });
+        }
+
       });
     }
   },
 
- 
+  getUrl() {
+
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

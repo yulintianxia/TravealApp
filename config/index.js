@@ -7,3 +7,6 @@ export const ctripImg = 'https://m.ctrip.com/';
 export const commonBaseUrl = 'https://sam-retail-static-1302115363.file.myqcloud.com/miniapp'
 // export const H5Url ='www.zhenglian.vip:8200';
 export const H5Url ='https://www.zhenglian.vip/dotm';
+
+// 微公公众号的链接
+export const webChatUrl  = "https://mp.weixin.qq.com/s/dVkiivwtUcRRRZTM_NU_2A";
