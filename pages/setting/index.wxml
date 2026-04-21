@@ -5,7 +5,7 @@
     <text class="nav-title">设置</text>
   </view> -->
 
-  <view class="content" style="padding-top:{{statusBarHeight + navBarHeight}}px;">
+  <view class="content" style="padding-top:20px;">
 
     <!-- 修改头像 -->
     <view class="cell" bindtap="handlePopup">

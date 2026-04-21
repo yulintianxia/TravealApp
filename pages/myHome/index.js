@@ -55,6 +55,29 @@ Page({
     this.getUserInfo();
     this.getGrade();
   },
+  getUser() {
+      wx.navigateTo({ url: "/pages/setting/index" });
+    // wx.getUserProfile({
+    //   desc: "用于完善会员资料",
+    //   success: (res) => {
+    //     const { userInfo = {} } = res || {};
+    //     console.log('userInfo',userInfo);
+    //     const user = {
+    //       ...this.data.user,
+    //       nickName: userInfo.nickName || this.data.user.nickName || "",
+    //       avatar: userInfo.avatarUrl || this.data.user.avatar || "",
+    //       avatarUrl: userInfo.avatarUrl || this.data.user.avatarUrl || "",
+    //     };
+
+
+    //     wx.setStorageSync("user", user);
+    //     this.setData({ user });
+    //   },
+    //   fail: () => {
+    //     wx.showToast({ title: "已取消授权", icon: "none" });
+    //   },
+    // });
+  },
   setNavBarHeight() {
     const sysInfo = wx.getSystemInfoSync();
     const menuBtn = wx.getMenuButtonBoundingClientRect();

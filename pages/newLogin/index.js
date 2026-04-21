@@ -14,14 +14,20 @@ Page({
   onLoginBeforeAgree() {
     wx.showModal({
       title: "提示",
-      content: "请先阅读并勾选平台协议和隐私政策",
-      showCancel: false,
-      confirmText: "我知道了",
+      content: "点击确定及同意平台协议和隐私政策",
+      // showCancel: false,
+      confirmText: "确定",
+       success: (res) => {
+        if (res.confirm) {
+          this.setData({ agreed: true });
+        }
+      }
     });
   },
 
   async oneClicklogin(e) {
-    const { encryptedData, iv, errMsg } = e.detail;
+    const { encryptedData, iv, errMsg, code } = e.detail;
+
     if (errMsg !== "getPhoneNumber:ok") {
       wx.showToast({ title: "授权失败，请重新操作", icon: "none" });
       return;
@@ -34,8 +40,8 @@ Page({
       if (loginRes.code) {
           console.log('loginRes',loginRes);
 
-        let res = await RequestApi.loginByWeiXinCode({ code: loginRes.code });
-        if (res.statusCode === 200 && res.data.code === 0) {
+        let res = await RequestApi.loginByWeiXinCode({ code });
+        if (res.code === 200 ) {
           wx.setStorageSync("token", res.token);
           wx.setStorageSync("isSetAvatar", res.isSetAvatar);
           wx.switchTab({ url: "/pages/myHome/index" });

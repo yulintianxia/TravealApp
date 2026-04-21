@@ -53,7 +53,7 @@ page {
   position: relative;
   z-index: 1;
   height: 100%;
-  padding: 40rpx 32rpx;
+  padding: 40rpx 26rpx;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -66,11 +66,14 @@ page {
 }
 
 .user-avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   /* border: 4rpx solid rgba(201, 182, 126, 0.5); */
   flex-shrink: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-avatar-bg {

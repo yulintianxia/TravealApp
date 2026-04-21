@@ -29,6 +29,13 @@
           "launchMode": "default"
         },
         {
+          "name": "pages/memberGrade/index",
+          "pathName": "pages/memberGrade/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/newLogin/index",
           "pathName": "pages/newLogin/index",
           "query": "",

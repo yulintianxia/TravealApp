@@ -163,8 +163,8 @@
     </view>
     <!-- 等级图标列表（可点击，触发神兽弹窗） -->
     <view class="level-icon-list">
-      <view wx:for="{{levelList}}" wx:key="index" class="level-icon-item" data-index="{{index}}">
-        <image class="level-icon-img {{currentLevelIndex >= index ? 'icon-active' : 'icon-inactive'}}" src="../../images/icons/{{index + 1}}-{{current == index || currentLevelIndex == index ? 'on' : 'off'}}.png" mode="aspectFit"></image>
+      <view wx:for="{{levelList}}" wx:key="index" class="level-icon-item" data-index="{{index}}" bindtap="onBeastIconTap">
+        <image class="level-icon-img icon-inactive" src="../../images/icons/{{index + 1}}-off.png" mode="aspectFit"></image>
         <text class="level-icon-points">{{item.pointsStart}}</text>
       </view>
     </view>
@@ -215,6 +215,31 @@
             <!-- <view class="beast-popup-sparkle">✦</view> -->
             <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
             <view class="beast-popup-time">获得时间：2025/12/25 20:50</view>
+          </view>
+        </view>
+        <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>
+      </view>
+    </view>
+    <view class="beast-popup-btn" bindtap="closeBeastPopup">知道了</view>
+  </view>
+</view>
+
+
+<!-- ========== 共享：神兽弹窗分数差距 ========== -->
+<view wx:if="{{showGapPopup}}" class="beast-popup">
+  <view class="beast-popup-mask {{showBeastPopupAnim ? 'show' : ''}}" bindtap="closeBeastPopup"></view>
+  <view class="beast-popup-content {{showBeastPopupAnim ? 'show' : ''}}">
+    <view class="beast-popup-hero">
+      <image class="beast-popup-hero-img" src="{{popupLevel.mountain ? BASE_URL + popupLevel.mountain : ''}}" mode="aspectFill"></image>
+      <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask"></view>
+    </view>
+    <view class="beast-popup-info">
+      <view class="beast-popup-card-bg-wrap">
+        <view class="beast-popup-card-bg" style="background-image: url(../../images/home/bgDate.png)">
+          <view class="beast-popup-card-text">
+            <!-- <view class="beast-popup-sparkle">✦</view> -->
+            <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
+            <view class="beast-popup-time">还差积分升级{{gap}}</view>
           </view>
         </view>
         <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>

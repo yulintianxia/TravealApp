@@ -37,6 +37,8 @@ Page({
     showPopup: false,
     showUpgradePopup: false,
     showUpgradePopupAnim: false,
+    showGapPopup:false,
+    gap:0,
   },
 
   turnModal: function (url) {
@@ -118,6 +120,41 @@ Page({
       hasNextLevel: hasNext,
       nextLevelBg: hasNext ? BASE_URL + levelList[idx + 1].background : "",
     });
+
+    // V0 用户点击等级图标时展示分数差距弹窗
+    if (!this.data.hasLevel) {
+      this.openGapPopupByIndex(idx);
+    }
+  },
+
+  openGapPopupByIndex(idx) {
+    const levelList = this.data.levelList;
+    const level = levelList[idx];
+    if (!level) return;
+    const hasNext = idx + 1 < levelList.length;
+    const percent = this.getProgressPercent(levelList, idx);
+    const gap = Math.max((level.pointsStart || 0) - (this.data.pointsTotal || 0), 0);
+    this.setData({
+      current: idx,
+      backGroundImg: BASE_URL + level.background,
+      pointsStart: level.pointsStart,
+      levelId: level.keyId,
+      progressPercent: percent,
+      hasNextLevel: hasNext,
+      nextLevelBg: hasNext ? BASE_URL + levelList[idx + 1].background : "",
+      showGapPopup: true,
+      showBeastPopupAnim: false,
+      showBeastPopup: false,
+      popupLevel: level,
+      popupIndex: idx,
+      popupTime: this.getPopupTime(level),
+      gap,
+    });
+    setTimeout(() => {
+      if (this.data.showGapPopup) {
+        this.setData({ showBeastPopupAnim: true });
+      }
+    }, 30);
   },
 
   openBeastPopupByIndex(idx) {
@@ -148,10 +185,10 @@ Page({
   },
 
   closeBeastPopup() {
-    if (!this.data.showBeastPopup) return;
+    if (!this.data.showBeastPopup && !this.data.showGapPopup) return;
     this.setData({ showBeastPopupAnim: false });
     setTimeout(() => {
-      this.setData({ showBeastPopup: false });
+      this.setData({ showBeastPopup: false, showGapPopup: false });
     }, 260);
   },
 

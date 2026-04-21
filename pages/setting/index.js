@@ -90,7 +90,8 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.clearStorage();
-          wx.navigateTo({ url: "/pages/newLogin/index" });
+          wx.switchTab({ url: "/pages/myHome/index" });
+          // wx.navigateTo({ url: "/pages/newLogin/index" });
         }
       },
     });
