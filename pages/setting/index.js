@@ -1,11 +1,17 @@
 import { BASE_URL } from "../../config/index";
+import { RequestApi } from "../../services/api";
 
 Page({
   data: {
     image: "../../images/home/default.png",
+    previewAvatar: "../../images/home/default.png",
     visible: false,
-    cur: {},
-    fileList: [],
+    nicknameVisible: false,
+    selectedAvatar: "",
+    nickName: "",
+    nickNameInput: "",
+    uploading: false,
+    nicknameSubmitting: false,
     statusBarHeight: 0,
     navBarHeight: 0,
     BASE_URL,
@@ -13,11 +19,13 @@ Page({
 
   onLoad(options) {
     // this.setNavBarHeight();
-    const user = wx.getStorageSync("user");
+    const user = wx.getStorageSync("user") || {};
     let image = user.avatar || "";
+    const nickName = user.nickName || "";
     if (image) {
-      this.setData({ image: BASE_URL + image });
+      this.setData({ image: BASE_URL + image, previewAvatar: BASE_URL + image });
     }
+    this.setData({ nickName, nickNameInput: nickName });
   },
 
   setNavBarHeight() {
@@ -29,22 +37,75 @@ Page({
   },
 
   onClose() {
-    this.setData({ visible: false, fileList: [] });
+    this.setData({ visible: false, selectedAvatar: "", previewAvatar: this.data.image });
   },
 
-  handleAdd(e) {
-    const { fileList } = this.data;
-    const { files } = e.detail;
-    this.setData({ fileList: [...fileList, ...files] });
-    this.onUpload(files);
+  handleChooseAvatar() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ["compressed"],
+      sourceType: ["album"],
+      success: (res) => {
+        const filePath =
+          res.tempFilePaths && res.tempFilePaths[0] ? res.tempFilePaths[0] : "";
+        if (filePath) {
+          this.setData({ selectedAvatar: filePath, previewAvatar: filePath });
+        }
+      },
+    });
   },
 
-  onUpload(file) {
+  handleChooseWechatAvatar(e) {
+    const avatarUrl = (e.detail && e.detail.avatarUrl) || "";
+    if (!avatarUrl) {
+      wx.showToast({ title: "未获取到微信头像", icon: "none" });
+      return;
+    }
+
+    if (!/^https?:\/\//i.test(avatarUrl)) {
+      this.setData({
+        selectedAvatar: avatarUrl,
+        previewAvatar: avatarUrl,
+      });
+      return;
+    }
+
+    wx.showLoading({ title: "加载中", mask: true });
+    wx.downloadFile({
+      url: avatarUrl,
+      success: (res) => {
+        if (res.statusCode === 200 && res.tempFilePath) {
+          this.setData({
+            selectedAvatar: res.tempFilePath,
+            previewAvatar: avatarUrl,
+          });
+          return;
+        }
+        wx.showToast({ title: "头像获取失败", icon: "none" });
+      },
+      fail: () => {
+        wx.showToast({ title: "头像获取失败，请检查下载域名", icon: "none" });
+      },
+      complete: () => {
+        wx.hideLoading();
+      },
+    });
+  },
+
+  onUpload(filePath) {
+    if (!filePath) {
+      wx.showToast({ title: "请先选择头像", icon: "none" });
+      return;
+    }
+    if (this.data.uploading) {
+      return;
+    }
+    this.setData({ uploading: true });
     wx.uploadFile({
       url: BASE_URL + "/system/user/profile/avatar",
-      filePath: file[0].url,
+      filePath,
       name: "file",
-      formData: { file: file[0] },
+      formData: {},
       header: {
         "Content-type": "multipart/form-data",
         authorization: wx.getStorageSync("token")
@@ -52,11 +113,61 @@ Page({
           : "",
       },
       success: (res) => {
-        this.setData({ fileList: [...file] });
-        let resData = JSON.parse(res.data);
-        this.setData({ image: BASE_URL + resData.imgUrl });
-        this.loadPrePage();
+        let resData = {};
+        try {
+          resData = JSON.parse(res.data || "{}");
+        } catch (error) {
+          resData = {};
+        }
+
+        const code = `${resData.code || ""}`;
+        if (code && code !== "200" && code !== "0") {
+          wx.showToast({ title: resData.msg || "上传失败，请重试", icon: "none" });
+          return;
+        }
+
+        const imgUrl =
+          resData.imgUrl ||
+          (resData.data && resData.data.imgUrl) ||
+          (resData.data && resData.data.url) ||
+          resData.url ||
+          (typeof resData.data === "string" ? resData.data : "");
+
+        if (imgUrl) {
+          const latestAvatar = /^https?:\/\//i.test(imgUrl)
+            ? imgUrl
+            : BASE_URL + imgUrl;
+          this.setData({ image: latestAvatar, previewAvatar: latestAvatar, visible: false, selectedAvatar: "" });
+          wx.showToast({ title: "头像已更新", icon: "success" });
+          this.loadPrePage();
+          return;
+        }
+
+        wx.showToast({ title: resData.msg || "上传失败，请重试", icon: "none" });
       },
+      fail: (err) => {
+        wx.showToast({ title: err.errMsg || "上传失败，请重试", icon: "none" });
+      },
+      complete: () => {
+        this.setData({ uploading: false });
+      },
+    });
+  },
+
+  handleConfirmUpload() {
+    this.onUpload(this.data.selectedAvatar);
+  },
+
+  handleMaskTap() {
+    this.onClose();
+  },
+
+  stopPropagation() {},
+
+  handleImageError() {
+    this.setData({
+      image: "../../images/home/default.png",
+      previewAvatar: "../../images/home/default.png",
     });
   },
 
@@ -68,19 +179,63 @@ Page({
     }
   },
 
-  handleRemove(e) {
-    const { index } = e.detail;
-    const { fileList } = this.data;
-    fileList.splice(index, 1);
-    this.setData({ fileList });
-  },
-
   handlePopup() {
-    this.setData({ visible: true });
+    this.setData({
+      visible: true,
+      nicknameVisible: false,
+      selectedAvatar: "",
+      previewAvatar: this.data.image,
+    });
   },
 
-  onVisibleChange(e) {
-    this.setData({ visible: e.detail.visible });
+  handleNicknamePopup() {
+    this.setData({
+      nicknameVisible: true,
+      visible: false,
+      nickNameInput: this.data.nickName,
+    });
+  },
+
+  onNicknameClose() {
+    this.setData({
+      nicknameVisible: false,
+      nickNameInput: this.data.nickName,
+    });
+  },
+
+  handleNicknameInput(e) {
+    this.setData({ nickNameInput: e.detail.value });
+  },
+
+  async handleNicknameConfirm() {
+    const value = (this.data.nickNameInput || "").trim();
+    if (!value) {
+      wx.showToast({ title: "请输入昵称", icon: "none" });
+      return;
+    }
+    if (this.data.nicknameSubmitting) {
+      return;
+    }
+    this.setData({ nicknameSubmitting: true });
+    try {
+      await RequestApi.profile({ nickName: value });
+      const user = wx.getStorageSync("user") || {};
+      wx.setStorageSync("user", {
+        ...user,
+        nickName: value,
+      });
+      this.setData({
+        nickName: value,
+        nickNameInput: value,
+        nicknameVisible: false,
+      });
+      wx.showToast({ title: "昵称已更新", icon: "success" });
+      this.loadPrePage();
+    } catch (error) {
+      wx.showToast({ title: "昵称更新失败", icon: "none" });
+    } finally {
+      this.setData({ nicknameSubmitting: false });
+    }
   },
 
   logoutHandler() {

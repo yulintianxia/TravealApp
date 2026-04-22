@@ -24,7 +24,7 @@ class ApiManager extends httpClient {
 
   // 修改其他信息
   profile(data, config) {
-    return this.post("/system/user/profile", data, config);
+    return this.put("/system/user/profile", data, config);
   }
   // 注册
   register(data, config) {

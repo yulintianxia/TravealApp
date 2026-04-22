@@ -239,7 +239,7 @@
           <view class="beast-popup-card-text">
             <!-- <view class="beast-popup-sparkle">✦</view> -->
             <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
-            <view class="beast-popup-time">还差积分升级{{gap}}</view>
+            <view class="beast-popup-time beast-popup-time-color">还差积分升级{{gap}}</view>
           </view>
         </view>
         <view wx:if="{{popupIndex > myLevelIndex}}" class="beast-popup-lock-mask small"></view>

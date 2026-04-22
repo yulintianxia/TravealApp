@@ -1,7 +1,5 @@
 {
-  "usingComponents": {
-    "t-upload": "tdesign-miniprogram/upload/upload"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "设置",
   "navigationBarBackgroundColor": "#0d0e1f",
   "navigationBarTextStyle": "white"

@@ -14,7 +14,7 @@
       <view class="card-content">
         <view class="user-info-row">
          <view class='user-avatar-bg' bindtap="getUser">
-          <image class="user-avatar" src="{{user.avatar ?  user.avatar : ''}}" />
+          <image class="user-avatar" src="{{user.avatar ?  BASE_URL + user.avatar : ''}}" />
             <!-- <image class="user-avatar" src="{{user.avatar ? '../../images/new': ''}}" /> -->
             <!-- <image class="user-avatar" src="{{configbackgroundImg}}" /> -->
          </view> 

@@ -102,7 +102,7 @@
 
       <!-- 上传图片 -->
       <view class="form-block">
-        <view class="form-label">上传图片<text class="req">*</text></view>
+        <view class="form-label">积分凭证<text class="req">*</text></view>
         <view class="upload-area">
           <t-upload
             disabled="{{isRead}}"

@@ -74,6 +74,8 @@ page {
   display:flex;
   justify-content: center;
   align-items: center;
+  margin-left: 10rpx;
+  margin-top: 5rpx;
 }
 
 .user-avatar-bg {

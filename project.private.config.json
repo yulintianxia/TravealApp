@@ -22,11 +22,25 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/memberGrade/index",
-          "pathName": "pages/memberGrade/index",
+          "name": "pages/setting/index",
+          "pathName": "pages/setting/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/setting/index",
+          "pathName": "pages/setting/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/memberGrade/index",
+          "pathName": "pages/memberGrade/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/memberGrade/index",

@@ -56,7 +56,12 @@ Page({
     this.getGrade();
   },
   getUser() {
-      wx.navigateTo({ url: "/pages/setting/index" });
+    const token = wx.getStorageSync("token");
+    if (!token) {
+      wx.navigateTo({ url: "/pages/newLogin/index" });
+      return;
+    }
+    wx.navigateTo({ url: "/pages/setting/index" });
     // wx.getUserProfile({
     //   desc: "用于完善会员资料",
     //   success: (res) => {
