@@ -9,8 +9,8 @@ Page({
     rightsBadgeIcon: "../../images/icons/icon10.png",
     rightsGiftIcon: "../../images/icons/icon4.png",
     rankIcon: "../../images/icons/icon8.png",
-    backGroundImgOrigin:"https://zhenglian.vip/dotm/zl_images/putong.gif",
-    rearkOrgin:'“王者有德，能辟除人间一切邪气。”',
+    backGroundImgOrigin: "https://zhenglian.vip/dotm/zl_images/putong.gif",
+    rearkOrgin: '“王者有德，能辟除人间一切邪气。”',
     pointsTotal: 0,
     pointsBalance: 0,
     pointsStart: 0,
@@ -37,8 +37,8 @@ Page({
     showPopup: false,
     showUpgradePopup: false,
     showUpgradePopupAnim: false,
-    showGapPopup:false,
-    gap:0,
+    showGapPopup: false,
+    gap: 0,
   },
 
   turnModal: function (url) {
@@ -66,6 +66,19 @@ Page({
       wx.navigateTo({ url: "/pages/pointUse/index" });
     } else {
       this.turnModal("/pages/newLogin/index");
+    }
+  },
+
+
+
+  getLevelDialog: async function () {
+    let res = await RequestApi.isLevelMsg();
+    console.log('res',res);
+    if (res && res.code == "200") {
+      console.log('res', res);
+      if (res && res.count == 1) {
+        this.showUpgradePopup();
+      }
     }
   },
 
@@ -315,6 +328,7 @@ Page({
 
   onLoad(options) {
     this.getGrade();
+    this.getLevelDialog();
   },
 
   async getGrade() {
@@ -353,11 +367,11 @@ Page({
     }
   },
 
-  onReady() {},
-  onShow() {},
-  onHide() {},
-  onUnload() {},
-  onPullDownRefresh() {},
-  onReachBottom() {},
-  onShareAppMessage() {},
+  onReady() { },
+  onShow() { },
+  onHide() { },
+  onUnload() { },
+  onPullDownRefresh() { },
+  onReachBottom() { },
+  onShareAppMessage() { },
 });

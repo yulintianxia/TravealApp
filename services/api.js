@@ -104,7 +104,7 @@ class ApiManager extends httpClient {
     return this.post("/system/apply/addApply", data, config);
   }
   // 撤销积分申请
-   cancelApply(data, config) {
+  cancelApply(data, config) {
     return this.post(`/system/apply/cancelApply/${data}`);
   }
   // 积分申请列表
@@ -113,14 +113,24 @@ class ApiManager extends httpClient {
   }
 
   // 积分申请修改
- applyUpdate(data, config) {
+  applyUpdate(data, config) {
     return this.put("/system/apply/update", data, config);
   }
 
 
-    //通过code获取手机号并登录
- loginByWeiXinCode(data, config) {
+  //通过code获取手机号并登录
+  loginByWeiXinCode(data, config) {
     return this.get("/loginByWeiXinCode", data, config);
+  }
+
+  //获取升级消息
+  isLevelMsg(data, config) {
+    return this.get("/system/level/isLevelMsg", data, config);
+  }
+
+  //签到
+  doCheckin(data, config) {
+    return this.get("/system/level/doCheckin", data, config);
   }
 
 

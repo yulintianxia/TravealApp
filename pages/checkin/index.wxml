@@ -1,10 +1,10 @@
 <view class="page">
   <!-- 自定义导航栏 -->
-  <view class="nav-bar" style="padding-top:{{statusBarHeight}}px;height:{{navBarHeight}}px;">
+  <!-- <view class="nav-bar" style="padding-top:{{statusBarHeight}}px;height:{{navBarHeight}}px;">
     <text class="nav-title">签到中心</text>
-  </view>
+  </view> -->
 
-  <scroll-view class="main-scroll" scroll-y style="padding-top:{{statusBarHeight + navBarHeight}}px;">
+  <scroll-view class="main-scroll" scroll-y>
 
     <!-- 用户信息 -->
     <view class="user-row">

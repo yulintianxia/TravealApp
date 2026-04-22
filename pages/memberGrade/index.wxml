@@ -110,12 +110,12 @@
         </view>
         <text class="rights-name">商品</text>
       </view>
-       <view class="rights-item" bindtap="showUpgradePopup">
+       <!-- <view class="rights-item" bindtap="showUpgradePopup">
         <view class="rights-icon-wrap">
           <image class="rights-icon" src="{{rightsGiftIcon}}" mode="aspectFit"></image>
         </view>
         <text class="rights-name">升级</text>
-      </view>
+      </view> -->
     </view>
   </view>
 
