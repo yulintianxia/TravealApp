@@ -134,6 +134,12 @@ class ApiManager extends httpClient {
   }
 
 
+    //签到
+  checkinList(data, config) {
+    return this.get("/system/checkin/checkinList", data, config);
+  }
+
+
 }
 
 const RequestApi = new ApiManager();
