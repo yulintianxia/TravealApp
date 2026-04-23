@@ -54,7 +54,7 @@
           <text class="record-time">{{item.createTime || item.checkinTime || '--'}}</text>
         </view>
         <view class="record-score">
-          <text class="record-plus">+{{item.points || 20}}</text>
+          <text class="record-plus">+{{item.points || 0}}</text>
           <text class="record-unit">积分</text>
         </view>
       </view>

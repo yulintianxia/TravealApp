@@ -130,7 +130,7 @@ class ApiManager extends httpClient {
 
   //签到
   doCheckin(data, config) {
-    return this.get("/system/level/doCheckin", data, config);
+    return this.get("/system/checkin/doCheckin", data, config);
   }
 
 

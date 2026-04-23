@@ -18,7 +18,7 @@
     </view>
 
     <!-- 手机号登录 -->
-    <view class="phone-login-link" bindtap="goPhoneLogin">使用手机账号登录/注册</view>
+    <!-- <view class="phone-login-link" bindtap="goPhoneLogin">使用手机账号登录/注册</view> -->
   </view>
 
   <!-- 协议区域 -->
