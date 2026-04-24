@@ -276,3 +276,45 @@ page {
   color: rgba(255, 255, 255, 0.5);
   box-shadow: none;
 }
+
+/* ========== 签到成功弹层 ========== */
+.checkin-success-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 20, 0.72);
+  backdrop-filter: blur(6rpx);
+}
+
+.checkin-success-modal {
+  width: 690rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 28rpx;
+}
+
+.checkin-success-img {
+  width: 660rpx;
+  height: 660rpx;
+}
+
+.checkin-success-btn {
+  width: 344rpx;
+  height: 92rpx;
+  margin-top: -30rpx;
+  border-radius: 22rpx;
+  background: #b59c6a;
+  color: #ffffff;
+  text-align: center;
+  line-height: 92rpx;
+  font-size: 48rpx;
+  font-weight: 500;
+}
+
+.checkin-success-btn:active {
+  opacity: 0.88;
+}

@@ -346,11 +346,11 @@ page {
   flex-shrink: 0;
 }
 
-/* .list-idx-hl {
+.list-idx-hl {
   font-size: 38rpx;
   color: #d9cb98;
   font-weight: 700;
-} */
+}
 
 /* 列表头像 + 装饰环 */
 .list-avatar-ring {

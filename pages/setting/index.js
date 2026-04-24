@@ -40,6 +40,22 @@ Page({
     this.setData({ visible: false, selectedAvatar: "", previewAvatar: this.data.image });
   },
 
+  ensureLogin() {
+    const token = wx.getStorageSync("token") || "";
+    if (token) {
+      return true;
+    }
+    wx.showToast({
+      title: "请先登录后再操作",
+      icon: "none",
+      duration: 1000,
+    });
+    setTimeout(() => {
+      wx.navigateTo({ url: "/pages/newLogin/index" });
+    }, 900);
+    return false;
+  },
+
   handleChooseAvatar() {
     wx.chooseImage({
       count: 1,
@@ -180,6 +196,9 @@ Page({
   },
 
   handlePopup() {
+    if (!this.ensureLogin()) {
+      return;
+    }
     this.setData({
       visible: true,
       nicknameVisible: false,
@@ -189,11 +208,21 @@ Page({
   },
 
   handleNicknamePopup() {
+    if (!this.ensureLogin()) {
+      return;
+    }
     this.setData({
       nicknameVisible: true,
       visible: false,
       nickNameInput: this.data.nickName,
     });
+  },
+
+  handleAddressManage() {
+    if (!this.ensureLogin()) {
+      return;
+    }
+    wx.navigateTo({ url: "/pages/addressList/index" });
   },
 
   onNicknameClose() {
@@ -244,7 +273,7 @@ Page({
       content: "您确定要退出登录!",
       success(res) {
         if (res.confirm) {
-          wx.clearStorage();
+          wx.clearStorageSync();
           wx.switchTab({ url: "/pages/myHome/index" });
           // wx.navigateTo({ url: "/pages/newLogin/index" });
         }

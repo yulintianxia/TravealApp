@@ -60,17 +60,17 @@
     <!-- 第4名起的列表 -->
     <view class="list-wrap">
       <view
-        class="list-row {{index + 4 == 6 ? 'list-row-hl' : ''}}"
+        class="list-row {{item.isCurrentUser ? 'list-row-hl' : ''}}"
         wx:for="{{dataList}}"
         wx:key="index"
       >
-        <text class="list-idx {{index + 4 == 6 ? 'list-idx-hl' : ''}}">{{index + 4}}</text>
+        <text class="list-idx {{item.isCurrentUser ? 'list-idx-hl' : ''}}">{{index + 4}}</text>
         <view class="list-avatar-ring">
           <image class="list-avatar" src="{{item.avatar ? BASE_URL + item.avatar : defaultPerson}}" mode="aspectFill"/>
         </view>
-        <text class="list-name">{{item.nickName || '--'}}</text>
+        <text class="list-name {{item.isCurrentUser ? 'list-name-hl' : ''}}">{{item.nickName || '--'}}</text>
         <view class="list-score-box">
-          <text class="list-score">{{item.pointsBalance || 0}}</text>
+          <text class="list-score {{item.isCurrentUser ? 'list-score-hl' : ''}}">{{item.pointsBalance || 0}}</text>
           <text class="list-unit">积分</text>
         </view>
       </view>

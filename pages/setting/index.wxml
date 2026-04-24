@@ -32,10 +32,10 @@
     </navigator> -->
 
     <!-- 地址管理 -->
-    <navigator class="cell" url="/pages/addressList/index" hover-class="cell-hover">
+    <view class="cell" hover-class="cell-hover" bindtap="handleAddressManage">
       <text class="cell-label">地址管理</text>
       <text class="cell-arrow">›</text>
-    </navigator>
+    </view>
 
   </view>
 

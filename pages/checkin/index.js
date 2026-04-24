@@ -20,6 +20,7 @@ Page({
     calendarDays: [],
     today: 0,
     todayChecked: false,
+    showCheckinSuccess: false,
   },
 
   onLoad() {
@@ -148,7 +149,7 @@ Page({
     try {
       const res = await RequestApi.doCheckin();
       if (res && res.code == "200") {
-        wx.showToast({ title: "签到成功", icon: "success" });
+        this.setData({ showCheckinSuccess: true });
         this.loadCheckinData();
         this.getGradeInfo();
       } else {
@@ -162,5 +163,9 @@ Page({
 
   goBack() {
     wx.navigateBack();
+  },
+
+  closeCheckinSuccess() {
+    this.setData({ showCheckinSuccess: false });
   },
 });

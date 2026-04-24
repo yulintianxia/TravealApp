@@ -46,15 +46,39 @@ Page({
   },
 
   onShow() {
-    const token = wx.getStorageSync("token");
+    const token = wx.getStorageSync("token") || "";
+    this.currentToken = token;
+    console.log("token", token);
     if (token) {
-      this.getUserInfo();
-      this.getGrade();
+      this.getUserInfo(token);
+      this.getGrade(token);
+    } else {
+      this.resetUserState();
     }
   },
+
+  resetUserState() {
+    this.setData({
+      pointsTotal: 0,
+      pointsBalance: 0,
+      levelInfo: {},
+      levelId: 0,
+      medalCount: 0,
+      user: {},
+      showTip: false,
+      showQrCode: false,
+    });
+  },
+
   getNews() {
-    this.getUserInfo();
-    this.getGrade();
+    const token = wx.getStorageSync("token") || "";
+    this.currentToken = token;
+    if (token) {
+      this.getUserInfo(token);
+      this.getGrade(token);
+    } else {
+      this.resetUserState();
+    }
   },
   getUser() {
     const token = wx.getStorageSync("token");
@@ -84,6 +108,13 @@ Page({
     //   },
     // });
   },
+
+  goCheckin() {
+    wx.navigateTo({
+      url: "/pages/checkin/index",
+    });                         
+  },
+
   setNavBarHeight() {
     const sysInfo = wx.getSystemInfoSync();
     const menuBtn = wx.getMenuButtonBoundingClientRect();
@@ -92,24 +123,56 @@ Page({
     this.setData({ statusBarHeight, navBarHeight });
   },
 
-  async getGrade() {
-    let res = await RequestApi.getGrade();
-    if (res && res.code == "200") {
-      this.setData({
-        pointsTotal: res.data.pointsTotal,
-        pointsBalance: res.data.pointsBalance,
-        levelInfo: res.data.levelInfo,
-        levelId: res.data.levelId ? res.data.levelId : 0,
-        medalCount: res.data.medalCount,
-      });
+  async getGrade(tokenSnapshot) {
+    const reqToken = tokenSnapshot || wx.getStorageSync("token") || "";
+    if (!reqToken) {
+      this.resetUserState();
+      return;
+    }
+    try {
+      let res = await RequestApi.getGrade();
+      const latestToken = wx.getStorageSync("token") || "";
+      if (!latestToken || latestToken !== reqToken) {
+        return;
+      }
+      if (res && res.code == "200") {
+        this.setData({
+          pointsTotal: res.data.pointsTotal,
+          pointsBalance: res.data.pointsBalance,
+          levelInfo: res.data.levelInfo,
+          levelId: res.data.levelId ? res.data.levelId : 0,
+          medalCount: res.data.medalCount,
+        });
+      }
+    } catch (error) {
+      const latestToken = wx.getStorageSync("token") || "";
+      if (!latestToken) {
+        this.resetUserState();
+      }
     }
   },
 
-  async getUserInfo() {
-    let res = await RequestApi.getInfo();
-    if (res && res.user) {
-      wx.setStorageSync("user", res.user);
-      this.setData({ user: res.user });
+  async getUserInfo(tokenSnapshot) {
+    const reqToken = tokenSnapshot || wx.getStorageSync("token") || "";
+    if (!reqToken) {
+      this.resetUserState();
+      return;
+    }
+    try {
+      let res = await RequestApi.getInfo();
+      const latestToken = wx.getStorageSync("token") || "";
+      if (!latestToken || latestToken !== reqToken) {
+        return;
+      }
+      if (res && res.user) {
+        wx.setStorageSync("user", res.user);
+        this.setData({ user: res.user });
+      }
+    } catch (error) {
+      const latestToken = wx.getStorageSync("token") || "";
+      if (!latestToken) {
+        this.resetUserState();
+      }
     }
   },
 
