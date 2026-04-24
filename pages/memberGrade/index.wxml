@@ -79,7 +79,7 @@
     </view>
     <view class="stats-item" bindtap="turnPoint">
       <view class="stats-value">{{pointsBalance}}</view>
-      <view class="stats-label">积分</view>
+      <view class="stats-label">当前积分</view>
     </view>
     <view class="stats-item" bindtap="turnTop">
       <view class="stats-value">{{top}}</view>
