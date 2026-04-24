@@ -36,6 +36,7 @@ page {
 .main-scroll {
   height: 100vh;
   box-sizing: border-box;
+  padding-bottom: 240rpx;
 }
 
 /* ========== 用户信息行 ========== */

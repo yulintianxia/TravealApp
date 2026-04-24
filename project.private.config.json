@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/pointrank/index",
-          "pathName": "pages/pointrank/index",
+          "name": "pages/checkin/index",
+          "pathName": "pages/checkin/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/address/index",

@@ -11,8 +11,8 @@ Page({
     levelInfo: {},
     pointsBalance: 0,
     continuousDays: 0,
-    checkinDays: [],    // 当月已签到的日期数组 [16,17,18,19,20]
-    checkinList: [],     // 签到记录列表
+    checkinDays: [], // 当月已签到的日期数组 [16,17,18,19,20]
+    checkinList: [], // 签到记录列表
     // 日历数据
     year: 2026,
     month: 4,
@@ -56,7 +56,9 @@ Page({
         wx.setStorageSync("user", res.user);
         this.setData({ user: res.user });
       }
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   },
 
   async getGradeInfo() {
@@ -64,26 +66,115 @@ Page({
       const res = await RequestApi.getGrade();
       if (res && res.code == "200") {
         this.setData({
-          pointsBalance: res.data.pointsBalance || 0,
+          // pointsBalance: res.data.pointsBalance || 0,
           levelInfo: res.data.levelInfo || {},
         });
       }
-    } catch (e) { console.error(e); }
+    } catch (e) {
+      console.error(e);
+    }
   },
 
   async loadCheckinData() {
     try {
       const { year, month } = this.data;
-      let checkinDays = [];
+      let checkinList = [];
       let pointsBalance = 0;
-      let continuousDays =0;
+      let continuousDays = 0;
+      let checkinDays = [];
       // 获取当月签到日期
       const yearMonth = `${year}-${month.toString().padStart(2, "0")}-01`;
       const dataRes = await RequestApi.checkinList({ yearMonth });
-      if(dataRes && dataRes.code == "200") { 
-         checkinDays =  dataRes.checkinList || [];
-         pointsBalance = dataRes.totalPoints; 
-         continuousDays =dataRes.continuousDays || 0;
+      if (dataRes && dataRes.code == "200") {
+         checkinList =  dataRes.checkinList || [];
+        // checkinList = [
+        //   {
+        //     continuous: 1,
+        //     createBy: null,
+        //     createTime: null,
+        //     keyId: null,
+        //     points: 1,
+        //     remark: null,
+        //     signInDate: "2026-04-23 00:00:00",
+        //     status: null,
+        //     updateBy: null,
+        //     updateTime: null,
+        //     userId: null,
+        //   },
+
+        //   {
+        //     continuous: 1,
+        //     createBy: null,
+        //     createTime: null,
+        //     keyId: null,
+        //     points: 1,
+        //     remark: null,
+        //     signInDate: "2026-04-22 00:00:00",
+        //     status: null,
+        //     updateBy: null,
+        //     updateTime: null,
+        //     userId: null,
+        //   },
+        //    {
+        //     continuous: 1,
+        //     createBy: null,
+        //     createTime: null,
+        //     keyId: null,
+        //     points: 1,
+        //     remark: null,
+        //     signInDate: "2026-04-21 00:00:00",
+        //     status: null,
+        //     updateBy: null,
+        //     updateTime: null,
+        //     userId: null,
+        //   },
+        //    {
+        //     continuous: 1,
+        //     createBy: null,
+        //     createTime: null,
+        //     keyId: null,
+        //     points: 1,
+        //     remark: null,
+        //     signInDate: "2026-04-20 00:00:00",
+        //     status: null,
+        //     updateBy: null,
+        //     updateTime: null,
+        //     userId: null,
+        //   },
+        //    {
+        //     continuous: 1,
+        //     createBy: null,
+        //     createTime: null,
+        //     keyId: null,
+        //     points: 1,
+        //     remark: null,
+        //     signInDate: "2026-04-19 00:00:00",
+        //     status: null,
+        //     updateBy: null,
+        //     updateTime: null,
+        //     userId: null,
+        //   },
+        //      {
+        //     continuous: 1,
+        //     createBy: null,
+        //     createTime: null,
+        //     keyId: null,
+        //     points: 1,
+        //     remark: null,
+        //     signInDate: "2026-04-18 00:00:00",
+        //     status: null,
+        //     updateBy: null,
+        //     updateTime: null,
+        //     userId: null,
+        //   },
+        // ];
+        
+        checkinList.forEach((item) => {
+          checkinDays.push(new Date(item.signInDate).getDate());
+        });
+
+        pointsBalance = dataRes.totalPoints;
+        continuousDays = dataRes.continuousDays || 0;
       }
 
       // // 获取签到记录
@@ -96,7 +187,7 @@ Page({
 
       this.setData({
         checkinDays,
-        // checkinList,
+        checkinList,
         continuousDays,
         pointsBalance,
         todayChecked,
@@ -153,7 +244,7 @@ Page({
         this.loadCheckinData();
         this.getGradeInfo();
       } else {
-        console.error(res,'resres');
+        console.error(res, "resres");
         wx.showToast({ title: (res && res.msg) || "签到失败", icon: "none" });
       }
     } catch (e) {

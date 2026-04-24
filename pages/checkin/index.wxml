@@ -50,8 +50,8 @@
       <view class="record-item" wx:for="{{checkinList}}" wx:key="index">
         <image class="record-coin" src="../../images/home/points.png" mode="aspectFit"/>
         <view class="record-info">
-          <text class="record-title">连续签到{{item.continuousDays || (checkinList.length - index)}}天</text>
-          <text class="record-time">{{item.createTime || item.checkinTime || '--'}}</text>
+          <text class="record-title">签到{{item.continuousDays || (checkinList.length - index)}}天</text>
+          <text class="record-time">{{item.signInDate || '--'}}</text>
         </view>
         <view class="record-score">
           <text class="record-plus">+{{item.points || 0}}</text>
@@ -60,7 +60,6 @@
       </view>
     </view>
 
-    <view style="height:160rpx;"></view>
   </scroll-view>
 
   <!-- 底部签到按钮 -->
