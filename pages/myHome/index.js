@@ -193,11 +193,7 @@ Page({
   },
 
   turnMyBadge() {
-    if (this.data.medalCount) {
-      this.turnWebView("/myBadge");
-    } else {
-      wx.showToast({ title: "暂无勋章", duration: 1000 });
-    }
+    this.setData({ showTip: true });
   },
 
   turnWebView(url) {

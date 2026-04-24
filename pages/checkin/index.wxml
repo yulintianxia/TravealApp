@@ -69,10 +69,14 @@
     </view>
   </view>
 
-  <view wx:if="{{showCheckinSuccess}}" class="checkin-success-mask">
+
+
+  <view class="checkin-success-mask" wx:if="{{showCheckinSuccess}}" >
     <view class="checkin-success-modal">
-      <image class="checkin-success-img" src="../../images/home/sign.png" mode="aspectFit"/>
+      <image class="checkin-success-img" src="https://zhenglian.vip/dotm/zl_images/sign_success.png" mode="aspectFit"/>
       <view class="checkin-success-btn" bindtap="closeCheckinSuccess">知道了</view>
     </view>
   </view>
+
+
 </view>

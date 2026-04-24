@@ -210,7 +210,7 @@
     </view>
     <view class="beast-popup-info">
       <view class="beast-popup-card-bg-wrap">
-        <view class="beast-popup-card-bg" style="background-image: url(../../images/home/bgDate.png)">
+        <view class="beast-popup-card-bg" style="background-image: url(https://zhenglian.vip/dotm/zl_images/vip_bg_image.png)">
           <view class="beast-popup-card-text">
             <!-- <view class="beast-popup-sparkle">✦</view> -->
             <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
@@ -235,7 +235,7 @@
     </view>
     <view class="beast-popup-info">
       <view class="beast-popup-card-bg-wrap">
-        <view class="beast-popup-card-bg" style="background-image: url(../../images/home/bgDate.png)">
+        <view class="beast-popup-card-bg" style="background-image: url(https://zhenglian.vip/dotm/zl_images/vip_bg_image.png)">
           <view class="beast-popup-card-text">
             <!-- <view class="beast-popup-sparkle">✦</view> -->
             <view class="beast-popup-title">{{popupLevel.name}} V{{popupIndex + 1}}</view>
@@ -258,7 +258,7 @@
     </view>
     <view class="beast-popup-info">
       <view class="beast-popup-card-bg-wrap">
-        <view class="beast-popup-card-bg" style="background-image: url(../../images/home/bgDate.png)">
+        <view class="beast-popup-card-bg" style="background-image: url(https://zhenglian.vip/dotm/zl_images/vip_bg_image.png)">
           <view class="beast-popup-card-text">
             <view class="upgrade-popup-congrats">恭喜升级！</view>
             <view class="upgrade-popup-desc">您已经成功升级为</view>

@@ -32,7 +32,7 @@ Page({
       today: now.getDate(),
     });
     this.buildCalendar();
-    // this.getUserInfo();
+    this.getUserInfo();
     this.getGradeInfo();
     this.loadCheckinData();
   },
@@ -168,7 +168,7 @@ Page({
         //     userId: null,
         //   },
         // ];
-        
+
         checkinList.forEach((item) => {
           checkinDays.push(new Date(item.signInDate).getDate());
         });
