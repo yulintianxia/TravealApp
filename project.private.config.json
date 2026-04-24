@@ -22,11 +22,32 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/checkin/index",
-          "pathName": "pages/checkin/index",
+          "name": "pages/memberGrade/index",
+          "pathName": "pages/memberGrade/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/checkin/index",
+          "pathName": "pages/checkin/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/pointrank/index",
+          "pathName": "pages/pointrank/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/checkin/index",
+          "pathName": "pages/checkin/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/checkin/index",

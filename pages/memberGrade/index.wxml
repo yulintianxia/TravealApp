@@ -271,6 +271,14 @@
   </view>
 </view>
 
+<!-- 功能未上线弹窗 -->
+<view class="tip-mask" wx:if="{{showTip}}" bindtap="closeTip">
+  <view class="tip-dialog" catchtap="">
+    <view class="tip-text">功能即将上线，敬请期待！</view>
+    <view class="tip-btn" bindtap="closeTip">知道了</view>
+  </view>
+</view>
+
 <!-- ========== 共享：权益体系弹窗 ========== -->
 <view class="popup-mask {{showPopup ? 'popup-mask-show' : ''}}" bindtap="hideRightsPopup"></view>
 <view class="popup-dialog {{showPopup ? 'popup-dialog-show' : ''}}">

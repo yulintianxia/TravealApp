@@ -185,10 +185,12 @@ page {
 /* 头像装饰环 */
 .frame {
   border-radius: 50%;
-  padding: 6rpx;
   box-sizing: border-box;
   position: relative;
-  /* margin-top:-60rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 }
 
 .col-1 .frame {
@@ -205,25 +207,36 @@ page {
 }
 
 .frame-gold {
-  background-color: conic-gradient(#f7e1a8, #ce9f56, #f7e1a8, #b8882e, #f7e1a8);
-  box-shadow: 0 0 20rpx rgba(239, 208, 139, 0.4);
+  background: transparent;
+  box-shadow: none;
 }
 
 .frame-copper {
-  background: conic-gradient(#f1b28a, #c17350, #f1b28a, #a65c38, #f1b28a);
-  box-shadow: 0 0 16rpx rgba(237, 155, 121, 0.35);
+  background: transparent;
+  box-shadow: none;
 }
 
 .frame-jade {
-  background: conic-gradient(#b8dfd1, #6d9e8e, #b8dfd1, #5a8878, #b8dfd1);
-  box-shadow: 0 0 16rpx rgba(183, 214, 204, 0.35);
+  background: transparent;
+  box-shadow: none;
+}
+
+.frame-crown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .frame-avatar {
-  width: 100%;
-  height: 100%;
+  width: 72%;
+  height: 72%;
   border-radius: 50%;
   display: block;
+  z-index: 1;
 }
 
 /* 名次数字 */

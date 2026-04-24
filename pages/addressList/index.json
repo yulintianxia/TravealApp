@@ -4,7 +4,6 @@
   },
   "navigationBarTitleText": "地址管理",
   "backgroundColor": "#0d0d1a",
-  "navigationBarTextStyle": "white",
   "navigationBarBackgroundColor": "#1a1a2e",
-  "navigationStyle": "custom"
+  "navigationBarTextStyle": "white"
 }

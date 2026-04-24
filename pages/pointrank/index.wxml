@@ -26,6 +26,7 @@
       <!-- 第2名 -->
       <view class="podium-col col-2">
         <view class="frame frame-copper">
+          <image class="frame-crown" src="{{topSecondCrown}}" mode="aspectFit"/>
           <image class="frame-avatar" src="{{topSecond.avatar ? BASE_URL + topSecond.avatar : defaultPerson}}" mode="aspectFill"/>
         </view>
         <text class="podium-rank podium-rank-2">2</text>
@@ -36,6 +37,7 @@
       <!-- 第1名 -->
       <view class="podium-col col-1">
         <view class="frame frame-gold">
+          <image class="frame-crown" src="{{topFirstCrown}}" mode="aspectFit"/>
           <image class="frame-avatar" src="{{topFirst.avatar ? BASE_URL + topFirst.avatar : defaultPerson}}" mode="aspectFill"/>
         </view>
         <text class="podium-rank podium-rank-1">1</text>
@@ -46,6 +48,7 @@
       <!-- 第3名 -->
       <view class="podium-col col-3">
         <view class="frame frame-jade">
+          <image class="frame-crown" src="{{topThirdCrown}}" mode="aspectFit"/>
           <image class="frame-avatar" src="{{topThird.avatar ? BASE_URL + topThird.avatar : defaultPerson}}" mode="aspectFill"/>
         </view>
         <text class="podium-rank podium-rank-3">3</text>

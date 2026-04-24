@@ -10,7 +10,7 @@ Page({
     user: {},
     levelInfo: {},
     pointsBalance: 0,
-    consecutiveDays: 0,
+    continuousDays: 0,
     checkinDays: [],    // 当月已签到的日期数组 [16,17,18,19,20]
     checkinList: [],     // 签到记录列表
     // 日历数据
@@ -31,7 +31,7 @@ Page({
       today: now.getDate(),
     });
     this.buildCalendar();
-    this.getUserInfo();
+    // this.getUserInfo();
     this.getGradeInfo();
     this.loadCheckinData();
   },
@@ -73,27 +73,31 @@ Page({
   async loadCheckinData() {
     try {
       const { year, month } = this.data;
+      let checkinDays = [];
+      let pointsBalance = 0;
+      let continuousDays =0;
       // 获取当月签到日期
       const yearMonth = `${year}-${month.toString().padStart(2, "0")}-01`;
-      const daysRes = await RequestApi.checkinList({ yearMonth });
-      const checkinDays = (daysRes && daysRes.data) || [];
-      console.log("checkinDays:", checkinDays);
+      const dataRes = await RequestApi.checkinList({ yearMonth });
+      if(dataRes && dataRes.code == "200") { 
+         checkinDays =  dataRes.checkinList || [];
+         pointsBalance = dataRes.totalPoints; 
+         continuousDays =dataRes.continuousDays || 0;
+      }
 
-      // const checkinDays =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
-        //  const checkinDays =[];
       // // 获取签到记录
       // const listRes = await RequestApi.getCheckinList({ year, month });
       // const checkinList = (listRes && listRes.data) || [];
-      const checkinList = [];
-
+      // const checkinList = [];
 
       const today = this.data.today;
       const todayChecked = checkinDays.includes(today);
 
       this.setData({
         checkinDays,
-        checkinList,
-        consecutiveDays: checkinList.length,
+        // checkinList,
+        continuousDays,
+        pointsBalance,
         todayChecked,
       });
       this.buildCalendar();
@@ -148,10 +152,11 @@ Page({
         this.loadCheckinData();
         this.getGradeInfo();
       } else {
+        console.error(res,'resres');
         wx.showToast({ title: (res && res.msg) || "签到失败", icon: "none" });
       }
     } catch (e) {
-      wx.showToast({ title: "签到失败", icon: "none" });
+      wx.showToast({ title: e.data.msg || "签到失败", icon: "none" });
     }
   },
 

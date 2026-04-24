@@ -39,6 +39,7 @@ Page({
     showUpgradePopupAnim: false,
     showGapPopup: false,
     gap: 0,
+    showTip: false,
   },
 
   turnModal: function (url) {
@@ -84,9 +85,7 @@ Page({
 
   turnBadge: function () {
     if (!this.data.noLogin) {
-      if (this.data.medalCount) {
-        this.turnWebView("/myBadge");
-      }
+      this.setData({ showTip: true });
     } else {
       this.turnModal("/pages/newLogin/index");
     }
@@ -266,6 +265,10 @@ Page({
     this.setData({ showPopup: false });
   },
 
+  closeTip: function () {
+    this.setData({ showTip: false });
+  },
+
   calcProgressByPoints: function (levelList, points) {
     if (!levelList.length) return 0;
     const maxPoints = levelList[levelList.length - 1].pointsStart;
@@ -277,7 +280,7 @@ Page({
 
   turnBadgePage: function () {
     if (!this.data.noLogin) {
-      this.turnWebView("/badge");
+      this.setData({ showTip: true });
     } else {
       this.turnModal("/pages/newLogin/index");
     }
@@ -285,7 +288,7 @@ Page({
 
   turnGiftPage: function () {
     if (!this.data.noLogin) {
-      this.turnWebView("/gift");
+      this.setData({ showTip: true });
     } else {
       this.turnModal("/pages/newLogin/index");
     }
