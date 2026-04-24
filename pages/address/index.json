@@ -6,7 +6,6 @@
   },
   "navigationBarTitleText": "新增地址",
   "backgroundColor": "#0d0d1a",
-  "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#1a1a2e",
-  "navigationStyle": "custom"
+"navigationBarBackgroundColor": "#1a1a2e",
+  "navigationBarTextStyle": "white"
 }

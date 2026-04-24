@@ -75,7 +75,7 @@ page {
   justify-content: center;
   align-items: center;
   margin-left: 10rpx;
-  margin-top: 5rpx;
+  margin-top: 8rpx;
 }
 
 .user-avatar-bg {
