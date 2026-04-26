@@ -476,8 +476,14 @@
 
 .rights-header {
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 36rpx;
+}
+
+.rights-title-wrap {
+  display: flex;
+  align-items: baseline;
 }
 
 .rights-title {
@@ -490,6 +496,19 @@
   font-size: 24rpx;
   color: rgba(255, 255, 255, 0.4);
   margin-left: 12rpx;
+}
+
+.rights-more {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: rgba(249,226,172,1);
+}
+
+.rights-arrow {
+  font-size: 32rpx;
+  margin-left: 4rpx;
+  color: rgba(255,255,255,0.5);
 }
 
 .rights-list {

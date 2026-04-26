@@ -94,8 +94,14 @@
   <!-- 可享权益 -->
   <view class="rights-section">
     <view class="rights-header">
-      <text class="rights-title">可享权益</text>
-      <text class="rights-count">2项</text>
+      <view class="rights-title-wrap">
+        <text class="rights-title">可享权益</text>
+        <text class="rights-count">2项</text>
+      </view>
+      <view class="rights-more" bindtap="showRightsPopup">
+        <text>升级可享更多权益</text>
+        <text class="rights-arrow">›</text>
+      </view>
     </view>
     <view class="rights-list">
       <view class="rights-item" bindtap="turnBadgePage">
@@ -296,13 +302,98 @@
       <view class="popup-section">
         <view class="popup-section-sub">2. 优惠规则</view>
         <view class="popup-text">· 折扣、会员券、活动价不可叠加使用，同一订单仅享受最优一项。</view>
-        <view class="popup-text">·「现货产品」指店铺明码标价、可直接下单的成品；「定制产品」指私人定制、改制、专属设计类产品；「特殊产品」指孤品、收藏级、寺院结缘款。</view>
+        <view class="popup-text">· 「现货产品」指店铺明码标价、可直接下单的成品；「定制产品」指私人定制、改制、专属设计类产品；「特殊产品」指孤品、收藏级、寺院结缘款。</view>
       </view>
       <view class="popup-section">
         <view class="popup-section-sub">3. 服务范围</view>
-        <view class="popup-text">· 会员权益仅限本人使用，不可转让。</view>
-        <view class="popup-text">· 正莲保留最终解释权，权益内容可能随活动调整，以官网公示为准。</view>
+        <view class="popup-text">· 免费养护类权益：仅限清洁、保养建议、基础换绳；籽珠破损、缺失、结构改制、来回运费等不在免费范围内，以店铺公告为准。</view>
+        <view class="popup-text">· 会员权益最终解释权归本店所有，权益调整将提前7天通过官方渠道公示。</view>
       </view>
+      <view class="popup-section">
+        <view class="popup-section-sub">4. 积分规则</view>
+        <view class="popup-text">· 金额10＝1积分、积分仅计算实际支付金额，定金、运费、用券抵扣部分不累计积分。</view>
+        <view class="popup-text">· 积分有效期12个月，逾期自动清零；积分可兑换代金券、周边产品、会员专属勋章等。</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V1 白泽会员</view>
+        <view class="popup-text">· 消费享1倍积分</view>
+        <view class="popup-text">· 定制级以下现货产品享9.9折</view>
+        <view class="popup-text">· 生日月特权：500元代金券（满1000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换代金券、商品、925银白泽会员专属勋章</view>
+        <view class="popup-text">· 免费领取《凤眼盘玩保养手册》</view>
+        <view class="popup-text">· 享受基础包邮权益（以店铺包邮规则为准）</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V2 螣蛇会员</view>
+        <view class="popup-text">· 包含V1白泽会员全部权益</view>
+        <view class="popup-text">· 消费享1.2倍积分</view>
+        <view class="popup-text">· 定制级以下现货产品享9.7折</view>
+        <view class="popup-text">· 生日月特权：1000元代金券（满2000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换925银措9K金螣蛇会员专属勋章</view>
+        <view class="popup-text">· 免费享受串珠调整、简单配串设计服务</view>
+        <view class="popup-text">· 享有新籽优先预订资格</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V3 陆吾会员</view>
+        <view class="popup-text">· 包含V2螣蛇会员全部权益</view>
+        <view class="popup-text">· 消费享1.5倍积分</view>
+        <view class="popup-text">· 定制级以下现货产品享9.5折</view>
+        <view class="popup-text">· 生日月特权：1500元代金券（满3000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换925银措14K金陆吾会员专属勋章</view>
+        <view class="popup-text">· 每月1次免费凤眼基础鉴定、品相估价服务</view>
+        <view class="popup-text">· 可加入会员捡漏群，专享微瑕、福利籽专属福利</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V4 麒麟会员</view>
+        <view class="popup-text">· 包含V3陆吾会员全部权益</view>
+        <view class="popup-text">· 消费享1.8倍积分</view>
+        <view class="popup-text">· 定制级以下现货产品享9.2折</view>
+        <view class="popup-text">· 生日月特权：2000元代金券（满4000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换925银措18K金麒麟会员专属勋章</view>
+        <view class="popup-text">· 每季度1次免费凤眼清洁、简单养护服务</view>
+        <view class="popup-text">· 新籽发售提前24小时预览及锁货资格</view>
+        <view class="popup-text">· 可参与会员内部专场拍卖活动</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V5 凤凰会员</view>
+        <view class="popup-text">· 包含V4麒麟会员全部权益</view>
+        <view class="popup-text">· 消费享2倍积分</view>
+        <view class="popup-text">· 定制级以下现货产品享8.8折</view>
+        <view class="popup-text">· 生日月特权：3000元代金券（满6000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换全14K金镶宝石凤凰会员专属勋章</view>
+        <view class="popup-text">· 提升积分抵现比例（具体以当期规则为准）</view>
+        <view class="popup-text">· 享有稀缺产品优先选购权</view>
+        <view class="popup-text">· 受邀参加线下产品品鉴小聚</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V6 四灵会员</view>
+        <view class="popup-text">· 包含V5凤凰会员全部权益</view>
+        <view class="popup-text">· 定制级以下现货产品享8.5折</view>
+        <view class="popup-text">· 生日月特权：4000元代金券（满8000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换全18K金镶宝石四灵会员专属勋章</view>
+        <view class="popup-text">· 稀缺产品、特殊籽可优先预留3天</view>
+        <view class="popup-text">· 受邀参加高端文玩雅集、文创及念珠文化交流活动</view>
+      </view>
+
+      <view class="popup-section">
+        <view class="popup-section-title">V7 应龙会员</view>
+        <view class="popup-text">· 包含V6四灵会员全部权益</view>
+        <view class="popup-text">· 定制级以下现货凤眼产品享8折尊享</view>
+        <view class="popup-text">· 生日月特权：6000元代金券（满12000元可用，有效期30天，限现货使用）</view>
+        <view class="popup-text">· 可使用积分兑换全22K金镶宝石应龙会员专属勋章</view>
+        <view class="popup-text">· 全店产品终身免费基础养护</view>
+        <view class="popup-text">· 享有孤品、收藏级、寺院结缘款专属购买通道</view>
+        <view class="popup-text">· 提供私人收藏规划服务（仅限店内藏品搭配建议，不含外部代淘）</view>
+        <view class="popup-text">· 可参与高端产品私享会、线下专属交流会</view>
+        <view class="popup-text">· 可申请个性化专属权益（含专属代淘、定制活动等，以店铺审核及当期公告为准）</view>
+      </view>
+
     </scroll-view>
     <view class="popup-btn" bindtap="hideRightsPopup">知道了</view>
   </view>
