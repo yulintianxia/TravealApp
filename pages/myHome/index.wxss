@@ -92,25 +92,32 @@ page {
   margin-left: 24rpx;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .user-name-row {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .user-name {
+  display: inline-block;
+  max-width: 260rpx;
   font-size: 36rpx;
   font-weight: 700;
   color: #ffffff;
   margin-right: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .vip-badge {
   display: inline-flex;
   align-items: center;
   height: 40rpx;
+  flex-shrink: 0;
 }
 
 .vip-text {
