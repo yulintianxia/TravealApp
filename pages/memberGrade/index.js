@@ -73,6 +73,8 @@ Page({
 
 
   getLevelDialog: async function () {
+    const token = wx.getStorageSync("token");
+    if (!token || this.data.noLogin || !this.data.hasLevel) return;
     let res = await RequestApi.isLevelMsg();
     console.log('res',res);
     if (res && res.code == "200") {
@@ -331,7 +333,6 @@ Page({
 
   onLoad(options) {
     this.getGrade();
-    this.getLevelDialog();
   },
 
   async getGrade() {
@@ -352,6 +353,9 @@ Page({
           },
           () => {
             this.getSwiperList();
+            if (this.data.hasLevel) {
+              this.getLevelDialog();
+            }
           }
         );
       } else {

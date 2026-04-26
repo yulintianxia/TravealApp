@@ -41,6 +41,14 @@
         </view>
       </swiper-item>
     </swiper>
+
+    <view class="card-swiper-indicator" wx:if="{{levelList.length > 1}}">
+      <view
+        wx:for="{{levelList}}"
+        wx:key="index"
+        class="card-swiper-dot {{current == index ? 'active' : ''}}"
+      ></view>
+    </view>
   </view>
 
   <!-- 等级指示器 + 进度条 -->
@@ -63,6 +71,14 @@
   <!-- 神兽图标列表 -->
   <view class="beast-icon-list">
     <view wx:for="{{levelList}}" wx:key="index" class="beast-icon-item" bindtap="onBeastIconTap" data-index="{{index}}">
+      <view wx:if="{{current == index}}" class="beast-fireworks">
+        <view class="beast-spark s1"></view>
+        <view class="beast-spark s2"></view>
+        <view class="beast-spark s3"></view>
+        <view class="beast-spark s4"></view>
+        <view class="beast-spark s5"></view>
+        <view class="beast-spark s6"></view>
+      </view>
       <image
         class="beast-icon-img {{current == index ? 'beast-active' : (current > index ? 'beast-passed' : 'beast-inactive')}}"
         src="../../images/icons/{{index + 1}}-{{current == index || myLevelIndex == index ? 'on' : 'off'}}.png"

@@ -56,6 +56,31 @@
   z-index: 1;
 }
 
+.card-swiper-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 18rpx;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  pointer-events: none;
+}
+
+.card-swiper-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.38);
+  transition: all 0.25s ease;
+}
+
+.card-swiper-dot.active {
+  width: 30rpx;
+  background: #e8d5a3;
+}
+
 .card-slide {
   padding: 20rpx 32rpx 0;
   box-sizing: border-box;
@@ -235,13 +260,163 @@
 }
 
 .beast-icon-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
 }
 
+.beast-fireworks {
+  position: absolute;
+  top: 34rpx;
+  left: 50%;
+  width: 140rpx;
+  height: 140rpx;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.beast-spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10rpx;
+  height: 10rpx;
+  margin-left: -5rpx;
+  margin-top: -5rpx;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 10rpx rgba(255, 230, 140, 0.9);
+  animation-duration: 1.35s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+
+.beast-spark.s1 {
+  background: #ffd86b;
+  animation-name: beast-firework-s1;
+  animation-delay: 0s;
+}
+
+.beast-spark.s2 {
+  background: #ffb870;
+  animation-name: beast-firework-s2;
+  animation-delay: 0.22s;
+}
+
+.beast-spark.s3 {
+  background: #ffe7a8;
+  animation-name: beast-firework-s3;
+  animation-delay: 0.44s;
+}
+
+.beast-spark.s4 {
+  background: #f7c15a;
+  animation-name: beast-firework-s4;
+  animation-delay: 0.66s;
+}
+
+.beast-spark.s5 {
+  background: #ffd35f;
+  animation-name: beast-firework-s5;
+  animation-delay: 0.88s;
+}
+
+.beast-spark.s6 {
+  background: #ffefb5;
+  animation-name: beast-firework-s6;
+  animation-delay: 1.1s;
+}
+
+@keyframes beast-firework-s1 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0rpx, -44rpx) scale(1.2);
+  }
+}
+
+@keyframes beast-firework-s2 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(34rpx, -22rpx) scale(1.2);
+  }
+}
+
+@keyframes beast-firework-s3 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(36rpx, 24rpx) scale(1.2);
+  }
+}
+
+@keyframes beast-firework-s4 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0rpx, 42rpx) scale(1.2);
+  }
+}
+
+@keyframes beast-firework-s5 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-34rpx, 22rpx) scale(1.2);
+  }
+}
+
+@keyframes beast-firework-s6 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.35);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-36rpx, -20rpx) scale(1.2);
+  }
+}
+
 .beast-icon-img {
+  position: relative;
+  z-index: 3;
   width: 72rpx;
   height: 72rpx;
   transition: all 0.3s ease;
@@ -621,8 +796,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 27rpx auto 0;
-  padding: 16rpx 0;
+  margin: 10rpx auto 0;
+  padding: 10rpx 0;
 }
 
 .rank-icon {
@@ -645,7 +820,7 @@
 /* 积分进度区域 */
 .nl-progress-section {
   width: 640rpx;
-  margin: 20rpx auto 0;
+  margin:16rpx auto 0;
 }
 
 .points-info {

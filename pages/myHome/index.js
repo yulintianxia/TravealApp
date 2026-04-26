@@ -1,7 +1,7 @@
 import { imagesModule } from "../../common/imageUrlConfs.js";
 import { userConfig } from "../../common/entryConfs.js";
 import { RequestApi } from "../../services/api.js";
-import { BASE_URL, baseImageUrl,webChatUrl } from "../../config/index";
+import { BASE_URL, baseImageUrl, webChatUrl, officialAccountUsername } from "../../config/index";
 
 Page({
   data: {
@@ -209,8 +209,7 @@ Page({
   },
 
   turnLevel() {
-    // wx.navigateTo({ url: "/pages/myHome/index" });
-    wx.switchTab({ url: "/pages/myHome/index" });
+    wx.navigateTo({ url: "/pages/memberGrade/index" });
   },
 
   handleMoreInfo() {
@@ -237,15 +236,7 @@ Page({
     } else if (item.title === "咨询客服") {
       this.setData({ showQrCode: true });
    } else if(item.title =='公众号'){
-     wx.navigateTo({
-      url: "/pages/webView/index",
-      success: (res) => {
-        res.eventChannel.emit("webViewData", {
-          url:webChatUrl,
-          wechatCode:true,
-        });
-      },
-    });
+     this.openOfficialAccount();
    } else if(item.title =='签到'){ 
      wx.navigateTo({
       url: '/pages/checkin/index'
@@ -254,6 +245,32 @@ Page({
      else {
       this.setData({ showTip: true });
     }
+  },
+
+  openOfficialAccount() {
+    const hasOpenOfficialAccountApi = typeof wx.openOfficialAccountProfile === "function";
+    if (hasOpenOfficialAccountApi && officialAccountUsername) {
+      wx.openOfficialAccountProfile({
+        username: officialAccountUsername,
+        fail: () => {
+          this.openOfficialAccountArticle();
+        },
+      });
+      return;
+    }
+    this.openOfficialAccountArticle();
+  },
+
+  openOfficialAccountArticle() {
+    wx.navigateTo({
+      url: "/pages/webView/index",
+      success: (res) => {
+        res.eventChannel.emit("webViewData", {
+          url: webChatUrl,
+          wechatCode: true,
+        });
+      },
+    });
   },
   closeQrPopup() {
     this.setData({ showQrCode: false });
