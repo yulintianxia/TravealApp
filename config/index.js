@@ -13,4 +13,4 @@ export const webChatUrl  = "https://mp.weixin.qq.com/s/dVkiivwtUcRRRZTM_NU_2A";
 
 // 公众号原始ID（用于跳转公众号主页）
 // 示例：gh_xxxxxxxx
-export const officialAccountUsername = "";
+export const officialAccountUsername = "gh_ef316f6f4e9b";
