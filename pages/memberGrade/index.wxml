@@ -327,8 +327,8 @@
       </view>
       <view class="popup-section">
         <view class="popup-section-sub">4. 积分规则</view>
-        <view class="popup-text">· 金额10＝1积分、积分仅计算实际支付金额，定金、运费、用券抵扣部分不累计积分。</view>
-        <view class="popup-text">· 积分有效期12个月，逾期自动清零；积分可兑换代金券、周边产品、会员专属勋章等。</view>
+        <view class="popup-text">· 金额10＝10积分、积分仅计算实际支付金额，定金、运费、用券抵扣部分不累计积分。</view>
+        <view class="popup-text">· 积分有效期12个月，逾期滚动清零；积分可兑换代金券、周边产品、会员专属勋章等。</view>
       </view>
 
       <view class="popup-section">
