@@ -21,6 +21,7 @@ Page({
     today: 0,
     todayChecked: false,
     showCheckinSuccess: false,
+    totalDays:0,
   },
 
   onLoad() {
@@ -80,7 +81,7 @@ Page({
       const { year, month } = this.data;
       let checkinList = [];
       let pointsBalance = 0;
-      let continuousDays = 0;
+      let totalDays = 0;
       let checkinDays = [];
       // 获取当月签到日期
       const yearMonth = `${year}-${month.toString().padStart(2, "0")}-01`;
@@ -174,7 +175,7 @@ Page({
         });
 
         pointsBalance = dataRes.totalPoints;
-        continuousDays = dataRes.continuousDays || 0;
+        totalDays = dataRes.totalDays || 0;
       }
 
       // // 获取签到记录
@@ -188,7 +189,7 @@ Page({
       this.setData({
         checkinDays,
         checkinList,
-        continuousDays,
+        totalDays,
         pointsBalance,
         todayChecked,
       });
