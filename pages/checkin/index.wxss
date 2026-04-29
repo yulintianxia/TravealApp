@@ -50,6 +50,8 @@ page {
 .user-left {
   display: flex;
   align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .user-avatar {
@@ -62,6 +64,7 @@ page {
 
 .user-meta {
   margin-left: 20rpx;
+  min-width: 0;
 }
 
 .user-nick {
@@ -69,6 +72,10 @@ page {
   color: #fff;
   font-weight: 600;
   display: block;
+  width: 240rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .user-vip-row {
@@ -91,6 +98,9 @@ page {
 
 .user-right {
   text-align: right;
+  width: 300rpx;
+  flex-shrink: 0;
+  margin-left: 16rpx;
 }
 
 .points-row {
@@ -118,6 +128,9 @@ page {
   font-size: 24rpx;
   color: rgba(239, 208, 139, 0.7);
   margin-top: 4rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ========== 日历卡片 ========== */
