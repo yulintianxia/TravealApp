@@ -236,7 +236,11 @@ Page({
   },
 
   handleNicknameInput(e) {
-    this.setData({ nickNameInput: e.detail.value, nicknameInputFocus: false });
+    this.setData({ nickNameInput: e.detail.value });
+  },
+
+  handleNicknameKeyboardConfirm() {
+    this.setData({ nicknameInputFocus: false });
   },
 
   handleGetWechatNickname() {
@@ -249,7 +253,12 @@ Page({
     });
   },
 
-  async handleNicknameConfirm() {
+  async handleNicknameConfirm(e) {
+    const triggerSource = (e && e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.source) || "";
+    if (triggerSource !== "button") {
+      return;
+    }
+
     const value = (this.data.nickNameInput || "").trim();
     if (!value) {
       wx.showToast({ title: "请输入昵称", icon: "none" });

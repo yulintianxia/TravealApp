@@ -82,6 +82,7 @@
         placeholder="请输入昵称"
         placeholder-class="nickname-input-placeholder"
         bindinput="handleNicknameInput"
+        bindconfirm="handleNicknameKeyboardConfirm"
       />
       <button class="avatar-action-btn avatar-action-btn-secondary nickname-wechat-btn" bindtap="handleGetWechatNickname">
         使用微信昵称快捷填充
@@ -91,6 +92,7 @@
         <button
           class="avatar-action-btn avatar-action-btn-primary"
           bindtap="handleNicknameConfirm"
+          data-source="button"
           disabled="{{nicknameSubmitting}}"
         >{{nicknameSubmitting ? '提交中...' : '确定'}}</button>
       </view>
