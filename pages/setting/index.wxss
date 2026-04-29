@@ -366,6 +366,10 @@ page {
   color: rgba(255, 255, 255, 0.4);
 }
 
+.nickname-wechat-btn {
+  margin-top: 24rpx;
+}
+
 .nickname-action-row {
   margin-top: 36rpx;
 }

@@ -10,6 +10,7 @@ Page({
     selectedAvatar: "",
     nickName: "",
     nickNameInput: "",
+    nicknameInputFocus: false,
     uploading: false,
     nicknameSubmitting: false,
     statusBarHeight: 0,
@@ -215,6 +216,7 @@ Page({
       nicknameVisible: true,
       visible: false,
       nickNameInput: this.data.nickName,
+      nicknameInputFocus: false,
     });
   },
 
@@ -229,11 +231,22 @@ Page({
     this.setData({
       nicknameVisible: false,
       nickNameInput: this.data.nickName,
+      nicknameInputFocus: false,
     });
   },
 
   handleNicknameInput(e) {
-    this.setData({ nickNameInput: e.detail.value });
+    this.setData({ nickNameInput: e.detail.value, nicknameInputFocus: false });
+  },
+
+  handleGetWechatNickname() {
+    this.setData({ nicknameInputFocus: false }, () => {
+      this.setData({ nicknameInputFocus: true });
+      wx.showToast({
+        title: "请点键盘上方的微信昵称",
+        icon: "none",
+      });
+    });
   },
 
   async handleNicknameConfirm() {
@@ -257,6 +270,7 @@ Page({
         nickName: value,
         nickNameInput: value,
         nicknameVisible: false,
+        nicknameInputFocus: false,
       });
       wx.showToast({ title: "昵称已更新", icon: "success" });
       this.loadPrePage();

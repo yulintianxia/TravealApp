@@ -75,13 +75,17 @@
       <view class="nickname-modal-title">修改昵称</view>
       <input
         class="nickname-input"
-        type="text"
+        type="nickname"
         maxlength="20"
         value="{{nickNameInput}}"
+        focus="{{nicknameInputFocus}}"
         placeholder="请输入昵称"
         placeholder-class="nickname-input-placeholder"
         bindinput="handleNicknameInput"
       />
+      <button class="avatar-action-btn avatar-action-btn-secondary nickname-wechat-btn" bindtap="handleGetWechatNickname">
+        使用微信昵称快捷填充
+      </button>
       <view class="avatar-action-row nickname-action-row">
         <button class="avatar-action-btn avatar-action-btn-secondary" bindtap="onNicknameClose">取消</button>
         <button
