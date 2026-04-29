@@ -236,7 +236,7 @@ Page({
     } else if (item.title === "咨询客服") {
       this.setData({ showQrCode: true });
    } else if(item.title =='公众号'){
-     this.openOfficialAccount();
+       this.confirmOpenOfficialAccount();
    } else if(item.title =='签到'){ 
      wx.navigateTo({
       url: '/pages/checkin/index'
@@ -247,12 +247,32 @@ Page({
     }
   },
 
+  confirmOpenOfficialAccount() {
+    wx.showModal({
+      title: "提示",
+      content: "即将打开公众号，是否继续？",
+      success: (res) => {
+        if (res.confirm) {
+          this.openOfficialAccount();
+        }
+      },
+    });
+  },
+
+  isOfficialAccountCancel(err) {
+    const errMsg = ((err && err.errMsg) || "").toLowerCase();
+    return errMsg.includes("cancel");
+  },
+
   openOfficialAccount() {
     const hasOpenOfficialAccountApi = typeof wx.openOfficialAccountProfile === "function";
     if (hasOpenOfficialAccountApi && officialAccountUsername) {
       wx.openOfficialAccountProfile({
         username: officialAccountUsername,
-        fail: () => {
+        fail: (err) => {
+          if (this.isOfficialAccountCancel(err)) {
+            return;
+          }
           this.openOfficialAccountArticle();
         },
       });
