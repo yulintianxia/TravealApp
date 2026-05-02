@@ -1,6 +1,4 @@
 {
-  "navigationBarTitleText": "正莲会员",
-  "backgroundColor": "#0a0e1a",
-  "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#0a0e1a"
+  "navigationStyle": "custom",
+  "backgroundColor": "#090503"
 }

@@ -1,19 +1,80 @@
-/**index.less**/
 page {
-  height: 100vh;
+  min-height: 100vh;
+  background: #090503;
+}
+
+.page {
+  min-height: 100vh;
+  background: #090503;
+}
+
+.custom-nav {
+  box-sizing: content-box;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
 }
-.contianer {
-   text-align: center;
-   margin:10% auto;
-}
-.logo {
-  width: 240rpx;
-  height: 240rpx;
-}
-.explain {
-  margin-top:20rpx;
-  font-size: 20px;
+
+.nav-title {
+  font-size: 42rpx;
+  line-height: 1;
   font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.poster-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.poster {
+  width: 100%;
+  display: block;
+}
+
+.brand {
+  position: absolute;
+  top: 60rpx;
+  left: 44rpx;
+  z-index: 3;
+}
+
+.brand-log {
+  width: 320rpx;
+  display: block;
+}
+
+.content-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 520rpx;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(9, 5, 3, 0) 0%, rgba(9, 5, 3, 0.56) 40%, rgba(9, 5, 3, 0.92) 100%);
+}
+
+.content-wrap {
+  position: absolute;
+  left: 56rpx;
+  right: 56rpx;
+  bottom: 84rpx;
+  z-index: 2;
+  text-align: center;
+}
+
+.slogan-image {
+  width: 100%;
+  max-width: 620rpx;
+  margin-bottom: 44rpx;
+}
+
+.desc {
+  color: rgba(240, 224, 190, 0.92);
+  font-size: 30rpx;
+  line-height: 1.72;
+  letter-spacing: 1rpx;
+  text-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.7);
 }

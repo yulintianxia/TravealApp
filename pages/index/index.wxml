@@ -1,4 +1,28 @@
-<view class='contianer'>
-    <image class="logo" src="../../images/home/logo.png" />
-    <view class='explain'>正莲</view>
+<view class="page">
+    <view class="custom-nav" style="padding-top: {{statusBarHeight}}px; height: {{navBarHeight}}px;">
+        <view class="nav-title">首页</view>
+    </view>
+
+    <view class="poster-wrap">
+        <image
+            class="poster"
+            src="../../images/home/home.png"
+            mode="widthFix"
+            lazy-load="true"
+            show-menu-by-longpress="true"
+        />
+
+        <view class="brand">
+            <image class="brand-log" src="../../images/home/log.png" mode="widthFix" />
+        </view>
+
+        <view class="content-mask"></view>
+
+        <view class="content-wrap">
+            <image class="slogan-image" src="../../images/home/wenzi.png" mode="widthFix" />
+            <view class="desc">
+                得正是（正莲）对做事的态度，精进是（正莲）对品质的追求，心如莲花是（正莲）对理想的人格追求，复杂多变的社会中保持心灵的纯洁和高尚，通过不断的自我修炼，实现传承的宁静与自由。
+            </view>
+        </view>
+    </view>
 </view>
