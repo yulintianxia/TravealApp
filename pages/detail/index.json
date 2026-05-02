@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-address-list": "@vant/weapp/address-list/index"
-  },
-  "navigationBarTitleText": "勋章详情"
-}

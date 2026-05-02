@@ -353,7 +353,7 @@
       </view>
 
       <view class="popup-section">
-        <view class="popup-section-title">V3 陆吾会员</view>
+        <view class="popup-section-title">V3 麒麟会员</view>
         <view class="popup-text">· 包含V2螣蛇会员全部权益</view>
         <view class="popup-text">· 消费享1.5倍积分</view>
         <view class="popup-text">· 定制级以下现货产品享9.5折</view>
@@ -364,8 +364,8 @@
       </view>
 
       <view class="popup-section">
-        <view class="popup-section-title">V4 麒麟会员</view>
-        <view class="popup-text">· 包含V3陆吾会员全部权益</view>
+        <view class="popup-section-title">V4 凤凰会员</view>
+        <view class="popup-text">· 包含V3麒麟会员全部权益</view>
         <view class="popup-text">· 消费享1.8倍积分</view>
         <view class="popup-text">· 定制级以下现货产品享9.2折</view>
         <view class="popup-text">· 生日月特权：2000元代金券（满4000元可用，有效期30天，限现货使用）</view>
@@ -376,8 +376,8 @@
       </view>
 
       <view class="popup-section">
-        <view class="popup-section-title">V5 凤凰会员</view>
-        <view class="popup-text">· 包含V4麒麟会员全部权益</view>
+        <view class="popup-section-title">V5 陆吾会员</view>
+        <view class="popup-text">· 包含V4凤凰会员全部权益</view>
         <view class="popup-text">· 消费享2倍积分</view>
         <view class="popup-text">· 定制级以下现货产品享8.8折</view>
         <view class="popup-text">· 生日月特权：3000元代金券（满6000元可用，有效期30天，限现货使用）</view>
@@ -389,7 +389,7 @@
 
       <view class="popup-section">
         <view class="popup-section-title">V6 四灵会员</view>
-        <view class="popup-text">· 包含V5凤凰会员全部权益</view>
+        <view class="popup-text">· 包含V5陆吾会员全部权益</view>
         <view class="popup-text">· 定制级以下现货产品享8.5折</view>
         <view class="popup-text">· 生日月特权：4000元代金券（满8000元可用，有效期30天，限现货使用）</view>
         <view class="popup-text">· 可使用积分兑换全18K金镶宝石四灵会员专属勋章</view>
