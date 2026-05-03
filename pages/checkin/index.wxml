@@ -13,7 +13,7 @@
         <view class="user-meta">
           <text class="user-nick">{{user.nickName || '用户'}}</text>
           <view class="user-vip-row">
-            <text class="user-vip">{{levelInfo.name || '会员'}}</text>
+            <text class="user-vip">{{levelInfo.name || '新晋会员'}}</text>
             <text class="user-vip-icon">✦</text>
           </view>
         </view>

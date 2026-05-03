@@ -1,11 +1,15 @@
 page {
-  min-height: 100vh;
+  height: 100vh;
   background: #090503;
+  overflow: hidden;
 }
 
 .page {
-  min-height: 100vh;
+  height: 100vh;
   background: #090503;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .custom-nav {
@@ -25,13 +29,17 @@ page {
 
 .poster-wrap {
   position: relative;
+  flex: 1;
+  min-height: 0;
   width: 100%;
   overflow: hidden;
 }
 
 .poster {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  display: block;
+  height: 100%;
 }
 
 .brand {

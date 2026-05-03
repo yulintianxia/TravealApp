@@ -7,7 +7,7 @@
         <image
             class="poster"
             src="../../images/home/home.png"
-            mode="widthFix"
+            mode="aspectFill"
             lazy-load="true"
             show-menu-by-longpress="true"
         />
