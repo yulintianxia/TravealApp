@@ -81,7 +81,7 @@ page {
 
 .desc {
   color: rgba(240, 224, 190, 0.92);
-  font-size: 30rpx;
+  font-size: 26rpx;
   line-height: 1.72;
   letter-spacing: 1rpx;
   text-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.7);
