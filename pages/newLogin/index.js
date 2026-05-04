@@ -73,25 +73,25 @@ Page({
   },
 
   openServiceAgreement() {
-    wx.navigateTo({
-      url: "/pages/webView/index",
-      success: (res) => {
-        res.eventChannel.emit("webViewData", {
-          url: "/common/terms-of-agreement?agreementType=MEMBERSHIP_CHARTER",
-        });
-      },
-    });
+    // wx.navigateTo({
+    //   url: "/pages/webView/index",
+    //   success: (res) => {
+    //     res.eventChannel.emit("webViewData", {
+    //       url: "/common/terms-of-agreement?agreementType=MEMBERSHIP_CHARTER",
+    //     });
+    //   },
+    // });
   },
 
   openPrivacyPolicy() {
-    wx.navigateTo({
-      url: "/pages/webView/index",
-      success: (res) => {
-        res.eventChannel.emit("webViewData", {
-          url: "/common/terms-of-agreement?agreementType=PRIVACY_POLICY",
-        });
-      },
-    });
+    // wx.navigateTo({
+    //   url: "/pages/webView/index",
+    //   success: (res) => {
+    //     res.eventChannel.emit("webViewData", {
+    //       url: "/common/terms-of-agreement?agreementType=PRIVACY_POLICY",
+    //     });
+    //   },
+    // });
   },
 
   onLoad(options) {},
