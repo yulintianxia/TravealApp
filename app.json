@@ -9,6 +9,8 @@
     "pages/pointsApplicationList/index",
     "pages/addressList/index",
     "pages/newLogin/index",
+    "pages/platformAgreement/index",
+    "pages/privacyPolicy/index",
     "pages/vipLevel/index",
     "pages/pointrank/index",
     "pages/pointUse/index",
