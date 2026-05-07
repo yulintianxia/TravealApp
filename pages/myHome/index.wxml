@@ -23,10 +23,12 @@
               <text class="user-name">{{user.nickName || '暂无用户名'}}</text>
               <view class="vip-badge">
                 <text class="vip-text">{{(levelInfo.name ? levelInfo.name +'会员' : '')  || ''}}</text>
-                <view class="vip-checkin" catchtap="goCheckin">签到</view>
               </view>
             </view>
             <text class="user-points">积分： <text class='real-point'>{{pointsBalance || 0}}</text>/{{pointsTotal || 0}}</text>
+            <view class="checkin-row">
+              <view class="vip-checkin" catchtap="goCheckin">签到</view>
+            </view>
           </view>
         </view>
         <view class="more-info" catchtap="handleMoreInfo">
