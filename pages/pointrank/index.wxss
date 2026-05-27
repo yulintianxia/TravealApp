@@ -7,7 +7,12 @@ page {
 .page {
   min-height: 100vh;
   background: linear-gradient(180deg, #080c14 0%, #111b2e 100%);
-  font-family: PingFang SC, -apple-system, Helvetica Neue, Arial, sans-serif;
+  font-family:
+    PingFang SC,
+    -apple-system,
+    Helvetica Neue,
+    Arial,
+    sans-serif;
   color: #fff;
 }
 
@@ -37,11 +42,30 @@ page {
   box-sizing: border-box;
 }
 
+.podium-top-mask {
+  display: none;
+}
+
+.podium-top-mask-fixed {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 14, 24, 0.98) 0%,
+    rgba(13, 22, 36, 0.95) 100%
+  );
+  z-index: 28;
+  pointer-events: none;
+}
+
 /* ========== 顶部视觉 ========== */
 .hero {
   position: relative;
   width: 100%;
-  height: 680rpx;
+  height: 500rpx;
   overflow: hidden;
   border-radius: 0 0 60rpx 60rpx;
 }
@@ -86,7 +110,12 @@ page {
   left: 0;
   right: 0;
   height: 280rpx;
-  background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 20, 0.6) 60%, #0b101a 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(8, 12, 20, 0.6) 60%,
+    #0b101a 100%
+  );
   z-index: 2;
 }
 
@@ -129,28 +158,156 @@ page {
 }
 
 /* ========== Top3 领奖台 ========== */
+.podium-wrap {
+  position: relative;
+  margin: 0 24rpx 0;
+  z-index: 5;
+  height:322rpx;
+  box-sizing: border-box;
+}
+
+.podium-wrap-fixed {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 27, 0.96) 0%,
+    rgba(14, 24, 39, 0.92) 100%
+  );
+}
+
 .podium {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin: 20rpx 24rpx 0;
   position: relative;
+  margin: 0;
   z-index: 5;
+}
+
+.podium-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 8rpx 24rpx 12rpx;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 27, 0.98) 0%,
+    rgba(14, 24, 39, 0.94) 58%,
+    rgba(16, 28, 45, 0.9) 100%
+  );
+  z-index: 30;
 }
 
 .podium-col {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: visible;
   border-radius: 24rpx;
   padding-bottom: 20rpx;
   box-sizing: border-box;
+}
+
+.rank-halo {
+  position: absolute;
+  top: -104rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: halo-breathe 2.8s ease-in-out infinite;
+}
+
+.rank-halo-1 {
+  width: 196rpx;
+  height: 196rpx;
+  background: radial-gradient(circle, rgba(255, 226, 153, 0.52) 0%, rgba(255, 226, 153, 0.2) 40%, rgba(255, 226, 153, 0) 76%);
+}
+
+.rank-halo-2 {
+  width: 166rpx;
+  height: 166rpx;
+  background: radial-gradient(circle, rgba(246, 171, 130, 0.48) 0%, rgba(246, 171, 130, 0.16) 42%, rgba(246, 171, 130, 0) 76%);
+  animation-delay: 0.35s;
+}
+
+.rank-halo-3 {
+  width: 166rpx;
+  height: 166rpx;
+  background: radial-gradient(circle, rgba(189, 223, 211, 0.5) 0%, rgba(189, 223, 211, 0.18) 42%, rgba(189, 223, 211, 0) 76%);
+  animation-delay: 0.7s;
+}
+
+.effect-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.effect-stars {
+  top: -90rpx;
+  bottom: 62rpx;
+  z-index: 2;
+}
+
+.effect-particles {
+  top: 0;
+  bottom: 48rpx;
+  z-index: 2;
+}
+
+.fx-star,
+.fx-particle {
+  position: absolute;
+  border-radius: 999rpx;
+}
+
+.fx-star {
+  animation: star-twinkle 2.4s ease-in-out infinite;
+}
+
+.fx-star-1 {
+  background: radial-gradient(circle, rgba(255, 251, 228, 1) 0%, rgba(249, 227, 159, 0.72) 58%, rgba(249, 227, 159, 0) 100%);
+  box-shadow: 0 0 16rpx rgba(252, 224, 129, 0.72);
+}
+
+.fx-star-2 {
+  background: radial-gradient(circle, rgba(255, 244, 233, 1) 0%, rgba(247, 185, 154, 0.68) 58%, rgba(247, 185, 154, 0) 100%);
+  box-shadow: 0 0 14rpx rgba(240, 163, 130, 0.66);
+}
+
+.fx-star-3 {
+  background: radial-gradient(circle, rgba(242, 253, 249, 1) 0%, rgba(188, 221, 211, 0.7) 58%, rgba(188, 221, 211, 0) 100%);
+  box-shadow: 0 0 14rpx rgba(176, 207, 191, 0.62);
+}
+
+.fx-particle {
+  animation: particle-float 3.6s linear infinite;
+}
+
+.fx-particle-1 {
+  background: radial-gradient(circle, rgba(255, 244, 199, 0.95) 0%, rgba(255, 224, 135, 0.46) 68%, rgba(255, 224, 135, 0) 100%);
+}
+
+.fx-particle-2 {
+  background: radial-gradient(circle, rgba(255, 233, 220, 0.92) 0%, rgba(236, 158, 125, 0.42) 68%, rgba(236, 158, 125, 0) 100%);
+}
+
+.fx-particle-3 {
+  background: radial-gradient(circle, rgba(235, 250, 246, 0.92) 0%, rgba(176, 207, 191, 0.42) 68%, rgba(176, 207, 191, 0) 100%);
 }
 
 .col-1 {
   width: 156rpx;
   min-height: 320rpx;
   background: linear-gradient(180deg, rgba(239, 208, 139, 0.18) 0%, rgba(239, 208, 139, 0.03) 100%);
+  /* background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1ded.webp")
+    no-repeat center center;
+  background-size: cover; */
   /* border: 1rpx solid rgba(239, 208, 139, 0.22); */
   margin: 60rpx 58rpx;
   padding-top: 18rpx;
@@ -158,24 +315,51 @@ page {
   border-radius: 24px 24px 0px 0px;
 }
 
+.col-1.checkd {
+  background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1ded.webp")
+    no-repeat center center;
+  background-size: cover;
+}
+
 .col-2 {
   width: 156rpx;
   min-height: 310rpx;
-  background: linear-gradient(180deg, rgba(237, 155, 121, 0.18) 0%, rgba(237, 155, 121, 0.03) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(237, 155, 121, 0.18) 0%,
+    rgba(237, 155, 121, 0.03) 100%
+  );
+
+  /* background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1abd.webp")
+    no-repeat center center;
+  background-size: cover; */
+
   /* border: 1rpx solid rgba(237, 155, 121, 0.22); */
   padding-top: 14rpx;
   border-radius: 24px 24px 0px 0px;
+}
+.col-2.checkd {
+  background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1abd.webp")
+    no-repeat center center;
+  background-size: cover;
 }
 
 .col-3 {
   width: 156rpx;
   min-height: 310rpx;
   background: linear-gradient(180deg, rgba(183, 214, 204, 0.18) 0%, rgba(183, 214, 204, 0.03) 100%);
+  /* background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061d9b39.webp")
+    no-repeat center center; */
+  background-size: cover;
   /* border: 1rpx solid rgba(183, 214, 204, 0.22); */
   padding-top: 14rpx;
   border-radius: 24px 24px 0px 0px;
 }
-
+.col-3.checkd {
+  background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061d9b39.webp")
+    no-repeat center center;
+  background-size: cover;
+}
 
 .frame-avatar {
   width: 120rpx;
@@ -191,6 +375,7 @@ page {
   align-items: center;
   justify-content: center;
   overflow: visible;
+  z-index: 4;
 }
 
 .col-1 .frame {
@@ -203,7 +388,7 @@ page {
 .col-3 .frame {
   width: 114rpx;
   height: 114rpx;
-  margin-top:-56rpx;
+  margin-top: -56rpx;
 }
 
 .frame-gold {
@@ -245,6 +430,8 @@ page {
   line-height: 1;
   font-weight: 800;
   margin-top: 12rpx;
+  position: relative;
+  z-index: 4;
 }
 
 .podium-rank-1 {
@@ -271,12 +458,14 @@ page {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: 500;
+  position: relative;
+  z-index: 4;
 }
 
 .podium-nick-1 {
   font-size: 26rpx;
   color: #efd08b;
-/* width: 180rpx; */
+  /* width: 180rpx; */
   /* font-weight: 700; */
 }
 
@@ -298,6 +487,60 @@ page {
   margin-top: 6rpx;
   line-height: 1;
   font-weight: 700;
+  position: relative;
+  z-index: 4;
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.55);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+
+  70% {
+    opacity: 0.65;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20rpx, 0) scale(0.55);
+  }
+
+  20% {
+    opacity: 0.85;
+  }
+
+  65% {
+    opacity: 0.48;
+    transform: translate3d(0, -16rpx, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -38rpx, 0) scale(1.12);
+  }
+}
+
+@keyframes halo-breathe {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translateX(-50%) scale(0.94);
+  }
+
+  50% {
+    opacity: 0.78;
+    transform: translateX(-50%) scale(1.08);
+  }
 }
 
 .podium-score-1 {
@@ -317,7 +560,7 @@ page {
 
 /* ========== 排名列表 ========== */
 .list-wrap {
-  margin: 28rpx 28rpx 0;
+  margin: 38rpx 28rpx 0;
 }
 
 .list-row {
@@ -361,11 +604,13 @@ page {
   margin-left: 12rpx;
   margin-right: 20rpx;
   flex-shrink: 0;
-  background: conic-gradient(rgba(183, 172, 140, 0.5),
-      rgba(140, 130, 100, 0.3),
-      rgba(183, 172, 140, 0.5),
-      rgba(140, 130, 100, 0.3),
-      rgba(183, 172, 140, 0.5));
+  background: conic-gradient(
+    rgba(183, 172, 140, 0.5),
+    rgba(140, 130, 100, 0.3),
+    rgba(183, 172, 140, 0.5),
+    rgba(140, 130, 100, 0.3),
+    rgba(183, 172, 140, 0.5)
+  );
   box-sizing: border-box;
 }
 
