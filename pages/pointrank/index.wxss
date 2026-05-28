@@ -317,8 +317,8 @@ page {
 }
 
 .col-1.checkd {
-  background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1ded.webp")
-    no-repeat center center;
+  /* background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1ded.webp"); */
+  background:url('https://zhenglian.vip/dotm/zl_images/one.png') no-repeat center center;
   background-size: cover;
 }
 
@@ -340,7 +340,7 @@ page {
   border-radius: 24px 24px 0px 0px;
 }
 .col-2.checkd {
-  background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061e1abd.webp")
+  background: url("https://zhenglian.vip/dotm/zl_images/two.png")
     no-repeat center center;
   background-size: cover;
 }
@@ -357,7 +357,7 @@ page {
   border-radius: 24px 24px 0px 0px;
 }
 .col-3.checkd {
-  background: url("https://picui.ogmua.cn/s1/2026/05/27/6a165061d9b39.webp")
+  background: url("https://zhenglian.vip/dotm/zl_images/three.png")
     no-repeat center center;
   background-size: cover;
 }
@@ -582,7 +582,7 @@ background-color: black;
  
   background-size: cover;
   /* margin-top:-16rpx; */
-  background: url("https://picui.ogmua.cn/s1/2026/05/28/6a17a37a8775d.webp") no-repeat center center;
+  background: url("https://zhenglian.vip/dotm/zl_images/usertrank.png") no-repeat center center;
 }
 
 .trank-my-inner-fixed {
