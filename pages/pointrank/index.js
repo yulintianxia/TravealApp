@@ -1,7 +1,7 @@
 import { RequestApi } from "../../services/api.js";
 import { BASE_URL, H5Url } from "../../config/index";
 
-const PODIUM_FIXED_TOP = 30;
+const PODIUM_FIXED_TOP = 25;
 
 Page({
   data: {
@@ -31,7 +31,15 @@ Page({
     isPodiumFixed: false,
     podiumFixThreshold: 0,
     podiumHolderHeight: 0,
+    trankHolderHeight: 0,
     podiumFixedTop: PODIUM_FIXED_TOP,
+    myRankInfo: {
+      top: "--",
+      nickName: "--",
+      pointsBalance: 0,
+      avatar: "",
+    },
+    myTop: "",
   },
 
   onLoad() {
@@ -71,10 +79,12 @@ Page({
       query.select(".main-scroll").boundingClientRect();
       query.select(".podium-wrap").boundingClientRect();
       query.select(".podium").boundingClientRect();
+      query.select(".trank-my").boundingClientRect();
       query.exec((res) => {
         const scrollRect = res && res[0];
         const wrapRect = res && res[1];
         const podiumRect = res && res[2];
+        const trankRect = res && res[3];
         if (!scrollRect || !wrapRect || !podiumRect) {
           return;
         }
@@ -82,6 +92,7 @@ Page({
         this.setData({
           podiumFixThreshold: Math.max(0, threshold - PODIUM_FIXED_TOP),
           podiumHolderHeight: Math.ceil(podiumRect.height),
+          trankHolderHeight: Math.ceil((trankRect && trankRect.height) || 0),
         });
       });
     });
@@ -180,22 +191,56 @@ Page({
   async getList() {
     try {
       const res = await RequestApi.getPointsTop({ top: 50 });
-      const list = (res && res.data) || [];
-      const user = wx.getStorageSync("user") || {};
-      const currentUserId = user.userId;
-      const dataList = list.slice(3).map((item) => ({
-        ...item,
-        isCurrentUser:
-          !!currentUserId && String(item.userId) === String(currentUserId),
-      }));
-      this.setData({
-        topFirst: list[0] || {},
-        topSecond: list[1] || {},
-        topThird: list[2] || {},
-        dataList,
-      }, () => {
-        this.measurePodium();
-      });
+      if (res && res.code == "200") {
+        const list = (res && res.data) || [];
+        const user = wx.getStorageSync("user") || {};
+        const currentUserId = user.userId ? String(user.userId) : "";
+        const dataList = list.slice(3).map((item) => ({
+          ...item,
+          isCurrentUser:
+            !!currentUserId && String(item.userId) === String(currentUserId),
+        }));
+
+        const currentUserIndex = currentUserId
+          ? list.findIndex((item) => String(item.userId) === currentUserId)
+          : -1;
+
+        // const myRankInfo = currentUserIndex > -1
+        //   ? {
+        //       ...list[currentUserIndex],
+        //       rankNo: currentUserIndex + 1,
+        //     }
+        //   : {
+        //       rankNo: "--",
+        //       nickName: user.nickName || user.nickname || "--",
+        //       pointsBalance: 0,
+        //       avatar: user.avatar || user.headImg || "",
+        //     };
+        console.log(res?.userPoints.top, "totptttt");
+        const myTop = res?.userPoints.top;
+
+        let myRankInfo = {
+          rankNo: Number(myTop),
+          // rankNo: 1,
+          nickName: user.nickName || user.nickname || "--",
+          pointsBalance: user.pointsBalance || 0,
+          avatar: user.avatar || user.headImg || defaultPerson,
+        };
+
+        this.setData(
+          {
+            topFirst: list[0] || {},
+            topSecond: list[1] || {},
+            topThird: list[2] || {},
+            dataList,
+            myRankInfo,
+            myTop,
+          },
+          () => {
+            this.measurePodium();
+          },
+        );
+      }
     } catch (err) {
       console.error("getPointsTop error:", err);
     }

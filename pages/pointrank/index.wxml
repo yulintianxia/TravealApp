@@ -4,21 +4,15 @@
     <text class="nav-title">排行</text>
   </view> -->
 
-  <scroll-view
-    class="main-scroll"
-    scroll-y
-    bindscroll="onMainScroll"
-    style="padding-top:{{statusBarHeight + navBarHeight}}px;"
-  >
+  <scroll-view class="main-scroll" scroll-y bindscroll="onMainScroll"
+    style="padding-top:{{statusBarHeight + navBarHeight}}px;">
 
-    <view
-      class="podium-top-mask {{isPodiumFixed ? 'podium-top-mask-fixed' : ''}}"
-      style="height: {{podiumFixedTop}}px;"
-    ></view>
+    <view class="podium-top-mask {{isPodiumFixed ? 'podium-top-mask-fixed' : ''}}"
+      style="height: {{podiumFixedTop}}px;"></view>
 
     <!-- 顶部视觉大图 -->
     <view class="hero">
-      <image class="hero-bg" src='{{H5Url}}/zl_images/output.gif' mode="aspectFill"/>
+      <image class="hero-bg" src='{{H5Url}}/zl_images/output.gif' mode="aspectFill" />
       <!-- 顶部两侧深色弧形遮罩 -->
       <!-- <view class="hero-arc-left"></view>
       <view class="hero-arc-right"></view> -->
@@ -32,110 +26,97 @@
     </view>
 
     <!-- Top3 排名 -->
-    <view class="podium-wrap {{isPodiumFixed ? 'podium-wrap-fixed' : ''}}" style="height: {{isPodiumFixed ? podiumHolderHeight + 'px' : 'auto'}};">
-      <view
-        class="podium {{isPodiumFixed ? 'podium-fixed' : ''}}"
-        style="{{isPodiumFixed ? 'top:' + podiumFixedTop + 'px;' : ''}}"
-      >
-      <!-- 第2名 -->
-      <view class="podium-col col-2 checkd">
-        <view class="rank-halo rank-halo-2"></view>
-        <view class="effect-layer effect-stars">
-          <view
-            wx:for="{{topSecondStars}}"
-            wx:key="index"
-            class="fx-star fx-star-2"
-            style="{{item.style}}"
-          ></view>
+    <view class="podium-wrap {{isPodiumFixed ? 'podium-wrap-fixed' : ''}}"
+      style="height: {{isPodiumFixed ? (podiumHolderHeight + trankHolderHeight) + 'px' : 'auto'}};">
+      <view class="podium {{isPodiumFixed ? 'podium-fixed' : ''}}"
+        style="{{isPodiumFixed ? 'top:' + podiumFixedTop + 'px;' : ''}}">
+        <!-- 第2名 -->
+        <view class="podium-col col-2 {{myTop == 2 ? 'checkd' : ''}}">
+          <view class="rank-halo rank-halo-2" wx:if="{{myTop == 2}}"></view>
+          <view  wx:if="{{myTop == 2}}" class="effect-layer effect-stars">
+            <view wx:for="{{topSecondStars}}" wx:key="index" class="fx-star fx-star-2" style="{{item.style}}"></view>
+          </view>
+          <view wx:if="{{myTop == 2}}" class="effect-layer effect-particles">
+            <view wx:for="{{topSecondParticles}}" wx:key="index" class="fx-particle fx-particle-2"
+              style="{{item.style}}"></view>
+          </view>
+          <view class="frame frame-copper">
+            <image class="frame-crown" src="{{topSecondCrown}}" mode="aspectFit" />
+            <image class="frame-avatar" src="{{topSecond.avatar ? BASE_URL + topSecond.avatar : defaultPerson}}"
+              mode="aspectFill" />
+          </view>
+          <text class="podium-rank podium-rank-2">2</text>
+          <text class="podium-nick podium-nick-2">{{topSecond.nickName || '--'}}</text>
+          <text class="podium-score podium-score-2">{{topSecond.pointsBalance || 0}}</text>
         </view>
-        <view class="effect-layer effect-particles">
-          <view
-            wx:for="{{topSecondParticles}}"
-            wx:key="index"
-            class="fx-particle fx-particle-2"
-            style="{{item.style}}"
-          ></view>
+      
+        <!-- 第1名 -->
+        <view class="podium-col col-1 {{myTop == 1 ? 'checkd' : ''}}">
+          <view class="rank-halo rank-halo-1" wx:if="{{myTop == 1}}"></view>
+          <view wx:if="{{myTop == 1}}" class="effect-layer effect-stars">
+            <view wx:for="{{topFirstStars}}" wx:key="index" class="fx-star fx-star-1" style="{{item.style}}"></view>
+          </view>
+          <view wx:if="{{myTop == 1}}" class="effect-layer effect-particles">
+            <view wx:for="{{topFirstParticles}}" wx:key="index" class="fx-particle fx-particle-1"
+              style="{{item.style}}"></view>
+          </view>
+          <view class="frame frame-gold">
+            <image class="frame-crown" src="{{topFirstCrown}}" mode="aspectFit" />
+            <image class="frame-avatar" src="{{topFirst.avatar ? BASE_URL + topFirst.avatar : defaultPerson}}"
+              mode="aspectFill" />
+          </view>
+          <text class="podium-rank podium-rank-1">1</text>
+          <text class="podium-nick podium-nick-1">{{topFirst.nickName || '--'}}</text>
+          <text class="podium-score podium-score-1">{{topFirst.pointsBalance || 0}}</text>
         </view>
-        <view class="frame frame-copper">
-          <image class="frame-crown" src="{{topSecondCrown}}" mode="aspectFit"/>
-          <image class="frame-avatar" src="{{topSecond.avatar ? BASE_URL + topSecond.avatar : defaultPerson}}" mode="aspectFill"/>
-        </view>
-        <text class="podium-rank podium-rank-2">2</text>
-        <text class="podium-nick podium-nick-2">{{topSecond.nickName || '--'}}</text>
-        <text class="podium-score podium-score-2">{{topSecond.pointsBalance || 0}}</text>
-      </view>
 
-      <!-- 第1名 -->
-      <view class="podium-col col-1 checkd">
-        <view class="rank-halo rank-halo-1"></view>
-        <view class="effect-layer effect-stars">
-          <view
-            wx:for="{{topFirstStars}}"
-            wx:key="index"
-            class="fx-star fx-star-1"
-            style="{{item.style}}"
-          ></view>
+        <!-- 第3名 -->
+        <view class="podium-col col-3 {{myTop == 3 ? 'checkd' : ''}}">
+          <view class="rank-halo rank-halo-3" wx:if="{{myTop == 3}}"></view>
+          <view wx:if="{{myTop == 3}}" class="effect-layer effect-stars">
+            <view wx:for="{{topThirdStars}}" wx:key="index" class="fx-star fx-star-3" style="{{item.style}}"></view>
+          </view>
+          <view wx:if="{{myTop == 3}}" class="effect-layer effect-particles">
+            <view wx:for="{{topThirdParticles}}" wx:key="index" class="fx-particle fx-particle-3"
+              style="{{item.style}}"></view>
+          </view>
+          <view class="frame frame-jade">
+            <image class="frame-crown" src="{{topThirdCrown}}" mode="aspectFit" />
+            <image class="frame-avatar" src="{{topThird.avatar ? BASE_URL + topThird.avatar : defaultPerson}}"
+              mode="aspectFill" />
+          </view>
+          <text class="podium-rank podium-rank-3">3</text>
+          <text class="podium-nick podium-nick-3">{{topThird.nickName || '--'}}</text>
+          <text class="podium-score podium-score-3">{{topThird.pointsBalance || 0}}</text>
         </view>
-        <view class="effect-layer effect-particles">
-          <view
-            wx:for="{{topFirstParticles}}"
-            wx:key="index"
-            class="fx-particle fx-particle-1"
-            style="{{item.style}}"
-          ></view>
-        </view>
-        <view class="frame frame-gold">
-          <image class="frame-crown" src="{{topFirstCrown}}" mode="aspectFit"/>
-          <image class="frame-avatar" src="{{topFirst.avatar ? BASE_URL + topFirst.avatar : defaultPerson}}" mode="aspectFill"/>
-        </view>
-        <text class="podium-rank podium-rank-1">1</text>
-        <text class="podium-nick podium-nick-1">{{topFirst.nickName || '--'}}</text>
-        <text class="podium-score podium-score-1">{{topFirst.pointsBalance || 0}}</text>
       </view>
-
-      <!-- 第3名 -->
-      <view class="podium-col col-3 checkd">
-        <view class="rank-halo rank-halo-3"></view>
-        <view class="effect-layer effect-stars">
-          <view
-            wx:for="{{topThirdStars}}"
-            wx:key="index"
-            class="fx-star fx-star-3"
-            style="{{item.style}}"
-          ></view>
+      <view class="trank-my" wx:if="{{myRankInfo.rankNo > 3}}">
+        <view class="trank-my-inner {{isPodiumFixed ? 'trank-my-inner-fixed' : ''}}"
+          style="{{isPodiumFixed ? 'top:' + (podiumFixedTop + podiumHolderHeight) + 'px;' : ''}}">
+          <view class="trank-avatar-ring">
+            <image class="trank-avatar" src="{{myRankInfo.avatar ? BASE_URL + myRankInfo.avatar : defaultPerson}}"
+              mode="aspectFill" />
+          </view>
+          <text class="trank-name">{{myRankInfo.nickName || '--'}}</text>
+          <view class="trank-rank-box">
+            <text class="trank-rank">{{myRankInfo.rankNo || '--'}}</text>
+            <text class="trank-rank-unit">名</text>
+          </view>
+          <view class="trank-score-box">
+            <text class="trank-score">{{myRankInfo.pointsBalance || 0}}</text>
+            <text class="trank-score-unit">积分</text>
+          </view>
         </view>
-        <view class="effect-layer effect-particles">
-          <view
-            wx:for="{{topThirdParticles}}"
-            wx:key="index"
-            class="fx-particle fx-particle-3"
-            style="{{item.style}}"
-          ></view>
-        </view>
-        <view class="frame frame-jade">
-          <image class="frame-crown" src="{{topThirdCrown}}" mode="aspectFit"/>
-          <image class="frame-avatar" src="{{topThird.avatar ? BASE_URL + topThird.avatar : defaultPerson}}" mode="aspectFill"/>
-        </view>
-        <text class="podium-rank podium-rank-3">3</text>
-        <text class="podium-nick podium-nick-3">{{topThird.nickName || '--'}}</text>
-        <text class="podium-score podium-score-3">{{topThird.pointsBalance || 0}}</text>
-      </view>
       </view>
     </view>
-   
-      
 
 
     <!-- 第4名起的列表 -->
     <view class="list-wrap">
-      <view
-        class="list-row {{item.isCurrentUser ? 'list-row-hl' : ''}}"
-        wx:for="{{dataList}}"
-        wx:key="index"
-      >
+      <view class="list-row {{item.isCurrentUser ? 'list-row-hl' : ''}}" wx:for="{{dataList}}" wx:key="index">
         <text class="list-idx {{item.isCurrentUser ? 'list-idx-hl' : ''}}">{{index + 4}}</text>
         <view class="list-avatar-ring">
-          <image class="list-avatar" src="{{item.avatar ? BASE_URL + item.avatar : defaultPerson}}" mode="aspectFill"/>
+          <image class="list-avatar" src="{{item.avatar ? BASE_URL + item.avatar : defaultPerson}}" mode="aspectFill" />
         </view>
         <text class="list-name {{item.isCurrentUser ? 'list-name-hl' : ''}}">{{item.nickName || '--'}}</text>
         <view class="list-score-box">
@@ -145,6 +126,8 @@
       </view>
     </view>
 
-    <view style="height:120rpx;"></view>
+    <view style="height:20rpx;"></view>
   </scroll-view>
+
+
 </view>

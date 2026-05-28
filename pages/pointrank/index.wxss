@@ -65,7 +65,7 @@ page {
 .hero {
   position: relative;
   width: 100%;
-  height: 500rpx;
+  height: 480rpx;
   overflow: hidden;
   border-radius: 0 0 60rpx 60rpx;
 }
@@ -189,7 +189,7 @@ page {
   left: 0;
   right: 0;
   box-sizing: border-box;
-  padding: 8rpx 24rpx 12rpx;
+  padding: 8rpx 24rpx 0rpx;
   background: linear-gradient(
     180deg,
     rgba(10, 16, 27, 0.98) 0%,
@@ -197,6 +197,7 @@ page {
     rgba(16, 28, 45, 0.9) 100%
   );
   z-index: 30;
+  /* margin-bottom: 10rpx; */
 }
 
 .podium-col {
@@ -558,9 +559,106 @@ page {
   color: #b0cfbf;
 }
 
+.trank-my {
+  position: relative;
+  /* margin-top: 20rpx; */
+  height: 80rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  z-index: 12;
+  width: 98%;
+  margin:0rpx auto;
+background-color: black;
+}
+
+.trank-my-inner {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+  /* line-height: 120rpx; */
+ 
+  background-size: cover;
+  /* margin-top:-16rpx; */
+  background: url("https://picui.ogmua.cn/s1/2026/05/28/6a17a37a8775d.webp") no-repeat center center;
+}
+
+.trank-my-inner-fixed {
+  position: fixed;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 40;
+  width:96% !important;
+  box-sizing: border-box;
+  height: 80rpx;
+ padding:0 20rpx;
+ margin:0 auto;
+}
+
+.trank-avatar-ring {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  padding: 4rpx;
+  box-sizing: border-box;
+  background: rgba(255, 236, 172, 0.45);
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.trank-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.trank-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 38rpx;
+  color: #ffe8b0;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 20rpx;
+  /* margin-top:-16rpx; */
+}
+
+.trank-rank-box,
+.trank-score-box {
+  display: flex;
+  align-items: center;
+  margin-left: 16rpx;
+  flex-shrink: 0;
+  margin-top:6rpx;
+}
+.trank-rank-box{
+  margin-right:40%
+}
+
+.trank-rank,
+.trank-score {
+  font-size: 50rpx;
+  color: #f3e9b5;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.trank-rank-unit,
+.trank-score-unit {
+  font-size: 30rpx;
+  color: rgba(248, 234, 181, 0.92);
+  margin-left: 6rpx;
+  margin-top:-6rpx;
+}
+
 /* ========== 排名列表 ========== */
 .list-wrap {
-  margin: 38rpx 28rpx 0;
+  margin: 28rpx 28rpx 0;
 }
 
 .list-row {
