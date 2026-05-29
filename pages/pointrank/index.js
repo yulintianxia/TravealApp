@@ -214,17 +214,17 @@ Page({
         //       rankNo: "--",
         //       nickName: user.nickName || user.nickname || "--",
         //       pointsBalance: 0,
-        //       avatar: user.avatar || user.headImg || "",
+        //       avatar: user.avatar || user.headImg || this.data.defaultPerson,
         //     };
         console.log(res?.userPoints.top, "totptttt");
         const myTop = res?.userPoints.top;
-
+        console.log(this.data.defaultPerson, "this.data.defaultPerson");
         let myRankInfo = {
           rankNo: Number(myTop),
           // rankNo: 1,
           nickName: user.nickName || user.nickname || "--",
           pointsBalance: user.pointsBalance || 0,
-          avatar: user.avatar || user.headImg || defaultPerson,
+          avatar: user.avatar || user.headImg || this.data.defaultPerson,
         };
 
         this.setData(
