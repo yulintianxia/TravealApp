@@ -227,6 +227,8 @@ Page({
           avatar: user.avatar || user.headImg || this.data.defaultPerson,
         };
 
+        console.log(myTop, "myTopmyTopmyTopmyTop");
+
         this.setData(
           {
             topFirst: list[0] || {},
@@ -234,7 +236,7 @@ Page({
             topThird: list[2] || {},
             dataList,
             myRankInfo,
-            myTop,
+            myTop: Number(myTop),
           },
           () => {
             this.measurePodium();

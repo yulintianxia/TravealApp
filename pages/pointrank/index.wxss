@@ -678,6 +678,24 @@ background-color: black;
   height: 132rpx;
 }
 
+.list-row-mytop {
+  height: 92rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  border-bottom: none;
+  background: url("https://zhenglian.vip/dotm/zl_images/usertrank.png") no-repeat center center;
+  /* background-size: 100% 100%; */
+}
+
+.list-row-mytop .list-avatar-ring {
+  width: 70rpx;
+  height: 70rpx;
+  padding: 4rpx;
+  margin-left: 12rpx;
+  margin-right: 16rpx;
+  background: rgba(255, 236, 172, 0.45);
+}
+
 /* 序号 */
 .list-idx {
   width: 56rpx;
@@ -691,6 +709,13 @@ background-color: black;
 .list-idx-hl {
   font-size: 38rpx;
   color: #d9cb98;
+  font-weight: 700;
+}
+
+.list-idx-mytop {
+  width: 78rpx;
+  font-size: 50rpx;
+  color: #f3e9b5;
   font-weight: 700;
 }
 
@@ -737,6 +762,12 @@ background-color: black;
   font-weight: 700;
 }
 
+.list-name-mytop {
+  font-size: 38rpx;
+  color: #ffe8b0;
+  font-weight: 700;
+}
+
 /* 积分 */
 .list-score-box {
   display: flex;
@@ -758,8 +789,22 @@ background-color: black;
   font-weight: 800;
 }
 
+.list-score-mytop {
+  font-size: 50rpx;
+  color: #f3e9b5;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .list-unit {
   font-size: 22rpx;
   color: rgba(228, 232, 238, 0.5);
   margin-left: 8rpx;
+}
+
+.list-unit-mytop {
+  font-size: 30rpx;
+  color: rgba(248, 234, 181, 0.92);
+  margin-left: 6rpx;
+  margin-top: -6rpx;
 }

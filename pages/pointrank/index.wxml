@@ -67,7 +67,7 @@
           </view>
           <text class="podium-rank podium-rank-1">1</text>
           <text class="podium-nick podium-nick-1">{{topFirst.nickName || '--'}}</text>
-          <text class="podium-score podium-score-1">{{topFirst.pointsBalance || 0}}</text>
+          <text class="podium-score podium-score-1">{{topFirst.pointsBalance  || 0}}</text>
         </view>
 
         <!-- 第3名 -->
@@ -103,7 +103,7 @@
             <text class="trank-rank-unit">名</text>
           </view>
           <view class="trank-score-box">
-            <text class="trank-score">{{myRankInfo.pointsBalance || 0}}</text>
+            <text class="trank-score">{{myRankInfo.pointsBalance   || 0}}</text>
             <text class="trank-score-unit">积分</text>
           </view>
         </view>
@@ -113,15 +113,20 @@
 
     <!-- 第4名起的列表 -->
     <view class="list-wrap">
-      <view class="list-row {{item.isCurrentUser ? 'list-row-hl' : ''}}" wx:for="{{dataList}}" wx:key="index">
-        <text class="list-idx {{item.isCurrentUser ? 'list-idx-hl' : ''}}">{{index + 4}}</text>
+      <view
+        class="list-row {{item.isCurrentUser ? 'list-row-hl' : ''}} {{myTop >= 4 && myTop <= 50 && (index + 4) == myTop ? 'list-row-mytop' : ''}}"
+        wx:for="{{dataList}}" wx:key="index">
+        <text
+          class="list-idx {{item.isCurrentUser ? 'list-idx-hl' : ''}} {{myTop >= 4 && myTop <= 50 && (index + 4) == myTop ? 'list-idx-mytop' : ''}}">{{index + 4}}</text>
         <view class="list-avatar-ring">
           <image class="list-avatar" src="{{item.avatar ? BASE_URL + item.avatar : defaultPerson}}" mode="aspectFill" />
         </view>
-        <text class="list-name {{item.isCurrentUser ? 'list-name-hl' : ''}}">{{item.nickName || '--'}}</text>
+        <text
+          class="list-name {{item.isCurrentUser ? 'list-name-hl' : ''}} {{myTop >= 4 && myTop <= 50 && (index + 4) == myTop ? 'list-name-mytop' : ''}}">{{item.nickName || '--'}}</text>
         <view class="list-score-box">
-          <text class="list-score {{item.isCurrentUser ? 'list-score-hl' : ''}}">{{item.pointsBalance || 0}}</text>
-          <text class="list-unit">积分</text>
+          <text
+            class="list-score {{item.isCurrentUser ? 'list-score-hl' : ''}} {{myTop >= 4 && myTop <= 50 && (index + 4) == myTop ? 'list-score-mytop' : ''}}">{{item.pointsBalance || 0}}</text>
+          <text class="list-unit {{myTop >= 4 && myTop <= 50 && (index + 4) == myTop ? 'list-unit-mytop' : ''}}">积分</text>
         </view>
       </view>
     </view>
