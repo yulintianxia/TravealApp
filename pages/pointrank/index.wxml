@@ -97,7 +97,7 @@
             <image class="trank-avatar" src="{{myRankInfo.avatar ? BASE_URL + myRankInfo.avatar : defaultPerson}}"
               mode="aspectFill" />
           </view>
-          <text class="trank-name">{{myRankInfo.nickName || '--'}}</text>
+          <text class="trank-name" :title="{{myRankInfo.nickName}}">{{myRankInfo.nickName || '--'}}</text>
           <view class="trank-rank-box">
             <text class="trank-rank">{{myRankInfo.rankNo || '--'}}</text>
             <text class="trank-rank-unit">名</text>

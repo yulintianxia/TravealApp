@@ -637,7 +637,7 @@ background-color: black;
   margin-top:6rpx;
 }
 .trank-rank-box{
-  margin-right:40%
+  margin-right:15%
 }
 
 .trank-rank,
