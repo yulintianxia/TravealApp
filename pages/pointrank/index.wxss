@@ -595,6 +595,7 @@ background-color: black;
   height: 80rpx;
  padding:0 20rpx;
  margin:0 auto;
+ border-radius: 8rpx;
 }
 
 .trank-avatar-ring {

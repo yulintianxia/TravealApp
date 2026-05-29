@@ -223,7 +223,7 @@ Page({
           rankNo: Number(myTop),
           // rankNo: 1,
           nickName: user.nickName || user.nickname || "--",
-          pointsBalance: user.pointsBalance || 0,
+          pointsBalance: res?.userPoints?.pointsBalance || 0,
           avatar: user.avatar || user.headImg || this.data.defaultPerson,
         };
 
