@@ -89,6 +89,25 @@ page {
   box-sizing: border-box;
 }
 
+.item-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52rpx;
+  margin-right: 18rpx;
+  flex-shrink: 0;
+}
+
+.item-selector .t-checkbox {
+  --td-checkbox-size: 44rpx;
+  --td-checkbox-border-color: rgba(255, 255, 255, 0.7);
+  --td-checkbox-checked-color: #f2d89d;
+  --td-checkbox-checked-bg-color: rgba(242, 216, 157, 0.18);
+  --td-checkbox-checked-border-color: rgba(242, 216, 157, 0.88);
+  --td-checkbox-label-color: transparent;
+  --td-checkbox-label-disabled-color: transparent;
+}
+
 .checkbox {
   width: 52rpx;
   height: 52rpx;

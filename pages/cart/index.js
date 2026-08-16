@@ -5,6 +5,7 @@ Page({
     cartList: [],
     selectedIds: [],
     selectedAll: false,
+    showItemSelectors: false,
     totalPoints: 0,
     showQrCode: false,
     chatImg: "../../images/new/wechat.png",
@@ -75,7 +76,8 @@ Page({
   },
 
   toggleSelect(e) {
-    const id = Number(e.currentTarget.dataset.id);
+    const rawId = (e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.id) ?? e.detail?.value ?? e.detail?.id;
+    const id = Number(rawId);
     const selectedIds = [...this.data.selectedIds];
     const index = selectedIds.indexOf(id);
 
@@ -85,7 +87,7 @@ Page({
       selectedIds.push(id);
     }
 
-    this.setData({ selectedIds }, () => {
+    this.setData({ selectedIds, showItemSelectors: true }, () => {
       this.updateSummary();
     });
   },
@@ -94,7 +96,7 @@ Page({
     const selectedAll = !this.data.selectedAll;
     const selectedIds = selectedAll ? this.data.cartList.map((item) => item.id) : [];
 
-    this.setData({ selectedAll, selectedIds }, () => {
+    this.setData({ selectedAll, selectedIds, showItemSelectors: true }, () => {
       this.updateSummary();
     });
   },

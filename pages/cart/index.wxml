@@ -1,24 +1,17 @@
 <view class="cart-page">
-  <view class="cart-header">
-    <view class="header-back" bindtap="goBack">‹</view>
-    <view class="header-title">购物车</view>
-    <view class="header-actions">
-      <view class="action-dots">
-        <text></text>
-        <text></text>
-        <text></text>
-      </view>
-      <view class="action-indicator" bindtap="openCustomerService"></view>
-    </view>
-  </view>
-
   <view class="cart-list">
     <block wx:for="{{cartList}}" wx:key="id">
       <view class="cart-item">
-        <view class="checkbox {{selectedIds.indexOf(item.id) !== -1 ? 'checked' : ''}}" data-id="{{item.id}}" bindtap="toggleSelect">
-          <text wx:if="{{selectedIds.indexOf(item.id) !== -1}}">✓</text>
+        <view class="item-selector" wx:if="{{showItemSelectors}}">
+          <t-checkbox
+            value="{{item.id}}"
+            checked="{{selectedIds.indexOf(item.id) !== -1}}"
+            data-id="{{item.id}}"
+            bind:change="toggleSelect"
+            icon="rectangle"
+            borderless
+          />
         </view>
-
         <view class="product-image-wrap">
           <image class="product-image" src="{{item.image}}" mode="aspectFill"></image>
         </view>
