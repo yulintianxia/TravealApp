@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/myHome/index",
+    "pages/market/index",
+    "pages/productDetail/index",
+    "pages/cart/index",
     "pages/newMy/index",
     "pages/vipMemer/index",
     "pages/levelMember/index",
@@ -35,6 +38,12 @@
         "text": "首页",
         "iconPath": "images/home/4.png",
         "selectedIconPath": "images/home/2.png"
+      },
+      {
+        "pagePath": "pages/market/index",
+        "text": "商城",
+        "iconPath": "images/home/5.png",
+        "selectedIconPath": "images/home/6.png"
       },
       {
         "pagePath": "pages/myHome/index",

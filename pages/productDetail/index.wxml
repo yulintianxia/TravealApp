@@ -1,0 +1,93 @@
+<view class="detail-page">
+
+
+  <view class="tab-header">
+    <view wx:for="{{tabs}}" wx:key="*this" class="tab-item {{activeTab === item ? 'active' : ''}}" data-tab="{{item}}" bindtap="onTabChange">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="hero-gallery">
+    <image class="hero-image" src="{{product.images[0]}}" mode="aspectFill"></image>
+  </view>
+
+  <view class="product-info-block">
+    <view class="price-row">
+      <text class="price">{{product.price}}积分/副</text>
+      <text class="redeem">已兑换 {{product.hasRedeemed}}</text>
+    </view>
+
+    <view class="product-title">{{product.title}}</view>
+  </view>
+
+  <view class="shipping-row">
+    <text class="shipping-text">发货</text>
+    <text class="shipping-text">{{product.shipping}}</text>
+    <text class="shipping-text right">{{product.delivery}}</text>
+    <text class="arrow">›</text>
+  </view>
+
+  <view class="review-box">
+    <view class="review-title">商品评价(12)</view>
+    <view class="review-tags">
+      <text>做工不错</text>
+      <text>厚薄合适</text>
+      <text>做工质量好3</text>
+    </view>
+    <view class="review-card">
+      <view class="review-avatar">{{product.review.author[0] || '用'}}</view>
+      <view class="review-content">
+        <view class="review-name">{{product.review.author}}</view>
+        <view class="review-text">{{product.review.text}} 已购：透气网鹿皮手套2双，发货于7天前</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="spec-block">
+    <view class="spec-title">商品详情</view>
+    <view class="spec-table">
+      <block wx:for="{{product.specs}}" wx:key="index">
+        <view class="spec-row">
+          <view class="spec-key">{{item[0]}}</view>
+          <view class="spec-val">{{item[1]}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item">
+      <view class="nav-icon">⌂</view>
+      <text>首页</text>
+    </view>
+    <view class="nav-item" bindtap="openCustomerService">
+      <view class="nav-icon">☎</view>
+      <text>客服</text>
+    </view>
+    <view class="nav-item cart-item" bindtap="goCart">
+      <view class="nav-icon">🛒</view>
+      <text>购物车</text>
+      <view class="badge">2</view>
+    </view>
+    <view class="nav-item">
+      <view class="nav-icon">▣</view>
+      <text>微店</text>
+    </view>
+    <view class="buy-area" bindtap="addToCart">加入购物车</view>
+    <view class="checkout-button" bindtap="goCart">结算</view>
+  </view>
+
+  <view wx:if="{{showCustomerDialog}}" class="customer-overlay" bindtap="closeCustomerService">
+    <view class="customer-dialog" catchtap="stopPropagation">
+      <view class="customer-panel">
+        <view class="customer-qr">
+          <view wx:for="{{qrGrid}}" wx:for-item="row" wx:key="*this" class="qr-row">
+            <view wx:for="{{row}}" wx:for-item="cell" wx:key="index" class="qr-cell {{cell ? 'filled' : ''}}"></view>
+          </view>
+        </view>
+        <view class="customer-text">添加客服微信</view>
+        <view class="customer-confirm" bindtap="closeCustomerService">知道了</view>
+      </view>
+    </view>
+  </view>
+</view>

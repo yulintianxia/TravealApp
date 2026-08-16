@@ -139,6 +139,84 @@ class ApiManager extends httpClient {
     return this.get("/system/checkin/checkinList", data, config);
   }
 
+  // 查询上架商品列表
+  goodsList(data, config) {
+    return this.get("/mall/api/goods/list", data, config);
+  }
+
+  // 查询商品详情
+  goodsDetail(data, config) {
+    return this.get(`/mall/api/goods/${data.keyId}`, data, config);
+  }
+
+  // 查询标签列表
+  tagList(data, config) {
+    return this.get(`/mall/api/tag/list`, data, config);
+  }
+
+  // 获取商品分类列表（从字典表查询）
+  categoryList(data, config) {
+    return this.get(`/mall/api/category/list`, data, config);
+  }
+
+  // 查询商品评价列表
+  reviewList(data, config) {
+    return this.get(`/mall/api/review/list`, data, config);
+  }
+
+  // 查询商品评价统计
+  statistics(data, config) {
+    return this.get(`/mall/api/review/statistics`, data, config);
+  }
+
+  // 查询购物车列表
+  cartList(data, config) {
+    return this.get(`/mall/api/cart/list`, data, config);
+  }
+
+  // 添加商品到购物车
+  cartAdd(data, config) {
+    return this.post(`/mall/api/cart/add`, data, config);
+  }
+
+  // 更新购物车商品数量
+  cartUpdate(data, config) {
+    return this.post(`/mall/api/cart/update`, data, config);
+  }
+
+  // 删除购物车商品
+  cartDelete(data, config) {
+    return this.post(`/mall/api/cart/delete`, data, config);
+  }
+
+  // 创建订单（结算）
+  createOrder(data, config) {
+    return this.post(`/mall/api/order/create`, data, config);
+  }
+
+  //获取当前用户的订单列表，支持按状态筛选
+   getOrderList(data, config) {
+    return this.post(`/mall/api/order/list`, data, config);
+  }
+  
+  //查询订单详情
+   getOrderDetail(data, config) {
+    return this.get(`/mall/api/order/${data.keyId}`, data, config);
+  }
+
+   //取消订单
+   cancelOrder(data, config) {
+    return this.post(`/mall/api/order/cancel`, data, config);
+  }
+  
+  //确认收货（只有待收货状态可以确认）
+   receiveOrder(data, config) {
+    return this.post(`/mall/api/order/receive`, data, config);
+  }
+  
+
+  
+
 
 }
 

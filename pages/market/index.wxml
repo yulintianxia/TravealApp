@@ -1,0 +1,105 @@
+<view class="market-page">
+
+
+  <view class="hero-zone">
+    <view class="hero-year">2026</view>
+    <view class="hero-vertical">
+      <text>五星树玉</text>
+    </view>
+    <image class="hero-image" src="{{bannerImage}}" mode="aspectFill"></image>
+  </view>
+
+  <view class="tab-bar">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="*this"
+      class="tab-item {{activeTab === item ? 'active' : ''}}"
+      data-tab="{{item}}"
+      bindtap="onTabChange"
+    >
+      {{item}}
+    </view>
+  </view>
+
+  <block wx:if="{{activeTab === '评价'}}">
+    <view class="review-wrap">
+      <view class="review-filters">
+        <view
+          wx:for="{{reviewFilters}}"
+          wx:key="*this"
+          class="review-filter {{activeReviewFilter === item ? 'active' : ''}}"
+          data-filter="{{item}}"
+          bindtap="onReviewFilterChange"
+        >
+          {{item}}
+        </view>
+      </view>
+
+      <view class="review-list">
+        <view wx:for="{{reviews}}" wx:key="id" class="review-item">
+          <view class="review-head">
+            <image class="review-avatar" src="{{item.avatar}}" mode="aspectFill"></image>
+            <view class="review-user">{{item.user}}</view>
+          </view>
+
+          <view class="review-content-box">
+            <view class="review-main">
+              <view class="review-text">{{item.content}}</view>
+              <view class="review-extra">{{item.extra}}</view>
+            </view>
+            <view class="review-date">{{item.date}}</view>
+          </view>
+          <view wx:if="{{item.images && item.images.length > 0}}" class="review-images">
+            <image
+              wx:for="{{item.images}}"
+              wx:key="*this"
+              class="review-image"
+              src="{{item}}"
+              mode="aspectFill"
+            ></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="market-content">
+      <view class="market-sidebar">
+        <view
+          wx:for="{{categories}}"
+          wx:key="*this"
+          class="sidebar-item {{activeCategory === item ? 'active' : ''}}"
+          data-category="{{item}}"
+          bindtap="onCategoryChange"
+        >
+          {{item}}
+        </view>
+      </view>
+
+      <view class="market-products">
+        <view class="product-grid">
+          <view
+            wx:for="{{products}}"
+            wx:key="id"
+            class="product-card"
+            data-id="{{item.id}}"
+            bindtap="goToDetail"
+          >
+            <image class="product-thumb" src="{{item.image}}" mode="aspectFill"></image>
+            <view class="product-name">{{item.name}}</view>
+            <view class="product-tags">
+              <text class="chip" wx:if="{{item.tag}}">{{item.tag}}</text>
+              <text class="chip hot" wx:if="{{item.hot}}">{{item.hot}}</text>
+            </view>
+            <view class="product-price">
+              <text class="price-dot"></text>
+              <text>{{item.price}}积分/副</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

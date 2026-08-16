@@ -8,6 +8,12 @@ Page({
     this.setData(this.getNavMetrics());
   },
 
+  goMarket() {
+    wx.navigateTo({
+      url: "/pages/market/index",
+    });
+  },
+
   getNavMetrics() {
     const menuRect = wx.getMenuButtonBoundingClientRect();
     const windowInfo = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync();
