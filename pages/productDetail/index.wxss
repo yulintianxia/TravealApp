@@ -243,7 +243,7 @@ page {
 .spec-title {
   font-size: 30rpx;
   color: #f4efe8;
-  margin-bottom: 16rpx;
+  margin-bottom: 32rpx;
   font-weight: 600;
 }
 
@@ -438,4 +438,8 @@ page {
   justify-content: center;
   font-size: 28rpx;
   font-weight: 700;
+}
+
+.product-info-wrap {
+  padding:0 36rpx;
 }

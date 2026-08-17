@@ -9,6 +9,8 @@
     <image class="hero-image" src="{{product.mainPicture}}" mode="aspectFill"></image>
   </view>
 
+
+ <view class='product-info-wrap'>
   <view class="product-info-block">
     <view class="price-row">
       <text class="price">{{product.pointsPrice}}积分/副</text>
@@ -52,6 +54,8 @@
       </block>
     </view>
   </view>
+
+ </view>
 
   <view class="bottom-nav">
     <view class="nav-item">
