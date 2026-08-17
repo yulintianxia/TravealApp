@@ -1,13 +1,39 @@
+import { BASE_URL, baseImageUrl } from "../../config/index";
+import { RequestApi } from "../../services/api";
+
 Page({
   data: {
-    activeTab: "最新",
-    tabs: ["最新", "价格", "销量", "评价"],
-    categories: ["全部", "服饰配件", "生活用品", "菩提", "潮流女包"],
-    activeCategory: "全部",
-    activeReviewFilter: "全部121",
+    activeTab: "comprehensive",
+    // tabs: ["最新", "价格", "销量", "评价"],
+    tabs: [
+      {
+        label: "综合",
+        value: "comprehensive",
+      },
+      {
+        label: "上新",
+        value: "newest",
+      },
+      {
+        label: "价格",
+        value: "price",
+      },
+      {
+        label: "销量",
+        value: "sales",
+      },
+      {
+        label: "评价",
+        value: "reviews",
+      },
+    ],
+    // categories: ["全部", "服饰配件", "生活用品", "菩提", "潮流女包"],
+    categories: [],
+    activeCategory: "all",
+    activeReviewFilter: "全部",
     products: [],
     reviews: [],
-    reviewFilters: ["全部121", "有图1", "挺好的121", "不媚好0", "追评0"],
+    reviewFilters: ["全部", "有图1", "挺好的121", "不媚好0", "追评0"],
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
     allProducts: [
@@ -19,7 +45,7 @@ Page({
         hot: "热销中",
         image:
           "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80",
-        category: "全部",
+        category: "all",
       },
       {
         id: 2,
@@ -51,31 +77,11 @@ Page({
           "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
         category: "服饰配件",
       },
-      {
-        id: 5,
-        name: "文玩珠链精美礼盒版手串文玩饰品",
-        price: 3600,
-        tag: "新手福利",
-        hot: "热销中",
-        image:
-          "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80",
-        category: "潮流女包",
-      },
-      {
-        id: 6,
-        name: "天然棉绳原色手链文玩日常配件",
-        price: 4200,
-        tag: "新手福利",
-        hot: "热销中",
-        image:
-          "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80",
-        category: "生活用品",
-      },
     ],
   },
 
   onLoad() {
-    this.updateProductsByTab("最新");
+    // this.updateProductsByTab("最新");
     this.setData({
       reviews: [
         {
@@ -115,12 +121,40 @@ Page({
         },
       ],
     });
+
+    this.getProducts();
+    this.getCategoryList();
+  },
+
+  async getProducts() {
+    let params = {
+      category: "",
+      tagId: "",
+      name: "",
+      orderBy: "",
+      pageNum:1,
+      pageSize:10
+    };
+    let res = await RequestApi.goodsList();
+    if (res && res.code == "200" && res.rows.length) {
+      console.log("商品列表", res.rows);
+    }
+  },
+
+  async getCategoryList() {
+    let res = await RequestApi.categoryList();
+    if (res && res.code == "200" && res.data.length) {
+      console.log("分类列表", res.data);
+      this.setData({
+        categories: res.data,
+      });
+    }
   },
 
   updateProductsByTab(tab) {
     const all = this.data.allProducts || [];
     const filtered = all.filter((item) => {
-      if (this.data.activeCategory === "全部") return true;
+      if (this.data.activeCategory === "all") return true;
       return item.category === this.data.activeCategory;
     });
 
@@ -132,6 +166,8 @@ Page({
 
   onTabChange(e) {
     const { tab } = e.currentTarget.dataset;
+
+    console.log("tab", tab);
     this.updateProductsByTab(tab);
   },
 

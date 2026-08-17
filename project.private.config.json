@@ -3,7 +3,7 @@
   "projectname": "TravealApp",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": true,
+    "urlCheck": false,
     "coverView": true,
     "lazyloadPlaceholderEnable": false,
     "skylineRenderEnable": false,
@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/cart/index",
-          "pathName": "pages/cart/index",
+          "name": "pages/market/index",
+          "pathName": "pages/market/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/cart/index",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/productDetail/index",

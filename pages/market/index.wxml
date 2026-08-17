@@ -13,21 +13,21 @@
     <view
       wx:for="{{tabs}}"
       wx:key="*this"
-      class="tab-item {{activeTab === item ? 'active' : ''}}"
-      data-tab="{{item}}"
+      class="tab-item {{activeTab === item.value ? 'active' : ''}}"
+      data-tab="{{item.value}}"
       bindtap="onTabChange"
     >
-      {{item}}
+      {{item.label}}
     </view>
   </view>
 
-  <block wx:if="{{activeTab === '评价'}}">
+  <block wx:if="{{activeTab === 'reviews'}}">
     <view class="review-wrap">
       <view class="review-filters">
         <view
           wx:for="{{reviewFilters}}"
           wx:key="*this"
-          class="review-filter {{activeReviewFilter === item ? 'active' : ''}}"
+          class="review-filter {{activeReviewFilter === item.value ? 'active' : ''}}"
           data-filter="{{item}}"
           bindtap="onReviewFilterChange"
         >
@@ -69,11 +69,11 @@
         <view
           wx:for="{{categories}}"
           wx:key="*this"
-          class="sidebar-item {{activeCategory === item ? 'active' : ''}}"
-          data-category="{{item}}"
+          class="sidebar-item {{activeCategory === item.key ? 'active' : ''}}"
+          data-category="{{item.key}}"
           bindtap="onCategoryChange"
         >
-          {{item}}
+          {{item.label}}
         </view>
       </view>
 
