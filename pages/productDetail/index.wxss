@@ -113,7 +113,7 @@ page {
 }
 
 .product-info-block {
-  padding: 22rpx 22rpx 0;
+  padding: 50rpx 22rpx 0;
 }
 
 .price-row {
@@ -124,7 +124,7 @@ page {
 }
 
 .price {
-  font-size: 52rpx;
+  font-size: 40rpx;
   color: #f2d8a0;
   font-weight: 700;
 }

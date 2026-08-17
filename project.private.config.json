@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/productDetail/index",
+          "pathName": "pages/productDetail/index",
+          "query": "keyId=1",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
           "name": "pages/market/index",
           "pathName": "pages/market/index",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/cart/index",

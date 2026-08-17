@@ -83,7 +83,7 @@
             wx:for="{{products}}"
             wx:key="id"
             class="product-card"
-            data-id="{{item.id}}"
+            data-id="{{item.keyId || item.id}}"
             bindtap="goToDetail"
           >
             <image class="product-thumb" src="{{item.mainPicture}}" mode="aspectFill"></image>

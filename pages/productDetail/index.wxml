@@ -1,6 +1,4 @@
 <view class="detail-page">
-
-
   <view class="tab-header">
     <view wx:for="{{tabs}}" wx:key="*this" class="tab-item {{activeTab === item ? 'active' : ''}}" data-tab="{{item}}" bindtap="onTabChange">
       {{item}}
@@ -8,22 +6,22 @@
   </view>
 
   <view class="hero-gallery">
-    <image class="hero-image" src="{{product.images[0]}}" mode="aspectFill"></image>
+    <image class="hero-image" src="{{product.mainPicture}}" mode="aspectFill"></image>
   </view>
 
   <view class="product-info-block">
     <view class="price-row">
-      <text class="price">{{product.price}}积分/副</text>
-      <text class="redeem">已兑换 {{product.hasRedeemed}}</text>
+      <text class="price">{{product.pointsPrice}}积分/副</text>
+      <text class="redeem">已兑换 {{product.sales}}</text>
     </view>
 
-    <view class="product-title">{{product.title}}</view>
+    <view class="product-title">{{product.name}}</view>
   </view>
 
-  <view class="shipping-row">
+  <view class="shipping-row" bindtap="goAddressList">
     <text class="shipping-text">发货</text>
-    <text class="shipping-text">{{product.shipping}}</text>
-    <text class="shipping-text right">{{product.delivery}}</text>
+    <text class="shipping-text">{{shipping}}</text>
+    <text class="shipping-text right">{{delivery}}</text>
     <text class="arrow">›</text>
   </view>
 
@@ -46,10 +44,10 @@
   <view class="spec-block">
     <view class="spec-title">商品详情</view>
     <view class="spec-table">
-      <block wx:for="{{product.specs}}" wx:key="index">
+      <block wx:for="{{specs}}" wx:key="index">
         <view class="spec-row">
-          <view class="spec-key">{{item[0]}}</view>
-          <view class="spec-val">{{item[1]}}</view>
+          <view class="spec-key">{{item.label}}</view>
+          <view class="spec-val">{{item.value}}</view>
         </view>
       </block>
     </view>
@@ -80,14 +78,15 @@
   <view wx:if="{{showCustomerDialog}}" class="customer-overlay" bindtap="closeCustomerService">
     <view class="customer-dialog" catchtap="stopPropagation">
       <view class="customer-panel">
-        <view class="customer-qr">
-          <view wx:for="{{qrGrid}}" wx:for-item="row" wx:key="*this" class="qr-row">
-            <view wx:for="{{row}}" wx:for-item="cell" wx:key="index" class="qr-cell {{cell ? 'filled' : ''}}"></view>
-          </view>
-        </view>
+        <image class="customer-qr" src="{{chatImg}}" mode="aspectFit"></image>
         <view class="customer-text">添加客服微信</view>
         <view class="customer-confirm" bindtap="closeCustomerService">知道了</view>
       </view>
     </view>
   </view>
+
+
+
+
+
 </view>

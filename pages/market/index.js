@@ -223,7 +223,7 @@ Page({
   },
 
   goToDetail(e) {
-    const productId = e.currentTarget.dataset.id;
+    const productId = e.currentTarget.dataset.id || e.currentTarget.dataset.keyId;
     if (!productId) return;
     wx.navigateTo({
       url: `/pages/productDetail/index?keyId=${productId}`,
