@@ -13,6 +13,7 @@ Page({
     product: {},
     specs: [],
     reviewList: [],
+    totalReviews: 0,
   },
 
   onLoad(options) {

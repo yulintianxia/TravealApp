@@ -28,7 +28,7 @@
   </view>
 
   <view class="review-box">
-    <view class="review-title">商品评价(12)</view>
+    <view class="review-title">商品评价({{totalReviews}})</view>
     <view class="review-tags">
       <text>做工不错</text>
       <text>厚薄合适</text>
