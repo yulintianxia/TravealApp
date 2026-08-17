@@ -4,6 +4,8 @@ import { RequestApi } from "../../services/api";
 Page({
   data: {
     activeTab: "comprehensive",
+    pageNum: 1,
+    pageSize: 10,
     // tabs: ["最新", "价格", "销量", "评价"],
     tabs: [
       {
@@ -29,10 +31,13 @@ Page({
     ],
     // categories: ["全部", "服饰配件", "生活用品", "菩提", "潮流女包"],
     categories: [],
-    activeCategory: "all",
+    activeCategory: "",
     activeReviewFilter: "全部",
     products: [],
     reviews: [],
+    total: 0,
+    loading: false,
+    noMore: false,
     reviewFilters: ["全部", "有图1", "挺好的121", "不媚好0", "追评0"],
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
@@ -126,25 +131,43 @@ Page({
     this.getCategoryList();
   },
 
-  async getProducts() {
-    let params = {
-      category: "",
-      tagId: "",
-      name: "",
-      orderBy: "",
-      pageNum:1,
-      pageSize:10
-    };
-    let res = await RequestApi.goodsList();
-    if (res && res.code == "200" && res.rows.length) {
-      console.log("商品列表", res.rows);
+  async getProducts(reset = true) {
+    if (this.data.loading) return;
+
+    const pageNum = reset ? 1 : this.data.pageNum;
+    this.setData({ loading: true });
+
+    try {
+      const params = {
+        category: this.data.activeCategory,
+        orderBy: "",
+        pageNum,
+        pageSize: this.data.pageSize,
+      };
+      const res = await RequestApi.goodsList(params);
+      const rows = (res && res.rows) || [];
+      const total = (res && res.total) || 0;
+      const merged = reset ? rows : this.data.products.concat(rows);
+
+      this.setData({
+        products: merged,
+        total,
+        pageNum,
+        noMore: merged.length >= total || rows.length < this.data.pageSize,
+      });
+    } catch (error) {
+      console.error("getProducts error:", error);
+      if (reset) {
+        this.setData({ products: [], total: 0, noMore: true });
+      }
+    } finally {
+      this.setData({ loading: false });
     }
   },
 
   async getCategoryList() {
     let res = await RequestApi.categoryList();
     if (res && res.code == "200" && res.data.length) {
-      console.log("分类列表", res.data);
       this.setData({
         categories: res.data,
       });
@@ -178,8 +201,24 @@ Page({
 
   onCategoryChange(e) {
     const { category } = e.currentTarget.dataset;
-    this.setData({ activeCategory: category }, () => {
-      this.updateProductsByTab(this.data.activeTab);
+
+    this.setData({
+      activeCategory: category,
+      pageNum: 1,
+      noMore: false,
+      products: [],
+    }, () => {
+      this.getProducts(true);
+    });
+  },
+
+  onReachBottom() {
+    if (this.data.loading || this.data.noMore) return;
+
+    this.setData({
+      pageNum: this.data.pageNum + 1,
+    }, () => {
+      this.getProducts(false);
     });
   },
 

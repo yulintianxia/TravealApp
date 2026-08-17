@@ -86,17 +86,21 @@
             data-id="{{item.id}}"
             bindtap="goToDetail"
           >
-            <image class="product-thumb" src="{{item.image}}" mode="aspectFill"></image>
+            <image class="product-thumb" src="{{item.mainPicture}}" mode="aspectFill"></image>
             <view class="product-name">{{item.name}}</view>
             <view class="product-tags">
-              <text class="chip" wx:if="{{item.tag}}">{{item.tag}}</text>
-              <text class="chip hot" wx:if="{{item.hot}}">{{item.hot}}</text>
+              <text class="chip" wx:for="{{item.tags}}" wx:key="*this">{{item.name}}</text>
             </view>
             <view class="product-price">
-              <text class="price-dot"></text>
-              <text>{{item.price}}积分/副</text>
+              <image class="price-dot" src="../../images/home/points.png" mode="aspectFit"></image>
+              <text>{{item.pointsPrice}}积分/副</text>
             </view>
           </view>
+        </view>
+
+        <view class="list-footer" wx:if="{{products.length}}">
+          <text wx:if="{{loading}}">加载中...</text>
+          <text wx:elif="{{noMore}}">没有更多了</text>
         </view>
       </view>
     </view>
