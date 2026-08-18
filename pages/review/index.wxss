@@ -1,0 +1,148 @@
+page {
+  background: #090d13;
+  color: #f5f2eb;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.review-page {
+  min-height: 100vh;
+  background: #0b0f14;
+  padding: 12rpx 20rpx 80rpx;
+  box-sizing: border-box;
+}
+
+.review-header {
+  padding: 8rpx 0 20rpx;
+}
+
+.header-title {
+  display: block;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 18rpx;
+}
+
+.filter-item {
+  flex: 1;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1rpx solid rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 28rpx;
+}
+
+.filter-item.active {
+  color: #f3e0ab;
+  border-color: rgba(216, 176, 97, 0.4);
+  background: rgba(216, 176, 97, 0.08);
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.review-item {
+  padding: 18rpx 0 12rpx;
+  border-bottom: 1rpx solid rgba(255, 255, 255, 0.04);
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12rpx;
+  margin-bottom: 10rpx;
+}
+
+.review-user-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  min-width: 0;
+  flex: 1;
+}
+
+.review-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 16rpx;
+  background: #d9d9d9;
+  flex-shrink: 0;
+}
+
+.review-user {
+  color: #f3efe9;
+  font-size: 28rpx;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20rpx;
+  white-space: nowrap;
+}
+
+.review-content-box {
+  margin-left: 86rpx;
+}
+
+.review-main {
+  flex: 1;
+}
+
+.review-text {
+  color: #efede9;
+  font-size: 26rpx;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+}
+
+.review-extra {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22rpx;
+  line-height: 1.5;
+}
+
+.review-images {
+  display: flex;
+  gap: 12rpx;
+  margin-left: 86rpx;
+  margin-top: 16rpx;
+}
+
+.review-image {
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 12rpx;
+  background: #1d1f22;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80rpx 0;
+  color: rgba(255,255,255,0.6);
+  font-size: 26rpx;
+}
+
+.list-footer {
+  text-align: center;
+  padding: 18rpx 0 0;
+  color: rgba(255,255,255,0.5);
+  font-size: 22rpx;
+}

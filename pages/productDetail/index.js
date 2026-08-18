@@ -1,4 +1,5 @@
 import { RequestApi } from "../../services/api.js";
+import { officialAccountUsername, webChatUrl } from "../../config/index";
 
 Page({
   data: {
@@ -55,6 +56,35 @@ Page({
   onTabChange(e) {
     const { tab } = e.currentTarget.dataset;
     this.setData({ activeTab: tab });
+
+    const map = {
+      商品: "product",
+      评价: "review",
+      详情: "detail",
+    };
+
+    const anchor = map[tab];
+    if (anchor) {
+      this.scrollToAnchor(anchor);
+    }
+  },
+
+  scrollToAnchor(anchorName) {
+    const selector = `#anchor-${anchorName}`;
+    wx.createSelectorQuery()
+      .select(selector)
+      .boundingClientRect()
+      .selectViewport()
+      .scrollOffset()
+      .exec((res) => {
+        if (!res || !res[0]) return;
+        const rect = res[0];
+        const scrollTop = (res[1] && res[1].scrollTop) || 0;
+        wx.pageScrollTo({
+          scrollTop: scrollTop + rect.top - 20,
+          duration: 200,
+        });
+      });
   },
 
   openCustomerService() {
@@ -69,8 +99,50 @@ Page({
     wx.navigateTo({ url: "/pages/addressList/index" });
   },
 
+  goReviewPage() {
+    const keyId = this.data.keyId;
+    if (!keyId) return;
+    wx.navigateTo({
+      url: `/pages/review/index?keyId=${keyId}`,
+    });
+  },
+
+  goMarket() {
+    wx.switchTab({ url: "/pages/market/index" });
+  },
+
   goBack() {
     wx.navigateBack({ delta: 1 });
+  },
+
+  openMicroStore() {
+    const hasOpenOfficialAccountApi = typeof wx.openOfficialAccountProfile === "function";
+
+    if (hasOpenOfficialAccountApi && officialAccountUsername) {
+      wx.openOfficialAccountProfile({
+        username: officialAccountUsername,
+        fail: (err) => {
+          const errMsg = ((err && err.errMsg) || "").toLowerCase();
+          if (errMsg.includes("cancel")) return;
+          this.openMicroStoreWeb();
+        },
+      });
+      return;
+    }
+
+    this.openMicroStoreWeb();
+  },
+
+  openMicroStoreWeb() {
+    wx.navigateTo({
+      url: "/pages/webView/index",
+      success: (res) => {
+        res.eventChannel.emit("webViewData", {
+          url: webChatUrl,
+          wechatCode: true,
+        });
+      },
+    });
   },
 
   async addToCart() {

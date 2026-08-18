@@ -175,22 +175,18 @@ Page({
   },
 
   updateProductsByTab(tab) {
-    const all = this.data.allProducts || [];
-    const filtered = all.filter((item) => {
-      if (this.data.activeCategory === "all") return true;
-      return item.category === this.data.activeCategory;
-    });
-
     this.setData({
       activeTab: tab,
-      products: filtered,
+      pageNum: 1,
+      noMore: false,
+      products: [],
+    }, () => {
+      this.getProducts(true);
     });
   },
 
   onTabChange(e) {
     const { tab } = e.currentTarget.dataset;
-
-    console.log("tab", tab);
     this.updateProductsByTab(tab);
   },
 

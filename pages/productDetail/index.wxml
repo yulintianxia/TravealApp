@@ -5,13 +5,13 @@
     </view>
   </view>
 
-  <view class="hero-gallery">
+  <view class="hero-gallery" id="anchor-product">
     <image class="hero-image" src="{{product.mainPicture}}" mode="aspectFill"></image>
   </view>
 
 
  <view class='product-info-wrap'>
-  <view class="product-info-block">
+  <view class="product-info-block" id="anchor-product-info">
     <view class="price-row">
       <text class="price">{{product.pointsPrice}}积分/副</text>
       <text class="redeem">已兑换 {{product.sales}}</text>
@@ -27,7 +27,7 @@
     <text class="arrow">›</text>
   </view>
 
-  <view class="review-box">
+  <view class="review-box" id="anchor-review" bindtap="goReviewPage">
     <view class="review-title">商品评价({{totalReviews}})</view>
     <view class="review-tags">
       <text>做工不错</text>
@@ -43,7 +43,7 @@
     </view>
   </view>
 
-  <view class="spec-block">
+  <view class="spec-block" id="anchor-detail">
     <view class="spec-title">商品详情</view>
     <view class="spec-table">
       <block wx:for="{{specs}}" wx:key="index">
@@ -58,7 +58,7 @@
  </view>
 
   <view class="bottom-nav">
-    <view class="nav-item">
+    <view class="nav-item" bindtap="goMarket">
       <view class="nav-icon">⌂</view>
       <text>首页</text>
     </view>
@@ -71,7 +71,7 @@
       <text>购物车</text>
       <view class="badge">2</view>
     </view>
-    <view class="nav-item">
+    <view class="nav-item" bindtap="openMicroStore">
       <view class="nav-icon">▣</view>
       <text>微店</text>
     </view>

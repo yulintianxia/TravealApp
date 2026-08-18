@@ -122,17 +122,19 @@ page {
 
 .tab-bar {
   display: flex;
-  margin: 0 20rpx;
+  width: 100%;
+  margin: 0 0 16rpx;
   border-bottom: 1rpx solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.01);
 }
 
 .tab-item {
   flex: 1;
+  min-width: 0;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: rgba(255, 255, 255, 0.7);
-  padding: 28rpx 0 22rpx;
+  padding: 22rpx 8rpx 18rpx;
   position: relative;
 }
 
@@ -301,8 +303,10 @@ page {
 
 .market-products {
   flex: 1;
+  width: 100%;
   padding-right: 20rpx;
   box-sizing: border-box;
+  /* padding-top:20rpx; */
 }
 
 .product-grid {

@@ -3,6 +3,7 @@
     "pages/myHome/index",
     "pages/market/index",
     "pages/productDetail/index",
+    "pages/review/index",
     "pages/cart/index",
     "pages/newMy/index",
     "pages/vipMemer/index",
