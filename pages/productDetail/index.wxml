@@ -4,59 +4,49 @@
       {{item}}
     </view>
   </view>
-
   <view class="hero-gallery" id="anchor-product">
     <image class="hero-image" src="{{product.mainPicture}}" mode="aspectFill"></image>
   </view>
-
-
- <view class='product-info-wrap'>
-  <view class="product-info-block" id="anchor-product-info">
-    <view class="price-row">
-      <text class="price">{{product.pointsPrice}}积分/副</text>
-      <text class="redeem">已兑换 {{product.sales}}</text>
+  <view class='product-info-wrap'>
+    <view class="product-info-block" id="anchor-product-info">
+      <view class="price-row">
+        <text class="price">{{product.pointsPrice}}积分/副</text>
+        <text class="redeem">已兑换 {{product.sales}}</text>
+      </view>
+      <view class="product-title">{{product.name}}</view>
     </view>
-
-    <view class="product-title">{{product.name}}</view>
-  </view>
-
-  <view class="shipping-row" bindtap="goAddressList">
-    <text class="shipping-text shopping-send">发货</text>
-    <text class="shipping-text">{{shipping}}</text>
-    <text class="shipping-text right">{{delivery}}</text>
-    <text class="arrow">›</text>
-  </view>
-
-  <view class="review-box" id="anchor-review" bindtap="goReviewPage">
-    <view class="review-title">商品评价({{totalReviews}})</view>
-    <view class="review-tags">
-      <text>做工不错</text>
-      <text>厚薄合适</text>
-      <text>做工质量好3</text>
+    <view class="shipping-row" bindtap="goAddressList">
+      <text class="shipping-text shopping-send">发货</text>
+      <text class="shipping-text">{{shipping}}</text>
+      <text class="shipping-text right">{{delivery}}</text>
+      <text class="arrow">›</text>
     </view>
-    <view class="review-card">
-      <view class="review-avatar">{{product.review.author[0] || '用'}}</view>
-      <view class="review-content">
-        <view class="review-name">{{product.review.author}}</view>
-        <view class="review-text">{{product.review.text}} 已购：透气网鹿皮手套2双，发货于7天前</view>
+    <view class="review-box" id="anchor-review" bindtap="goReviewPage">
+      <view class="review-title">商品评价({{totalReviews}})</view>
+      <view class="review-tags">
+        <text wx:for="{{tags}}" wx:key="*this" :key='item.name'>{{item.name}}</text>
+      </view>
+      <view class="review-card">
+        <image class="review-avatar" src="{{reviewListOne.avatar || '../../images/new/16.png'}}" mode="aspectFill"></image>
+        <view class="review-content">
+          <view class="review-name">{{reviewListOne.replyBy}}</view>
+          <view class="review-text">{{reviewListOne.reply}}</view>
+          <view class="review-text">已购：透气网鹿皮手套2双，发货于7天前</view>
+        </view>
+      </view>
+    </view>
+    <view class="spec-block" id="anchor-detail">
+      <view class="spec-title">商品详情</view>
+      <view class="spec-table">
+        <block wx:for="{{specs}}" wx:key="index">
+          <view class="spec-row">
+            <view class="spec-key">{{item.label}}</view>
+            <view class="spec-val">{{item.value}}</view>
+          </view>
+        </block>
       </view>
     </view>
   </view>
-
-  <view class="spec-block" id="anchor-detail">
-    <view class="spec-title">商品详情</view>
-    <view class="spec-table">
-      <block wx:for="{{specs}}" wx:key="index">
-        <view class="spec-row">
-          <view class="spec-key">{{item.label}}</view>
-          <view class="spec-val">{{item.value}}</view>
-        </view>
-      </block>
-    </view>
-  </view>
-
- </view>
-
   <view class="bottom-nav">
     <view class="nav-item" bindtap="goMarket">
       <view class="nav-icon">⌂</view>
@@ -78,7 +68,6 @@
     <view class="buy-area" bindtap="addToCart">加入购物车</view>
     <view class="checkout-button" bindtap="goCart">结算</view>
   </view>
-
   <view wx:if="{{showCustomerDialog}}" class="customer-overlay" bindtap="closeCustomerService">
     <view class="customer-dialog" catchtap="stopPropagation">
       <view class="customer-panel">
@@ -88,9 +77,4 @@
       </view>
     </view>
   </view>
-
-
-
-
-
 </view>

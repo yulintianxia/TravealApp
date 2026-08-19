@@ -14,7 +14,9 @@ Page({
     product: {},
     specs: [],
     reviewList: [],
+    reviewListOne:{},
     totalReviews: 0,
+    tags:[],
   },
 
   onLoad(options) {
@@ -30,9 +32,14 @@ Page({
   async getreviewList(goodsId) {
     let res = await RequestApi.reviewList({ goodsId });
     if (res && res.code === 200) {
+     
       this.setData({
-        reviewList: res.data || [],
+        reviewList: res.rows || [],
+        reviewListOne:res?.rows?.[0] || {},
+        totalReviews: res.total || 0,
       });
+
+
     }
   },
   async loadDetail(keyId) {
@@ -49,6 +56,7 @@ Page({
       this.setData({
         product: detail,
         specs: specsArray,
+        tags: detail.tags || [],
       });
     }
   },
