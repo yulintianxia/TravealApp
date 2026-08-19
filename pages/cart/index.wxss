@@ -259,15 +259,17 @@ page {
 .checkout-button {
   width: 170rpx;
   height: 78rpx;
-  border-radius: 18rpx;
+
   background: linear-gradient(135deg, #efd9a8 0%, #c8a15c 100%);
-  color: #111111;
+  color: white;
   font-size: 28rpx;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 12rpx 20rpx rgba(200, 161, 92, 0.25);
+  border-radius: 24px;
+
 }
 
 .tip-mask {
