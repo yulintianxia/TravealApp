@@ -5,8 +5,8 @@ Page({
     keyId: "",
     activeFilter: "all",
     filters: [
-      { label: "全部", value: "all" },
-      { label: "有图", value: "hasImage" },
+      { label: "全部", value: "all", count: 121 },
+      { label: "有图", value: "hasImage", count: 9 },
     ],
     reviews: [],
     loading: false,
@@ -51,7 +51,7 @@ Page({
 
   onLoad(options) {
     const keyId = options.keyId || "";
-    this.setData({ keyId, reviews: this.data.fallbackReviews });
+    this.setData({ keyId, reviews: [], noMore: false });
     this.loadReviews(true);
   },
 
@@ -69,14 +69,19 @@ Page({
       };
 
       const res = await RequestApi.reviewList(params);
-      const rows = (res && (res.rows || res.data || [])) || [];
-      const sourceRows = rows.length ? rows : this.data.fallbackReviews;
-      const merged = reset ? sourceRows : this.data.reviews.concat(sourceRows);
-      const hasImage = this.data.activeFilter === "hasImage";
-      const filtered = hasImage ? merged.filter((item) => item.images && item.images.length) : merged;
+      const rows = Array.isArray(res?.rows)
+        ? res.rows
+        : Array.isArray(res?.data)
+          ? res.data
+          : [];
+      const sourceRows = rows.length ? rows : reset ? this.data.fallbackReviews : [];
+      const filteredRows = this.data.activeFilter === "hasImage"
+        ? sourceRows.filter((item) => item && Array.isArray(item.images) && item.images.length)
+        : sourceRows;
+      const merged = reset ? filteredRows : this.data.reviews.concat(filteredRows);
 
       this.setData({
-        reviews: filtered,
+        reviews: merged,
         pageNum,
         noMore: sourceRows.length < this.data.pageSize,
       });
@@ -92,14 +97,14 @@ Page({
 
   onFilterChange(e) {
     const { value } = e.currentTarget.dataset;
-    this.setData({ activeFilter: value, pageNum: 1, reviews: [] }, () => {
+    this.setData({ activeFilter: value, pageNum: 1, reviews: [], noMore: false }, () => {
       this.loadReviews(true);
     });
   },
 
   onReachBottom() {
     if (this.data.loading || this.data.noMore) return;
-    this.setData({ pageNum: this.data.pageNum + 1 }, () => {
+    this.setData({ pageNum: Number(this.data.pageNum) + 1 }, () => {
       this.loadReviews(false);
     });
   },

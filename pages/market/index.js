@@ -6,14 +6,20 @@ Page({
     activeTab: "comprehensive",
     pageNum: 1,
     pageSize: 10,
-    // tabs: ["最新", "价格", "销量", "评价"],
+    sortState: {
+      comprehensive: true,
+      newest: true,
+      price: true,
+      sales: true,
+      reviews:true,
+    },
     tabs: [
-      {
+       {
         label: "综合",
         value: "comprehensive",
       },
       {
-        label: "上新",
+        label: "最新",
         value: "newest",
       },
       {
@@ -38,7 +44,6 @@ Page({
     total: 0,
     loading: false,
     noMore: false,
-    reviewFilters: ["全部", "有图1", "挺好的121", "不媚好0", "追评0"],
     bannerImage:
       "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
     allProducts: [
@@ -87,45 +92,6 @@ Page({
 
   onLoad() {
     // this.updateProductsByTab("最新");
-    this.setData({
-      reviews: [
-        {
-          id: 1,
-          user: "正莲虎哥",
-          avatar:
-            "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=300&q=80",
-          content: "东西很棒，质感很好，一次非常不错的购物体验！",
-          extra: "已兑换：透气网鹿皮手套*2",
-          date: "发表于7天前",
-          images: [
-            "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=300&q=80",
-          ],
-        },
-        {
-          id: 2,
-          user: "乐阳堂主",
-          avatar:
-            "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80",
-          content: "老顾客，一直在正莲买的，东西还是一如既往地好！品质没的说~",
-          extra: "已兑换：精梳棉手套文玩手套劳保手套男女通用款",
-          date: "发表于7天前",
-          images: [
-            "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=300&q=80",
-            "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=300&q=80",
-          ],
-        },
-        {
-          id: 3,
-          user: "潇潇雨歌",
-          avatar:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
-          content: "挺好的，性价比高，没有异味，包装也很精致。",
-          extra: "已兑换：盘珠专用大师级鹿皮绒手套纯棉棉手套双",
-          date: "发表于7天前",
-          images: [],
-        },
-      ],
-    });
 
     this.getProducts();
     this.getCategoryList();
@@ -140,10 +106,13 @@ Page({
     try {
       const params = {
         category: this.data.activeCategory,
-        orderBy: "",
+        orderBy: this.data.activeTab,
         pageNum,
         pageSize: this.data.pageSize,
+        isAsc: this.data.sortState[this.data.activeTab],
       };
+
+      console.log(params);
       const res = await RequestApi.goodsList(params);
       const rows = (res && res.rows) || [];
       const total = (res && res.total) || 0;
@@ -187,6 +156,26 @@ Page({
 
   onTabChange(e) {
     const { tab } = e.currentTarget.dataset;
+    const sortState = this.data.sortState || {};
+
+    if (tab === this.data.activeTab) {
+      const nextOrder = sortState[tab] ? false : true;
+      this.setData({
+        sortState: {
+          ...sortState,
+          [tab]: nextOrder,
+        },
+      });
+    } else {
+      this.setData({
+        activeTab: tab,
+        sortState: {
+          ...sortState,
+          [tab]: sortState[tab] || true,
+        },
+      });
+    }
+
     this.updateProductsByTab(tab);
   },
 

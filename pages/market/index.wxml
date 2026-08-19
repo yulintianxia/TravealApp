@@ -9,6 +9,20 @@
     <image class="hero-image" src="{{bannerImage}}" mode="aspectFill"></image>
   </view>
 
+  <view class="tab-bar">
+          <view
+            wx:for="{{tabs}}"
+            wx:key="*this"
+            class="tab-item {{activeTab === item.value ? 'active' : ''}}"
+            data-tab="{{item.value}}"
+            bindtap="onTabChange"
+          >
+            <text class="tab-label">{{item.label}}</text>
+            <text class="tab-sort-icon">
+              {{sortState[item.value] ? '↑' : '↓'}}
+            </text>
+          </view>
+        </view>
   <view class="market-content">
       <view class="market-sidebar">
         <view
@@ -23,17 +37,7 @@
       </view>
 
       <view class="market-products">
-        <view class="tab-bar">
-          <view
-            wx:for="{{tabs}}"
-            wx:key="*this"
-            class="tab-item {{activeTab === item.value ? 'active' : ''}}"
-            data-tab="{{item.value}}"
-            bindtap="onTabChange"
-          >
-            {{item.label}}
-          </view>
-        </view>
+      
 
         <view class="product-grid">
           <view
