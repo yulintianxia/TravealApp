@@ -28,12 +28,18 @@ Page({
       ]);
       const selected = this.data.selectedIds.map((id) => String(id));
       const allGoods = cartRes?.data || [];
-      const goodsList = allGoods.filter((item) => selected.indexOf(String(item.goodsId)) !== -1);
+      const goodsList = allGoods.filter(
+        (item) => selected.indexOf(String(item.goodsId)) !== -1,
+      );
       const addressList = addressRes?.data || [];
-      const address = addressList.find((item) => Number(item.isDefault) === 1) || addressList[0] || {};
+      const address =
+        addressList.find((item) => Number(item.isDefault) === 1) ||
+        addressList[0] ||
+        {};
       const remainingPoints = Number(gradeRes?.data?.pointsBalance || 0);
       const totalPoints = goodsList.reduce(
-        (sum, item) => sum + Number(item.pointsPrice || 0) * Number(item.quantity || 1),
+        (sum, item) =>
+          sum + Number(item.pointsPrice || 0) * Number(item.quantity || 1),
         0,
       );
 
@@ -67,17 +73,12 @@ Page({
     });
   },
 
-
   createAddress() {
     wx.navigateTo({
       url: "/pages/address/index",
-      success: (res) => {
-       
-      },
+      success: (res) => {},
     });
   },
-
-
 
   async confirmOrder() {
     if (this.data.submitting || !this.data.selectedIds.length) return;
@@ -88,7 +89,13 @@ Page({
 
     this.setData({ submitting: true });
     try {
-     let res = await RequestApi.createOrder({ goodsIds: this.data.selectedIds });
+      let params = {
+        addressDetail: this.data.address.detailedAddress,
+        addressName: this.data.address.consigneeName,
+        addressPhone: this.data.address.consigneePhone,
+      };
+
+      let res = await RequestApi.createOrder(params);
       wx.showToast({ title: "兑换成功", icon: "success", duration: 1000 });
       setTimeout(() => wx.switchTab({ url: "/pages/cart/index" }), 1000);
     } catch (error) {
