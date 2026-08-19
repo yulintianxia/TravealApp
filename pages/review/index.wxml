@@ -40,7 +40,6 @@
         </view>
       </view>
     </view>
-
     <view wx:if="{{!reviews.length && !loading}}" class="empty-state">暂无评价</view>
     <view wx:if="{{loading}}" class="list-footer">加载中...</view>
     <view wx:elif="{{noMore && reviews.length}}" class="list-footer">没有更多了</view>
