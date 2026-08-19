@@ -2,12 +2,12 @@
   <view class="cart-list">
     <block wx:for="{{cartList}}" wx:key="id">
       <view class="cart-item">
-        <view class="item-selector" wx:if="{{showItemSelectors}}">
+        <view class="item-selector">
           <view
-            class="checkbox {{selectedIds.indexOf(item.id) !== -1 ? 'checked' : ''}}"
-            data-id="{{item.id}}"
-            bindtap="toggleSelect">
-            <text wx:if="{{selectedIds.indexOf(item.id) !== -1}}">✓</text>
+            class="checkbox {{item.isSelected ? 'checked' : ''}}"
+            data-index="{{index}}"
+            catchtap="toggleSelect">
+            <text wx:if="{{item.isSelected}}">✓</text>
           </view>
         </view>
         <view class="product-image-wrap">
@@ -20,9 +20,9 @@
           <view class="product-amount-row">
             <view class="product-price">{{item.pointsPrice}}积分/副</view>
             <view class="stepper">
-              <view class="step-btn minus" data-id="{{item.id}}" data-type="minus" bindtap="changeCount">-</view>
+              <view class="step-btn minus" data-index="{{index}}" data-type="minus" catchtap="changeCount">-</view>
               <view class="step-value">{{item.quantity}}</view>
-              <view class="step-btn plus" data-id="{{item.id}}" data-type="plus" bindtap="changeCount">+</view>
+              <view class="step-btn plus" data-index="{{index}}" data-type="plus" catchtap="changeCount">+</view>
             </view>
           </view>
         </view>

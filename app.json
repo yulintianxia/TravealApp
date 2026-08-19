@@ -5,6 +5,7 @@
     "pages/productDetail/index",
     "pages/review/index",
     "pages/reviewCreate/index",
+    "pages/orderConfirm/index",
     "pages/cart/index",
     "pages/newMy/index",
     "pages/vipMemer/index",

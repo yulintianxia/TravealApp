@@ -1,0 +1,45 @@
+<view class="confirm-page">
+  <view class="address-card" >
+    <view class="address-head">
+      <text class="address-name">{{address.consigneeName || '请选择收货地址'}}</text>
+      <text class="address-phone">{{address.consigneePhone}}</text>
+    </view>
+    <view class="address-detail">{{address.detailedAddress || '点击选择或新增收货地址'}}</view>
+    <view class="address-footer">
+      <text class="default-label">{{address.keyId ? '默认地址' : '收货地址'}}</text>
+      <view class="address-actions" wx:if="{{address.keyId}}">
+        <view class="address-button" data-address="{{address}}" catchtap="editAddress">编辑</view>
+        <view class="address-button" catchtap="chooseAddress">更换</view>
+      </view>
+       <view class="address-actions" wx:else>
+        <view class="address-button" catchtap="createAddress">新增</view>
+      </view>
+    </view>
+  </view>
+
+  <text class="section-title">订单详情</text>
+  <view class="goods-list">
+    <view class="goods-card" wx:for="{{goodsList}}" wx:key="goodsId">
+      <image class="goods-image" src="{{item.goodsPicture}}" mode="aspectFill"></image>
+      <view class="goods-info">
+        <text class="goods-name">{{item.goodsName}}</text>
+        <text class="goods-meta">尺码：{{item.size || '均码'}}　材质：{{item.material || '无'}}</text>
+        <view class="goods-bottom">
+          <text class="goods-price">{{item.pointsPrice}}积分/副</text>
+          <text class="goods-count">x {{item.quantity || 1}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-note">备注：积分一旦兑换将无法取消</view>
+  <view class="remaining-row">
+    <text>剩余积分：</text>
+    <text class="remaining-value">{{remainingPoints}} 积分</text>
+  </view>
+
+  <view class="confirm-bar">
+    <view class="deduct-total">本次扣除积分：<text>{{totalPoints}} 积分</text></view>
+    <view class="confirm-button" bindtap="confirmOrder">确认</view>
+  </view>
+</view>
