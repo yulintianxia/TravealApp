@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "评价",
+  "navigationBarBackgroundColor": "#101010",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "t-rate": "tdesign-miniprogram/rate/rate",
+    "t-upload": "tdesign-miniprogram/upload/upload"
+  }
+}

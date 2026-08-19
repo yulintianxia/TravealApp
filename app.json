@@ -4,6 +4,7 @@
     "pages/market/index",
     "pages/productDetail/index",
     "pages/review/index",
+    "pages/reviewCreate/index",
     "pages/cart/index",
     "pages/newMy/index",
     "pages/vipMemer/index",

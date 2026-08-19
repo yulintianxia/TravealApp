@@ -13,36 +13,9 @@ Page({
     this.loadCartList();
   },
 
-  getMockCartList() {
-    return [
-      {
-        id: 1,
-        name: "鹿皮透气盘玩手套",
-        size: "尺码：均码",
-        material: "材质：羊毛",
-        price: 4800,
-        count: 1,
-        image:
-          "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
-      },
-      {
-        id: 2,
-        name: "定制级文玩线绳",
-        size: "尺码：均码",
-        material: "材质：化纤",
-        price: 1800,
-        count: 1,
-        image:
-          "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80",
-      },
-    ];
-  },
-
   async loadCartList() {
       const res = await RequestApi.cartList({});
-
       const cartList = (res && res.data || [])  ||  [];
-
       this.setData({ cartList }, () => {
         // this.updateSummary();
       });

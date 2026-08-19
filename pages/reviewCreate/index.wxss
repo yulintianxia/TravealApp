@@ -1,0 +1,142 @@
+page {
+  background: #111111;
+  color: #f5f2eb;
+}
+
+.review-create-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 210rpx;
+  background: linear-gradient(180deg, #111111 0%, #111111 68%, #1d2a35 100%);
+}
+
+.review-header {
+  height: 116rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-title {
+  color: #ffffff;
+  font-size: 38rpx;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+}
+
+.review-form {
+  padding: 38rpx 74rpx 0;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  min-height: 66rpx;
+}
+
+.form-label {
+  flex-shrink: 0;
+  color: #a4a4a4;
+  font-size: 30rpx;
+  line-height: 1.4;
+}
+
+.required {
+  color: #f04444;
+  margin-left: 4rpx;
+}
+
+.score-row t-rate {
+  margin-left: 28rpx;
+  flex-shrink: 0;
+}
+
+.score-value {
+  margin-left: 24rpx;
+  color: #f4d58f;
+  font-size: 28rpx;
+  white-space: nowrap;
+}
+
+.image-section {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 54rpx;
+}
+
+.upload-wrap {
+  flex: 1;
+  min-width: 0;
+  margin-left: 28rpx;
+}
+
+.upload-wrap t-upload {
+  --td-upload-grid-columns: 2;
+  --td-upload-grid-gap: 24rpx;
+  --td-upload-grid-item-size: 180rpx;
+  --td-upload-bg-color: #242424;
+  --td-upload-border-radius: 16rpx;
+  --td-upload-add-color: #999999;
+}
+
+.content-section {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 84rpx;
+}
+
+.textarea-wrap {
+  position: relative;
+  flex: 1;
+  height: 308rpx;
+  margin-left: 28rpx;
+  border-radius: 14rpx;
+  overflow: hidden;
+  background: #242424;
+}
+
+.review-textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 22rpx 24rpx 52rpx;
+  color: #f0f0f0;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.placeholder {
+  color: #777777;
+}
+
+.word-count {
+  position: absolute;
+  right: 20rpx;
+  bottom: 16rpx;
+  color: #777777;
+  font-size: 24rpx;
+}
+
+.submit-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 36rpx 0 48rpx;
+  background: linear-gradient(180deg, rgba(29, 42, 53, 0) 0%, #1d2a35 32%);
+}
+
+.submit-button {
+  width: 432rpx;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 28rpx;
+  background: #c1a269;
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: 600;
+}
