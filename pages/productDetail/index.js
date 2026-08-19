@@ -173,6 +173,6 @@ Page({
   },
 
   goCart() {
-    wx.switchTab({ url: "/pages/cart/index" });
+    wx.navigateTo({ url: "/pages/cart/index" });
   },
 });

@@ -45,7 +45,7 @@
       <text class="summary-value">{{totalPoints}}积分</text>
     </view>
 
-    <view class="checkout-button" bindtap="checkout">结算</view>
+    <view class="checkout-button" bindtap="checkout">兑换</view>
   </view>
 
   <view class="tip-mask" wx:if="{{showQrCode}}" bindtap="closeQrPopup">
