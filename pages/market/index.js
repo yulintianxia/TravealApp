@@ -186,9 +186,10 @@ Page({
 
   onCategoryChange(e) {
     const { category } = e.currentTarget.dataset;
+    const nextCategory = this.data.activeCategory === category ? "" : category;
 
     this.setData({
-      activeCategory: category,
+      activeCategory: nextCategory,
       pageNum: 1,
       noMore: false,
       products: [],
