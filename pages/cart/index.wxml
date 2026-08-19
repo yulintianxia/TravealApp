@@ -3,14 +3,12 @@
     <block wx:for="{{cartList}}" wx:key="id">
       <view class="cart-item">
         <view class="item-selector" wx:if="{{showItemSelectors}}">
-          <t-checkbox
-            value="{{item.id}}"
-            checked="{{selectedIds.indexOf(item.id) !== -1}}"
+          <view
+            class="checkbox {{selectedIds.indexOf(item.id) !== -1 ? 'checked' : ''}}"
             data-id="{{item.id}}"
-            bind:change="toggleSelect"
-            icon="rectangle"
-            borderless
-          />
+            bindtap="toggleSelect">
+            <text wx:if="{{selectedIds.indexOf(item.id) !== -1}}">✓</text>
+          </view>
         </view>
         <view class="product-image-wrap">
           <image class="product-image" src="{{item.goodsPicture}}" mode="aspectFill"></image>

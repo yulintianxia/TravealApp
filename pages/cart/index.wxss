@@ -98,14 +98,11 @@ page {
   flex-shrink: 0;
 }
 
-.item-selector .t-checkbox {
-  --td-checkbox-size: 44rpx;
-  --td-checkbox-border-color: rgba(255, 255, 255, 0.7);
-  --td-checkbox-checked-color: #f2d89d;
-  --td-checkbox-checked-bg-color: rgba(242, 216, 157, 0.18);
-  --td-checkbox-checked-border-color: rgba(242, 216, 157, 0.88);
-  --td-checkbox-label-color: transparent;
-  --td-checkbox-label-disabled-color: transparent;
+.item-selector .checkbox {
+  width: 42rpx;
+  height: 42rpx;
+  border-width: 3rpx;
+  margin-right: 0;
 }
 
 .checkbox {
@@ -125,8 +122,9 @@ page {
 }
 
 .checkbox.checked {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.9);
+  background: #f3d7a6;
+  border-color: #a8a8a8;
+  color: #252525;
 }
 
 .product-image-wrap {
@@ -240,6 +238,12 @@ page {
   height: 42rpx;
   border-width: 3rpx;
   margin-right: 14rpx;
+}
+
+.select-all .checkbox.checked {
+  background: #f3d7a6;
+  border-color: #a8a8a8;
+  color: #252525;
 }
 
 .summary {
