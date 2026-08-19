@@ -49,24 +49,24 @@
   </view>
   <view class="bottom-nav">
     <view class="nav-item" bindtap="goMarket">
-      <view class="nav-icon">⌂</view>
+      <image class="nav-icon" src="../../images/home/ho.png" mode="aspectFit"></image>
       <text>首页</text>
     </view>
     <view class="nav-item" bindtap="openCustomerService">
-      <view class="nav-icon">☎</view>
+      <image class="nav-icon" src="../../images/home/user.png" mode="aspectFit"></image>
       <text>客服</text>
     </view>
     <view class="nav-item cart-item" bindtap="goCart">
-      <view class="nav-icon">🛒</view>
+      <image class="nav-icon" src="../../images/home/22.png" mode="aspectFit"></image>
       <text>购物车</text>
       <view class="badge">2</view>
     </view>
     <view class="nav-item" bindtap="openMicroStore">
-      <view class="nav-icon">▣</view>
+      <image class="nav-icon" src="../../images/home/dian.png" mode="aspectFit"></image>
       <text>微店</text>
     </view>
     <view class="buy-area" bindtap="addToCart">加入购物车</view>
-    <view class="checkout-button" bindtap="goCart">结算</view>
+    <view class="checkout-button" bindtap="goCart">兑换</view>
   </view>
   <view wx:if="{{showCustomerDialog}}" class="customer-overlay" bindtap="closeCustomerService">
     <view class="customer-dialog" catchtap="stopPropagation">

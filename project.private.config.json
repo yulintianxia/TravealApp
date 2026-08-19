@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/review/index",
-          "pathName": "pages/review/index",
+          "name": "pages/productDetail/index",
+          "pathName": "pages/productDetail/index",
           "query": "keyId=1",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "pages/review/index",
+          "pathName": "pages/review/index",
+          "query": "keyId=1",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/review/index",
