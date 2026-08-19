@@ -17,6 +17,7 @@ Page({
     reviewListOne:{},
     totalReviews: 0,
     tags:[],
+    cartCount:0,
   },
 
   onLoad(options) {

@@ -59,7 +59,7 @@
     <view class="nav-item cart-item" bindtap="goCart">
       <image class="nav-icon" src="../../images/home/22.png" mode="aspectFit"></image>
       <text>购物车</text>
-      <view class="badge">2</view>
+      <view class="badge" wx:if="{{cartCount > 0}}">{{cartCount}}</view>
     </view>
     <view class="nav-item" bindtap="openMicroStore">
       <image class="nav-icon" src="../../images/home/dian.png" mode="aspectFit"></image>
