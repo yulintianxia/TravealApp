@@ -13,17 +13,17 @@
           />
         </view>
         <view class="product-image-wrap">
-          <image class="product-image" src="{{item.image}}" mode="aspectFill"></image>
+          <image class="product-image" src="{{item.goodsPicture}}" mode="aspectFill"></image>
         </view>
 
         <view class="product-info">
-          <view class="product-name">{{item.name}}</view>
+          <view class="product-name">{{item.goodsName}}</view>
           <view class="product-meta">{{item.size}} {{item.material}}</view>
           <view class="product-amount-row">
-            <view class="product-price">{{item.price}}积分/副</view>
+            <view class="product-price">{{item.pointsPrice}}积分/副</view>
             <view class="stepper">
               <view class="step-btn minus" data-id="{{item.id}}" data-type="minus" bindtap="changeCount">-</view>
-              <view class="step-value">{{item.count}}</view>
+              <view class="step-value">{{item.quantity}}</view>
               <view class="step-btn plus" data-id="{{item.id}}" data-type="plus" bindtap="changeCount">+</view>
             </view>
           </view>
@@ -44,15 +44,6 @@
       <text>总计：</text>
       <text class="summary-value">{{totalPoints}}积分</text>
     </view>
-
     <view class="checkout-button" bindtap="checkout">兑换</view>
-  </view>
-
-  <view class="tip-mask" wx:if="{{showQrCode}}" bindtap="closeQrPopup">
-    <view class="tip-dialog" catchtap="">
-      <image class="qr-image" src="{{chatImg}}" mode="aspectFit" />
-      <view class="qr-label">添加客服微信</view>
-      <view class="tip-btn" bindtap="closeQrPopup">知道了</view>
-    </view>
   </view>
 </view>

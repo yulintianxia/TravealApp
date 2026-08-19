@@ -7,8 +7,6 @@ Page({
     selectedAll: false,
     showItemSelectors: false,
     totalPoints: 0,
-    showQrCode: false,
-    chatImg: "../../images/new/wechat.png",
   },
 
   onLoad() {
@@ -41,38 +39,13 @@ Page({
   },
 
   async loadCartList() {
-    try {
-      const res = await RequestApi.cartList({
-        pageNum: 1,
-        pageSize: 20,
-      });
+      const res = await RequestApi.cartList({});
 
-      const list = (res && (res.rows || res.data?.rows || [])) || [];
-      const cartList = list.length
-        ? list.map((item) => ({
-            id: item.keyId || item.id || item.goodsId,
-            name: item.goodsName || item.name || "商品",
-            size: item.spec || "尺码：均码",
-            material: item.material || "材质：羊毛",
-            price: Number(item.pointsPrice || item.price || item.totalPoints || 0),
-            count: Number(item.goodsCount || item.count || 1),
-            image:
-              item.mainPicture ||
-              item.picture ||
-              item.image ||
-              "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
-          }))
-        : this.getMockCartList();
+      const cartList = (res && res.data || [])  ||  [];
 
       this.setData({ cartList }, () => {
-        this.updateSummary();
+        // this.updateSummary();
       });
-    } catch (error) {
-      console.error("loadCartList error:", error);
-      this.setData({ cartList: this.getMockCartList() }, () => {
-        this.updateSummary();
-      });
-    }
   },
 
   toggleSelect(e) {
