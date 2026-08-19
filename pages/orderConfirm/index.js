@@ -89,10 +89,17 @@ Page({
 
     this.setData({ submitting: true });
     try {
+      let cartItems =   this.data.goodsList.map((item) => ({
+        goodsId: item.goodsId,
+        quantity: item.quantity,
+        cartId: item.cartId,
+      }));
+  
       let params = {
         addressDetail: this.data.address.detailedAddress,
         addressName: this.data.address.consigneeName,
         addressPhone: this.data.address.consigneePhone,
+        cartItems
       };
 
       let res = await RequestApi.createOrder(params);
