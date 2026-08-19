@@ -30,7 +30,7 @@
         <image class="review-avatar" src="{{reviewListOne.avatar || '../../images/new/16.png'}}" mode="aspectFill"></image>
         <view class="review-content">
           <view class="review-name">{{reviewListOne.replyBy}}</view>
-          <view class="review-text">{{reviewListOne.reply}}</view>
+          <view class="review-text">{{reviewListOne.content}}</view>
           <view class="review-text">已购：透气网鹿皮手套2双，发货于7天前</view>
         </view>
       </view>

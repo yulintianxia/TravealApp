@@ -5,54 +5,35 @@ Page({
     keyId: "",
     activeFilter: "all",
     filters: [
-      { label: "全部", value: "all", count: 121 },
-      { label: "有图", value: "hasImage", count: 9 },
+      { label: "全部", value: "all", count: 0 },
+      { label: "有图", value: "hasImage", count: 0 },
     ],
     reviews: [],
     loading: false,
     noMore: false,
     pageNum: 1,
     pageSize: 10,
-    fallbackReviews: [
-      {
-        id: 1,
-        user: "正莲虎哥",
-        avatar: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=300&q=80",
-        content: "东西很棒，质感很好，一次非常不错的购物体验！",
-        extra: "已兑换：透气网鹿皮手套*2",
-        date: "发表于7天前",
-        images: [
-          "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=300&q=80",
-        ],
-      },
-      {
-        id: 2,
-        user: "乐阳堂主",
-        avatar: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80",
-        content: "老顾客，一直在正莲买的，东西还是一如既往地好！品质没的说~",
-        extra: "已兑换：精梳棉手套文玩手套劳保手套男女通用款",
-        date: "发表于7天前",
-        images: [
-          "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=300&q=80",
-          "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=300&q=80",
-        ],
-      },
-      {
-        id: 3,
-        user: "潇潇雨歌",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
-        content: "挺好的，性价比高，没有异味，包装也很精致。",
-        extra: "已兑换：盘珠专用大师级鹿皮绒手套纯棉棉手套双",
-        date: "发表于7天前",
-        images: [],
-      },
-    ],
+    fallbackReviews: [ ],
   },
 
   onLoad(options) {
     const keyId = options.keyId || "";
     this.setData({ keyId, reviews: [], noMore: false });
     this.loadReviews(true);
+  },
+
+  formatDate(value) {
+    if (!value) return "";
+    if (typeof value === "number") {
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+      }
+    }
+
+    const matched = String(value).match(/(\d{4})[-/]?(\d{1,2})[-/]?(\d{1,2})/);
+    if (!matched) return String(value);
+    return `${matched[1]}-${String(matched[2]).padStart(2, "0")}-${String(matched[3]).padStart(2, "0")}`;
   },
 
   async loadReviews(reset = true) {
@@ -74,7 +55,10 @@ Page({
         : Array.isArray(res?.data)
           ? res.data
           : [];
-      const sourceRows = rows.length ? rows : reset ? this.data.fallbackReviews : [];
+      const sourceRows = (rows.length ? rows : reset ? this.data.fallbackReviews : []).map((item) => ({
+        ...item,
+        createTime: this.formatDate(item.createTime || item.date),
+      }));
       const filteredRows = this.data.activeFilter === "hasImage"
         ? sourceRows.filter((item) => item && Array.isArray(item.images) && item.images.length)
         : sourceRows;

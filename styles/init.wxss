@@ -22,6 +22,10 @@ view {
 .font-size_36 {
   font-size: 36rpx;
 }
+.review-text{
+  color: rgba(255, 255, 255, 1);
+  padding:12rpx 0;
+}
 .font-size_34 {
   font-size: 34rpx;
 }

@@ -19,7 +19,6 @@
         <view class="review-main">
           <view class="review-user-row">
             <text class="review-user">{{item.user || item.createBy || '用户'}}</text>
-            <text class="review-date">{{item.date || item.createTime || '刚刚'}}</text>
           </view>
 
           <view class="review-text">{{item.content || item.text || '暂无评价内容'}}</view>
@@ -33,6 +32,10 @@
               src="{{item}}"
               mode="aspectFill"
             ></image>
+          </view>
+
+          <view class="review-date-row">
+            <text class="review-date">发表于：{{item.createTime || ''}}</text>
           </view>
         </view>
       </view>
