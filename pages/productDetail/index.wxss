@@ -157,10 +157,17 @@ page {
   white-space: nowrap;
 }
 
+.shopping-send {
+  margin-right:20rpx;
+  font-size: 24rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
 .right {
   flex: 1;
   text-align: right;
   padding-right: 10rpx;
+  color: rgba(153, 153, 153, 1);
 }
 
 .arrow {

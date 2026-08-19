@@ -21,7 +21,7 @@
   </view>
 
   <view class="shipping-row" bindtap="goAddressList">
-    <text class="shipping-text">发货</text>
+    <text class="shipping-text shopping-send">发货</text>
     <text class="shipping-text">{{shipping}}</text>
     <text class="shipping-text right">{{delivery}}</text>
     <text class="arrow">›</text>
