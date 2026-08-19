@@ -216,8 +216,6 @@ page {
 .review-avatar {
   width: 64rpx;
   height: 64rpx;
-  /* border-radius: 50%; */
-  /* background: linear-gradient(135deg, #d9c295 0%, #8b6d40 100%); */
   color: #1a1b1d;
   display: flex;
   align-items: center;
@@ -348,9 +346,9 @@ page {
 .buy-area {
   width: 190rpx;
   height: 76rpx;
-  border-radius: 16rpx;
-  background: linear-gradient(135deg, #f0d8a6 0%, #ca9e62 100%);
-  color: #1a1a1a;
+  border-radius: 24rpx;
+  background: rgba(153, 153, 153, 0.15);
+  color: rgba(255, 255, 255, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -362,14 +360,14 @@ page {
 .checkout-button {
   width: 150rpx;
   height: 76rpx;
-  border-radius: 16rpx;
-  background: rgba(255, 255, 255, 0.08);
   color: #f5efe7;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 28rpx;
   font-weight: 600;
+  border-radius: 24px;
+background: rgba(169, 144, 98, 1);
 }
 
 .customer-overlay {
