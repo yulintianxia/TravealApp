@@ -41,6 +41,7 @@ Page({
     const cartList = this.data.cartList.slice();
     cartList[itemIndex] = { ...item, isSelected: !item.isSelected };
 
+
     this.setData({ selectedIds, cartList }, () => {
       this.updateSummary();
     });
@@ -70,7 +71,7 @@ Page({
   },
 
   changeCount(e) {
-    const { index, type } = e.currentTarget.dataset;
+    const { index, type,id } = e.currentTarget.dataset;
     const itemIndex = Number(index);
     const item = this.data.cartList[itemIndex];
     if (!item) return;
@@ -82,8 +83,41 @@ Page({
     const cartList = this.data.cartList.slice();
     cartList[itemIndex] = { ...item, quantity: nextQuantity };
 
+
     this.setData({ cartList }, () => {
       this.updateSummary();
+      this.cartUpdate(nextQuantity,id);
+    });
+  },
+  //更新购物车数量
+  async cartUpdate(nextQuantity,id) {
+      let res = await RequestApi.cartUpdate({
+        keyId: id,
+        quantity: nextQuantity
+      });
+    if(res && res.code === 200){
+      // wx.showToast({ title: "更新成功", icon: "success" });
+       console.log('更新成功',res);
+    }
+
+  },
+
+  deleteItem(e) {
+    const { id } = e.currentTarget.dataset;
+    if (!id) return;
+
+    wx.showModal({
+      title: "提示",
+      content: "确定删除该商品吗？",
+      success: async (res) => {
+        if (!res.confirm) return;
+
+        const result = await RequestApi.cartDelete({ keyIds: [id] });
+        if (result && result.code === 200) {
+          wx.showToast({ title: "删除成功", icon: "success" });
+          this.loadCartList();
+        }
+      },
     });
   },
 

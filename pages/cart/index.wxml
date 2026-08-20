@@ -15,14 +15,17 @@
         </view>
 
         <view class="product-info">
-          <view class="product-name">{{item.goodsName}}</view>
+          <view class="product-title-row">
+            <view class="product-name">{{item.goodsName}}</view>
+            <view class="delete-btn" data-index="{{index}}" data-id="{{item.keyId}}" catchtap="deleteItem">删除</view>
+          </view>
           <view class="product-meta">{{item.size}} {{item.material}}</view>
           <view class="product-amount-row">
             <view class="product-price">{{item.pointsPrice}}积分/副</view>
             <view class="stepper">
-              <view class="step-btn minus" data-index="{{index}}" data-type="minus" catchtap="changeCount">-</view>
+              <view class="step-btn minus" data-index="{{index}}" data-type="minus" data-id="{{item.keyId}}" catchtap="changeCount">-</view>
               <view class="step-value">{{item.quantity}}</view>
-              <view class="step-btn plus" data-index="{{index}}" data-type="plus" catchtap="changeCount">+</view>
+              <view class="step-btn plus" data-index="{{index}}" data-type="plus" data-id="{{item.keyId}}" catchtap="changeCount">+</view>
             </view>
           </view>
         </view>
