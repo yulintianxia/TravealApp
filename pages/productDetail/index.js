@@ -125,23 +125,25 @@ Page({
   },
 
   openMicroStore() {
-    const hasOpenOfficialAccountApi = typeof wx.openOfficialAccountProfile === "function";
-
-    if (hasOpenOfficialAccountApi && officialAccountUsername) {
-      wx.openOfficialAccountProfile({
-        username: officialAccountUsername,
-        fail: (err) => {
-          const errMsg = ((err && err.errMsg) || "").toLowerCase();
-          if (errMsg.includes("cancel")) return;
-          this.openMicroStoreWeb();
-        },
-      });
-      return;
-    }
-
-    this.openMicroStoreWeb();
+    wx.navigateToMiniProgram({
+      appId: "wxfae9e8b96aea0726",
+      path: "pages/index/index", // 可选:指定目标小程序的页面路径
+      envVersion: "release", // 指定版本: develop(开发版), trial(体验版), release(正式版)
+      success: () => {},
+      fail: (err) => {
+        wx.showToast({
+          title: "跳转失败,请稍后重试",
+          icon: "none",
+        });
+        // 跳转失败后返回首页
+        setTimeout(() => {
+          wx.switchTab({
+            url: "/pages/index/index",
+          });
+        }, 1500);
+      },
+    });
   },
-
   openMicroStoreWeb() {
     wx.navigateTo({
       url: "/pages/webView/index",
