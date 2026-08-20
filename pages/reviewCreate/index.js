@@ -3,7 +3,7 @@ import { BASE_URL } from "../../config/index.js";
 Page({
   data: {
     keyId: "",
-    score: 4,
+    score: 0,
     content: "",
     imageFiles: [],
   },

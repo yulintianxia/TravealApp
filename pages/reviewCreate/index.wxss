@@ -10,6 +10,9 @@ page {
   background: linear-gradient(180deg, #111111 0%, #111111 68%, #1d2a35 100%);
 }
 
+.score-rate {
+  margin-left: 28rpx;
+}
 .review-header {
   height: 116rpx;
   display: flex;

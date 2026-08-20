@@ -1,7 +1,5 @@
 <view class="review-create-page">
-  <view class="review-header">
-    <text class="review-title">评价</text>
-  </view>
+
 
   <view class="review-form">
     <view class="score-row">
@@ -9,10 +7,11 @@
       <t-rate
         value="{{score}}"
         count="5"
-        size="42"
+        size="22"
         gap="10"
         color="{{['#f4d58f', '#757575']}}"
         bind:change="onScoreChange"
+        class="score-rate"
       />
       <text class="score-value">{{score}}.0 分</text>
     </view>

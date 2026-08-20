@@ -22,11 +22,25 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/reviewCreate/index",
+          "pathName": "pages/reviewCreate/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/review/index",
+          "pathName": "pages/review/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/orderConfirm/index",
           "pathName": "pages/orderConfirm/index",
           "query": "ids=1",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/cart/index",
