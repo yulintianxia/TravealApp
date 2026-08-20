@@ -66,7 +66,7 @@
       <text>微店</text>
     </view>
     <view class="buy-area" bindtap="addToCart">加入购物车</view>
-    <view class="checkout-button" bindtap="goCart">兑换</view>
+    <view class="checkout-button" bindtap="exchange">兑换</view>
   </view>
   <view wx:if="{{showCustomerDialog}}" class="customer-overlay" bindtap="closeCustomerService">
     <view class="customer-dialog" catchtap="stopPropagation">

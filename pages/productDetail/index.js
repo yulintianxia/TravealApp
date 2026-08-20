@@ -172,6 +172,32 @@ Page({
     }
   },
 
+  async exchange() {
+    if (!this.data.keyId) {
+      wx.showToast({ title: "缺少商品信息", icon: "none" });
+      return;
+    }
+
+    try {
+      const res = await RequestApi.cartList({});
+      const cartItem = (res?.data || []).find(
+        (item) => String(item.goodsId) === String(this.data.keyId),
+      );
+
+      if (Number(cartItem?.quantity || 0) > 1) {
+        wx.navigateTo({
+          url: `/pages/orderConfirm/index?ids=${cartItem.goodsId}`,
+        });
+        return;
+      }
+
+      wx.showToast({ title: "商品数量需大于1才能兑换", icon: "none" });
+    } catch (error) {
+      console.error("exchange error:", error);
+      wx.showToast({ title: "获取购物车失败", icon: "none" });
+    }
+  },
+
   goCart() {
     wx.navigateTo({ url: "/pages/cart/index" });
   },
