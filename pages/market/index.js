@@ -44,59 +44,26 @@ Page({
     total: 0,
     loading: false,
     noMore: false,
-    bannerImage:
-      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80",
-    allProducts: [
-      {
-        id: 1,
-        name: "包芯棉线1.8mm可绕烧树脂磨文玩手串编织线",
-        price: 2800,
-        tag: "新手福利",
-        hot: "热销中",
-        image:
-          "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=900&q=80",
-        category: "all",
-      },
-      {
-        id: 2,
-        name: "精梳棉手套文玩手套劳保手套男女通用款",
-        price: 4800,
-        tag: "新手福利",
-        hot: "热销中",
-        image:
-          "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
-        category: "生活用品",
-      },
-      {
-        id: 3,
-        name: "文玩穿珠线手感好耐磨不掉色",
-        price: 2480,
-        tag: "新手福利",
-        hot: "热销中",
-        image:
-          "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
-        category: "菩提",
-      },
-      {
-        id: 4,
-        name: "精梳棉手套文玩手套劳保手套男女通用款",
-        price: 4800,
-        tag: "新手福利",
-        hot: "热销中",
-        image:
-          "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80",
-        category: "服饰配件",
-      },
-    ],
+    bannerList:[],
+    allProducts: [],
   },
 
   onLoad() {
     // this.updateProductsByTab("最新");
-
+    this.getBannerList();
     this.getProducts();
     this.getCategoryList();
   },
 
+   async getBannerList(){
+    
+      const res = await RequestApi.carouselList();  
+      if (res && res.code == "200") {
+        this.setData({
+          bannerList: res.data || [],
+        });
+      }
+   },
   async getProducts(reset = true) {
     if (this.data.loading) return;
 

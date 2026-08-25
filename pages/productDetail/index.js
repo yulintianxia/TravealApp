@@ -1,8 +1,9 @@
 import { RequestApi } from "../../services/api.js";
 import { officialAccountUsername, webChatUrl } from "../../config/index";
-
+import { BASE_URL } from "../../config/index";
 Page({
   data: {
+    baseUrl:BASE_URL,
     keyId: "",
     activeTab: "商品",
     tabs: ["商品", "评价", "详情"],
@@ -14,10 +15,10 @@ Page({
     product: {},
     specs: [],
     reviewList: [],
-    reviewListOne:{},
+    reviewListOne: {},
     totalReviews: 0,
-    tags:[],
-    cartCount:0,
+    tags: [],
+    cartCount: 0,
   },
 
   onLoad(options) {
@@ -33,14 +34,11 @@ Page({
   async getreviewList(goodsId) {
     let res = await RequestApi.reviewList({ goodsId });
     if (res && res.code === 200) {
-     
       this.setData({
         reviewList: res.rows || [],
-        reviewListOne:res?.rows?.[0] || {},
+        reviewListOne: res?.rows?.[0] || {},
         totalReviews: res.total || 0,
       });
-
-
     }
   },
   async loadDetail(keyId) {
@@ -162,14 +160,13 @@ Page({
       return;
     }
 
-    try {
-      await RequestApi.cartAdd({
-        goodsId: this.data.keyId,
-        goodsCount: 1,
-      });
+    let res = await RequestApi.cartCount({});
+    if (res && res.code === 200) {
       wx.showToast({ title: "已加入购物车", icon: "success", duration: 1000 });
-    } catch (error) {
-      console.error("addToCart error:", error);
+      this.setData({
+        cartCount: res.data || 0,
+      });
+    } else {
       wx.showToast({ title: "加入失败", icon: "none" });
     }
   },

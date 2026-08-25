@@ -215,6 +215,15 @@ class ApiManager extends httpClient {
   }
   
 
+  //小程序的轮播图代码
+   carouselList(data, config) {
+    return this.get(`/mall/api/carousel/list`, data, config);
+  }
+
+    //查询购物车不同商品数量
+   cartCount(data, config) {
+    return this.get(`/mall/api/cart/count`, data, config);
+  }
   
 
 

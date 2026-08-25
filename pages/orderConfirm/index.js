@@ -104,7 +104,7 @@ Page({
 
       let res = await RequestApi.createOrder(params);
       wx.showToast({ title: "兑换成功", icon: "success", duration: 1000 });
-      setTimeout(() => wx.switchTab({ url: "/pages/cart/index" }), 1000);
+      setTimeout(() => wx.navigateTo({ url: "/pages/order/index" }), 1000);
     } catch (error) {
       console.error("confirmOrder error:", error);
     } finally {
