@@ -1,4 +1,9 @@
 <view class="detail-page">
+  <!-- <navigator target="miniProgram"  app-id="wxb74828a7b042024b" path="pages/index/index" env-version="trial">
+    <text>测试一下哈哈哈</text>
+  </navigator> -->
+
+
   <view class="tab-header">
     <view wx:for="{{tabs}}" wx:key="*this" class="tab-item {{activeTab === item ? 'active' : ''}}" data-tab="{{item}}" bindtap="onTabChange">
       {{item}}

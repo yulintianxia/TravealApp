@@ -126,9 +126,11 @@ Page({
     wx.navigateToMiniProgram({
       appId: "wxb74828a7b042024b",
       path: "pages/index/index", // 可选:指定目标小程序的页面路径
-      envVersion: "release", // 指定版本: develop(开发版), trial(体验版), release(正式版)
+      // envVersion: "release", // 指定版本: develop(开发版), trial(体验版), release(正式版)
+      envVersion:'release',
       success: () => {},
       fail: (err) => {
+        console.error("跳转失败:", err);
         wx.showToast({
           title: "跳转失败,请稍后重试",
           icon: "none",

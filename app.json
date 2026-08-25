@@ -80,5 +80,6 @@
     "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-input": "tdesign-miniprogram/input/input"
-  }
+  },
+  "navigateToMinProgramAppIdList": ["wxb74828a7b042024b"]
 }
