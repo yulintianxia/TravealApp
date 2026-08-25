@@ -74,7 +74,7 @@ class ApiManager extends httpClient {
 
   // 获取订单列表
   getOrder(data, config) {
-    return this.get(`/system/order/getOrderList`, data, config);
+    return this.get(`/mall/api/order/list`, data, config);
   }
 
   /* 确认收货 */

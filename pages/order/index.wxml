@@ -20,6 +20,10 @@
       <text class="tab-text">已收货</text>
       <view class="tab-line" wx:if="{{value == '3'}}"></view>
     </view>
+     <view class="tab-item {{value == '3' ? 'active' : ''}}" data-value="4" bindtap="onTabClick">
+      <text class="tab-text">已取消</text>
+      <view class="tab-line" wx:if="{{value == '4'}}"></view>
+    </view>
   </view>
 
   <!-- Order List -->

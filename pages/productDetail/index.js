@@ -124,7 +124,7 @@ Page({
 
   openMicroStore() {
     wx.navigateToMiniProgram({
-      appId: "wxfae9e8b96aea0726",
+      appId: "wxb74828a7b042024b",
       path: "pages/index/index", // 可选:指定目标小程序的页面路径
       envVersion: "release", // 指定版本: develop(开发版), trial(体验版), release(正式版)
       success: () => {},
@@ -133,12 +133,6 @@ Page({
           title: "跳转失败,请稍后重试",
           icon: "none",
         });
-        // 跳转失败后返回首页
-        setTimeout(() => {
-          wx.switchTab({
-            url: "/pages/index/index",
-          });
-        }, 1500);
       },
     });
   },

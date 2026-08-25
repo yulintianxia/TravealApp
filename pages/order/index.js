@@ -38,9 +38,9 @@ Page({
       status: this.data.value == "all" ? "" : this.data.value,
     };
     let res = await RequestApi.getOrder(params);
-    if (res && res.rows.length) {
+    if (res && res?.rows.length) {
       this.setData({
-        goodList: res.rows,
+        goodList:res.row,
         total: res.total,
       });
       
