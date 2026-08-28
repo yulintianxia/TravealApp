@@ -20,10 +20,10 @@
       <text class="tab-text">已收货</text>
       <view class="tab-line" wx:if="{{value == '3'}}"></view>
     </view>
-     <view class="tab-item {{value == '3' ? 'active' : ''}}" data-value="4" bindtap="onTabClick">
+     <!-- <view class="tab-item {{value == '3' ? 'active' : ''}}" data-value="4" bindtap="onTabClick">
       <text class="tab-text">已取消</text>
       <view class="tab-line" wx:if="{{value == '4'}}"></view>
-    </view>
+    </view> -->
   </view>
 
   <!-- Order List -->
@@ -44,10 +44,10 @@
       <block wx:for="{{goodList}}" wx:key="keyId">
         <view class="order-card" wx:if="{{value != 'all' || item.status != 3}}">
           <view class="card-body">
-            <image class="product-img" src="{{BASE_URL + item.commodityPicture}}" mode="aspectFill"></image>
+            <image class="product-img" src="{{item.goodsPicture}}" mode="aspectFill"></image>
             <view class="product-info">
               <view class="name-row">
-                <text class="product-name">{{item.commodityName}}</text>
+                <text class="product-name">{{item.goodsName}}</text>
               </view>
               <text class="product-desc" wx:if="{{item.commodityDesc}}">{{item.commodityDesc}}</text>
               <text class="product-spec" wx:if="{{item.commoditySpec}}">【{{item.commoditySpec}}】</text>
@@ -55,9 +55,9 @@
             <view class="price-col">
               <view class="price-row">
                 <text class="price-symbol">¥</text>
-                <text class="price-num">{{item.commodityPrice}}</text>
+                <text class="price-num">{{item.pointsPrice}}</text>
               </view>
-              <text class="amount">x{{item.commodityAmount}}</text>
+              <text class="amount">x{{item.quantity}}</text>
             </view>
           </view>
           <view class="card-footer">

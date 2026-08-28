@@ -1,3 +1,4 @@
+import { BASE_URL } from "../../config/index.js";
 import { RequestApi } from "../../services/api.js";
 
 Page({
@@ -13,7 +14,8 @@ Page({
     noMore: false,
     pageNum: 1,
     pageSize: 10,
-    fallbackReviews: [ ],
+    fallbackReviews: [],
+    BASE_URL
   },
 
   onLoad(options) {

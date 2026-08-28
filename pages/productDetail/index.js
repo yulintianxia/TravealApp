@@ -13,6 +13,8 @@ Page({
     shipping: "承诺48小时内发货",
     delivery: "免运费：四川成都 发货",
     product: {},
+    mediaList: [],
+    currentMediaIndex: 0,
     specs: [],
     reviewList: [],
     reviewListOne: {},
@@ -51,13 +53,72 @@ Page({
         label,
         value,
       }));
-
+      let mediaList = detail.mainPicture.split(",").map((item)=>{
+              return item ={
+                 url:item,
+                 type:"image",
+              }
+      })
+      // console.log(mediaList);
+      if(detail.video){
+         mediaList.push({
+          item:detail.video,
+          type:"video",
+         })
+      }
+      
+       
       this.setData({
         product: detail,
+        // mediaList: this.normalizeMediaList(detail),
+        mediaList,
         specs: specsArray,
         tags: detail.tags || [],
       });
     }
+  },
+
+  normalizeMediaList(detail) {
+    const mediaSources = detail.mediaList || detail.media || detail.mediaFiles ||
+      detail.carouselImages || detail.images || detail.pictures || [];
+    const mediaItems = Array.isArray(mediaSources) ? mediaSources : [mediaSources];
+    const mediaList = mediaItems.map((item) => {
+      if (typeof item === "string") {
+        return { type: this.isVideoUrl(item) ? "video" : "image", url: item };
+      }
+
+      const url = item?.url || item?.imageUrl || item?.src || item?.path || item?.fileUrl || "";
+      const type = item?.type || item?.mediaType || (item?.isVideo ? "video" : "");
+      return {
+        type: type === "video" || this.isVideoUrl(url) ? "video" : "image",
+        url,
+      };
+    }).filter((item) => item.url);
+
+    const videoUrl = detail.videoUrl || detail.video || detail.videoPath;
+    if (videoUrl && !mediaList.some((item) => item.url === videoUrl)) {
+      mediaList.unshift({ type: "video", url: videoUrl });
+    }
+
+    if (!mediaList.length && detail.mainPicture) {
+      mediaList.push({ type: "image", url: detail.mainPicture });
+    }
+    return mediaList;
+  },
+
+
+
+  isVideoUrl(url) {
+    return /\.(mp4|mov|m3u8|webm)(\?.*)?$/i.test(url || "");
+  },
+
+  onMediaChange(e) {
+    const currentMediaIndex = e.detail.current;
+    const previousMedia = this.data.mediaList[this.data.currentMediaIndex];
+    if (previousMedia?.type === "video") {
+      wx.createVideoContext(`product-video-${this.data.currentMediaIndex}`, this).stop();
+    }
+    this.setData({ currentMediaIndex });
   },
 
   onTabChange(e) {

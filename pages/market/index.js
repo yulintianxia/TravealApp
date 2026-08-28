@@ -4,6 +4,7 @@ import { RequestApi } from "../../services/api";
 Page({
   data: {
     activeTab: "comprehensive",
+    activeTab2:'',
     pageNum: 1,
     pageSize: 10,
     sortState: {
@@ -35,6 +36,7 @@ Page({
         value: "reviews",
       },
     ],
+    tabs2:[],
     // categories: ["全部", "服饰配件", "生活用品", "菩提", "潮流女包"],
     categories: [],
     activeCategory: "",
@@ -71,9 +73,11 @@ Page({
     this.setData({ loading: true });
 
     try {
+      console.log(this.data.activeTab2,this.data.activeCategory);
       const params = {
-        category: this.data.activeCategory,
+        category: this.data.activeTab2 || this.data.activeCategory,
         orderBy: this.data.activeTab,
+        // name:this.data.name,
         pageNum,
         pageSize: this.data.pageSize,
         isAsc: this.data.sortState[this.data.activeTab],
@@ -146,6 +150,13 @@ Page({
     this.updateProductsByTab(tab);
   },
 
+  onTabChange2(e){
+    const { id } = e.currentTarget.dataset;
+    let activeTab2 = this.data.activeTab2 === id ? "" : id;
+    this.setData({ activeTab2 });
+    this.getProducts();
+  },
+
   onReviewFilterChange(e) {
     const { filter } = e.currentTarget.dataset;
     this.setData({ activeReviewFilter: filter });
@@ -154,12 +165,23 @@ Page({
   onCategoryChange(e) {
     const { category } = e.currentTarget.dataset;
     const nextCategory = this.data.activeCategory === category ? "" : category;
+    console.log(category,'categorycategory',this.data.categories);
+    let tabs2 =[];
+    let activeTab2 ='';
+    if(nextCategory){
+       tabs2 = this.data.categories.filter((item) => item.keyId ==category)?.[0].children || [];
+    } 
+   
+    
+    console.log(tabs2);
 
     this.setData({
       activeCategory: nextCategory,
       pageNum: 1,
       noMore: false,
       products: [],
+      tabs2,
+      activeTab2
     }, () => {
       this.getProducts(true);
     });

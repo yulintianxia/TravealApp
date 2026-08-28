@@ -39,11 +39,20 @@ Page({
     };
     let res = await RequestApi.getOrder(params);
     if (res && res?.rows.length) {
+      let goodList = res.rows
+        .map((item) => {
+          return (item = {
+            status: item.status,
+            ...JSON.parse(item.items)?.[0],
+          });
+        })
+        .flat();
+
+      console.log('goodList',goodList); 
       this.setData({
-        goodList:res.row,
+        goodList: goodList,
         total: res.total,
       });
-      
     } else {
       this.setData({
         goodList: [],

@@ -14,11 +14,19 @@
   </view>
   <view class="market-content">
     <view class="market-sidebar">
-      <view wx:for="{{categories}}" wx:key="*this" class="sidebar-item {{activeCategory === item.key ? 'active' : ''}}" data-category="{{item.key}}" bindtap="onCategoryChange">
-        {{item.label}}
+      <view wx:for="{{categories}}" wx:key="*this" class="sidebar-item {{activeCategory === item.keyId ? 'active' : ''}}" data- data-category="{{item.keyId}}" 
+      bindtap="onCategoryChange">
+        {{item.name}}
       </view>
     </view>
     <view class="market-products">
+
+      <view class="tab-bar" wx:if="{{tabs2.length}}">
+        <view wx:for="{{tabs2}}" wx:key="*this" class="tab-item2 {{activeTab2 === item.keyId ? 'active' : ''}}" data-id="{{item.keyId}}" bindtap="onTabChange2">
+          <text class="tab-label">{{item.name}}</text>
+        </view>
+      </view>
+
       <view class="product-grid">
         <view wx:for="{{products}}" wx:key="id" class="product-card" data-id="{{item.keyId || item.id}}" bindtap="goToDetail">
           <image class="product-thumb" src="{{item.mainPicture}}" mode="aspectFill"></image>

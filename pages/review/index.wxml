@@ -14,7 +14,7 @@
   <view class="review-list">
     <view wx:for="{{reviews}}" wx:key="id" class="review-item">
       <view class="review-row">
-        <image class="review-avatar" src="{{item.avatar || '../../images/new/16.png'}}" mode="aspectFill"></image>
+        <image class="review-avatar" src="{{item.avatar ? BASE_URL +item.avatar: '../../images/new/16.png'}}" mode="aspectFill"></image>
 
         <view class="review-main">
           <view class="review-user-row">
