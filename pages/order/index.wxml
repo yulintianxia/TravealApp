@@ -1,46 +1,25 @@
 <!-- pages/order/index.wxml -->
 <wxs module="getDate" src="./state.wxs"></wxs>
-
 <view class="order-page">
-  <!-- Tab Bar -->
   <view class="tab-bar">
     <view class="tab-item {{value == 'all' ? 'active' : ''}}" data-value="all" bindtap="onTabClick">
       <text class="tab-text">全部</text>
-      <view class="tab-line" wx:if="{{value == 'all'}}"></view>
     </view>
     <view class="tab-item {{value == '1' ? 'active' : ''}}" data-value="1" bindtap="onTabClick">
       <text class="tab-text">待发货</text>
-      <view class="tab-line" wx:if="{{value == '1'}}"></view>
     </view>
     <view class="tab-item {{value == '2' ? 'active' : ''}}" data-value="2" bindtap="onTabClick">
       <text class="tab-text">待收货</text>
-      <view class="tab-line" wx:if="{{value == '2'}}"></view>
     </view>
     <view class="tab-item {{value == '3' ? 'active' : ''}}" data-value="3" bindtap="onTabClick">
       <text class="tab-text">已收货</text>
-      <view class="tab-line" wx:if="{{value == '3'}}"></view>
     </view>
-     <!-- <view class="tab-item {{value == '3' ? 'active' : ''}}" data-value="4" bindtap="onTabClick">
-      <text class="tab-text">已取消</text>
-      <view class="tab-line" wx:if="{{value == '4'}}"></view>
-    </view> -->
   </view>
-
-  <!-- Order List -->
-  <scroll-view
-    class="order-scroll"
-    scroll-y
-    lower-threshold="30"
-    bindscrolltolower="onReachBottom"
-    style="height: {{scrollHeight}}px;"
-  >
-    <!-- 空状态 -->
+  <scroll-view class="order-scroll" scroll-y lower-threshold="30" bindscrolltolower="onReachBottom" style="height: {{scrollHeight}}px;">
     <view wx:if="{{goodList.length === 0}}" class="empty-state">
       <text class="empty-text">暂无订单</text>
     </view>
-
     <view wx:else class="order-list">
-      <!-- 当前订单（全部 tab 时排除已收货，其他 tab 显示全部） -->
       <block wx:for="{{goodList}}" wx:key="keyId">
         <view class="order-card" wx:if="{{value != 'all' || item.status != 3}}">
           <view class="card-body">
@@ -48,11 +27,16 @@
             <view class="product-info">
               <view class="name-row">
                 <text class="product-name">{{item.goodsName}}</text>
+                <text class="mini-badge" wx:if="{{item.tags.length}}">
+                  <text wx:for="{{item.tags}}" wx:key="tag">{{item.name}}</text>
+                </text>
               </view>
-              <text class="product-desc" wx:if="{{item.commodityDesc}}">{{item.commodityDesc}}</text>
-              <text class="product-spec" wx:if="{{item.commoditySpec}}">【{{item.commoditySpec}}】</text>
+              <text class="product-desc" wx:if="{{item.description}}">{{item.description}}</text>
+              
             </view>
+         
             <view class="price-col">
+              <text class="status-label">{{getDate.judgmentState(item.status)}}</text>
               <view class="price-row">
                 <text class="price-symbol">¥</text>
                 <text class="price-num">{{item.pointsPrice}}</text>
@@ -60,35 +44,44 @@
               <text class="amount">x{{item.quantity}}</text>
             </view>
           </view>
-          <view class="card-footer">
-            <text class="status-text">{{getDate.judgmentState(item.status)}}</text>
-          </view>
+             <view class='card-order'>
+             
+               <text class="product-desc" wx:if="{{item.deliveryTime}}">发货时间：{{item.deliveryTime}}</text>
+               <text class="product-desc fr" bindtap="handleCopy" data-number="{{item.courierNumber}}" wx:if="{{item.courierNumber}}">{{item.courierCompanyName}} {{item.courierNumber}} | 复制</text>
+
+            </view>
           <view class="card-action" wx:if="{{item.status == 2}}">
             <view class="confirm-btn" bindtap="orderChcek" data-id="{{item.keyId}}">确认收货</view>
           </view>
+           <view class="card-action" wx:if="{{item.status == 3}}">
+            <view class="confirm-btn" bindtap="goToComment" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">去评价</view>
+          </view>
         </view>
       </block>
-
-      <!-- 历史订单分隔线（仅全部 tab 且存在已收货订单时显示） -->
-      <block wx:if="{{value == 'all' && getDate.hasStatusInList(goodList, 3)}}">
+      <!-- <block wx:if="{{value == 'all' && getDate.hasStatusInList(goodList, 3)}}">
         <view class="history-divider">
           <view class="divider-line"></view>
           <text class="divider-text">历史订单</text>
           <view class="divider-line"></view>
         </view>
-
         <block wx:for="{{goodList}}" wx:key="keyId">
-          <view class="order-card" wx:if="{{item.status == 3}}">
+          <view class="order-card order-card-history" wx:if="{{item.status == 3}}">
             <view class="card-body">
               <image class="product-img" src="{{BASE_URL + item.commodityPicture}}" mode="aspectFill"></image>
               <view class="product-info">
                 <view class="name-row">
                   <text class="product-name">{{item.commodityName}}</text>
+                  <text class="mini-badge" wx:if="{{item.goodsTag}}">{{item.goodsTag}}</text>
                 </view>
-                <text class="product-desc" wx:if="{{item.commodityDesc}}">{{item.commodityDesc}}</text>
-                <text class="product-spec" wx:if="{{item.commoditySpec}}">【{{item.commoditySpec}}】</text>
+                <text class="product-desc" wx:if="{{item.commodityDesc}}">
+                  {{item.commodityDesc}}
+                </text>
+                <text class="product-spec" wx:if="{{item.commoditySpec}}">
+                  【{{item.commoditySpec}}】
+                </text>
               </view>
               <view class="price-col">
+                <text class="status-label">{{getDate.judgmentState(item.status)}}</text>
                 <view class="price-row">
                   <text class="price-symbol">¥</text>
                   <text class="price-num">{{item.commodityPrice}}</text>
@@ -96,12 +89,9 @@
                 <text class="amount">x{{item.commodityAmount}}</text>
               </view>
             </view>
-            <view class="card-footer">
-              <text class="status-text">{{getDate.judgmentState(item.status)}}</text>
-            </view>
           </view>
         </block>
-      </block>
+      </block> -->
     </view>
   </scroll-view>
 </view>

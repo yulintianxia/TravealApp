@@ -31,6 +31,30 @@ Page({
     });
   },
 
+handleCopy(e) {
+    let number = e.currentTarget.dataset.number;
+    wx.setClipboardData({
+      data: number,
+      success: () => {
+        wx.showToast({
+          title: "复制成功",
+          icon: "none"
+        })
+      },
+      fail: () => {
+        wx.showToast({
+          title: "复制失败",
+          icon: "none"
+        })
+      }
+    })
+  },
+  goToComment(e){
+    let goodsId = e.currentTarget.dataset.good;
+    let keyId = e.currentTarget.dataset.id;
+    console.log('goodsId',goodsId,keyId);
+     wx.navigateTo({ url: '/pages/reviewCreate/index?goodsId='+goodsId+'&orderId='+keyId})
+  },
   async getOrderList() {
     let params = {
       pageSize: this.data.pageSize,
@@ -43,6 +67,10 @@ Page({
         .map((item) => {
           return (item = {
             status: item.status,
+            courierNumber: item.courierNumber,
+            courierCompanyName: item.courierCompanyName,
+            deliveryTime:item.deliveryTime,
+            keyId:item.keyId,
             ...JSON.parse(item.items)?.[0],
           });
         })
@@ -77,7 +105,7 @@ Page({
         if (res.confirm) {
           let orderId = e.currentTarget.dataset.id;
           let params = { orderId };
-          let res = await RequestApi.checkOrder(params);
+          let res = await RequestApi.receiveOrder(params);
           if (res && res.code == 200) {
             wx.showToast({ title: "成功", icon: "success", duration: 2000 });
             that.getOrderList();

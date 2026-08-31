@@ -226,6 +226,11 @@ class ApiManager extends httpClient {
   }
   
 
+    //商品评价
+   reviewAdd(data, config) {
+    return this.post(`mall/api/review/add`, data, config);
+  }
+  
 
 }
 

@@ -4,15 +4,13 @@ page {
 }
 
 .review-create-page {
-  min-height: 100vh;
+  min-height: 90vh;
   box-sizing: border-box;
   padding-bottom: 210rpx;
   background: linear-gradient(180deg, #111111 0%, #111111 68%, #1d2a35 100%);
 }
 
-.score-rate {
-  margin-left: 28rpx;
-}
+
 .review-header {
   height: 116rpx;
   display: flex;
@@ -28,7 +26,7 @@ page {
 }
 
 .review-form {
-  padding: 38rpx 74rpx 0;
+  padding: 38rpx 60rpx 0;
 }
 
 .score-row {
@@ -42,6 +40,8 @@ page {
   color: #a4a4a4;
   font-size: 30rpx;
   line-height: 1.4;
+  /* width:140rpx; */
+  margin-right:20rpx;
 }
 
 .required {
@@ -70,7 +70,8 @@ page {
 .upload-wrap {
   flex: 1;
   min-width: 0;
-  margin-left: 28rpx;
+  /* margin-left: 28rpx; */
+  box-sizing: border-box;
 }
 
 .upload-wrap t-upload {
@@ -92,7 +93,6 @@ page {
   position: relative;
   flex: 1;
   height: 308rpx;
-  margin-left: 28rpx;
   border-radius: 14rpx;
   overflow: hidden;
   background: #242424;

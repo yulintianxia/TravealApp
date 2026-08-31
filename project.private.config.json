@@ -22,11 +22,39 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/reviewCreate/index",
+          "pathName": "pages/reviewCreate/index",
+          "query": "goodsId=1&orderId=9",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/order/index",
+          "pathName": "pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/review/index",
           "pathName": "pages/review/index",
           "query": "keyId=1",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/productDetail/index",

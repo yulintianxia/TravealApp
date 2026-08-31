@@ -1,18 +1,28 @@
 var  status={
-    "0":"创建",
+    "0":"已创建",
     "1":"待发货",
     "2":"待收货",
     "3":"已收货",
     "10":'取消',
-    "11": '异常',
-    "99":'关闭'
   }
   var filter = {
     judgmentState: function (num) {
       return(status[num])
-    }
+    },
+    // hasStatusInList: function (list, targetStatus) {
+    //   if (!list || !list.length) {
+    //     return false
+    //   }
+    //   for (var i = 0; i < list.length; i++) {
+    //     if (Number(list[i].status) === Number(targetStatus)) {
+    //       return true
+    //     }
+    //   }
+    //   return false
+    // }
   }
   module.exports = {
-    judgmentState: filter.judgmentState
+    judgmentState: filter.judgmentState,
+    // hasStatusInList: filter.hasStatusInList,
   }
   //不支持es6语法只能通过：进行暴露

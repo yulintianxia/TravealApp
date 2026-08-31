@@ -2,14 +2,16 @@ import { BASE_URL } from "../../config/index.js";
 
 Page({
   data: {
-    keyId: "",
+    orderId: "",
     score: 0,
     content: "",
     imageFiles: [],
+    goodsId: "",
   },
 
   onLoad(options) {
-    this.setData({ keyId: options.keyId || "" });
+    console.log('options',options);
+    this.setData({ orderId: options.orderId || "",goodsId: options.goodsId || "" });
   },
 
   onScoreChange(e) {
@@ -37,7 +39,7 @@ Page({
     this.setData({ imageFiles });
   },
 
-  submitReview() {
+  async submitReview() {
     if (!this.data.score) {
       wx.showToast({ title: "请选择评分", icon: "none" });
       return;
@@ -49,14 +51,16 @@ Page({
     }
 
     const payload = {
-      goodsId: this.data.keyId,
-      score: this.data.score,
+      goodsId: this.data.goodsId,
+      rating: this.data.score,
+      orderId:this.data.orderId,
       content: this.data.content.trim(),
-      images: this.data.imageFiles.map((file) => file.url),
+      pictures: this.data.imageFiles.map((file) => file.url),
     };
-
-    console.log("review payload", payload, BASE_URL);
-    wx.showToast({ title: "评价已提交", icon: "success" });
-    setTimeout(() => wx.navigateBack({ delta: 1 }), 800);
+    let res = await RequestApi.reviewAdd(payload);
+    if(res && res.code =='200'){
+       wx.showToast({ title: "评价已提交", icon: "success" });
+      setTimeout(() => wx.navigateBack({ delta: 1 }), 800);
+    } 
   },
 });
