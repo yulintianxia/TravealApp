@@ -37,7 +37,7 @@ Page({
       { iconUrl: "../../images/new/5.png", title: "公众号" },
       { iconUrl: "../../images/new/13.png", title: "咨询客服" },
       { iconUrl: "../../images/new/7.png", title: "设置" },
-      // { iconUrl: "../../images/new/4.png", title: "商城", url: "/pages/market/index" },
+      { iconUrl: "../../images/new/17.png", title: "购物车", url: "/pages/cart/index" },
       // { iconUrl: "../../images/new/7.png", title: "签到" },
     ],
   },

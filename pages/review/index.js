@@ -15,7 +15,7 @@ Page({
     pageNum: 1,
     pageSize: 10,
     fallbackReviews: [],
-    BASE_URL
+    BASE_URL,
   },
 
   onLoad(options) {
@@ -44,11 +44,14 @@ Page({
     const pageNum = reset ? 1 : this.data.pageNum;
     this.setData({ loading: true });
 
+    console.log("activeFilteractiveFilter", this.data.activeFilter);
+
     try {
       const params = {
         goodsId: this.data.keyId,
         pageNum,
         pageSize: this.data.pageSize,
+        hasImage: this.data.activeFilter === "hasImage" ? true : "",
       };
 
       const res = await RequestApi.reviewList(params);
@@ -57,19 +60,39 @@ Page({
         : Array.isArray(res?.data)
           ? res.data
           : [];
-      const sourceRows = (rows.length ? rows : reset ? this.data.fallbackReviews : []).map((item) => ({
+      const sourceRows = (
+        rows.length ? rows : reset ? this.data.fallbackReviews : []
+      ).map((item) => ({
         ...item,
         createTime: this.formatDate(item.createTime || item.date),
       }));
-      const filteredRows = this.data.activeFilter === "hasImage"
-        ? sourceRows.filter((item) => item && Array.isArray(item.images) && item.images.length)
-        : sourceRows;
-      const merged = reset ? filteredRows : this.data.reviews.concat(filteredRows);
+      const filteredRows =
+        this.data.activeFilter === "hasImage"
+          ? sourceRows.filter(
+              (item) =>
+                item && Array.isArray(item.images) && item.images.length,
+            )
+          : sourceRows;
+      const merged = reset
+        ? filteredRows
+        : this.data.reviews.concat(filteredRows);
 
       this.setData({
         reviews: merged,
         pageNum,
         noMore: sourceRows.length < this.data.pageSize,
+        filters: [
+          {
+            label: "全部",
+            value: "all",
+            count: this.data.activeFilter === "hasImage" ? 0 : res.total,
+          },
+          {
+            label: "有图",
+            value: "hasImage",
+            count: this.data.activeFilter === "hasImage" ? res.total : 0,
+          },
+        ],
       });
     } catch (error) {
       console.error("loadReviews error:", error);
@@ -83,9 +106,12 @@ Page({
 
   onFilterChange(e) {
     const { value } = e.currentTarget.dataset;
-    this.setData({ activeFilter: value, pageNum: 1, reviews: [], noMore: false }, () => {
-      this.loadReviews(true);
-    });
+    this.setData(
+      { activeFilter: value, pageNum: 1, reviews: [], noMore: false },
+      () => {
+        this.loadReviews(true);
+      },
+    );
   },
 
   onReachBottom() {

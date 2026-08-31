@@ -187,8 +187,9 @@ page {
 /* ===== 网格布局 ===== */
 .grid-row {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .grid-item {
@@ -196,6 +197,7 @@ page {
   flex-direction: column;
   align-items: center;
   width: 25%;
+  margin-bottom: 20rpx;
 }
 
 .icon-circle {

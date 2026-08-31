@@ -25,7 +25,7 @@
     </view>
     <view class="shipping-row" bindtap="goAddressList">
       <text class="shipping-text shopping-send">发货</text>
-      <text class="shipping-text">{{shipping}}</text>
+      <text class="shipping-text">承诺{{product.deliveryHours || 48}}小时内发货</text>
       <text class="shipping-text right">{{delivery}}</text>
       <text class="arrow">›</text>
     </view>
@@ -39,7 +39,7 @@
         <view class="review-content">
           <view class="review-name">{{reviewListOne.replyBy}}</view>
           <view class="review-text">{{reviewListOne.content}}</view>
-          <view class="review-text">已购：透气网鹿皮手套2双，发货于7天前</view>
+          <view class="review-text">已购：{{product.name}}{{reviewListOne.quantity}}双，发货于{{deliveryTime}}前</view>
         </view>
       </view>
     </view>

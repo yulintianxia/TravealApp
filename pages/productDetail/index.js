@@ -10,7 +10,7 @@ Page({
     showCustomerDialog: false,
     qrGrid: [],
     chatImg: "../../images/new/wechat.png",
-    shipping: "承诺48小时内发货",
+    // shipping: "承诺"+detail.deliveryHours+"小时内发货",
     delivery: "免运费：四川成都 发货",
     product: {},
     mediaList: [],
@@ -21,6 +21,7 @@ Page({
     totalReviews: 0,
     tags: [],
     cartCount: 0,
+    deliveryTime:'',
   },
 
   onLoad(options) {
@@ -40,6 +41,7 @@ Page({
         reviewList: res.rows || [],
         reviewListOne: res?.rows?.[0] || {},
         totalReviews: res.total || 0,
+        deliveryTime: res?.rows?.[0]?.deliveryTime.slice(0,10) || "",
       });
     }
   },
