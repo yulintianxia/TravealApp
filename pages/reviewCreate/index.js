@@ -1,5 +1,5 @@
 import { BASE_URL } from "../../config/index.js";
-
+import { RequestApi } from "../../services/api.js";
 Page({
   data: {
     orderId: "",
@@ -22,16 +22,41 @@ Page({
     this.setData({ content: e.detail.value });
   },
 
-  onImageAdd(e) {
-    const files = e.detail.files || [];
-    const pendingFiles = files.map((file) => ({
-      name: file.name || `review-${Date.now()}`,
-      type: "image",
-      url: file.url,
-    }));
-    this.setData({ imageFiles: this.data.imageFiles.concat(pendingFiles).slice(0, 3) });
+  handleAdd(e) {
+    const { files } = e.detail;
+    let fileOrderPhoto = [];
+    this.onUpload(files, fileOrderPhoto);
+  },
+  handleRemove(e) {
+    const { index } = e.detail;
+    const { imageFiles } = this.data;
+    imageFiles.splice(index, 1);
+    this.setData({ imageFiles });
   },
 
+   onUpload: function (file, fileOrderPhoto) {
+    wx.uploadFile({
+      url: BASE_URL + "/common/uploadImage",
+      filePath: file[0].url,
+      name: "file",
+      formData: { file: file[0] },
+      header: {
+        "Content-type": "multipart/form-data",
+        authorization: wx.getStorageSync("token")
+          ? `Bearer ${wx.getStorageSync("token")}` : "",
+      },
+      success: (res) => {
+        let resData = JSON.parse(res.data);
+        fileOrderPhoto.push({
+          name: resData.fileName, type: "image", url: BASE_URL + resData.url,
+        });
+        this.setData({
+          imageFiles: this.data.imageFiles.concat(fileOrderPhoto),
+        });
+        console.log('imageFiles',this.data.imageFiles);
+      },
+    });
+  },
   onImageRemove(e) {
     const index = e.detail.index;
     const imageFiles = this.data.imageFiles.slice();
@@ -56,7 +81,9 @@ Page({
       orderId:this.data.orderId,
       content: this.data.content.trim(),
       pictures: this.data.imageFiles.map((file) => file.url),
+      isAnonymous:0,
     };
+    console.log('payload',payload); 
     let res = await RequestApi.reviewAdd(payload);
     if(res && res.code =='200'){
        wx.showToast({ title: "评价已提交", icon: "success" });

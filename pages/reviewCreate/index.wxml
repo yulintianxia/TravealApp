@@ -20,12 +20,11 @@
       <text class="form-label">宝贝图片<text class="required">*</text></text>
       <view class="upload-wrap">
         <t-upload
-          max="3"
-          media-type="{{['image']}}"
-          files="{{imageFiles}}"
-          bind:add="onImageAdd"
-          bind:remove="onImageRemove"
-          multiple
+           max="1"
+            media-type="{{['image']}}"
+            files="{{imageFiles}}"
+            bind:add="handleAdd"
+            bind:remove="handleRemove"
         />
       </view>
     </view>

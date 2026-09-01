@@ -4,9 +4,9 @@ page {
 }
 
 .review-create-page {
-  min-height: 90vh;
+  min-height: 100vh;
   box-sizing: border-box;
-  padding-bottom: 210rpx;
+  padding-bottom: 200rpx;
   background: linear-gradient(180deg, #111111 0%, #111111 68%, #1d2a35 100%);
 }
 
@@ -41,9 +41,14 @@ page {
   font-size: 30rpx;
   line-height: 1.4;
   /* width:140rpx; */
-  margin-right:20rpx;
+  margin-right:12rpx;
 }
-
+.t-upload__wrapper {
+  /* left:8px !important; */
+}
+--td-upload-add-icon-size {
+  font-size: 50rpx;
+}
 .required {
   color: #f04444;
   margin-left: 4rpx;
