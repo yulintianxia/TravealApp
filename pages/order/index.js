@@ -55,6 +55,13 @@ handleCopy(e) {
     console.log('goodsId',goodsId,keyId);
      wx.navigateTo({ url: '/pages/reviewCreate/index?goodsId='+goodsId+'&orderId='+keyId})
   },
+
+  goToReview(e){
+    let keyId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `/pages/review/index?keyId=${keyId}`,
+    });
+  },
   async getOrderList() {
     let params = {
       pageSize: this.data.pageSize,
@@ -71,6 +78,7 @@ handleCopy(e) {
             courierCompanyName: item.courierCompanyName,
             deliveryTime:item.deliveryTime,
             keyId:item.keyId,
+            reviewed:item.reviewed,
             ...JSON.parse(item.items)?.[0],
           });
         })

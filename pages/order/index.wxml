@@ -54,7 +54,8 @@
             <view class="confirm-btn" bindtap="orderChcek" data-id="{{item.keyId}}">确认收货</view>
           </view>
            <view class="card-action" wx:if="{{item.status == 3}}">
-            <view class="confirm-btn" bindtap="goToComment" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">去评价</view>
+            <view class="confirm-btn" bindtap="goToComment" wx:if="{{!item.reviewed}}" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">去评价</view>
+            <view class="confirm-btn" bindtap="goToReview" wx:if="{{item.reviewed}}" data-id="{{item.keyId}}">查看评价</view>
           </view>
         </view>
       </block>

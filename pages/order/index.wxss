@@ -14,6 +14,11 @@ page {
   );
 }
 
+
+.confirm-btn-reviewed{
+
+}
+
 .status-bar {
   display: flex;
   align-items: center;
@@ -375,6 +380,17 @@ page {
   display: flex;
   justify-content: flex-end;
   margin-top: 18rpx;
+}
+
+.confirm-btn {
+  min-width: 100rpx;
+  text-align: center;
+  padding: 14rpx 24rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(135deg, #f0d7a7 0%, #d7b679 100%);
+  color: #302611;
+  font-size: 26rpx;
+  font-weight: 600;
 }
 
 .confirm-btn {
