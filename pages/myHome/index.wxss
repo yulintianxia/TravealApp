@@ -22,6 +22,7 @@ page {
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 2rpx;
+  margin-top:30rpx;
 }
 
 /* ===== 滚动区域 ===== */
