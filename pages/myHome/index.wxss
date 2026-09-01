@@ -197,7 +197,7 @@ page {
   flex-direction: column;
   align-items: center;
   width: 25%;
-  margin-bottom: 20rpx;
+  margin-bottom: 28rpx;
 }
 
 .icon-circle {
