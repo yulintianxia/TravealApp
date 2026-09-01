@@ -9,20 +9,20 @@ var  status={
     judgmentState: function (num) {
       return(status[num])
     },
-    // hasStatusInList: function (list, targetStatus) {
-    //   if (!list || !list.length) {
-    //     return false
-    //   }
-    //   for (var i = 0; i < list.length; i++) {
-    //     if (Number(list[i].status) === Number(targetStatus)) {
-    //       return true
-    //     }
-    //   }
-    //   return false
-    // }
+    JSONdata:function (str) {
+      if (!str) {
+        return []
+      }
+      try {
+        return JSON.parse(str)
+      } catch (e) {
+        console.error('JSONdata error:', e)
+        return []
+      }
+    },
   }
   module.exports = {
     judgmentState: filter.judgmentState,
-    // hasStatusInList: filter.hasStatusInList,
+    JSONdata: filter.JSONdata,
   }
   //不支持es6语法只能通过：进行暴露

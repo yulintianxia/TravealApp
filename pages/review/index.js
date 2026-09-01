@@ -55,45 +55,26 @@ Page({
       };
 
       const res = await RequestApi.reviewList(params);
-      const rows = Array.isArray(res?.rows)
-        ? res.rows
-        : Array.isArray(res?.data)
-          ? res.data
-          : [];
-      const sourceRows = (
-        rows.length ? rows : reset ? this.data.fallbackReviews : []
-      ).map((item) => ({
-        ...item,
-        createTime: this.formatDate(item.createTime || item.date),
-      }));
-      const filteredRows =
-        this.data.activeFilter === "hasImage"
-          ? sourceRows.filter(
-              (item) =>
-                item && Array.isArray(item.images) && item.images.length,
-            )
-          : sourceRows;
-      const merged = reset
-        ? filteredRows
-        : this.data.reviews.concat(filteredRows);
-
-      this.setData({
-        reviews: merged,
-        pageNum,
-        noMore: sourceRows.length < this.data.pageSize,
-        filters: [
-          {
-            label: "全部",
-            value: "all",
-            count: this.data.activeFilter === "hasImage" ? 0 : res.total,
-          },
-          {
-            label: "有图",
-            value: "hasImage",
-            count: this.data.activeFilter === "hasImage" ? res.total : 0,
-          },
-        ],
-      });
+      if (res && res.code == "200") {
+        const rows = res?.rows;
+        this.setData({
+          reviews: rows,
+          pageNum,
+          noMore: this.data.pageSize * this.data.pageNum < res.total,
+          filters: [
+            {
+              label: "全部",
+              value: "all",
+              count: this.data.activeFilter === "hasImage" ? 0 : res.total,
+            },
+            {
+              label: "有图",
+              value: "hasImage",
+              count: this.data.activeFilter === "hasImage" ? res.total : 0,
+            },
+          ],
+        });
+      }
     } catch (error) {
       console.error("loadReviews error:", error);
       if (reset) {

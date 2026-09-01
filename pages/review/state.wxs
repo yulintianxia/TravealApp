@@ -1,0 +1,15 @@
+var filter = {
+  JSONdata: function (str) {
+    console.log("str", str);
+    if (!str) {
+      return [];
+    }
+    var parsed = JSON.parse(str);
+    console.log("getDate.JSONdata parsed1111", parsed);
+    return parsed;
+  },
+};
+module.exports = {
+  JSONdata: filter.JSONdata,
+};
+//不支持es6语法只能通过：进行暴露

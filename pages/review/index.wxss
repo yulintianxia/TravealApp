@@ -178,8 +178,8 @@ page {
 }
 
 .review-image {
-  width: 220rpx;
-  height: 220rpx;
+  width: 108rpx;
+  height:  108rpx;
   border-radius: 0;
   background: #1d1f22;
   flex-shrink: 0;

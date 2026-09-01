@@ -34,7 +34,7 @@
       <view class="review-card" >
         <image class="review-avatar" src="{{baseUrl + reviewListOne.avatar  || '../../images/new/16.png'}}" mode="aspectFill"></image>
         <view class="review-content">
-          <view class="review-name">{{reviewListOne.replyBy}}</view>
+          <view class="review-name">{{reviewListOne.nickName}}</view>
           <view class="review-text">{{reviewListOne.content}}</view>
           <view class="review-text">已购：{{product.name}}{{reviewListOne.quantity}}双，发货于{{deliveryTime}}前</view>
         </view>
