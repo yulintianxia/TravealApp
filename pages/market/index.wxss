@@ -415,7 +415,7 @@ page {
   justify-content: center;
   width: 80rpx;
   height: 30rpx;
-  padding: 0 10rpx;
+  /* padding: 0 10rpx; */
   border-radius: 10rpx;
   background: rgba(153, 145, 125, 1);
   border: 1rpx solid rgba(210, 170, 88, 0.35);

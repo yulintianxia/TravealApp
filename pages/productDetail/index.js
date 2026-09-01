@@ -139,6 +139,11 @@ Page({
     }
   },
 
+ onTabChangeProduct(e) {
+   this.scrollToAnchor('product');
+  },
+
+
   scrollToAnchor(anchorName) {
     const selector = `#anchor-${anchorName}`;
     wx.createSelectorQuery()
