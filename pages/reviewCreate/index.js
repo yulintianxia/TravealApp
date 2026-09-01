@@ -80,14 +80,23 @@ Page({
       rating: this.data.score,
       orderId:this.data.orderId,
       content: this.data.content.trim(),
-      pictures: this.data.imageFiles.map((file) => file.url),
+      pictures: JSON.stringify(this.data.imageFiles.map((file) => file.url)),
       isAnonymous:0,
     };
     console.log('payload',payload); 
     let res = await RequestApi.reviewAdd(payload);
-    if(res && res.code =='200'){
-       wx.showToast({ title: "评价已提交", icon: "success" });
-      setTimeout(() => wx.navigateBack({ delta: 1 }), 800);
-    } 
+    if (res && res.code == '200') {
+      wx.showToast({ title: "评价已提交", icon: "success" });
+      setTimeout(() => {
+        const pages = getCurrentPages();
+        const prevPage = pages[pages.length - 2];
+
+        if (prevPage && typeof prevPage.getOrderList === 'function') {
+          prevPage.getOrderList();
+        }
+
+        wx.navigateBack({ delta: 1 });
+      }, 500);
+    }
   },
 });
