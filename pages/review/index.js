@@ -22,6 +22,21 @@ Page({
     const keyId = options.keyId || "";
     this.setData({ keyId, reviews: [], noMore: false });
     this.loadReviews(true);
+    this.getCount();
+  },
+  async getCount() {
+      let params ={
+        goodsId:this.data.keyId,
+      }
+      let res = await RequestApi.statistics(params);
+      if(res && res.code =='200'){
+        this.setData({
+          filters: [
+            { label: "全部", value: "all", count: res.data.total },
+            { label: "有图", value: "hasImage", count: res.data.withPicCount },
+          ],
+        });
+      }
   },
 
   formatDate(value) {
@@ -61,18 +76,6 @@ Page({
           reviews: rows,
           pageNum,
           noMore: this.data.pageSize * this.data.pageNum < res.total,
-          filters: [
-            {
-              label: "全部",
-              value: "all",
-              count: this.data.activeFilter === "hasImage" ? 0 : res.total,
-            },
-            {
-              label: "有图",
-              value: "hasImage",
-              count: this.data.activeFilter === "hasImage" ? res.total : 0,
-            },
-          ],
         });
       }
     } catch (error) {

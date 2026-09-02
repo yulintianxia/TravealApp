@@ -87,24 +87,41 @@ Page({
       return;
     }
 
+    wx.showModal({
+      title: "提示",
+      content: "积分一旦兑换将无法取消",
+      // showCancel: false,
+      confirmText: "确定",
+      success: (res) => {
+        if (res.confirm) {
+          this.realSumbit();
+        }
+      },
+    });
+  },
+  async realSumbit() {
     this.setData({ submitting: true });
     try {
-      let cartItems =   this.data.goodsList.map((item) => ({
+      let cartItems = this.data.goodsList.map((item) => ({
         goodsId: item.goodsId,
         quantity: item.quantity,
         cartId: item.cartId,
       }));
-  
+
       let params = {
         addressDetail: this.data.address.detailedAddress,
         addressName: this.data.address.consigneeName,
         addressPhone: this.data.address.consigneePhone,
-        cartItems
+        cartItems,
       };
 
       let res = await RequestApi.createOrder(params);
-      wx.showToast({ title: "兑换成功", icon: "success", duration: 1000 });
-      setTimeout(() => wx.navigateTo({ url: "/pages/order/index" }), 1000);
+      if (res && res.code == 200) {
+        wx.showToast({ title: "兑换成功", icon: "success", duration: 1000 });
+        setTimeout(() => wx.navigateTo({ url: "/pages/order/index" }), 1000);
+      } else {
+        wx.showToast({ title: res.msg || "兑换失败", icon: "none" });
+      }
     } catch (error) {
       console.error("confirmOrder error:", error);
     } finally {

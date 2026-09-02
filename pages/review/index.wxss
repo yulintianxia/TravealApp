@@ -5,7 +5,7 @@ page {
 }
 
 .review-page {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background: #0a0d12;
   padding: 0 20rpx 100rpx;
   box-sizing: border-box;
@@ -134,6 +134,16 @@ page {
   display: flex;
   align-items: center;
   margin-bottom: 8rpx;
+}
+.review-user-row-rate {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+  margin-top:20rpx;
+  
+}
+.score-value {
+  margin-left:10rpx;
 }
 
 .review-user {

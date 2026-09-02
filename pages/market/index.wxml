@@ -29,9 +29,9 @@
 
       <view class="product-grid">
         <view wx:for="{{products}}" wx:key="id" class="product-card" data-id="{{item.keyId || item.id}}" bindtap="goToDetail">
-          <image class="product-thumb" src="{{item.mainPicture}}" mode="aspectFill"></image>
+          <image class="product-thumb" src="{{item.coverImage}}" mode="aspectFill"></image>
           <view class="product-name">{{item.name}}</view>
-          <view class="product-tags">
+          <view class="product-tags" wx:if="{{item.tags && item.tags.length}}">
             <text class="chip" wx:for="{{item.tags}}" wx:key="*this">{{item.name}}</text>
           </view>
           <view class="product-price">

@@ -75,7 +75,9 @@ Page({
     try {
       console.log(this.data.activeTab2,this.data.activeCategory);
       const params = {
-        category: this.data.activeTab2 || this.data.activeCategory,
+        // category: this.data.activeTab2 || this.data.activeCategory,
+        category1: this.data.activeCategory,
+        category2:  this.data.activeTab2,
         orderBy: this.data.activeTab,
         // name:this.data.name,
         pageNum,

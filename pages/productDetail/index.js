@@ -32,6 +32,7 @@ Page({
       this.loadDetail(keyId);
       this.getreviewList(keyId);
     }
+    this.updateCartCount();
   },
 
   async getreviewList(goodsId) {
@@ -64,7 +65,7 @@ Page({
       // console.log(mediaList);
       if(detail.video){
          mediaList.push({
-          item:detail.video,
+          url:detail.video,
           type:"video",
          })
       }
@@ -223,16 +224,27 @@ Page({
       wx.showToast({ title: "缺少商品信息", icon: "none" });
       return;
     }
+    let params ={
+       goodsId:this.data.keyId,
+       quantity:1,
+    };
 
-    let res = await RequestApi.cartCount({});
+    let res = await RequestApi.cartAdd(params);
     if (res && res.code === 200) {
       wx.showToast({ title: "已加入购物车", icon: "success", duration: 1000 });
-      this.setData({
-        cartCount: res.data || 0,
-      });
+      this.updateCartCount();
     } else {
       wx.showToast({ title: "加入失败", icon: "none" });
     }
+  },
+
+  async updateCartCount(){
+      let res = await RequestApi.cartCount({});
+      if (res && res.code === 200) {
+        this.setData({
+          cartCount: res.data || 0,
+        });
+      } 
   },
 
   async exchange() {

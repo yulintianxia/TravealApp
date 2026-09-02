@@ -26,7 +26,7 @@
       <text class="shipping-text right">{{delivery}}</text>
       <text class="arrow">›</text>
     </view>
-    <view class="review-box" id="anchor-review" bindtap="goReviewPage">
+    <view class="review-box" id="anchor-review" bindtap="goReviewPage" wx:if="{{totalReviews}}">
       <view class="review-title">商品评价({{totalReviews}})</view>
       <view class="review-tags" wx:if="{{tags.length}}">
         <text wx:for="{{tags}}" wx:key="*this" :key='item.name'>{{item.name}}</text>

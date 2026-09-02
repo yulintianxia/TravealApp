@@ -1,6 +1,4 @@
 <view class="review-create-page">
-
-
   <view class="review-form">
     <view class="score-row">
       <text class="form-label">总体评分<text class="required">*</text></text>
