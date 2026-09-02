@@ -70,7 +70,7 @@ handleCopy(e) {
     };
     let res = await RequestApi.getOrder(params);
     if (res && res?.rows.length) {
-      let goodList = res.rows
+      let orderList = res.rows
         .map((item) => {
           return (item = {
             status: item.status,
@@ -84,6 +84,14 @@ handleCopy(e) {
         })
         .flat();
 
+        let goodList = [];
+       if(this.data.pageNum>1){
+        goodList = [...this.data.goodList, ...orderList];
+       } else {
+        goodList=orderList;
+       }
+
+          
       console.log('goodList',goodList); 
       this.setData({
         goodList: goodList,
