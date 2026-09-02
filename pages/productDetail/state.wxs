@@ -1,0 +1,14 @@
+var filter = {
+  formatePictursList: function (str) {
+    var pictursList = [];
+    if (!str) {
+      return [];
+    }
+    pictursList = str.split(",");
+    return pictursList;
+  },
+};
+module.exports = {
+  formatePictursList: filter.formatePictursList,
+};
+//不支持es6语法只能通过：进行暴露

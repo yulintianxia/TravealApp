@@ -1,3 +1,4 @@
+<wxs module="getDate" src="./state.wxs"></wxs>
 <view class="detail-page">
   <view class="tab-header">
     <view wx:for="{{tabs}}" wx:key="*this" class="tab-item {{activeTab === item ? 'active' : ''}}" data-tab="{{item}}" bindtap="onTabChange">
@@ -19,6 +20,7 @@
         <text class="redeem">已兑换 {{product.sales}}</text>
       </view>
       <view class="product-title">{{product.name}}</view>
+      <view class="product-explain">{{product.description}}</view>
     </view>
     <view class="shipping-row" bindtap="goAddressList">
       <text class="shipping-text shopping-send">发货</text>
@@ -31,12 +33,14 @@
       <view class="review-tags" wx:if="{{tags.length}}">
         <text wx:for="{{tags}}" wx:key="*this" :key='item.name'>{{item.name}}</text>
       </view>
-      <view class="review-card" >
+      <view class="review-card">
         <image class="review-avatar" src="{{baseUrl + reviewListOne.avatar  || '../../images/new/16.png'}}" mode="aspectFill"></image>
         <view class="review-content">
           <view class="review-name">{{reviewListOne.nickName}}</view>
           <view class="review-text">{{reviewListOne.content}}</view>
-          <view class="review-text">已购：{{product.name}}{{reviewListOne.quantity}}双，发货于{{deliveryTime}}前</view>
+          <view class="review-text">
+            已购：{{product.name}}{{reviewListOne.quantity}}双，发货于{{deliveryTime}}前
+          </view>
         </view>
       </view>
     </view>
@@ -51,6 +55,11 @@
         </block>
       </view>
     </view>
+    <block wx:if="{{getDate.formatePictursList(product.pictures).length}}">
+      <view class='product-detail' hover-class="none" wx:for="{{getDate.formatePictursList(product.pictures)}}" wx:key="index">
+        <image src="{{item}}" mode="scaleToFill" />
+      </view>
+    </block>
   </view>
   <view class="bottom-nav">
     <view class="nav-item" bindtap="goMarket">
@@ -82,9 +91,7 @@
       </view>
     </view>
   </view>
-  
- 
 </view>
- <view class='product-top' bindtap='onTabChangeProduct'>
-    <image class="nav-icon" src="../../images/icons/tops.png"   mode="aspectFit"></image>
-  </view>
+<view class='product-top' bindtap='onTabChangeProduct'>
+  <image class="nav-icon" src="../../images/icons/tops.png" mode="aspectFit"></image>
+</view>
