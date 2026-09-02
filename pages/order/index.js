@@ -31,32 +31,34 @@ Page({
     });
   },
 
-handleCopy(e) {
+  handleCopy(e) {
     let number = e.currentTarget.dataset.number;
     wx.setClipboardData({
       data: number,
       success: () => {
         wx.showToast({
           title: "复制成功",
-          icon: "none"
-        })
+          icon: "none",
+        });
       },
       fail: () => {
         wx.showToast({
           title: "复制失败",
-          icon: "none"
-        })
-      }
-    })
+          icon: "none",
+        });
+      },
+    });
   },
-  goToComment(e){
+  goToComment(e) {
     let goodsId = e.currentTarget.dataset.good;
     let keyId = e.currentTarget.dataset.id;
-    console.log('goodsId',goodsId,keyId);
-     wx.navigateTo({ url: '/pages/reviewCreate/index?goodsId='+goodsId+'&orderId='+keyId})
+    console.log("goodsId", goodsId, keyId);
+    wx.navigateTo({
+      url: "/pages/reviewCreate/index?goodsId=" + goodsId + "&orderId=" + keyId,
+    });
   },
 
-  goToReview(e){
+  goToReview(e) {
     let keyId = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: `/pages/review/index?keyId=${keyId}`,
@@ -76,23 +78,22 @@ handleCopy(e) {
             status: item.status,
             courierNumber: item.courierNumber,
             courierCompanyName: item.courierCompanyName,
-            deliveryTime:item.deliveryTime,
-            keyId:item.keyId,
-            reviewed:item.reviewed,
+            deliveryTime: item.deliveryTime,
+            keyId: item.keyId,
+            reviewed: item.reviewed,
             ...JSON.parse(item.items)?.[0],
           });
         })
         .flat();
 
-        let goodList = [];
-       if(this.data.pageNum>1){
+      let goodList = [];
+      if (this.data.pageNum > 1) {
         goodList = [...this.data.goodList, ...orderList];
-       } else {
-        goodList=orderList;
-       }
+      } else {
+        goodList = orderList;
+      }
 
-          
-      console.log('goodList',goodList); 
+      console.log("goodList", goodList);
       this.setData({
         goodList: goodList,
         total: res.total,
@@ -108,8 +109,9 @@ handleCopy(e) {
   /* 自定义 Tab 点击 */
   onTabClick(e) {
     const value = e.currentTarget.dataset.value;
-    this.setData({ value });
-    this.getOrderList();
+    this.setData({ value, pageNum: 1, goodList: [] }, () => {
+      this.getOrderList();
+    });
   },
 
   async orderChcek(e) {
