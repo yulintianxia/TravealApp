@@ -1,10 +1,9 @@
 {
   "usingComponents": {
-    "t-switch": "tdesign-miniprogram/switch/switch",
-    "t-textarea": "tdesign-miniprogram/textarea/textarea"
+    "t-switch": "tdesign-miniprogram/switch/switch"
   },
   "navigationBarTitleText": "新增地址",
   "backgroundColor": "#0d0d1a",
-"navigationBarBackgroundColor": "#1a1a2e",
+  "navigationBarBackgroundColor": "#1a1a2e",
   "navigationBarTextStyle": "white"
 }

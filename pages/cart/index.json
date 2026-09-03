@@ -2,8 +2,5 @@
   "navigationBarTitleText": "购物车",
   "backgroundColor": "#0a0e1a",
   "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#0a0e1a",
-  "usingComponents": {
-    "t-checkbox": "../../miniprogram_npm/tdesign-miniprogram/checkbox/checkbox"
-  }
+  "navigationBarBackgroundColor": "#0a0e1a"
 }

@@ -45,9 +45,6 @@
   overflow: hidden;
   position: relative;
   padding: var(--td-grid-item-padding, 32rpx) 0 24rpx;
-  
-  background-color: rgba(36, 36, 36, 1);
-
 }
 .t-grid-item__content--horizontal {
   flex-direction: row;

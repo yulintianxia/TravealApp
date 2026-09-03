@@ -70,16 +70,11 @@
     "es6": true
   },
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-sticky": "tdesign-miniprogram/sticky/sticky",
-    "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "t-avatar": "tdesign-miniprogram/avatar/avatar",
     "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
-    "t-popup": "tdesign-miniprogram/popup/popup",
-    "t-input": "tdesign-miniprogram/input/input"
+    "t-popup": "tdesign-miniprogram/popup/popup"
   },
   "navigateToMinProgramAppIdList": ["wxb74828a7b042024b"]
 }

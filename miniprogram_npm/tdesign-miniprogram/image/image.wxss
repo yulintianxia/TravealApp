@@ -63,7 +63,7 @@
 }
 .t-image--shape-round {
   border-radius: var(--td-image-round-radius, var(--td-radius-default, 12rpx));
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .t-image--shape-square {
   border-radius: 0;
