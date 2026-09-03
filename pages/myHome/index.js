@@ -25,17 +25,17 @@ Page({
       { iconUrl: "../../images/new/12.png", title: "已收货", state: "3" },
     ],
     topList: [
-      { iconUrl: "../../images/new/1.png", title: "排行榜", url: "/pages/pointrank/index" },
-      { iconUrl: "../../images/new/14.png", title: "积分明细", url: "/pages/pointUse/index" },
-      { iconUrl: "../../images/new/1.png", title: "积分申请", url: "/pages/pointsApplicationList/index" },
-      { iconUrl: "../../images/new/15.png", title: "我的勋章", url: "/myBadge" },
+      { iconUrl: "../../images/new/1.png", title: "排行榜", url: "/subpackages/member/pages/pointrank/index" },
+      { iconUrl: "../../images/new/14.png", title: "积分明细", url: "/subpackages/member/pages/pointUse/index" },
+      { iconUrl: "../../images/new/1.png", title: "积分申请", url: "/subpackages/member/pages/pointsApplicationList/index" },
+      { iconUrl: "../../images/new/15.png", title: "我的勋章",  },
     ],
     toolsData: [
       { iconUrl: "../../images/new/6.png", title: "我的钱包" },
       { iconUrl: "../../images/new/5.png", title: "公众号" },
       { iconUrl: "../../images/new/13.png", title: "咨询客服" },
       { iconUrl: "../../images/new/7.png", title: "设置" },
-      { iconUrl: "../../images/new/17.png", title: "购物车", url: "/pages/cart/index" },
+      { iconUrl: "../../images/new/17.png", title: "购物车", url: "/subpackages/mall/pages/cart/index" },
       // { iconUrl: "../../images/new/7.png", title: "签到" },
     ],
   },
@@ -82,10 +82,10 @@ Page({
   getUser() {
     const token = wx.getStorageSync("token");
     if (!token) {
-      wx.navigateTo({ url: "/pages/newLogin/index" });
+      wx.navigateTo({ url: "/subpackages/account/pages/newLogin/index" });
       return;
     }
-    wx.navigateTo({ url: "/pages/setting/index" });
+    wx.navigateTo({ url: "/subpackages/account/pages/setting/index" });
     // wx.getUserProfile({
     //   desc: "用于完善会员资料",
     //   success: (res) => {
@@ -110,7 +110,7 @@ Page({
 
   goCheckin() {
     wx.navigateTo({
-      url: "/pages/checkin/index",
+      url: "/subpackages/member/pages/checkin/index",
     });                         
   },
 
@@ -178,7 +178,7 @@ Page({
   handleEntryJump(e) {
     let data = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `/pages/order/index?state=${data.item.state}`,
+      url: `/subpackages/mall/pages/order/index?state=${data.item.state}`,
     });
   },
 
@@ -192,12 +192,14 @@ Page({
   },
 
   turnMyBadge() {
-    this.setData({ showTip: true });
+    wx.navigateTo({
+      url: "/subpackages/member/pages/myBadgeView/index",
+    });
   },
 
   turnWebView(url) {
     wx.navigateTo({
-      url: "/pages/webView/index",
+      url: "/subpackages/account/pages/webView/index",
       success: (res) => {
         res.eventChannel.emit("webViewData", {
           url,
@@ -208,14 +210,14 @@ Page({
   },
 
   turnLevel() {
-    wx.navigateTo({ url: "/pages/memberGrade/index" });
+    wx.navigateTo({ url: "/subpackages/member/pages/memberGrade/index" });
   },
 
   handleMoreInfo() {
     wx.navigateTo({
-      url: "/pages/memberGrade/index",
+      url: "/subpackages/member/pages/memberGrade/index",
       // fail: () => {
-      //   wx.redirectTo({ url: "/pages/memberGrade/index" });
+      //   wx.redirectTo({ url: "/subpackages/member/pages/memberGrade/index" });
       // },
     });
   },
@@ -223,7 +225,7 @@ Page({
   // handleTool(e) {
   //   const item = e.currentTarget.dataset.item;
   //   if (item.title === "设置") {
-  //     wx.navigateTo({ url: "/pages/setting/index" });
+  //     wx.navigateTo({ url: "/subpackages/account/pages/setting/index" });
   //   } else {
   //     wx.showToast({ title: "敬请期待新功能", duration: 1000 });
   //   }
@@ -231,14 +233,14 @@ Page({
   handleTool(e) {
     const item = e.currentTarget.dataset.item;
     if (item.title === "设置") {
-      wx.navigateTo({ url: "/pages/setting/index" });
+      wx.navigateTo({ url: "/subpackages/account/pages/setting/index" });
     } else if (item.title === "咨询客服") {
       this.setData({ showQrCode: true });
     } else if (item.title === "公众号") {
       this.confirmOpenOfficialAccount();
     } else if (item.title === "签到") {
       wx.navigateTo({
-        url: "/pages/checkin/index",
+        url: "/subpackages/member/pages/checkin/index",
       });
     } else if (item.url) {
       wx.navigateTo({ url: item.url });
@@ -283,7 +285,7 @@ Page({
 
   openOfficialAccountArticle() {
     wx.navigateTo({
-      url: "/pages/webView/index",
+      url: "/subpackages/account/pages/webView/index",
       success: (res) => {
         res.eventChannel.emit("webViewData", {
           url: webChatUrl,

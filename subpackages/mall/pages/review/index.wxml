@@ -1,0 +1,36 @@
+<wxs module="getDate" src="./state.wxs"></wxs>
+<view class="review-page">
+  <view class="filter-bar">
+    <view wx:for="{{filters}}" wx:key="value" class="filter-item {{activeFilter === item.value ? 'active' : ''}}" data-value="{{item.value}}" bindtap="onFilterChange">
+      {{item.label}} {{item.count}}
+    </view>
+  </view>
+  <view class="review-list">
+    <view wx:for="{{reviews}}" wx:key="id" class="review-item">
+      <view class="review-row">
+        <image class="review-avatar" src="{{item.avatar ? BASE_URL +item.avatar: '/images/new/16.png'}}" mode="aspectFill"></image>
+        <view class="review-main">
+          <view class="review-user-row">
+            <text class="review-user">{{item.nickName || item.createBy || '用户'}}</text>
+          </view>
+          <view class="review-user-row-rate" >
+            <t-rate value="{{item.rating}}" count="5" size="22" gap="10" color="{{['#f4d58f', '#757575']}}"  class="score-rate" />
+            <text class="score-value">{{item.rating}}.0 分</text>
+          </view>
+
+          <view class="review-text">{{item.content || item.text || '暂无评价内容'}}</view>
+          <view class="review-extra" wx:if="{{item.extra}}">已兑换：{{item.extra}}</view>
+          <view wx:if="{{getDate.JSONdata(item.pictures).length}}" class="review-images">
+            <image wx:for="{{getDate.JSONdata(item.pictures)}}" wx:key="*this" class="review-image" src="{{item}}" mode="aspectFill"></image>
+          </view>
+          <view class="review-date-row">
+            <text class="review-date">发表于：{{item.createTime || ''}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{!reviews.length && !loading}}" class="empty-state">暂无评价</view>
+    <view wx:if="{{loading}}" class="list-footer">加载中...</view>
+    <view wx:elif="{{noMore && reviews.length}}" class="list-footer">没有更多了</view>
+  </view>
+</view>

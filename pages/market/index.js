@@ -203,7 +203,7 @@ Page({
     const productId = e.currentTarget.dataset.id || e.currentTarget.dataset.keyId;
     if (!productId) return;
     wx.navigateTo({
-      url: `/pages/productDetail/index?keyId=${productId}`,
+      url: `/subpackages/mall/pages/productDetail/index?keyId=${productId}`,
     });
   },
 });

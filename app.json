@@ -1,34 +1,51 @@
 {
   "pages": [
-    "pages/myHome/index",
-    "pages/market/index",
-    "pages/productDetail/index",
-    "pages/review/index",
-    "pages/reviewCreate/index",
-    "pages/orderConfirm/index",
-    "pages/cart/index",
-    "pages/newMy/index",
-    "pages/vipMemer/index",
-    "pages/levelMember/index",
-    "pages/memberGrade/index",
-    "pages/pointsApplication/index",
-    "pages/pointsApplicationList/index",
-    "pages/addressList/index",
-    "pages/newLogin/index",
-    "pages/platformAgreement/index",
-    "pages/privacyPolicy/index",
-    "pages/vipLevel/index",
-    "pages/pointrank/index",
-    "pages/pointUse/index",
     "pages/index/index",
-    "pages/setting/index",
-    "pages/order/index",
-    "pages/address/index",
-    "pages/webView/index",
-    "pages/badgeView/index",
-    "pages/myBadgeView/index",
-    "pages/newRank/index",
-    "pages/checkin/index"
+    "pages/market/index",
+    "pages/myHome/index"
+  ],
+  "subpackages": [
+    {
+      "root": "subpackages/mall",
+      "pages": [
+        "pages/productDetail/index",
+        "pages/review/index",
+        "pages/reviewCreate/index",
+        "pages/orderConfirm/index",
+        "pages/cart/index",
+        "pages/order/index",
+        "pages/address/index",
+        "pages/addressList/index"
+      ]
+    },
+    {
+      "root": "subpackages/member",
+      "pages": [
+        "pages/vipMemer/index",
+        "pages/levelMember/index",
+        "pages/memberGrade/index",
+        "pages/pointsApplication/index",
+        "pages/pointsApplicationList/index",
+        "pages/pointrank/index",
+        "pages/pointUse/index",
+        "pages/checkin/index",
+        "pages/myBadgeView/index",
+        "pages/newRank/index"
+      ]
+    },
+    {
+      "root": "subpackages/account",
+      "pages": [
+        "pages/newLogin/index",
+        "pages/newMy/index",
+        "pages/setting/index",
+        "pages/platformAgreement/index",
+        "pages/privacyPolicy/index",
+        "pages/webView/index",
+        "pages/badgeView/index",
+        "pages/vipLevel/index"
+      ]
+    }
   ],
   "tabBar": {
     "color": "#999999",
@@ -68,13 +85,6 @@
   "libVersion": "2.0.9",
   "setting": {
     "es6": true
-  },
-  "usingComponents": {
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group",
-    "t-popup": "tdesign-miniprogram/popup/popup"
   },
   "navigateToMinProgramAppIdList": ["wxb74828a7b042024b"]
 }
