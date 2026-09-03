@@ -16,7 +16,7 @@
     },
     "ignoreUploadUnusedFiles": true,
     "compileWorklet": false,
-    "uglifyFileName": false,
+    "uglifyFileName": true,
     "uploadWithSourceMap": true,
     "packNpmManually": false,
     "minifyWXSS": true,

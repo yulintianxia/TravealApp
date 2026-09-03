@@ -1,7 +1,6 @@
 <!-- pages/address/index.wxml -->
 <view class="page-container">
-  <!-- <view class="content" style="padding-top: {{statusBarHeight + navBarHeight}}px;"> -->
-      <view class="content" style="padding-top: 0px;">
+      <view class="content">
     <!-- 区域标题 -->
     <view class="section-title">地址信息</view>
     <view class="section-divider"></view>
