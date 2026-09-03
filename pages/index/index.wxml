@@ -6,7 +6,7 @@
     <view class="poster-wrap">
         <image
             class="poster"
-            src="../../images/home/home.png"
+            src="https://zhenglian.vip/dotm/zl_images/home_page_bg_image.png"
             mode="aspectFill"
             lazy-load="true"
             show-menu-by-longpress="true"
