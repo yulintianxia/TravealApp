@@ -1,9 +1,0 @@
-<view class="avatar-pop" wx:if="{{showFloatWindow&&!cardFreezePopupShow}}">
-    <view class="float" style="background-image:url({{bg}});">
-        <view class="text-wrap">
-            <view class="text">{{popContent}}</view>
-            <view bind:tap="handleJumpUpdate" class="update-btn  {{lang==='EN'?'en':''}} {{memType==1?'':'svip'}}"> {{popButton}} </view>
-            <image bind:tap="handleClosePopup" class="close" src="{{closeIcon}}"></image>
-        </view>
-    </view>
-</view>
