@@ -1,9 +1,0 @@
-<view class="gifts-card">
-    <view class="header">
-        <view class="title">{{title}}</view>
-        <view class="icon {{memberType==='ordinary'?'ordinary-icon':'primary-icon'}}"></view>
-    </view>
-    <view class="coupon-icon">
-        <image class="{{memberType==='ordinary'?'ordinary-img':'primary-img'}}" src="{{adSrc}}"></image>
-    </view>
-</view>

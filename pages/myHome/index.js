@@ -1,5 +1,3 @@
-import { imagesModule } from "../../common/imageUrlConfs.js";
-import { userConfig } from "../../common/entryConfs.js";
 import { RequestApi } from "../../services/api.js";
 import { BASE_URL, baseImageUrl, webChatUrl, officialAccountUsername } from "../../config/index";
 
