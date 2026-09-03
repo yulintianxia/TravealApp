@@ -1,3 +1,0 @@
-<t-picker bindcancel="onPickerClear" bindconfirm="onPickerConfirm" cancelBtn="{{i18n.t('callPhonePopup.cancel',$_locale)}}" class="custom-picker" confirmBtn="{{i18n.t('checkoutPage.deliverPolicyPopup.confirm',$_locale)}}" title="请选择电话区号" value="{{areaValue}}" visible="{{visible}}">
-    <t-picker-item class="custom-picker-item" options="{{areas}}"></t-picker-item>
-</t-picker>

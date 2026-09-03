@@ -288,27 +288,6 @@
           "scene": null
         },
         {
-          "name": "pages/cart/index",
-          "pathName": "pages/cart/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/productDetail/index",
-          "pathName": "pages/productDetail/index",
-          "query": "keyId=1",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/market/index",
-          "pathName": "pages/market/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "pages/pointrank/index",
           "pathName": "pages/pointrank/index",
           "query": "",

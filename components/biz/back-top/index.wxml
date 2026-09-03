@@ -1,5 +1,0 @@
-<view class="back-top-box">
-    <view bind:tap="bindBackTop" class="back-top" hidden="{{!iconVisible}}">
-        <image class="back-top-icon" mode="widthFix" src="{{imgSrc}}"></image>
-    </view>
-</view>

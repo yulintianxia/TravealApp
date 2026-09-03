@@ -1,3 +1,0 @@
-<button bindgetphonenumber="getPhoneNumber" class="reset-button" disabled="{{disabled}}" hoverClass="none" openType="getPhoneNumber">
-    <slot></slot>
-</button>
