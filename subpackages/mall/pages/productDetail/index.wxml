@@ -28,12 +28,12 @@
       <text class="shipping-text right">{{delivery}}</text>
       <text class="arrow">›</text>
     </view>
-    <view class="review-box" id="anchor-review" bindtap="goReviewPage" wx:if="{{totalReviews}}">
+    <view class="review-box" id="anchor-review" bindtap="goReviewPage">
       <view class="review-title">商品评价({{totalReviews}})</view>
       <view class="review-tags" wx:if="{{tags.length}}">
         <text wx:for="{{tags}}" wx:key="*this" :key='item.name'>{{item.name}}</text>
       </view>
-      <view class="review-card">
+      <view class="review-card" wx:if="{{totalReviews>0}}" >
         <image class="review-avatar" src="{{baseUrl + reviewListOne.avatar  || '/images/new/16.png'}}" mode="aspectFill"></image>
         <view class="review-content">
           <view class="review-name">{{reviewListOne.nickName}}</view>
@@ -43,6 +43,7 @@
           </view>
         </view>
       </view>
+      <view class="review-card-no" wx:if="{{totalReviews === 0}}">暂无评价</view>
     </view>
     <view class="spec-block" id="anchor-detail">
       <view class="spec-title">商品详情</view>
@@ -92,6 +93,8 @@
     </view>
   </view>
 </view>
-<view class='product-top' bindtap='onTabChangeProduct'>
+
+
+<view wx:if="{{showProductTop}}" class='product-top' bindtap='onTabChangeProduct'>
   <image class="nav-icon" src="/images/icons/tops.png" mode="aspectFit"></image>
 </view>

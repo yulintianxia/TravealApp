@@ -1,0 +1,4 @@
+<!--subpackages/mall/pages/weStore/index.wxml-->
+<view class='store-home-container'>
+<store-home class="store-home" appid='wxb74828a7b042024b'></store-home>
+</view>

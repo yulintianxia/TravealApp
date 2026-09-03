@@ -79,6 +79,7 @@ Page({
             courierNumber: item.courierNumber,
             courierCompanyName: item.courierCompanyName,
             deliveryTime: item.deliveryTime,
+            orderNumber:item.orderNumber,
             keyId: item.keyId,
             reviewed: item.reviewed,
             ...JSON.parse(item.items)?.[0],

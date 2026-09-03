@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/market/index",
-    "pages/myHome/index"
+    "pages/myHome/index",
+    "pages/weStore/index"
   ],
   "subpackages": [
     {
@@ -86,5 +87,7 @@
   "setting": {
     "es6": true
   },
-  "navigateToMinProgramAppIdList": ["wxb74828a7b042024b"]
+  "navigateToMinProgramAppIdList": [
+    "wxb74828a7b042024b"
+  ]
 }

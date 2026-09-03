@@ -1,0 +1,5 @@
+/* subpackages/mall/pages/weStore/index.wxss */
+.store-home-container{
+    width:100%;
+    text-align:center;
+}
