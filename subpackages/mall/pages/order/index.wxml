@@ -21,7 +21,7 @@
     </view>
     <view wx:else class="order-list" >
       <block wx:for="{{goodList}}"  wx:key="keyId">
-        <view class="order-card" bindtap="goDetail" data-id="{{item.keyId}}" wx:if="{{value != 'all' || item.status != 3}}">
+        <view class="order-card" bindtap="goDetail" data-id="{{item.keyId}}" >
           <view class='order-number'>
             <view catchtap="handleCopy" data-number="{{item.orderNumber}}">
               订单号：{{item.orderNumber}} | 复制
