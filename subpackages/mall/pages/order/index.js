@@ -148,7 +148,7 @@ Page({
     this.setData({
       scrollHeight:
         wx.getSystemInfoSync().windowHeight -
-        (wx.getSystemInfoSync().windowWidth / 750) * 100,
+        (wx.getSystemInfoSync().windowWidth / 750) * 100 + 40,
     });
   },
 
