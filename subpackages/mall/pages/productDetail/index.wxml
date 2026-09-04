@@ -50,7 +50,7 @@
       <view class="spec-table">
         <block wx:for="{{specs}}" wx:key="index">
           <view class="spec-row">
-            <view class="spec-key">{{item.label}}</view>
+            <view class="spec-key">{{item.key}}</view>
             <view class="spec-val">{{item.value}}</view>
           </view>
         </block>

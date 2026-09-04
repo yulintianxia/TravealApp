@@ -62,11 +62,9 @@ Page({
 
     if (res && res.code === 200) {
       let detail = res.data;
-      let specs = JSON.parse(detail.specs || "[]");
-      const specsArray = Object.entries(specs).map(([label, value]) => ({
-        label,
-        value,
-      }));
+      let specsArray = JSON.parse(detail.specs || "[]");
+
+      console.log(specsArray);
       let mediaList = detail.mainPicture.split(",").map((item)=>{
               return item ={
                  url:item,

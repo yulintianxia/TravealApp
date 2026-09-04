@@ -54,16 +54,19 @@ Page({
     let keyId = e.currentTarget.dataset.id;
     console.log("goodsId", goodsId, keyId);
     wx.navigateTo({
-      url: "/subpackages/mall/pages/reviewCreate/index?goodsId=" + goodsId + "&orderId=" + keyId,
+      url:
+        "/subpackages/mall/pages/reviewCreate/index?goodsId=" +
+        goodsId +
+        "&orderId=" +
+        keyId,
     });
   },
-  goDetail(e){
+  goDetail(e) {
     let keyId = e.currentTarget.dataset.id;
     console.log("keyIdkeyIdkeyId", keyId);
     wx.navigateTo({
       url: `/subpackages/mall/pages/productDetail/index?keyId=${keyId}`,
     });
-
   },
 
   goToReview(e) {
@@ -87,14 +90,15 @@ Page({
             courierNumber: item.courierNumber,
             courierCompanyName: item.courierCompanyName,
             deliveryTime: item.deliveryTime,
-            orderNumber:item.orderNumber,
+            orderNumber: item.orderNumber,
             keyId: item.keyId,
             reviewed: item.reviewed,
+            //  specsArray: JSON.parse(JSON.parse(item.items)?.[0]?.specs) || [],
+            filterStr: this.filterData(item.items),
             ...JSON.parse(item.items)?.[0],
           });
         })
         .flat();
-
       let goodList = [];
       if (this.data.pageNum > 1) {
         goodList = [...this.data.goodList, ...orderList];
@@ -113,6 +117,23 @@ Page({
         total: 0,
       });
     }
+  },
+
+  filterData(str) {
+    if (!str) {
+      return [];
+    }
+    let dataArray = JSON.parse(JSON.parse(str)?.[0]?.specs) || [];
+    console.log("dataArray111", );
+    let filterStr = "";
+    Array.from(dataArray).forEach((item) => {
+      console.log("item", item);
+      if (item.showInOrder) { 
+        console.log("item", item.value);
+        filterStr += item.value + ",";
+      }
+    });
+    return filterStr.slice(0, -1);
   },
 
   /* 自定义 Tab 点击 */
@@ -148,7 +169,8 @@ Page({
     this.setData({
       scrollHeight:
         wx.getSystemInfoSync().windowHeight -
-        (wx.getSystemInfoSync().windowWidth / 750) * 100 + 40,
+        (wx.getSystemInfoSync().windowWidth / 750) * 100 +
+        40,
     });
   },
 

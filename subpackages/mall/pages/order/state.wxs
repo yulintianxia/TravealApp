@@ -24,5 +24,6 @@ var  status={
   module.exports = {
     judgmentState: filter.judgmentState,
     JSONdata: filter.JSONdata,
+    JSONdata2: filter.JSONdata2,
   }
   //不支持es6语法只能通过：进行暴露

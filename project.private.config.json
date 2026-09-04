@@ -22,11 +22,39 @@
     "miniprogram": {
       "list": [
         {
+          "name": "subpackages/mall/pages/order/index",
+          "pathName": "subpackages/mall/pages/order/index",
+          "query": "state=all",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "subpackages/mall/pages/order/index",
+          "pathName": "subpackages/mall/pages/order/index",
+          "query": "state=all",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/cart/index",
+          "pathName": "subpackages/mall/pages/cart/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/productDetail/index",
+          "pathName": "subpackages/mall/pages/productDetail/index",
+          "query": "keyId=9",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "subpackages/mall/pages/orderConfirm/index",
           "pathName": "subpackages/mall/pages/orderConfirm/index",
           "query": "ids=10",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "subpackages/mall/pages/reviewCreate/index",
