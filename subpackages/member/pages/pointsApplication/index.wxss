@@ -135,10 +135,10 @@ page {
 
 /* ===== 上传区 ===== */
 .upload-area {
-  --td-upload-add-bg-color: rgba(36, 36, 36, 1);
+  /* --td-upload-add-bg-color: rgba(36, 36, 36, 1);
   --td-upload-add-icon-color: #5a5e68;
   --td-upload-add-color: #5a5e68;
-  --td-upload-border-radius: 16rpx;
+  --td-upload-border-radius: 16rpx; */
   padding: 0 4px;
   height: 90px;
   width: 100%;

@@ -7,12 +7,20 @@ Page({
     content: "",
     imageFiles: [],
     goodsId: "",
+    isAnonymous: "1",
   },
 
   onLoad(options) {
-    this.setData({ orderId: options.orderId || "",goodsId: options.goodsId || "" });
+    this.setData({
+      orderId: options.orderId || "",
+      goodsId: options.goodsId || "",
+    });
   },
-
+  onChange(event) {
+    const { value } = event.detail;
+    console.log(value);
+    this.setData({ isAnonymous: value });
+  },
   onScoreChange(e) {
     this.setData({ score: Number(e.detail.value) || 0 });
   },
@@ -33,7 +41,7 @@ Page({
     this.setData({ imageFiles });
   },
 
-   onUpload: function (file, fileOrderPhoto) {
+  onUpload: function (file, fileOrderPhoto) {
     wx.uploadFile({
       url: BASE_URL + "/common/uploadImage",
       filePath: file[0].url,
@@ -42,17 +50,20 @@ Page({
       header: {
         "Content-type": "multipart/form-data",
         authorization: wx.getStorageSync("token")
-          ? `Bearer ${wx.getStorageSync("token")}` : "",
+          ? `Bearer ${wx.getStorageSync("token")}`
+          : "",
       },
       success: (res) => {
         let resData = JSON.parse(res.data);
         fileOrderPhoto.push({
-          name: resData.fileName, type: "image", url: BASE_URL + resData.url,
+          name: resData.fileName,
+          type: "image",
+          url: BASE_URL + resData.url,
         });
         this.setData({
           imageFiles: this.data.imageFiles.concat(fileOrderPhoto),
         });
-        console.log('imageFiles',this.data.imageFiles);
+        console.log("imageFiles", this.data.imageFiles);
       },
     });
   },
@@ -77,20 +88,21 @@ Page({
     const payload = {
       goodsId: this.data.goodsId,
       rating: this.data.score,
-      orderId:this.data.orderId,
+      orderId: this.data.orderId,
       content: this.data.content.trim(),
       pictures: JSON.stringify(this.data.imageFiles.map((file) => file.url)),
-      isAnonymous:0,
+      isAnonymous: this.data.isAnonymous
     };
-    console.log('payload',payload); 
+    console.log("payload", payload);
+    // return 
     let res = await RequestApi.reviewAdd(payload);
-    if (res && res.code == '200') {
+    if (res && res.code == "200") {
       wx.showToast({ title: "评价已提交", icon: "success" });
       setTimeout(() => {
         const pages = getCurrentPages();
         const prevPage = pages[pages.length - 2];
 
-        if (prevPage && typeof prevPage.getOrderList === 'function') {
+        if (prevPage && typeof prevPage.getOrderList === "function") {
           prevPage.getOrderList();
         }
 

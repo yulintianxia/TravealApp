@@ -2,47 +2,32 @@
   <view class="review-form">
     <view class="score-row">
       <text class="form-label">总体评分<text class="required">*</text></text>
-      <t-rate
-        value="{{score}}"
-        count="5"
-        size="22"
-        gap="10"
-        color="{{['#f4d58f', '#757575']}}"
-        bind:change="onScoreChange"
-        class="score-rate"
-      />
+      <t-rate value="{{score}}" count="5" size="22" gap="10" color="{{['#f4d58f', '#757575']}}" bind:change="onScoreChange" class="score-rate" />
       <text class="score-value">{{score}}.0 分</text>
     </view>
-
-    <view class="image-section">
-      <text class="form-label">宝贝图片<text class="required">*</text></text>
+     <view class="image-section">
+      <view class="form-label">是否匿名<text class="required">*</text></view>
       <view class="upload-wrap">
-        <t-upload
-           max="1"
-            media-type="{{['image']}}"
-            files="{{imageFiles}}"
-            bind:add="handleAdd"
-            bind:remove="handleRemove"
-        />
+        <t-radio-group  value="{{isAnonymous}}" default-value="1" bind:change="onChange"  borderless t-class-content='t-class-content'  t-class="t-box">
+          <t-radio block="{{false}}" label="匿名" value="1" />
+          <t-radio block="{{false}}" label="非匿名" value="0" />
+        </t-radio-group>
       </view>
     </view>
-
+    <view class="image-section">
+      <view class="form-label">宝贝图片</view>
+      <view class="upload-wrap">
+        <t-upload max="1" media-type="{{['image']}}" files="{{imageFiles}}" bind:add="handleAdd" bind:remove="handleRemove" />
+      </view>
+    </view>
     <view class="content-section">
       <text class="form-label">评价信息</text>
       <view class="textarea-wrap">
-        <textarea
-          class="review-textarea"
-          value="{{content}}"
-          maxlength="300"
-          placeholder="分享感受，帮助更多感兴趣的小伙伴~"
-          placeholder-class="placeholder"
-          bindinput="onContentInput"
-        ></textarea>
+        <textarea class="review-textarea" value="{{content}}" maxlength="300" placeholder="分享感受，帮助更多感兴趣的小伙伴~" placeholder-class="placeholder" bindinput="onContentInput"></textarea>
         <text class="word-count">{{content.length}}/300</text>
       </view>
     </view>
   </view>
-
   <view class="submit-bar">
     <view class="submit-button" bindtap="submitReview">提交</view>
   </view>

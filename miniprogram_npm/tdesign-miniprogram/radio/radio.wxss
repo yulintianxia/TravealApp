@@ -62,9 +62,9 @@
 .t-radio__icon--left {
   margin-right: 16rpx;
 }
-.t-radio__icon--checked {
+/* .t-radio__icon--checked {
   color: var(--td-radio-icon-checked-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));
-}
+} */
 .t-radio__icon--disabled {
   cursor: not-allowed;
   color: var(--td-radio-icon-disabled-color, var(--td-brand-color-disabled, var(--td-primary-color-3, #b5c7ff)));

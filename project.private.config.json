@@ -29,6 +29,34 @@
           "launchMode": "default"
         },
         {
+          "name": "subpackages/mall/pages/reviewCreate/index",
+          "pathName": "subpackages/mall/pages/reviewCreate/index",
+          "query": "goodsId=1&orderId=11",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/reviewCreate/index",
+          "pathName": "subpackages/mall/pages/reviewCreate/index",
+          "query": "goodsId=1&orderId=11",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/reviewCreate/index",
+          "pathName": "subpackages/mall/pages/reviewCreate/index",
+          "query": "goodsId=1&orderId=11",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/reviewCreate/index",
+          "pathName": "subpackages/mall/pages/reviewCreate/index",
+          "query": "goodsId=1&orderId=11",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "subpackages/mall/pages/cart/index",
           "pathName": "subpackages/mall/pages/cart/index",
           "query": "",

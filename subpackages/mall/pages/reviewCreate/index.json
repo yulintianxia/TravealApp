@@ -4,6 +4,8 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "t-rate": "tdesign-miniprogram/rate/rate",
-    "t-upload": "tdesign-miniprogram/upload/upload"
+    "t-upload": "tdesign-miniprogram/upload/upload",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
   }
 }

@@ -9,7 +9,12 @@ page {
   padding-bottom: 200rpx;
   background: linear-gradient(180deg, #111111 0%, #111111 68%, #1d2a35 100%);
 }
-
+/* .t-box{
+  background-color: #777777;
+} */
+.t-class-conten{
+  background-color: red;
+}
 
 .review-header {
   height: 116rpx;
@@ -38,9 +43,9 @@ page {
 .form-label {
   flex-shrink: 0;
   color: #a4a4a4;
-  font-size: 30rpx;
+  font-size: 28rpx;
   line-height: 1.4;
-  /* width:140rpx; */
+  width:130rpx;
   margin-right:12rpx;
 }
 .t-upload__wrapper {
@@ -51,7 +56,7 @@ page {
 }
 .required {
   color: #f04444;
-  margin-left: 4rpx;
+  margin-left:4rpx;
 }
 
 .score-row t-rate {
@@ -69,7 +74,7 @@ page {
 .image-section {
   display: flex;
   align-items: flex-start;
-  margin-top: 54rpx;
+  margin-top: 44rpx;
 }
 
 .upload-wrap {
@@ -77,7 +82,24 @@ page {
   min-width: 0;
   /* margin-left: 28rpx; */
   box-sizing: border-box;
+  background-color:  rgba(255, 255, 255, 0.06);
+  overflow: hidden;
 }
+/* .t-upload__add-icon{
+  position: relative;
+  left:6rpx;
+} */
+
+.t-upload__wrapper {
+  position: relative !important;
+}
+
+.t-grid {
+    position: relative;
+    left: 4px !important;
+    z-index:100;
+}
+
 
 .upload-wrap t-upload {
   --td-upload-grid-columns: 2;
@@ -91,7 +113,7 @@ page {
 .content-section {
   display: flex;
   align-items: flex-start;
-  margin-top: 84rpx;
+  margin-top: 64rpx;
 }
 
 .textarea-wrap {
@@ -137,14 +159,15 @@ page {
 }
 
 .submit-button {
-  width: 432rpx;
-  height: 84rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 28rpx;
-  background: #c1a269;
-  color: #ffffff;
-  font-size: 34rpx;
-  font-weight: 600;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 4rpx;
+    background: linear-gradient(135deg, #e2c57a 0%, #c9a356 100%);
+    border-radius: 44rpx;
+    box-shadow: 0 8rpx 24rpx rgba(201, 163, 86, 0.3);
+    width:80%;
 }

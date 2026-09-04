@@ -2,25 +2,38 @@
 @import "/styles/goodsList.wxss";
 @import "/styles/design.wxss";
 
-
- /* "pages/detail/index", */
+/* "pages/detail/index", */
 :root {
   --td-switch-checked-color: #22bee5 !important;
-  --td-grid-bg-color:rgba(36, 36, 36, 1);
+  --td-grid-bg-color: rgba(36, 36, 36, 1);
+  --td-radio-bg-color: #111111;
+  --td-radio-label-checked-color: white;
+  --td-radio-label-color: white;
 }
 /* @import "/components/biz/design-module/design-module-external.wxss"; */
 
 /* app.wxss */
 page {
-   font-family: PingFangSC-Regular\, PingFang SC;
+  font-family:
+    PingFangSC-Regular\,
+    PingFang SC;
   /* 改为你想要的主题色，例如绿色 */
-  --td-brand-color:#0d0e1f;
+  --td-brand-color: #0d0e1f;
   /* 可选：修改签名板专用变量（更精细） */
   --td-sign-pen-color: #00b42a; /* 签名笔迹颜色 */
   --td-sign-btn-bg-color: #00b42a; /* 底部按钮背景色 */
+  --td-radio-bg-color: #111111;
+  --td-radio-label-checked-color: white;
+  --td-radio-label-color: white;
 }
 
-
+.review-create-page .t-grid__content {
+  margin-left: -4px !important;
+  margin-top: -8px !important;
+}
+.review-create-page .t-upload__close-btn {
+  right: 10px !important;
+}
 .multi-ellipsis {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -86,4 +99,3 @@ button::after {
 .grayscale {
   filter: grayscale(100%);
 }
-
