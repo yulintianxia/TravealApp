@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
+          "name": "subpackages/mall/pages/orderConfirm/index",
+          "pathName": "subpackages/mall/pages/orderConfirm/index",
+          "query": "ids=10",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
           "name": "subpackages/mall/pages/reviewCreate/index",
           "pathName": "subpackages/mall/pages/reviewCreate/index",
           "query": "goodsId=1&orderId=11",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "subpackages/mall/pages/reviewCreate/index",

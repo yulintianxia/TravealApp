@@ -59,7 +59,6 @@ Page({
     const pageNum = reset ? 1 : this.data.pageNum;
     this.setData({ loading: true });
 
-    console.log("activeFilteractiveFilter", this.data.activeFilter);
 
     try {
       const params = {
@@ -71,11 +70,13 @@ Page({
 
       const res = await RequestApi.reviewList(params);
       if (res && res.code == "200") {
-        const rows = res?.rows;
+        const rows = res.rows || [];
+        const reviews = reset ? rows : this.data.reviews.concat(rows);
+        const total = Number(res.total) || 0;
         this.setData({
-          reviews: rows,
+          reviews,
           pageNum,
-          noMore: this.data.pageSize * this.data.pageNum < res.total,
+          noMore: reviews.length >= total || rows.length < this.data.pageSize,
         });
       }
     } catch (error) {
