@@ -187,6 +187,9 @@ Page({
   },
 
   goReviewPage() {
+    if(this.data.totalReviews ==0){
+      return wx.showToast({ title: "暂无评价", icon: "none" });
+    }
     const keyId = this.data.keyId;
     if (!keyId) return;
     wx.navigateTo({

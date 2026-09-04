@@ -57,6 +57,14 @@ Page({
       url: "/subpackages/mall/pages/reviewCreate/index?goodsId=" + goodsId + "&orderId=" + keyId,
     });
   },
+  goDetail(e){
+    let keyId = e.currentTarget.dataset.id;
+    console.log("keyIdkeyIdkeyId", keyId);
+    wx.navigateTo({
+      url: `/subpackages/mall/pages/productDetail/index?keyId=${keyId}`,
+    });
+
+  },
 
   goToReview(e) {
     let keyId = e.currentTarget.dataset.id;

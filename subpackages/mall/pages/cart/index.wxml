@@ -11,7 +11,7 @@
           </view>
         </view>
         <view class="product-image-wrap">
-          <image class="product-image" src="{{item.goodsPicture}}" mode="aspectFill"></image>
+          <image class="product-image" src="{{item.goodsCoverImage}}" mode="aspectFill"></image>
         </view>
 
         <view class="product-info">
