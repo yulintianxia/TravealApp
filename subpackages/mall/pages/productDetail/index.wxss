@@ -170,7 +170,12 @@ page {
 .product-explain {
   margin-top: 20rpx;
   font-size: 24rpx;
+  line-height: 1.5;
   color: rgba(153, 153, 153, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .shipping-row {
@@ -273,6 +278,10 @@ page {
   font-size: 24rpx;
   line-height: 1.7;
   color: rgba(255, 255, 255, 1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 .spec-block {
