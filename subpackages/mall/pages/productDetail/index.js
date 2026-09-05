@@ -65,7 +65,7 @@ Page({
       let specsArray = JSON.parse(detail.specs || "[]");
 
       console.log(specsArray);
-      let mediaList = detail.mainPicture.split(",").map((item) => {
+      let mediaList = detail?.mainPicture?.split("," || "").map((item) => {
         return (item = {
           url: item,
           type: "image",
