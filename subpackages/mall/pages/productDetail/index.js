@@ -3,7 +3,7 @@ import { officialAccountUsername, webChatUrl } from "../../../../config/index";
 import { BASE_URL } from "../../../../config/index";
 Page({
   data: {
-    baseUrl:BASE_URL,
+    baseUrl: BASE_URL,
     keyId: "",
     activeTab: "商品",
     tabs: ["商品", "评价", "详情"],
@@ -22,7 +22,7 @@ Page({
     totalReviews: 0,
     tags: [],
     cartCount: 0,
-    deliveryTime:'',
+    deliveryTime: "",
     showStroe: false,
   },
 
@@ -40,7 +40,7 @@ Page({
   onPageScroll(e) {
     const windowHeight = wx.getSystemInfoSync().windowHeight;
     const showProductTop = e.scrollTop >= 400;
-    console.log('showProductTop',e.scrollTop);
+    console.log("showProductTop", e.scrollTop);
     if (showProductTop !== this.data.showProductTop) {
       this.setData({ showProductTop });
     }
@@ -53,7 +53,7 @@ Page({
         reviewList: res.rows || [],
         reviewListOne: res?.rows?.[0] || {},
         totalReviews: res.total || 0,
-        deliveryTime: res?.rows?.[0]?.deliveryTime.slice(0,10) || "",
+        deliveryTime: res?.rows?.[0]?.deliveryTime.slice(0, 10) || "",
       });
     }
   },
@@ -65,21 +65,20 @@ Page({
       let specsArray = JSON.parse(detail.specs || "[]");
 
       console.log(specsArray);
-      let mediaList = detail.mainPicture.split(",").map((item)=>{
-              return item ={
-                 url:item,
-                 type:"image",
-              }
-      })
+      let mediaList = detail.mainPicture.split(",").map((item) => {
+        return (item = {
+          url: item,
+          type: "image",
+        });
+      });
       // console.log(mediaList);
-      if(detail.video){
-         mediaList.push({
-          url:detail.video,
-          type:"video",
-         })
+      if (detail.video) {
+        mediaList.push({
+          url: detail.video,
+          type: "video",
+        });
       }
-      
-       
+
       this.setData({
         product: detail,
         // mediaList: this.normalizeMediaList(detail),
@@ -91,21 +90,38 @@ Page({
   },
 
   normalizeMediaList(detail) {
-    const mediaSources = detail.mediaList || detail.media || detail.mediaFiles ||
-      detail.carouselImages || detail.images || detail.pictures || [];
-    const mediaItems = Array.isArray(mediaSources) ? mediaSources : [mediaSources];
-    const mediaList = mediaItems.map((item) => {
-      if (typeof item === "string") {
-        return { type: this.isVideoUrl(item) ? "video" : "image", url: item };
-      }
+    const mediaSources =
+      detail.mediaList ||
+      detail.media ||
+      detail.mediaFiles ||
+      detail.carouselImages ||
+      detail.images ||
+      detail.pictures ||
+      [];
+    const mediaItems = Array.isArray(mediaSources)
+      ? mediaSources
+      : [mediaSources];
+    const mediaList = mediaItems
+      .map((item) => {
+        if (typeof item === "string") {
+          return { type: this.isVideoUrl(item) ? "video" : "image", url: item };
+        }
 
-      const url = item?.url || item?.imageUrl || item?.src || item?.path || item?.fileUrl || "";
-      const type = item?.type || item?.mediaType || (item?.isVideo ? "video" : "");
-      return {
-        type: type === "video" || this.isVideoUrl(url) ? "video" : "image",
-        url,
-      };
-    }).filter((item) => item.url);
+        const url =
+          item?.url ||
+          item?.imageUrl ||
+          item?.src ||
+          item?.path ||
+          item?.fileUrl ||
+          "";
+        const type =
+          item?.type || item?.mediaType || (item?.isVideo ? "video" : "");
+        return {
+          type: type === "video" || this.isVideoUrl(url) ? "video" : "image",
+          url,
+        };
+      })
+      .filter((item) => item.url);
 
     const videoUrl = detail.videoUrl || detail.video || detail.videoPath;
     if (videoUrl && !mediaList.some((item) => item.url === videoUrl)) {
@@ -118,8 +134,6 @@ Page({
     return mediaList;
   },
 
-
-
   isVideoUrl(url) {
     return /\.(mp4|mov|m3u8|webm)(\?.*)?$/i.test(url || "");
   },
@@ -128,7 +142,10 @@ Page({
     const currentMediaIndex = e.detail.current;
     const previousMedia = this.data.mediaList[this.data.currentMediaIndex];
     if (previousMedia?.type === "video") {
-      wx.createVideoContext(`product-video-${this.data.currentMediaIndex}`, this).stop();
+      wx.createVideoContext(
+        `product-video-${this.data.currentMediaIndex}`,
+        this,
+      ).stop();
     }
     this.setData({ currentMediaIndex });
   },
@@ -149,10 +166,9 @@ Page({
     }
   },
 
- onTabChangeProduct(e) {
-   this.scrollToAnchor('product');
+  onTabChangeProduct(e) {
+    this.scrollToAnchor("product");
   },
-
 
   scrollToAnchor(anchorName) {
     const selector = `#anchor-${anchorName}`;
@@ -185,7 +201,7 @@ Page({
   },
 
   goReviewPage() {
-    if(this.data.totalReviews ==0){
+    if (this.data.totalReviews == 0) {
       return wx.showToast({ title: "暂无评价", icon: "none" });
     }
     const keyId = this.data.keyId;
@@ -238,9 +254,9 @@ Page({
       wx.showToast({ title: "缺少商品信息", icon: "none" });
       return;
     }
-    let params ={
-       goodsId:this.data.keyId,
-       quantity:1,
+    let params = {
+      goodsId: this.data.keyId,
+      quantity: 1,
     };
 
     let res = await RequestApi.cartAdd(params);
@@ -252,13 +268,13 @@ Page({
     }
   },
 
-  async updateCartCount(){
-      let res = await RequestApi.cartCount({});
-      if (res && res.code === 200) {
-        this.setData({
-          cartCount: res.data || 0,
-        });
-      } 
+  async updateCartCount() {
+    let res = await RequestApi.cartCount({});
+    if (res && res.code === 200) {
+      this.setData({
+        cartCount: res.data || 0,
+      });
+    }
   },
 
   async exchange() {
@@ -269,18 +285,23 @@ Page({
 
     try {
       const res = await RequestApi.cartList({});
-      const cartItem = (res?.data || []).find(
-        (item) => String(item.goodsId) === String(this.data.keyId),
-      );
 
-      if (Number(cartItem?.quantity || 0) > 1) {
-        wx.navigateTo({
-          url: `/subpackages/mall/pages/orderConfirm/index?ids=${cartItem.goodsId}`,
-        });
-        return;
+      console.log("res", res);
+
+      if (res && res.code == 200) {
+        const cartItem = (res?.data || []).find(
+          (item) => item.goodsId == this.data.keyId,
+        );
+      
+        console.log("cartItem", cartItem);
+        if (Number(cartItem?.quantity || 0) >=1) {
+          wx.navigateTo({
+            url: `/subpackages/mall/pages/orderConfirm/index?ids=${cartItem.goodsId}`,
+          });
+          return;
+        }
+        wx.showToast({ title: "商品数量需大于等于1才能兑换", icon: "none" });
       }
-
-      wx.showToast({ title: "商品数量需大于1才能兑换", icon: "none" });
     } catch (error) {
       console.error("exchange error:", error);
       wx.showToast({ title: "获取购物车失败", icon: "none" });
