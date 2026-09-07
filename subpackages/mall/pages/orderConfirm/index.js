@@ -28,7 +28,7 @@ Page({
       ]);
       const selected = this.data.selectedIds.map((id) => String(id));
       const allGoods = cartRes?.data || [];
-      const goodsList = allGoods.filter(
+      const goodsListData = allGoods.filter(
         (item) => selected.indexOf(String(item.goodsId)) !== -1,
       );
       const addressList = addressRes?.data || [];
@@ -37,12 +37,20 @@ Page({
         addressList[0] ||
         {};
       const remainingPoints = Number(gradeRes?.data?.pointsBalance || 0);
-      const totalPoints = goodsList.reduce(
+      const totalPoints = goodsListData.reduce(
         (sum, item) =>
           sum + Number(item.pointsPrice || 0) * Number(item.quantity || 1),
         0,
       );
-
+     
+      const goodsList = goodsListData.map((item) => ({
+        ...item,
+        filterStr: this.filterData(item?.specs || ""),
+      }));
+     
+      console.log("goodsList", goodsList);
+        
+    
       this.setData({
         goodsList,
         address,
@@ -52,6 +60,24 @@ Page({
     } catch (error) {
       console.error("loadConfirmData error:", error);
     }
+  },
+
+    filterData(str) {
+    console.log("str", str);
+    if (!str) {
+      return [];
+    }
+    let dataArray = JSON.parse(str) || [];
+    console.log("dataArray111", );
+    let filterStr = "";
+    Array.from(dataArray).forEach((item) => {
+      console.log("item", item);
+      if (item.showInOrder) { 
+        console.log("item", item.value);
+        filterStr += item.value + ",";
+      }
+    });
+    return filterStr.slice(0, -1);
   },
 
   chooseAddress() {
