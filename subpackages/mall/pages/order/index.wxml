@@ -39,7 +39,7 @@
                 </text>
               </view>
               <text class="product-desc" wx:if="{{item.description}}">{{item.description}}</text>
-              <text class="product-desc" wx:if="{{item.filterStr}}">{{item.filterStr}}</text>
+              <text title="{{item.filterStr}}" class="product-desc" wx:if="{{item.filterStr}}">{{item.filterStr}}</text>
 
             </view>
             <view class="price-col">

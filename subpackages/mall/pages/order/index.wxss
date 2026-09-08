@@ -341,14 +341,16 @@ page {
   text-align: right;
 } */
 .product-desc {
-  display: block;
   width: 100%;
   margin-top: 16rpx;
   font-size: 26rpx;
+  line-height: 1.5;
   color: rgba(204, 201, 194, 0.72);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .product-desc-time {
   display: block;

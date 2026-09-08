@@ -22,8 +22,8 @@
     <view class="market-products">
 
       <view class="tab-bar" wx:if="{{tabs2.length}}">
-        <view wx:for="{{tabs2}}" wx:key="*this" class="tab-item2 {{activeTab2 === item.keyId ? 'active' : ''}}" data-id="{{item.keyId}}" bindtap="onTabChange2">
-          <text class="tab-label">{{item.name}}</text>
+        <view wx:for="{{tabs2}}" wx:key="*this"  class="tab-item2 {{activeTab2 === item.keyId ? 'active' : ''}}" data-id="{{item.keyId}}" bindtap="onTabChange2">
+          <text class="tab-label" title="{{item.name}}">{{item.name}}</text>
         </view>
       </view>
 
@@ -32,7 +32,7 @@
           <image class="product-thumb" src="{{item.coverImage}}" mode="aspectFill"></image>
           <view class="product-name">{{item.name}}</view>
           <view class="product-tags" wx:if="{{item.tags && item.tags.length}}">
-            <text class="chip" wx:for="{{item.tags}}" wx:key="*this">{{item.name}}</text>
+            <text class="chip" wx:for="{{item.tags}}" title="{{item.name}}" wx:key="*this">{{item.name}}</text>
           </view>
           <view class="product-price">
             <image class="price-dot" src="../../images/home/points.png" mode="aspectFit"></image>

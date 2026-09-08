@@ -153,18 +153,28 @@ page {
 }
 
 .tab-item2 {
-  min-width: 0;
   display: flex;
+  box-sizing: border-box;
+  min-width: 0;
   align-items: center;
   justify-content: center;
   gap: 8rpx;
   text-align: center;
   font-size: 24rpx;
-  padding: 8rpx 4rpx;
+  padding:  4rpx;
   width:100rpx;
   color: rgba(255, 255, 255, 0.72);
   border: 1px solid #f0e3c0;
   border-radius: 10rpx;
+  margin-right:20rpx;
+}
+
+.tab-item2 .tab-label {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tab-item2.active {
@@ -410,17 +420,23 @@ page {
 }
 
 .chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  box-sizing: border-box;
+  flex-shrink: 1;
+  max-width: 100%;
   min-width: 80rpx;
-  height: 30rpx;
+  height: 34rpx;
   padding: 0 6rpx;
   border-radius: 10rpx;
   background: rgba(153, 145, 125, 1);
   border: 1rpx solid rgba(210, 170, 88, 0.35);
   color: rgba(247, 247, 247, 1);
   font-size: 20rpx;
+  line-height: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .chip.hot {

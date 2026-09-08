@@ -213,7 +213,7 @@ page {
 }
 
 .review-box {
-  padding: 28rpx 22rpx 0;
+  padding: 18rpx 22rpx 0;
 }
 
 .review-title {

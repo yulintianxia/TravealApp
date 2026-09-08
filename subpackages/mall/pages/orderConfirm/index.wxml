@@ -20,7 +20,7 @@
   <text class="section-title">订单详情</text>
   <view class="goods-list">
     <view class="goods-card" wx:for="{{goodsList}}" wx:key="goodsId">
-      <image class="goods-image" src="{{item.goodsPicture}}" mode="aspectFill"></image>
+      <image class="goods-image" src="{{item.goodsCoverImage}}" mode="aspectFill"></image>
       <view class="goods-info">
         <text class="goods-name">{{item.goodsName}}</text>
         <text class="goods-meta" wx:if="{{item.filterStr}}">{{item.filterStr}}</text>
