@@ -8,10 +8,10 @@
   <view class="review-list">
     <view wx:for="{{reviews}}" wx:key="id" class="review-item">
       <view class="review-row">
-        <image class="review-avatar" src="{{item.avatar ? BASE_URL +item.avatar: '/images/new/16.png'}}" mode="aspectFill"></image>
+        <image class="review-avatar" src="{{item.avatar && item.isAnonymous !=1  ? BASE_URL +item.avatar :'../../../../images/home/default.png'}}" mode="aspectFill"></image>
         <view class="review-main">
           <view class="review-user-row">
-            <text class="review-user">{{  item.isAnonymous == 1 ? '匿名用户' : (item.nickName || item.createBy || '用户')}}</text>
+            <text class="review-user">{{item.isAnonymous == 1 ? '匿名用户' : (item.nickName || item.createBy || '用户')}}</text>
           </view>
           <view class="review-user-row-rate" >
             <t-rate value="{{item.rating}}" count="5" size="22" gap="10" color="{{['#f4d58f', '#757575']}}"  class="score-rate" />

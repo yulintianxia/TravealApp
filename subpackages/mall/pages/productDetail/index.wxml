@@ -34,7 +34,7 @@
         <text wx:for="{{tags}}" wx:key="*this" :key='item.name'>{{item.name}}</text>
       </view>
       <view class="review-card" wx:if="{{totalReviews>0}}" >
-        <image class="review-avatar" src="{{baseUrl + reviewListOne.avatar  || '/images/new/16.png'}}" mode="aspectFill"></image>
+        <image class="review-avatar" src="{{ reviewListOne.isAnonymous == 1 &&reviewListOne.avatar ?  baseUrl + reviewListOne.avatar : '../../../../images/home/default.png'}}" mode="aspectFill"></image>
         <view class="review-content">
           <view class="review-name">{{reviewListOne.isAnonymous == 1 ? '匿名用户' : (reviewListOne.nickName || reviewListOne.createBy || '用户')}}</view>
           <view class="review-text">{{reviewListOne.content}}</view>
