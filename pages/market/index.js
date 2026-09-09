@@ -33,7 +33,7 @@ Page({
       },
       {
         label: "评价",
-        value: "reviews",
+        value: "rating",
       },
     ],
     tabs2:[],

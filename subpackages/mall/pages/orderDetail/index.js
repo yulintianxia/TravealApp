@@ -96,6 +96,16 @@ Page({
     });
   },
 
+  goToProductDetail() {
+    const { order } = this.data;
+    const goodsId = order && order.goodsId;
+    if (!goodsId) return;
+
+    wx.navigateTo({
+      url: `/subpackages/mall/pages/productDetail/index?keyId=${goodsId}`,
+    });
+  },
+
   confirmReceipt() {
     const { keyId, order } = this.data;
     if (!keyId || !order || Number(order.status) !== 2) return;

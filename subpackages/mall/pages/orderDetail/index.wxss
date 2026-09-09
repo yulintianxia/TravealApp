@@ -51,7 +51,7 @@ page {
   width: 168rpx;
   height: 168rpx;
   flex-shrink: 0;
-  background: #dedbd5;
+  /* background: #dedbd5; */
 }
 
 .goods-info {

@@ -3,7 +3,7 @@
   <view wx:if="{{loading}}" class="state-text">加载中...</view>
   <view wx:elif="{{!order}}" class="state-text">暂无订单详情</view>
   <block wx:else>
-    <view class="goods-card">
+    <view class="goods-card" bindtap="goToProductDetail">
       <image class="goods-image" src="{{coverImg}}" mode="aspectFill"></image>
       <view class="goods-info">
         <view class="goods-name">{{order.goodsName || order.name}}</view>

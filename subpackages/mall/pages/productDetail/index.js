@@ -185,7 +185,7 @@ Page({
         const rect = res[0];
         const scrollTop = (res[1] && res[1].scrollTop) || 0;
         wx.pageScrollTo({
-          scrollTop: scrollTop + rect.top - 20,
+          scrollTop: scrollTop + rect.top - 40,
           duration: 200,
         });
       });
