@@ -51,10 +51,36 @@ Page({
   },
 
   onLoad() {
-    // this.updateProductsByTab("最新");
-    this.getBannerList();
-    this.getProducts();
-    this.getCategoryList();
+  },
+
+  onShow() {
+    this.setData({
+      activeTab: "comprehensive",
+      activeTab2: "",
+      pageNum: 1,
+      sortState: {
+        comprehensive: true,
+        newest: true,
+        price: true,
+        sales: true,
+        rating: true,
+      },
+      tabs2: [],
+      categories: [],
+      activeCategory: "",
+      activeReviewFilter: "全部",
+      products: [],
+      reviews: [],
+      total: 0,
+      loading: false,
+      noMore: false,
+      bannerList: [],
+      allProducts: [],
+    }, () => {
+      this.getBannerList();
+      this.getProducts(true);
+      this.getCategoryList();
+    });
   },
 
    async getBannerList(){
