@@ -180,6 +180,7 @@ Page({
         (wx.getSystemInfoSync().windowWidth / 750) * 100 +
         40,
     });
+    this.getOrderList();
   },
 
   onHide() {},

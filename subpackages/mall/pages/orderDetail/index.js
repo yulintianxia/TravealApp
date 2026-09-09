@@ -10,6 +10,7 @@ Page({
     coverImg: "",
     description: "",
     filterstr: "",
+    showConfirmPopup: false,
   },
 
   onLoad(options) {
@@ -109,18 +110,23 @@ Page({
   confirmReceipt() {
     const { keyId, order } = this.data;
     if (!keyId || !order || Number(order.status) !== 2) return;
-    wx.showModal({
-      title: "提示",
-      content: "您确定要签收该快递？",
-      success: async (res) => {
-        if (!res.confirm) return;
-        const result = await RequestApi.receiveOrder({ orderId: keyId });
-        if (result && result.code == 200) {
-          wx.showToast({ title: "成功", icon: "success" });
-          this.loadOrderDetail(keyId);
-        }
-      },
-    });
+    this.setData({ showConfirmPopup: true });
+  },
+
+  closeConfirmPopup() {
+    this.setData({ showConfirmPopup: false });
+  },
+
+  async confirmReceiptSubmit() {
+    const { keyId, order } = this.data;
+    if (!keyId || !order || Number(order.status) !== 2) return;
+
+    this.setData({ showConfirmPopup: false });
+    const result = await RequestApi.receiveOrder({ orderId: keyId });
+    if (result && result.code == 200) {
+      wx.showToast({ title: "成功", icon: "success" });
+      this.loadOrderDetail(keyId);
+    }
   },
 
   goToComment() {
@@ -137,5 +143,11 @@ Page({
     wx.navigateTo({
       url: `/subpackages/mall/pages/review/index?keyId=${order.goodsId}`,
     });
+  },
+
+  onShow() {
+    if (this.data.keyId) {
+      this.loadOrderDetail(this.data.keyId);
+    }
   },
 });

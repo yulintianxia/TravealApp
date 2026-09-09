@@ -65,9 +65,9 @@
         <text class="info-label">兑换时间</text>
         <text class="info-value">{{order.createTime}}</text>
       </view>
-      <view class="info-row" wx:if="{{order.consigneeName}}">
+      <view class="info-row" wx:if="{{order.mallUserName}}">
         <text class="info-label">兑换人</text>
-        <text class="info-value">{{order.consigneeName}}</text>
+        <text class="info-value">{{order.mallUserName}}</text>
       </view>
     </view>
     <view class="section-title">快递信息</view>
@@ -117,4 +117,15 @@
       </view>
     </view>
   </block>
+</view>
+
+<view wx:if="{{showConfirmPopup}}" class="confirm-popup-mask" bindtap="closeConfirmPopup">
+  <view class="confirm-popup" catchtap="">
+    <view class="confirm-popup-title">确认收货</view>
+    <view class="confirm-popup-text">您确定要签收该快递？</view>
+    <view class="confirm-popup-actions">
+      <view class="confirm-popup-cancel" bindtap="closeConfirmPopup">取消</view>
+      <view class="confirm-popup-submit" bindtap="confirmReceiptSubmit">确定</view>
+    </view>
+  </view>
 </view>
