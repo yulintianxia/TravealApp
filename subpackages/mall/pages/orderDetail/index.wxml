@@ -1,0 +1,96 @@
+<wxs module="getDate" src="../order/state.wxs"></wxs>
+<view class="detail-page">
+  <view wx:if="{{loading}}" class="state-text">加载中...</view>
+  <view wx:elif="{{!order}}" class="state-text">暂无订单详情</view>
+  <block wx:else>
+    <view class="goods-card">
+      <image class="goods-image" src="{{order.coverImage || order.goodsCoverImage}}" mode="aspectFill"></image>
+      <view class="goods-info">
+        <view class="goods-name">{{order.goodsName || order.name}}</view>
+        <view class="goods-description" wx:if="{{order.description}}">{{order.description}}</view>
+        <view class="goods-meta" wx:if="{{order.filterStr}}">{{order.filterStr}}</view>
+        <view class="goods-bottom">
+          <text class="goods-price">{{order.pointsPrice}}积分/副</text>
+          <text class="goods-count">x{{order.quantity}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-title">订单信息</view>
+    <view class="info-card">
+      <view class="info-row">
+        <text class="info-label">订单编号</text>
+        <view class="info-value-copy">
+          <text class="info-value order-number">{{order.orderNumber}}</text>
+          <view class="copy-button" data-text="{{order.orderNumber}}" bindtap="copyText">复制</view>
+        </view>
+      </view>
+      <view class="info-row">
+        <text class="info-label">订单状态</text>
+        <text class="info-value">{{getStatus(order.status)}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">商品总价</text>
+        <text class="info-value">{{order.pointsPrice * order.quantity}}积分</text>
+      </view>
+      <view class="info-row" wx:if="{{order.createTime}}">
+        <text class="info-label">兑换时间</text>
+        <text class="info-value">{{order.createTime}}</text>
+      </view>
+    </view>
+
+    <view class="section-title">购买信息</view>
+    <view class="info-card">
+      <view class="info-row">
+        <text class="info-label">商品数量</text>
+        <text class="info-value">x{{order.quantity}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">支付方式</text>
+        <text class="info-value">积分兑换</text>
+      </view>
+      <view class="info-row" wx:if="{{order.consigneeName}}">
+        <text class="info-label">兑换人</text>
+        <text class="info-value">{{order.consigneeName}}</text>
+      </view>
+    </view>
+
+    <view class="section-title" wx:if="{{order.courierNumber || order.courierCompanyName || order.deliveryTime}}">快递信息</view>
+    <view class="info-card" wx:if="{{order.courierNumber || order.courierCompanyName || order.deliveryTime}}">
+      <view class="info-row" wx:if="{{order.courierCompanyName}}">
+        <text class="info-label">快递公司</text>
+        <text class="info-value">{{order.courierCompanyName}}</text>
+      </view>
+      <view class="info-row" wx:if="{{order.courierNumber}}">
+        <text class="info-label">快递单号</text>
+        <view class="info-value-copy">
+          <text class="info-value courier-number">{{order.courierNumber}}</text>
+          <view class="copy-button" data-text="{{order.courierNumber}}" bindtap="copyText">复制</view>
+        </view>
+      </view>
+      <view class="info-row" wx:if="{{order.deliveryTime}}">
+        <text class="info-label">发货时间</text>
+        <text class="info-value">{{order.deliveryTime}}</text>
+      </view>
+    </view>
+
+    <view class="section-title" wx:if="{{order.detailedAddress || order.consigneeName}}">收货信息</view>
+    <view class="info-card" wx:if="{{order.detailedAddress || order.consigneeName}}">
+      <view class="address-value" wx:if="{{order.detailedAddress}}">收件地址：{{order.detailedAddress}}</view>
+      <view class="info-row" wx:if="{{order.consigneeName}}">
+        <text class="info-label">收件人</text>
+        <text class="info-value">{{order.consigneeName}}</text>
+      </view>
+      <view class="info-row" wx:if="{{order.consigneePhone}}">
+        <text class="info-label">联系电话</text>
+        <text class="info-value">{{order.consigneePhone}}</text>
+      </view>
+    </view>
+
+    <view class="bottom-actions">
+      <view class="action-button" wx:if="{{order.status == 2}}" bindtap="confirmReceipt">确认收货</view>
+      <view class="action-button" wx:if="{{order.status == 3 && !order.reviewed}}" bindtap="goToComment">去评价</view>
+      <view class="action-button" wx:if="{{order.status == 3 && order.reviewed}}" bindtap="goToReview">查看评价</view>
+    </view>
+  </block>
+</view>

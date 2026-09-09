@@ -15,6 +15,7 @@
         "pages/orderConfirm/index",
         "pages/cart/index",
         "pages/order/index",
+        "pages/orderDetail/index",
         "pages/address/index",
         "pages/addressList/index"
       ]

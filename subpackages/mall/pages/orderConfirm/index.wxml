@@ -43,3 +43,14 @@
     <view class="confirm-button" bindtap="confirmOrder">确认</view>
   </view>
 </view>
+
+<view wx:if="{{showConfirmPopup}}" class="confirm-popup-mask" bindtap="closeConfirmPopup">
+  <view class="confirm-popup" catchtap="">
+    <view class="confirm-popup-title">确认兑换</view>
+    <view class="confirm-popup-text">积分一旦兑换将无法取消，确定要继续吗？</view>
+    <view class="confirm-popup-actions">
+      <view class="confirm-popup-cancel" bindtap="closeConfirmPopup">取消</view>
+      <view class="confirm-popup-submit" bindtap="confirmPopupSubmit">确定</view>
+    </view>
+  </view>
+</view>

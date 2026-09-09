@@ -63,9 +63,9 @@ Page({
   },
   goDetail(e) {
     let keyId = e.currentTarget.dataset.id;
-    console.log("keyIdkeyIdkeyId", keyId);
+    if (!keyId) return;
     wx.navigateTo({
-      url: `/subpackages/mall/pages/productDetail/index?keyId=${keyId}`,
+      url: `/subpackages/mall/pages/orderDetail/index?keyId=${keyId}`,
     });
   },
 

@@ -8,6 +8,7 @@ Page({
     totalPoints: 0,
     remainingPoints: 0,
     submitting: false,
+    showConfirmPopup: false,
   },
 
   onLoad(options) {
@@ -113,16 +114,19 @@ Page({
       return;
     }
 
-    wx.showModal({
-      title: "提示",
-      content: "积分一旦兑换将无法取消",
-      // showCancel: false,
-      confirmText: "确定",
-      success: (res) => {
-        if (res.confirm) {
-          this.realSumbit();
-        }
-      },
+    this.setData({ showConfirmPopup: true });
+  },
+
+  closeConfirmPopup() {
+    if (!this.data.submitting) {
+      this.setData({ showConfirmPopup: false });
+    }
+  },
+
+  confirmPopupSubmit() {
+    if (this.data.submitting) return;
+    this.setData({ showConfirmPopup: false }, () => {
+      this.realSumbit();
     });
   },
   async realSumbit() {
