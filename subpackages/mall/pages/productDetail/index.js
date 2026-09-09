@@ -8,6 +8,9 @@ Page({
     activeTab: "商品",
     tabs: ["商品", "评价", "详情"],
     showCustomerDialog: false,
+    showExchangeDialog: false,
+    exchangeQuantity: 1,
+    exchangeCartItemId: "",
     showProductTop: false,
     qrGrid: [],
     chatImg: "/images/new/wechat.png",
@@ -295,20 +298,73 @@ Page({
       
         console.log("cartItem", cartItem);
         if (Number(cartItem?.quantity || 0) >=1) {
-          wx.navigateTo({
-            url: `/subpackages/mall/pages/orderConfirm/index?ids=${cartItem.goodsId}`,
-          });
+          this.goExchangePage(cartItem.goodsId);
           return;
-        } else{
-
         }
-        // wx.showToast({ title: "商品数量需大于等于1才能兑换", icon: "none" });
+
+        this.setData({
+          showExchangeDialog: true,
+          exchangeQuantity: 1,
+          exchangeCartItemId: cartItem?.keyId || "",
+        });
       }
     } catch (error) {
       console.error("exchange error:", error);
       wx.showToast({ title: "获取购物车失败", icon: "none" });
     }
   },
+
+  changeExchangeQuantity(e) {
+    const { type } = e.currentTarget.dataset;
+    const currentQuantity = Number(this.data.exchangeQuantity || 1);
+    const exchangeQuantity = type === "minus"
+      ? Math.max(1, currentQuantity - 1)
+      : currentQuantity + 1;
+
+    this.setData({ exchangeQuantity });
+  },
+
+  closeExchangeDialog() {
+    this.setData({ showExchangeDialog: false });
+  },
+
+  async confirmExchange() {
+    const quantity = Number(this.data.exchangeQuantity || 1);
+    if (quantity < 1) return;
+
+    try {
+      let res;
+      if (this.data.exchangeCartItemId) {
+        res = await RequestApi.cartUpdate({
+          keyId: this.data.exchangeCartItemId,
+          quantity,
+        });
+      } else {
+        res = await RequestApi.cartAdd({
+          goodsId: this.data.keyId,
+          quantity,
+        });
+      }
+
+      if (res && res.code === 200) {
+        this.setData({ showExchangeDialog: false });
+        this.goExchangePage(this.data.keyId);
+      } else {
+        wx.showToast({ title: "购物车更新失败", icon: "none" });
+      }
+    } catch (error) {
+      console.error("confirmExchange error:", error);
+      wx.showToast({ title: "购物车更新失败", icon: "none" });
+    }
+  },
+
+  goExchangePage(goodsId) {
+    wx.navigateTo({
+      url: `/subpackages/mall/pages/orderConfirm/index?ids=${goodsId}`,
+    });
+  },
+
+  stopPropagation() {},
 
   goCart() {
     wx.navigateTo({ url: "/subpackages/mall/pages/cart/index" });

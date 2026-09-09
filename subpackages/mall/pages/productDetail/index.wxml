@@ -92,6 +92,26 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{showExchangeDialog}}" class="customer-overlay" bindtap="closeExchangeDialog">
+    <view class="exchange-dialog" catchtap="stopPropagation">
+      <view class="exchange-panel">
+        <view class="exchange-title">确认兑换数量</view>
+        <view class="exchange-product-name">{{product.name}}</view>
+        <view class="exchange-quantity-row">
+          <text class="exchange-quantity-label">兑换数量</text>
+          <view class="stepper">
+            <view class="step-btn minus" data-type="minus" catchtap="changeExchangeQuantity">-</view>
+            <view class="step-value">{{exchangeQuantity}}</view>
+            <view class="step-btn plus" data-type="plus" catchtap="changeExchangeQuantity">+</view>
+          </view>
+        </view>
+        <view class="exchange-actions">
+          <view class="exchange-cancel" bindtap="closeExchangeDialog">取消</view>
+          <view class="exchange-confirm" bindtap="confirmExchange">确定</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
 
