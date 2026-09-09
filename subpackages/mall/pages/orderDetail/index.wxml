@@ -57,10 +57,6 @@
         <text class="info-label">支付方式</text>
         <text class="info-value">积分兑换</text>
       </view>
-      <view class="info-row">
-        <text class="info-label">兑换人</text>
-        <text class="info-value">{{order.pointsPrice * order.quantity}}积分</text>
-      </view>
       <view class="info-row" wx:if="{{order.createTime}}">
         <text class="info-label">兑换时间</text>
         <text class="info-value">{{order.createTime}}</text>

@@ -27,4 +27,11 @@ Page({
       navBarHeight,
     };
   },
+
+  onShareAppMessage() {
+    return {
+      title: "积分商城",
+      path: "/pages/index/index",
+    };
+  },
 });

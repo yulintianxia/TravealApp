@@ -232,4 +232,11 @@ Page({
       url: `/subpackages/mall/pages/productDetail/index?keyId=${productId}`,
     });
   },
+
+  onShareAppMessage() {
+    return {
+      title: "积分商城，精选好物等你来兑换",
+      path: "/pages/market/index",
+    };
+  },
 });
