@@ -22,11 +22,46 @@
     "miniprogram": {
       "list": [
         {
+          "name": "subpackages/mall/pages/orderDetail/index",
+          "pathName": "subpackages/mall/pages/orderDetail/index",
+          "query": "keyId=15&img=https%3A%2F%2Fwww.zhenglian.vip%3A8481%2Fprofile%2F2aeefad7601a41458889bade11ab9874.png&filterstr=123%2C6666&description=%E8%BF%99%E6%98%AF%E6%B5%8B%E8%AF%95%E7%9A%84%E5%95%86%E5%93%81%E4%B8%9C%E8%A5%BF",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "subpackages/mall/pages/orderDetail/index",
+          "pathName": "subpackages/mall/pages/orderDetail/index",
+          "query": "keyId=17&img=https%3A%2F%2Fwww.zhenglian.vip%3A8481%2Fprofile%2Ff2759beffe4d4a92a451f0fa08fb99b3.png&filterstr=&description=%E8%BF%99%E6%98%AF%E6%B5%8B%E8%AF%95%E5%95%86%E5%93%81",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/orderDetail/index",
+          "pathName": "subpackages/mall/pages/orderDetail/index",
+          "query": "keyId=17&img=undefined",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/orderDetail/index",
+          "pathName": "subpackages/mall/pages/orderDetail/index",
+          "query": "keyId=17",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/orderDetail/index",
+          "pathName": "subpackages/mall/pages/orderDetail/index",
+          "query": "keyId=16",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "subpackages/mall/pages/orderConfirm/index",
           "pathName": "subpackages/mall/pages/orderConfirm/index",
           "query": "ids=9",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "subpackages/mall/pages/orderConfirm/index",

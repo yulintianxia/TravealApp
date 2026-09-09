@@ -63,9 +63,12 @@ Page({
   },
   goDetail(e) {
     let keyId = e.currentTarget.dataset.id;
+    let img = e.currentTarget.dataset.img;
+    let filterstr = e.currentTarget.dataset.filterstr;
+    let description = e.currentTarget.dataset.description;
     if (!keyId) return;
     wx.navigateTo({
-      url: `/subpackages/mall/pages/orderDetail/index?keyId=${keyId}`,
+      url: `/subpackages/mall/pages/orderDetail/index?keyId=${keyId}&img=${img}&filterstr=${filterstr}&description=${description}`,
     });
   },
 
@@ -124,11 +127,11 @@ Page({
       return [];
     }
     let dataArray = JSON.parse(JSON.parse(str)?.[0]?.specs) || [];
-    console.log("dataArray111", );
+    console.log("dataArray111");
     let filterStr = "";
     Array.from(dataArray).forEach((item) => {
       console.log("item", item);
-      if (item.showInOrder) { 
+      if (item.showInOrder) {
         console.log("item", item.value);
         filterStr += item.value + ",";
       }

@@ -7,11 +7,21 @@ Page({
     order: null,
     loading: true,
     BASE_URL,
+    coverImg: "",
+    description: "",
+    filterstr: "",
   },
 
   onLoad(options) {
+    console.log('options',options);
     const keyId = options.keyId || "";
-    this.setData({ keyId });
+    const img = options.img || "";
+    this.setData({
+      keyId,
+      coverImg: img,
+      description: options.description || "",
+      filterstr: options.filterstr || "",
+    });
     if (!keyId) {
       this.setData({ loading: false });
       return;
@@ -24,6 +34,9 @@ Page({
       const res = await RequestApi.getOrderDetail({ keyId });
       if (res && res.code == "200") {
         const order = this.normalizeOrder(res.data || res);
+
+        console.log("order", order);
+
         this.setData({ order });
       }
     } catch (error) {

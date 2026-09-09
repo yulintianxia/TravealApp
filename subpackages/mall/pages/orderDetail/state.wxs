@@ -1,0 +1,29 @@
+var  status={
+    "0":"已创建",
+    "1":"待发货",
+    "2":"待收货",
+    "3":"已收货",
+    "10":'取消',
+  }
+  var filter = {
+    judgmentState: function (num) {
+      return(status[num])
+    },
+    JSONdata:function (str) {
+      if (!str) {
+        return []
+      }
+      try {
+        return JSON.parse(str)
+      } catch (e) {
+        console.error('JSONdata error:', e)
+        return []
+      }
+    },
+  }
+  module.exports = {
+    judgmentState: filter.judgmentState,
+    JSONdata: filter.JSONdata,
+    JSONdata2: filter.JSONdata2,
+  }
+  //不支持es6语法只能通过：进行暴露
