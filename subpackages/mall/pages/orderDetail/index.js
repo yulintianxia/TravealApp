@@ -57,6 +57,7 @@ Page({
     return {
       ...order,
       ...item,
+
       filterStr: this.filterData(item.specs),
       quantity: Number(item.quantity || order.quantity || 1),
     };

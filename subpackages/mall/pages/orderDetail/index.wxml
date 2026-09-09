@@ -30,7 +30,9 @@
       </view>
       <view class="info-row">
         <text class="info-label">商品标签</text>
-        <text class="info-value">{{order.tags }}</text>
+        <text class="info-value">
+          <text class="chip" wx:for="{{order.tags}}" title="{{item.name}}" wx:key="*this">{{item.name}}</text>
+        </text>
       </view>
       <view class="info-row">
         <text class="info-label">订单状态</text>
@@ -51,35 +53,30 @@
         <text class="info-label">兑换积分</text>
         <text class="info-value">{{order.pointsPrice * order.quantity}}积分</text>
       </view>
-     <view class="info-row">
+      <view class="info-row">
         <text class="info-label">支付方式</text>
         <text class="info-value">积分兑换</text>
       </view>
-       <view class="info-row">
+      <view class="info-row">
         <text class="info-label">兑换人</text>
         <text class="info-value">{{order.pointsPrice * order.quantity}}积分</text>
       </view>
- 
-      
       <view class="info-row" wx:if="{{order.createTime}}">
         <text class="info-label">兑换时间</text>
         <text class="info-value">{{order.createTime}}</text>
       </view>
-     
       <view class="info-row" wx:if="{{order.consigneeName}}">
         <text class="info-label">兑换人</text>
         <text class="info-value">{{order.consigneeName}}</text>
       </view>
     </view>
-    <view class="section-title">
-      快递信息
-    </view>
-    <view class="info-card" >
-      <view class="info-row" >
+    <view class="section-title">快递信息</view>
+    <view class="info-card">
+      <view class="info-row">
         <text class="info-label">快递公司</text>
         <text class="info-value">{{order.courierCompanyName || ''}}</text>
       </view>
-      <view class="info-row" >
+      <view class="info-row">
         <text class="info-label">快递单号</text>
         <view class="info-value-copy">
           <text class="info-value courier-number">{{order.courierNumber || ''}}</text>
@@ -93,22 +90,21 @@
     </view>
     <view class="section-title">收货信息</view>
     <view class="info-card">
-       <view class="info-row">
+      <view class="info-row">
         <text class="info-label">收件地址</text>
         <text class="info-value">{{order.addressDetail}}</text>
       </view>
-
       <view class="info-row">
         <text class="info-label">收件人</text>
         <text class="info-value">{{order.mallUserName}}</text>
       </view>
-      <view class="info-row" >
+      <view class="info-row">
         <text class="info-label">联系电话</text>
         <text class="info-value">{{order.mallUserPhone}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">收货时间</text>
-        <text class="info-value">{{order.consigneePhone}}</text>
+        <text class="info-value">{{order.receivingTime}}</text>
       </view>
     </view>
     <view class="bottom-actions">

@@ -299,8 +299,10 @@ Page({
             url: `/subpackages/mall/pages/orderConfirm/index?ids=${cartItem.goodsId}`,
           });
           return;
+        } else{
+
         }
-        wx.showToast({ title: "商品数量需大于等于1才能兑换", icon: "none" });
+        // wx.showToast({ title: "商品数量需大于等于1才能兑换", icon: "none" });
       }
     } catch (error) {
       console.error("exchange error:", error);

@@ -29,7 +29,10 @@
 
       <view class="product-grid">
         <view wx:for="{{products}}" wx:key="id" class="product-card" data-id="{{item.keyId || item.id}}" bindtap="goToDetail">
-          <image class="product-thumb" src="{{item.coverImage}}" mode="aspectFill"></image>
+          <view class="product-thumb-wrap">
+            <image class="product-thumb" src="{{item.coverImage}}" mode="aspectFill"></image>
+            <text wx:if="{{item.avgRating}}" class="product-rating">{{item.avgRating}}分</text>
+          </view>
           <view class="product-name">{{item.name}}</view>
           <view class="product-tags" wx:if="{{item.tags && item.tags.length}}">
             <text class="chip" wx:for="{{item.tags}}" title="{{item.name}}" wx:key="*this">{{item.name}}</text>
