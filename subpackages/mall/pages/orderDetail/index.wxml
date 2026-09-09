@@ -80,31 +80,31 @@
         <text class="info-label">快递单号</text>
         <view class="info-value-copy">
           <text class="info-value courier-number">{{order.courierNumber || ''}}</text>
-          <view class="copy-button" data-text="{{order.courierNumber}}" bindtap="copyText">复制</view>
+          <view class="copy-button" wx:if="{{order.courierNumber}}" data-text="{{order.courierNumber}}" bindtap="copyText">复制</view>
         </view>
       </view>
       <view class="info-row">
         <text class="info-label">发货时间</text>
-        <text class="info-value">{{order.deliveryTime}}</text>
+        <text class="info-value">{{order.deliveryTime || ''}}</text>
       </view>
     </view>
     <view class="section-title">收货信息</view>
     <view class="info-card">
       <view class="info-row">
         <text class="info-label">收件地址</text>
-        <text class="info-value">{{order.addressDetail}}</text>
+        <text class="info-value">{{order.addressDetail || ''}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">收件人</text>
-        <text class="info-value">{{order.mallUserName}}</text>
+        <text class="info-value">{{order.mallUserName || ''}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">联系电话</text>
-        <text class="info-value">{{order.mallUserPhone}}</text>
+        <text class="info-value">{{order.mallUserPhone ||''}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">收货时间</text>
-        <text class="info-value">{{order.receivingTime}}</text>
+        <text class="info-value">{{order.receivingTime || ''}}</text>
       </view>
     </view>
     <view class="bottom-actions">
