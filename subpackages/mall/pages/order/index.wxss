@@ -311,7 +311,7 @@ page {
 
 .product-name {
   max-width: 100%;
-  font-size: 30rpx;
+  font-size: 28rpx;
   line-height: 1.45;
   color: #f0dfc5;
   font-weight: 600;
@@ -321,10 +321,15 @@ page {
   overflow: hidden;
 }
 
-.mini-badge {
-  display: inline-flex;
+.mini-badge-view{
+  display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12rpx;
+}
+
+.mini-badge {
+  display: inline-block;
+  box-sizing: border-box;
   padding: 4rpx 12rpx;
   border-radius: 12rpx;
   background: rgba(225, 193, 113, 0.17);
@@ -332,6 +337,11 @@ page {
   color: #f0d28d;
   font-size: 18rpx;
   line-height: 1.5;
+  width: 78rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 6rpx;
 }
 
 /* .card-order .product-desc-time {
@@ -453,4 +463,68 @@ page {
   padding: 0 20rpx;
   font-size: 28rpx;
   color: rgba(214, 206, 194, 0.72);
+}
+
+.confirm-popup-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.confirm-popup {
+  width: 580rpx;
+  box-sizing: border-box;
+  padding: 60rpx 48rpx 44rpx;
+  background: rgba(30, 35, 50, 0.95);
+  border: 1rpx solid rgba(201, 182, 126, 0.15);
+  border-radius: 24rpx;
+}
+
+.confirm-popup-title {
+  color: #f1d495;
+  font-size: 34rpx;
+  font-weight: 600;
+  text-align: center;
+}
+
+.confirm-popup-text {
+  margin-top: 28rpx;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 28rpx;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.confirm-popup-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 48rpx;
+}
+
+.confirm-popup-cancel,
+.confirm-popup-submit {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.confirm-popup-cancel {
+  color: rgba(255, 255, 255, 0.72);
+  border: 1rpx solid rgba(255, 255, 255, 0.18);
+}
+
+.confirm-popup-submit {
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #c9a96e, #a07c3e);
 }

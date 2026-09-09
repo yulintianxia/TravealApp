@@ -11,6 +11,8 @@ Page({
     value: "all",
     BASE_URL,
     total: 0,
+    showConfirmPopup: false,
+    confirmOrderId: null,
   },
 
   onLoad(options) {
@@ -148,22 +150,25 @@ Page({
   },
 
   async orderChcek(e) {
-    let that = this;
-    wx.showModal({
-      title: "提示",
-      content: "您确定要签收该快递？",
-      async success(res) {
-        if (res.confirm) {
-          let orderId = e.currentTarget.dataset.id;
-          let params = { orderId };
-          let res = await RequestApi.receiveOrder(params);
-          if (res && res.code == 200) {
-            wx.showToast({ title: "成功", icon: "success", duration: 2000 });
-            that.getOrderList();
-          }
-        }
-      },
-    });
+    const orderId = e.currentTarget.dataset.id;
+    if (!orderId) return;
+    this.setData({ showConfirmPopup: true, confirmOrderId: orderId });
+  },
+
+  closeConfirmPopup() {
+    this.setData({ showConfirmPopup: false, confirmOrderId: null });
+  },
+
+  async confirmReceipt() {
+    const { confirmOrderId } = this.data;
+    if (!confirmOrderId) return;
+
+    this.setData({ showConfirmPopup: false, confirmOrderId: null });
+    const result = await RequestApi.receiveOrder({ orderId: confirmOrderId });
+    if (result && result.code == 200) {
+      wx.showToast({ title: "成功", icon: "success", duration: 2000 });
+      this.getOrderList();
+    }
   },
 
   onReady() {},

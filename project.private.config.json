@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
+          "name": "subpackages/mall/pages/order/index",
+          "pathName": "subpackages/mall/pages/order/index",
+          "query": "state=1",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
           "name": "subpackages/mall/pages/orderDetail/index",
           "pathName": "subpackages/mall/pages/orderDetail/index",
           "query": "keyId=21&img=https%3A%2F%2Fwww.zhenglian.vip%3A8481%2Fprofile%2F3812eeca88b24510ab17f485929b7763.png&filterstr=&description=1111",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "subpackages/mall/pages/orderDetail/index",

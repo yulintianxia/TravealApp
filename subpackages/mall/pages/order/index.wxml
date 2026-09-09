@@ -37,8 +37,8 @@
               <view class="name-row">
                 <!-- <text class="product-name">{{item.orderNumber}}</text> -->
                 <text class="product-name">{{item.goodsName}}</text>
-                <text class="mini-badge" wx:if="{{item.tags.length}}">
-                  <text wx:for="{{item.tags}}" wx:key="tag">{{item.name}}</text>
+                <text  class="mini-badge-view" wx:if="{{item.tags.length}}">
+                  <text class="mini-badge" wx:for="{{item.tags}}" wx:key="tag">{{item.name}}</text>
                 </text>
               </view>
               <text class="product-desc" wx:if="{{item.description}}">{{item.description}}</text>
@@ -110,4 +110,15 @@
       </block> -->
     </view>
   </scroll-view>
+</view>
+
+<view wx:if="{{showConfirmPopup}}" class="confirm-popup-mask" bindtap="closeConfirmPopup">
+  <view class="confirm-popup" catchtap="">
+    <view class="confirm-popup-title">确认收货</view>
+    <view class="confirm-popup-text">您确定要签收该快递？</view>
+    <view class="confirm-popup-actions">
+      <view class="confirm-popup-cancel" bindtap="closeConfirmPopup">取消</view>
+      <view class="confirm-popup-submit" bindtap="confirmReceipt">确定</view>
+    </view>
+  </view>
 </view>
