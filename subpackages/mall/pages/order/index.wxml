@@ -37,9 +37,9 @@
               <view class="name-row">
                 <!-- <text class="product-name">{{item.orderNumber}}</text> -->
                 <text class="product-name">{{item.goodsName}}</text>
-                <text  class="mini-badge-view" wx:if="{{item.tags.length}}">
+                <!-- <text  class="mini-badge-view" wx:if="{{item.tags.length}}">
                   <text class="mini-badge" wx:for="{{item.tags}}" wx:key="tag">{{item.name}}</text>
-                </text>
+                </text> -->
               </view>
               <text class="product-desc" wx:if="{{item.description}}">{{item.description}}</text>
               <text title="{{item.filterStr}}" class="product-desc" wx:if="{{item.filterStr}}">{{item.filterStr}}</text>

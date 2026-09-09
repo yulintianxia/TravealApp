@@ -342,6 +342,7 @@ page {
   white-space: nowrap;
   text-overflow: ellipsis;
   margin-right: 6rpx;
+  text-align: center;
 }
 
 /* .card-order .product-desc-time {
