@@ -98,6 +98,7 @@ Page({
             orderNumber: item.orderNumber,
             keyId: item.keyId,
             reviewed: item.reviewed,
+            createTime:item.createTime,
             //  specsArray: JSON.parse(JSON.parse(item.items)?.[0]?.specs) || [],
             filterStr: this.filterData(item.items),
             ...JSON.parse(item.items)?.[0],

@@ -70,7 +70,10 @@ Page({
 
       const res = await RequestApi.reviewList(params);
       if (res && res.code == "200") {
-        const rows = res.rows || [];
+        const rows = (res.rows || []).map((item) => ({
+          ...item,
+          replyExpanded: false,
+        }));
         const reviews = reset ? rows : this.data.reviews.concat(rows);
         const total = Number(res.total) || 0;
         this.setData({
@@ -97,6 +100,15 @@ Page({
         this.loadReviews(true);
       },
     );
+  },
+
+  toggleReply(e) {
+    const index = Number(e.currentTarget.dataset.index);
+    const reviews = this.data.reviews.slice();
+    if (!reviews[index]) return;
+
+    reviews[index].replyExpanded = !reviews[index].replyExpanded;
+    this.setData({ reviews });
   },
 
   onReachBottom() {

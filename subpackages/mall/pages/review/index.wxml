@@ -26,6 +26,16 @@
           <view class="review-date-row">
             <text class="review-date">发表于：{{item.createTime || ''}}</text>
           </view>
+          <view class="merchant-reply" wx:if="{{item.replyContent || item.merchantReply || item.reply}}">
+            <view class="merchant-reply-title">
+              <image class="merchant-reply-icon" src="../../../../images/home/guanfang.png" mode="aspectFit"></image>
+              <text>正连官方回复</text>
+            </view>
+            <text class="merchant-reply-text {{item.replyExpanded ? 'is-expanded' : ''}}" wx:if="{{item.reply}}">{{item.reply}}</text>
+            <view class="merchant-reply-toggle" wx:if="{{item.reply.length > 60}}" data-index="{{index}}" bindtap="toggleReply">
+              {{item.replyExpanded ? '收起' : '更多'}}
+            </view>
+          </view>
         </view>
       </view>
     </view>

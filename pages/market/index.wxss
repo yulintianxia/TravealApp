@@ -10,6 +10,12 @@ page {
   padding-bottom: 120rpx;
 }
 
+.price-text{
+  flex-grow:1;
+}
+.sales-text{
+  color: #f1efe9;
+}
 .market-header {
   position: relative;
   display: flex;
@@ -474,7 +480,7 @@ page {
   display: inline-block;
   width: 26rpx;
   height: 26rpx;
-  margin-right: 8rpx;
+  margin-right: 6rpx;
   flex-shrink: 0;
   vertical-align: middle;
 }

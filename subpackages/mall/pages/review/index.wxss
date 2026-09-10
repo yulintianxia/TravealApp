@@ -166,6 +166,71 @@ page {
   margin-top: 12rpx;
 }
 
+.merchant-reply {
+  position: relative;
+  margin-top: 22rpx;
+  padding: 22rpx 24rpx 24rpx;
+  border-radius: 22rpx;
+  background: #202020;
+  box-sizing: border-box;
+}
+
+.merchant-reply::before {
+  content: '';
+  position: absolute;
+  top: -14rpx;
+  left: 64rpx;
+  width: 28rpx;
+  height: 28rpx;
+  background: #202020;
+  transform: rotate(45deg);
+}
+
+.merchant-reply-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #f0d28d;
+  font-size: 26rpx;
+  line-height: 1.4;
+}
+
+.merchant-reply-icon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.merchant-reply-text {
+  position: relative;
+  margin-top: 16rpx;
+  max-width: 100%;
+  color: #f0ece7;
+  font-size: 26rpx;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.merchant-reply-text.is-expanded {
+  display: block;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.merchant-reply-toggle {
+  position: relative;
+  margin-top: 10rpx;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 24rpx;
+  line-height: 1.4;
+  text-align: right;
+}
+
 .review-text {
   color: #f0ece7;
   font-size: 28rpx;

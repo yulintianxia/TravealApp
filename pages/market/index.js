@@ -8,11 +8,11 @@ Page({
     pageNum: 1,
     pageSize: 10,
     sortState: {
-      comprehensive: true,
-      newest: true,
-      price: true,
-      sales: true,
-      reviews:true,
+      comprehensive: false,
+      newest: false,
+      price: false,
+      sales: false,
+      reviews:false,
     },
     tabs: [
        {
@@ -59,11 +59,11 @@ Page({
       activeTab2: "",
       pageNum: 1,
       sortState: {
-        comprehensive: true,
-        newest: true,
-        price: true,
-        sales: true,
-        rating: true,
+        comprehensive: false,
+        newest: false,
+        price: false,
+        sales: false,
+        rating: false,
       },
       tabs2: [],
       categories: [],

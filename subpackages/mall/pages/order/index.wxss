@@ -327,6 +327,9 @@ page {
   gap: 12rpx;
 }
 
+.confirm-btn.fr-btn {
+    flex-direction: row-reverse;
+}
 .mini-badge {
   display: inline-block;
   box-sizing: border-box;
@@ -422,8 +425,9 @@ page {
 
 .card-action {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: space-between; */
   margin-top: 18rpx;
+  justify-content: flex-end;
 }
 
 .confirm-btn {
@@ -437,15 +441,8 @@ page {
   font-weight: 600;
 }
 
-.confirm-btn {
-  min-width: 100rpx;
-  text-align: center;
-  padding: 14rpx 24rpx;
-  border-radius: 18rpx;
-  background: linear-gradient(135deg, #f0d7a7 0%, #d7b679 100%);
-  color: #302611;
-  font-size: 26rpx;
-  font-weight: 600;
+.review-btn {
+  margin-right: auto;
 }
 
 .history-divider {

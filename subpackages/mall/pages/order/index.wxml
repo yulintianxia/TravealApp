@@ -19,12 +19,9 @@
     <view wx:if="{{goodList.length === 0}}" class="empty-state">
       <text class="empty-text">暂无订单</text>
     </view>
-    <view wx:else class="order-list" >
-      <block wx:for="{{goodList}}"  wx:key="keyId">
-        <view class="order-card" bindtap="goDetail" 
-        data-description="{{item.description || ''}}"
-        data-filterstr="{{item.filterStr || ''}}"
-        data-img='{{item.coverImage}}'  data-id="{{item.keyId}}">
+    <view wx:else class="order-list">
+      <block wx:for="{{goodList}}" wx:key="keyId">
+        <view class="order-card"  data-description="{{item.description || ''}}" data-filterstr="{{item.filterStr || ''}}" data-img='{{item.coverImage}}' data-id="{{item.keyId}}">
           <view class='order-number'>
             <view catchtap="handleCopy" data-number="{{item.orderNumber}}">
               订单号：{{item.orderNumber}} | 复制
@@ -42,8 +39,9 @@
                 </text> -->
               </view>
               <text class="product-desc" wx:if="{{item.description}}">{{item.description}}</text>
-              <text title="{{item.filterStr}}" class="product-desc" wx:if="{{item.filterStr}}">{{item.filterStr}}</text>
-
+              <text title="{{item.filterStr}}" class="product-desc" wx:if="{{item.filterStr}}">
+                {{item.filterStr}}
+              </text>
             </view>
             <view class="price-col">
               <!-- <text class="status-label">{{getDate.judgmentState(item.status)}}</text> -->
@@ -56,20 +54,23 @@
             </view>
           </view>
           <view class='card-order' wx:if="{{item.deliveryTime}}">
-             <view class="product-desc-time fr" catchtap="handleCopy" data-number="{{item.courierNumber}}" wx:if="{{item.courierNumber}}">
+            <view class="product-desc-time fr" catchtap="handleCopy" data-number="{{item.courierNumber}}" wx:if="{{item.courierNumber}}">
               {{item.courierCompanyName}} {{item.courierNumber}} | 复制
             </view>
-            <view>
-                发货时间：{{item.deliveryTime}}
-            </view>
+            <view>兑换时间：{{item.createTime}}</view>
           </view>
-          <view class="card-action" wx:if="{{item.status == 2 || item.status == 3}}"> 
-            <view class="confirm-btn"  catchtap="orderChcek" wx:if="{{item.status == 2 }}" data-id="{{item.keyId}}">确认收货</view>
-             <view class="confirm-btn" catchtap="goToComment" wx:if="{{!item.reviewed && item.status == 3}}" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">
+          <view class="card-action">
+            <view class="confirm-btn" catchtap="orderChcek" wx:if="{{item.status == 2 }}" data-id="{{item.keyId}}">
+              确认收货
+            </view>
+            <view class="confirm-btn" catchtap="goToComment" wx:if="{{!item.reviewed && item.status == 3}}" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">
               去评价
             </view>
-            <view class="confirm-btn" catchtap="goToReview" wx:if="{{item.reviewed && item.status == 3}}" data-id="{{item.goodsId}}">
+            <view class="confirm-btn review-btn" catchtap="goToReview" wx:if="{{item.reviewed && item.status == 3}}" data-id="{{item.goodsId}}">
               查看评价
+            </view>
+            <view class="confirm-btn fr-btn" catchtap="goDetail" data-description="{{item.description || ''}}" data-filterstr="{{item.filterStr || ''}}" data-img='{{item.coverImage}}' data-id="{{item.keyId}}" data-id="{{item.keyId}}">
+              查看详情
             </view>
           </view>
         </view>
@@ -111,7 +112,6 @@
     </view>
   </scroll-view>
 </view>
-
 <view wx:if="{{showConfirmPopup}}" class="confirm-popup-mask" bindtap="closeConfirmPopup">
   <view class="confirm-popup" catchtap="">
     <view class="confirm-popup-title">确认收货</view>
