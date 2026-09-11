@@ -226,8 +226,9 @@ page {
 .review-tags {
   display: flex;
   gap: 12rpx;
-  margin-bottom: 18rpx;
+  margin-bottom: 10rpx;
   flex-wrap: wrap;
+  margin-top:10rpx;
 }
 
 .review-tags text {

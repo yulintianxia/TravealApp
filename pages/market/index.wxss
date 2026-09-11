@@ -176,11 +176,12 @@ page {
 }
 
 .tab-item2 .tab-label {
-  min-width: 0;
   max-width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
   white-space: nowrap;
+  width:110rpx;
+  display: inline-block;
 }
 
 .tab-item2.active {
@@ -197,7 +198,7 @@ page {
 
 .tab-sort-icon {
   display: inline-block;
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: rgba(255, 255, 255, 0.58);
   transform: translateY(0rpx);
   overflow: hidden;
@@ -446,7 +447,7 @@ page {
   box-sizing: border-box;
   flex-shrink: 1;
   max-width: 100%;
-  min-width: 86rpx;
+  min-width: 82rpx;
   height: 34rpx;
   padding: 0 2rpx;
   border-radius: 10rpx;

@@ -79,6 +79,10 @@ Page({
     if (!item) return;
 
     const currentQuantity = Number(item.quantity || 1);
+    if (type === "minus" && currentQuantity <= 1) {
+      wx.showToast({ title: "当前商品购买最小为1", icon: "none" });
+      return;
+    }
     const nextQuantity = type === "minus"
       ? Math.max(1, currentQuantity - 1)
       : currentQuantity + 1;

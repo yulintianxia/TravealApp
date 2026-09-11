@@ -369,4 +369,13 @@ Page({
   goCart() {
     wx.navigateTo({ url: "/subpackages/mall/pages/cart/index" });
   },
+
+  onShareAppMessage() {
+    const { product, keyId } = this.data;
+    return {
+      title: product.name || "商品详情",
+      path: `/subpackages/mall/pages/productDetail/index?keyId=${keyId}`,
+      imageUrl: product.coverImage || product.mainPicture || "",
+    };
+  },
 });

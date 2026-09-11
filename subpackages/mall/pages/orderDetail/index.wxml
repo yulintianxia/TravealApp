@@ -20,87 +20,88 @@
       <view class="info-row">
         <text class="info-label">订单编号</text>
         <view class="info-value-copy">
-          <text class="info-value order-number">{{order.orderNumber}}</text>
-          <view class="copy-button" data-text="{{order.orderNumber}}" bindtap="copyText">复制</view>
+          <text class="info-value order-number">{{order.orderNumber || '--'}}</text>
+          <view class="copy-button" wx:if="{{order.orderNumber}}" data-text="{{order.orderNumber}}" bindtap="copyText">复制</view>
         </view>
       </view>
       <view class="info-row">
         <text class="info-label">商品名称</text>
-        <text class="info-value">{{order.goodsName || order.name}}</text>
+        <text class="info-value">{{order.goodsName || order.name || '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">商品标签</text>
         <text class="info-value">
+          <text wx:if="{{!order.tags || !order.tags.length}}">--</text>
           <text class="chip" wx:for="{{order.tags}}" title="{{item.name}}" wx:key="*this">{{item.name}}</text>
         </text>
       </view>
       <view class="info-row">
         <text class="info-label">订单状态</text>
-        <text class="info-value">{{order.statusText}}</text>
+        <text class="info-value">{{order.statusText || '--'}}</text>
       </view>
     </view>
     <view class="section-title">购买信息</view>
     <view class="info-card">
       <view class="info-row">
         <text class="info-label">商品价格</text>
-        <text class="info-value">{{order.pointsPrice }}积分/个</text>
+        <text class="info-value">{{order.pointsPrice !== undefined && order.pointsPrice !== null ? order.pointsPrice + '积分/个' : '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">商品数量</text>
-        <text class="info-value">x{{order.quantity}}</text>
+        <text class="info-value">{{order.quantity ? 'x' + order.quantity : '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">兑换积分</text>
-        <text class="info-value">{{order.pointsPrice * order.quantity}}积分</text>
+        <text class="info-value">{{order.pointsPrice && order.quantity ? order.pointsPrice * order.quantity + '积分' : '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">支付方式</text>
         <text class="info-value">积分兑换</text>
       </view>
-      <view class="info-row" wx:if="{{order.createTime}}">
+      <view class="info-row">
         <text class="info-label">兑换时间</text>
-        <text class="info-value">{{order.createTime}}</text>
+        <text class="info-value">{{order.createTime || '--'}}</text>
       </view>
-      <view class="info-row" wx:if="{{order.mallUserName}}">
+      <view class="info-row">
         <text class="info-label">兑换人</text>
-        <text class="info-value">{{order.mallUserName}}</text>
+        <text class="info-value">{{order.mallUserName || '--'}}</text>
       </view>
     </view>
     <view class="section-title">快递信息</view>
     <view class="info-card">
       <view class="info-row">
         <text class="info-label">快递公司</text>
-        <text class="info-value">{{order.courierCompanyName || ''}}</text>
+        <text class="info-value">{{order.courierCompanyName || '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">快递单号</text>
         <view class="info-value-copy">
-          <text class="info-value courier-number">{{order.courierNumber || ''}}</text>
+          <text class="info-value courier-number">{{order.courierNumber || '--'}}</text>
           <view class="copy-button" wx:if="{{order.courierNumber}}" data-text="{{order.courierNumber}}" bindtap="copyText">复制</view>
         </view>
       </view>
       <view class="info-row">
         <text class="info-label">发货时间</text>
-        <text class="info-value">{{order.deliveryTime || ''}}</text>
+        <text class="info-value">{{order.deliveryTime || '--'}}</text>
       </view>
     </view>
     <view class="section-title">收货信息</view>
     <view class="info-card">
       <view class="info-row">
         <text class="info-label">收件地址</text>
-        <text class="info-value">{{order.addressDetail || ''}}</text>
+        <text class="info-value">{{order.addressDetail || '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">收件人</text>
-        <text class="info-value">{{order.mallUserName || ''}}</text>
+        <text class="info-value">{{order.mallUserName || '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">联系电话</text>
-        <text class="info-value">{{order.mallUserPhone ||''}}</text>
+        <text class="info-value">{{order.mallUserPhone || '--'}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">收货时间</text>
-        <text class="info-value">{{order.receivingTime || ''}}</text>
+        <text class="info-value">{{order.receivingTime || '--'}}</text>
       </view>
     </view>
     <view class="bottom-actions">
