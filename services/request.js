@@ -78,12 +78,14 @@ class httpClient {
         console.log("response.data", response.data.code);
         return Promise.resolve(response.data);
       } else {
-        wx.showToast({
-          title: response.data.msg,
-          duration: 2000,
-          icon: "none",
-          mask: false,
-        });
+        if (response.config.showErrorToast !== false) {
+          wx.showToast({
+            title: response.data?.msg || "请求失败",
+            duration: 2000,
+            icon: "none",
+            mask: false,
+          });
+        }
         return Promise.reject(response);
       }
     },

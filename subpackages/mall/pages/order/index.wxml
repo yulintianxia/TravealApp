@@ -39,9 +39,9 @@
                 </text> -->
               </view>
               <text class="product-desc" wx:if="{{item.description}}">{{item.description}}</text>
-              <text title="{{item.filterStr}}" class="product-desc" wx:if="{{item.filterStr}}">
+              <!-- <text title="{{item.filterStr}}" class="product-desc" wx:if="{{item.filterStr}}">
                 {{item.filterStr}}
-              </text>
+              </text> -->
             </view>
             <view class="price-col">
               <!-- <text class="status-label">{{getDate.judgmentState(item.status)}}</text> -->
@@ -63,7 +63,7 @@
             <view class="confirm-btn" catchtap="orderChcek" wx:if="{{item.status == 2 }}" data-id="{{item.keyId}}">
               确认收货
             </view>
-            <view class="confirm-btn" catchtap="goToComment" wx:if="{{!item.reviewed && item.status == 3}}" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">
+            <view class="confirm-btn review-btn" catchtap="goToComment" wx:if="{{!item.reviewed && item.status == 3}}" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">
               去评价
             </view>
             <view class="confirm-btn review-btn" catchtap="goToReview" wx:if="{{item.reviewed && item.status == 3}}" data-id="{{item.goodsId}}">

@@ -9,6 +9,8 @@ Page({
     remainingPoints: 0,
     submitting: false,
     showConfirmPopup: false,
+    showErrorPopup: false,
+    errorMessage: "",
   },
 
   onLoad(options) {
@@ -123,6 +125,10 @@ Page({
     }
   },
 
+  closeErrorPopup() {
+    this.setData({ showErrorPopup: false, errorMessage: "" });
+  },
+
   confirmPopupSubmit() {
     if (this.data.submitting) return;
     this.setData({ showConfirmPopup: false }, () => {
@@ -145,15 +151,24 @@ Page({
         cartItems,
       };
 
-      let res = await RequestApi.createOrder(params);
+      let res = await RequestApi.createOrder(params, { showErrorToast: false });
       if (res && res.code == 200) {
         wx.showToast({ title: "兑换成功", icon: "success", duration: 1000 });
         setTimeout(() => wx.navigateTo({ url: "/subpackages/mall/pages/order/index" }), 1000);
       } else {
-        wx.showToast({ title: res.msg || "兑换失败", icon: "none" });
+        console.log("res", res?.msg);
+        this.setData({
+          showErrorPopup: true,
+          errorMessage: res?.msg || "兑换失败",
+        });
       }
     } catch (error) {
       console.error("confirmOrder error:", error);
+      this.setData({
+        showErrorPopup: true,
+        errorMessage:
+          error?.data?.msg || error?.data?.message || error?.msg || "兑换失败，请稍后重试",
+      });
     } finally {
       this.setData({ submitting: false });
     }

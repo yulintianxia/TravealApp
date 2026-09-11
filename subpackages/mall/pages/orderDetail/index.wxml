@@ -31,7 +31,6 @@
       <view class="info-row">
         <text class="info-label">商品标签</text>
         <text class="info-value">
-          <text wx:if="{{!order.tags || !order.tags.length}}">--</text>
           <text class="chip" wx:for="{{order.tags}}" title="{{item.name}}" wx:key="*this">{{item.name}}</text>
         </text>
       </view>

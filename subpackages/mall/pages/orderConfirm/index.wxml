@@ -54,3 +54,13 @@
     </view>
   </view>
 </view>
+
+<view wx:if="{{showErrorPopup}}" class="confirm-popup-mask" bindtap="closeErrorPopup">
+  <view class="confirm-popup error-popup" catchtap="">
+    <view class="confirm-popup-title">兑换失败</view>
+    <view class="confirm-popup-text">{{errorMessage}}</view>
+    <view class="confirm-popup-actions error-popup-actions">
+      <view class="confirm-popup-submit" bindtap="closeErrorPopup">知道了</view>
+    </view>
+  </view>
+</view>
