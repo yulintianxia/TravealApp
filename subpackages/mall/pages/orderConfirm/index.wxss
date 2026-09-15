@@ -135,6 +135,32 @@ page {
 .goods-count {
   color: #eeeeee;
   font-size: 28rpx;
+  min-width: 44rpx;
+  text-align: center;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+}
+
+.step-btn {
+  width: 48rpx;
+  height: 48rpx;
+  line-height: 44rpx;
+  box-sizing: border-box;
+  border: 1rpx solid rgba(255, 255, 255, 0.18);
+  color: #eeeeee;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.step-btn.minus {
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.step-btn.plus {
+  border-radius: 0 8rpx 8rpx 0;
 }
 
 .order-note {

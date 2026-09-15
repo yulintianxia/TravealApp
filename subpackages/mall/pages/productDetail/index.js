@@ -340,7 +340,7 @@ Page({
       wx.showToast({ title: "缺少商品信息", icon: "none" });
       return;
     }
-    this.goExchangePage(this.data.keyId);
+      this.goExchangePage(this.data.keyId, this.data.product);
   
   },
 
@@ -387,9 +387,15 @@ Page({
     }
   },
 
-  goExchangePage(goodsId) {
+  goExchangePage(goodsId, product) {
     wx.navigateTo({
-      url: `/subpackages/mall/pages/orderConfirm/index?ids=${goodsId}`,
+      url: `/subpackages/mall/pages/orderConfirm/index?mode=direct&ids=${goodsId}`,
+      success: (res) => {
+        res.eventChannel.emit("directExchangeData", {
+          product: product || this.data.product,
+          quantity: 1,
+        });
+      },
     });
   },
 

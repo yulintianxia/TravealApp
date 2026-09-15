@@ -11,29 +11,60 @@ Page({
     showConfirmPopup: false,
     showErrorPopup: false,
     errorMessage: "",
+    directExchange: false,
   },
 
   onLoad(options) {
+    const directExchange = options.mode === "direct";
     const selectedIds = (options.ids || "")
       .split(",")
       .filter(Boolean)
       .map((id) => Number(id));
-    this.setData({ selectedIds });
+    this.setData({ selectedIds, directExchange });
+    if (directExchange) {
+      const eventChannel = this.getOpenerEventChannel();
+      eventChannel.on("directExchangeData", ({ product, quantity = 1 }) => {
+        this.setDirectExchangeProduct(product, quantity);
+        this.loadConfirmData();
+      });
+      return;
+    }
     this.loadConfirmData();
+  },
+
+  setDirectExchangeProduct(product, quantity = 1) {
+    if (!product) return;
+    const goodsList = [{
+      ...product,
+      goodsId: product.goodsId || product.keyId,
+      goodsName: product.goodsName || product.name,
+      goodsCoverImage: product.goodsCoverImage || product.coverImage || product.mainPicture,
+      quantity: Math.max(1, Number(quantity) || 1),
+      filterStr: this.filterData(product.specs || ""),
+    }];
+    this.setData({ goodsList }, () => this.updateTotalPoints());
+  },
+
+  updateTotalPoints() {
+    const totalPoints = (this.data.goodsList || []).reduce(
+      (sum, item) => sum + Number(item.pointsPrice || 0) * Number(item.quantity || 1),
+      0,
+    );
+    this.setData({ totalPoints });
   },
 
   async loadConfirmData() {
     try {
       const [cartRes, addressRes, gradeRes] = await Promise.all([
-        RequestApi.cartList({}),
+        this.data.directExchange ? Promise.resolve({ data: [] }) : RequestApi.cartList({}),
         RequestApi.addressList({ pageNum: 1, pageSize: 10 }),
         RequestApi.getGrade(),
       ]);
       const selected = this.data.selectedIds.map((id) => String(id));
       const allGoods = cartRes?.data || [];
-      const goodsListData = allGoods.filter(
-        (item) => selected.indexOf(String(item.goodsId)) !== -1,
-      );
+      const goodsListData = this.data.directExchange
+        ? this.data.goodsList
+        : allGoods.filter((item) => selected.indexOf(String(item.goodsId)) !== -1);
       const addressList = addressRes?.data || [];
       const address =
         addressList.find((item) => Number(item.isDefault) === 1) ||
@@ -81,6 +112,28 @@ Page({
       }
     });
     return filterStr.slice(0, -1);
+  },
+
+  changeQuantity(e) {
+    const index = Number(e.currentTarget.dataset.index);
+    const type = e.currentTarget.dataset.type;
+    const item = this.data.goodsList[index];
+    if (!item) return;
+
+    const currentQuantity = Number(item.quantity || 1);
+    if (type === "minus" && currentQuantity <= 1) return;
+    const quantity = type === "minus"
+      ? currentQuantity - 1
+      : currentQuantity + 1;
+    const goodsList = this.data.goodsList.slice();
+    goodsList[index] = { ...item, quantity };
+    this.setData({ goodsList }, () => {
+      this.updateTotalPoints();
+      const cartId = item.cartId || item.keyId;
+      if (!this.data.directExchange && cartId) {
+        RequestApi.cartUpdate({ keyId: cartId, quantity });
+      }
+    });
   },
 
   chooseAddress() {
@@ -138,11 +191,17 @@ Page({
   async realSumbit() {
     this.setData({ submitting: true });
     try {
-      let cartItems = this.data.goodsList.map((item) => ({
-        goodsId: item.goodsId,
-        quantity: item.quantity,
-        cartId: item.cartId,
-      }));
+      const cartItems = this.data.goodsList.map((item) => {
+        if (this.data.directExchange) {
+          return {
+            goodsId: item.goodsId,
+            quantity: item.quantity,
+          };
+        }
+        return {
+          cartId: item.keyId,
+        };
+      });
 
       let params = {
         addressDetail: this.data.address.detailedAddress,

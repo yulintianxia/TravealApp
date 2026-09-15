@@ -26,7 +26,11 @@
         <text class="goods-meta" wx:if="{{item.filterStr}}">{{item.filterStr}}</text>
         <view class="goods-bottom">
           <text class="goods-price">{{item.pointsPrice}}积分/副</text>
-          <text class="goods-count">x {{item.quantity || 1}}</text>
+          <view class="stepper">
+            <view class="step-btn minus" data-index="{{index}}" data-type="minus" catchtap="changeQuantity">-</view>
+            <text class="goods-count">{{item.quantity || 1}}</text>
+            <view class="step-btn plus" data-index="{{index}}" data-type="plus" catchtap="changeQuantity">+</view>
+          </view>
         </view>
       </view>
     </view>
