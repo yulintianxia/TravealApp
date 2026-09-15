@@ -1,6 +1,21 @@
 // subpackages/mall/pages/weStore/index.js
 Page({
 
+  onQrLongPress() {
+    // wx.navigateToMiniProgram({
+    //   appId: "wxb74828a7b042024b",
+    //   envVersion: "release",
+    //   success: () => {},
+    //   fail: () => {
+    //     wx.showToast({
+    //       title: "请使用微信菜单识别二维码",
+    //       icon: "none",
+    //       duration: 1800,
+    //     });
+    //   },
+    // });
+  },
+
   /**
    * 页面的初始数据
    */

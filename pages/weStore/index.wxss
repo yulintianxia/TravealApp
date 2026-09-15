@@ -34,7 +34,7 @@ page {
 .hero-copy {
     position: absolute;
     left: 72rpx;
-    top: 250rpx;
+    top: 200rpx;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -49,7 +49,7 @@ page {
 }
 
 .hero-title {
-    font-size: 80rpx;
+    font-size: 70rpx;
     font-weight: 700;
     line-height: 1;
 }
@@ -57,61 +57,24 @@ page {
 .hero-subtitle {
     order: 3;
     margin-top: 28rpx;
-    font-size: 40rpx;
+    font-size: 30rpx;
     letter-spacing: 4rpx;
 }
 
 .phone-preview {
     position: absolute;
-    top: 90rpx;
-    right: -115rpx;
+    top: 70rpx;
+    right: 10rpx;
     z-index: 3;
-    width: 520rpx;
-    height: 920rpx;
-    padding: 34rpx 18rpx;
-    box-sizing: border-box;
-    border: 10rpx solid #f7f7f7;
-    border-radius: 72rpx;
-    background: #24191b;
-    box-shadow: -12rpx 18rpx 30rpx rgba(44, 25, 12, 0.25);
-    transform: rotate(-2deg);
+    width: 500rpx;
+    line-height: 0;
+    /* transform: rotate(-2deg); */
 }
 
-.phone-speaker {
-    position: absolute;
-    top: 16rpx;
-    left: 205rpx;
-    width: 100rpx;
-    height: 14rpx;
-    border-radius: 10rpx;
-    background: #111;
+.phone-image {
+    width: 100%;
+    display: block;
 }
-
-.phone-screen {
-    height: 100%;
-    padding: 38rpx 18rpx 20rpx;
-    box-sizing: border-box;
-    background: #fff;
-    border-radius: 48rpx;
-}
-
-.phone-nav, .shop-profile, .shop-tabs {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.phone-nav { color: #4b3231; font-size: 28rpx; }
-.phone-search { padding: 8rpx 34rpx; border-radius: 24rpx; background: #f1eeee; color: #947b79; font-size: 18rpx; }
-.shop-profile { justify-content: flex-start; margin-top: 38rpx; gap: 18rpx; }
-.shop-profile image { width: 70rpx; height: 70rpx; border-radius: 50%; background: #a52f37; }
-.shop-name { display: block; font-size: 25rpx; font-weight: 600; }
-.shop-sales { display: block; margin-top: 8rpx; color: #999; font-size: 18rpx; }
-.shop-tabs { margin-top: 42rpx; color: #999; font-size: 20rpx; }
-.shop-tabs text:first-child { color: #222; font-weight: 600; border-bottom: 4rpx solid #222; padding-bottom: 10rpx; }
-.phone-product { margin-top: 28rpx; padding: 24rpx; border-radius: 18rpx; background: #f7fafb; color: #766f6b; font-size: 25rpx; }
-.product-art { height: 170rpx; margin-bottom: 22rpx; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 36rpx; background: linear-gradient(135deg, #eee8dd, #bd9b77); }
-.product-count { display: block; margin-top: 10rpx; color: #bbb; font-size: 20rpx; }
 
 .qr-panel {
     position: relative;
