@@ -47,6 +47,7 @@ Page({
     loading: false,
     noMore: false,
     bannerList:[],
+    currentBannerIndex: 0,
     allProducts: [],
   },
 
@@ -75,6 +76,7 @@ Page({
       loading: false,
       noMore: false,
       bannerList: [],
+      currentBannerIndex: 0,
       allProducts: [],
     }, () => {
       this.getBannerList();
@@ -92,6 +94,25 @@ Page({
         });
       }
    },
+
+  onBannerChange(e) {
+    this.setData({ currentBannerIndex: e.detail.current });
+  },
+
+  handleBannerTap(e) {
+    const { url } = e.currentTarget.dataset;
+    if (/^https?:\/\//i.test(url)) {
+      wx.navigateTo({
+        url: "/subpackages/account/pages/webView/index",
+        success: (res) => res.eventChannel.emit("webViewData", { url,
+          httpUrl:true,
+         }),
+      });
+      return;
+    }
+    wx.navigateTo({ url });
+  },
+
   async getProducts(reset = true) {
     if (this.data.loading) return;
 

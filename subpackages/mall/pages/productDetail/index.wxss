@@ -10,6 +10,13 @@ page {
   padding-bottom: 180rpx;
 }
 
+
+.limitPerUser{
+  font-size: 28rpx;
+  margin-left:8rpx;
+    /* background: #090d13; */
+}
+
 .detail-header {
   display: flex;
   align-items: center;
@@ -145,7 +152,7 @@ page {
 .price-row {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 18rpx;
 }
 
@@ -155,9 +162,18 @@ page {
   font-weight: 700;
 }
 
+.purchase-limit {
+  margin-left: 12rpx;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: nowrap;
+}
+
 .redeem {
   font-size: 26rpx;
   color: rgba(255, 255, 255, 0.72);
+  flex-grow: 1;
+  text-align: right;
 }
 
 .product-title {
@@ -176,6 +192,18 @@ page {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+}
+
+.product-explain.expanded {
+  display: block;
+  overflow: visible;
+}
+
+.explain-toggle {
+  margin-top: 10rpx;
+  color: #e7c985;
+  font-size: 24rpx;
+  text-align: right;
 }
 
 .shipping-row {

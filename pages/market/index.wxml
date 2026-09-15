@@ -1,8 +1,8 @@
 <view class="market-page">
   <view class="hero-zone">
-    <swiper class="hero-swiper" autoplay circular duration="500" interval="5000" indicator-dots indicator-color="rgba(255, 255, 255, 0.45)" indicator-active-color="#f0d79a">
+    <swiper class="hero-swiper" autoplay circular duration="500" interval="5000" indicator-dots indicator-color="rgba(255, 255, 255, 0.45)" indicator-active-color="#f0d79a" bindchange="onBannerChange" >
       <swiper-item wx:for="{{bannerList}}" wx:key="index">
-        <image class="hero-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+        <image class="hero-image" data-url="{{item.linkUrl}}" bindtap="handleBannerTap" src="{{item.imageUrl}}" mode="aspectFill"></image>
       </swiper-item>
     </swiper>
   </view>
@@ -44,7 +44,7 @@
           </view>
         </view>
       </view>
-      <view class="list-footer" wx:if="{{products.length}}">
+      <view class="list-footer" wx:if="{{loading || noMore}}">
         <text wx:if="{{loading}}">加载中...</text>
         <text wx:elif="{{noMore}}">没有更多了</text>
       </view>

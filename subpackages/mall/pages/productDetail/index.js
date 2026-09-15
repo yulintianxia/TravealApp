@@ -24,6 +24,9 @@ Page({
     reviewListOne: {},
     totalReviews: 0,
     tags: [],
+    purchaseLimits: "",
+    descriptionLong: false,
+    descriptionExpanded: false,
     cartCount: 0,
     deliveryTime: "",
     showStroe: false,
@@ -60,6 +63,16 @@ Page({
       });
     }
   },
+  limitTypeFun(value) {
+    if (value == "lifetime") {
+      return "终身";
+    } else if (value == "monthly") {
+      return "每月";
+    } else {
+      return "每年";
+    }
+  },
+
   async loadDetail(keyId) {
     let res = await RequestApi.goodsDetail({ keyId });
 
@@ -84,12 +97,19 @@ Page({
 
       this.setData({
         product: detail,
+        descriptionLong: (detail.description || "").length > 120,
+        descriptionExpanded: false,
         // mediaList: this.normalizeMediaList(detail),
+        limitType: this.limitTypeFun(detail?.limitPeriod),
         mediaList,
         specs: specsArray,
         tags: detail.tags || [],
       });
     }
+  },
+
+  toggleDescription() {
+    this.setData({ descriptionExpanded: !this.data.descriptionExpanded });
   },
 
   normalizeMediaList(detail) {
@@ -280,46 +300,55 @@ Page({
     }
   },
 
-  async exchange() {
+  // async exchange() {
+  //   if (!this.data.keyId) {
+  //     wx.showToast({ title: "缺少商品信息", icon: "none" });
+  //     return;
+  //   }
+
+  //   try {
+  //     const res = await RequestApi.cartList({});
+
+  //     console.log("res", res);
+
+  //     if (res && res.code == 200) {
+  //       const cartItem = (res?.data || []).find(
+  //         (item) => item.goodsId == this.data.keyId,
+  //       );
+
+  //       console.log("cartItem", cartItem);
+  //       if (Number(cartItem?.quantity || 0) >= 1) {
+  //         this.goExchangePage(cartItem.goodsId);
+  //         return;
+  //       }
+
+  //       this.setData({
+  //         showExchangeDialog: true,
+  //         exchangeQuantity: 1,
+  //         exchangeCartItemId: cartItem?.keyId || "",
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("exchange error:", error);
+  //     wx.showToast({ title: "获取购物车失败", icon: "none" });
+  //   }
+  // },
+
+
+    async exchange() {
     if (!this.data.keyId) {
       wx.showToast({ title: "缺少商品信息", icon: "none" });
       return;
     }
-
-    try {
-      const res = await RequestApi.cartList({});
-
-      console.log("res", res);
-
-      if (res && res.code == 200) {
-        const cartItem = (res?.data || []).find(
-          (item) => item.goodsId == this.data.keyId,
-        );
-      
-        console.log("cartItem", cartItem);
-        if (Number(cartItem?.quantity || 0) >=1) {
-          this.goExchangePage(cartItem.goodsId);
-          return;
-        }
-
-        this.setData({
-          showExchangeDialog: true,
-          exchangeQuantity: 1,
-          exchangeCartItemId: cartItem?.keyId || "",
-        });
-      }
-    } catch (error) {
-      console.error("exchange error:", error);
-      wx.showToast({ title: "获取购物车失败", icon: "none" });
-    }
+    this.goExchangePage(this.data.keyId);
+  
   },
 
   changeExchangeQuantity(e) {
     const { type } = e.currentTarget.dataset;
     const currentQuantity = Number(this.data.exchangeQuantity || 1);
-    const exchangeQuantity = type === "minus"
-      ? Math.max(1, currentQuantity - 1)
-      : currentQuantity + 1;
+    const exchangeQuantity =
+      type === "minus" ? Math.max(1, currentQuantity - 1) : currentQuantity + 1;
 
     this.setData({ exchangeQuantity });
   },

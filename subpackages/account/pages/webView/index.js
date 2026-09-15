@@ -1,12 +1,11 @@
 // pages/webView/index.js
-import { H5Url } from '../../../../config/index';
+import { H5Url } from "../../../../config/index";
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    url: '',
+    url: "",
   },
   onLoad: function (options) {
     this.setData({
@@ -17,72 +16,59 @@ Page({
     if (eventChannel) {
       eventChannel.on("webViewData", (data) => {
         if (data?.wechatCode) {
-          console.log('公众号链接',data.url);
+          console.log("公众号链接", data.url);
           this.setData({
-            url: `${data.url}`
+            url: `${data.url}`,
           });
-
         } else {
-          this.setData({
-            url: `${H5Url}${data.url}?levelId=${data.levelId}&token=${wx.getStorageSync('token')}`
-          });
+          if (data?.httpUrl) {
+            this.setData({
+              url: data.url,
+            });
+          } else {
+            this.setData({
+              url: `${H5Url}${data.url}?levelId=${data.levelId}&token=${wx.getStorageSync("token")}`,
+            });
+          }
         }
-
       });
     }
   },
 
-  getUrl() {
-
-  },
-
+  getUrl() {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
-  },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
-  },
+  onPullDownRefresh() {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  }
-})
+  onShareAppMessage() {},
+});
