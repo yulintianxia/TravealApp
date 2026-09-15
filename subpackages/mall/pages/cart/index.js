@@ -19,11 +19,27 @@ Page({
       const res = await RequestApi.cartList({});
       const cartList = ((res && res.data) || []).map((item) => ({
         ...item,
+        filterStr: this.filterData(item.specs),
         isSelected: false,
       }));
       this.setData({ cartList, selectedIds: [], selectedAll: false, totalPoints: 0 }, () => {
         this.updateSummary();
       });
+  },
+
+  filterData(str) {
+    if (!str) return "";
+
+    try {
+      const dataArray = Array.isArray(str) ? str : JSON.parse(str);
+      return dataArray
+        .filter((item) => item.showInOrder)
+        .map((item) => item.value)
+        .filter(Boolean)
+        .join(",");
+    } catch (error) {
+      return "";
+    }
   },
 
   toggleSelect(e) {

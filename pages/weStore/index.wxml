@@ -1,4 +1,40 @@
-<!--subpackages/mall/pages/weStore/index.wxml-->
-<view class='store-home-container'>
-<store-home class="store-home" appid='wxb74828a7b042024b'></store-home>
+<view class="store-page">
+	<view class="store-hero">
+		<view class="hero-copy">
+			<text class="hero-kicker">ZHENGLIAN · PRODUCT</text>
+			<text class="hero-title">正莲</text>
+			<text class="hero-subtitle">微信小店</text>
+		</view>
+		<view class="phone-preview">
+			<view class="phone-speaker"></view>
+			<view class="phone-screen">
+				<view class="phone-nav">
+					<text>‹</text>
+					<text class="phone-search">⌕ 包心棉垫</text>
+					<text>⋯</text>
+				</view>
+				<view class="shop-profile">
+					<image src="/images/new/2.png" mode="aspectFit"></image>
+					<view>
+						<text class="shop-name">正莲（ZHENGLIAN）</text>
+						<text class="shop-sales">已售 124</text>
+					</view>
+				</view>
+				<view class="shop-tabs"><text>精选</text><text>商品</text><text>分类</text><text>评价</text></view>
+				<view class="phone-product">
+					<view class="product-art">正莲</view>
+					<text>回头客常买</text>
+					<text class="product-count">3 个商品</text>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="qr-panel">
+		<view class="qr-frame">
+			<image class="store-qr" src="/images/new/xiaodian.png" mode="aspectFit" show-menu-by-longpress="true"></image>
+		</view>
+		<view class="qr-caption">扫码进入微店直接购买</view>
+		<view class="qr-tip">长按二维码，识别后进入微信小店</view>
+	</view>
 </view>

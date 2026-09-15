@@ -53,10 +53,7 @@
               <text class="amount-price">¥{{item.pointsPrice * item.quantity}}</text>
             </view>
           </view>
-          <view class='card-order' wx:if="{{item.deliveryTime}}">
-            <view class="product-desc-time fr" catchtap="handleCopy" data-number="{{item.courierNumber}}" wx:if="{{item.courierNumber}}">
-              {{item.courierCompanyName}} {{item.courierNumber}} | 复制
-            </view>
+          <view class='card-order' wx:if="{{item.createTime}}">
             <view>兑换时间：{{item.createTime}}</view>
           </view>
           <view class="card-action">

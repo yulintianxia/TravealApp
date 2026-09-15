@@ -19,6 +19,7 @@
             <view class="product-name">{{item.goodsName}}</view>
             <view class="delete-btn" data-index="{{index}}" data-id="{{item.keyId}}" catchtap="deleteItem">删除</view>
           </view>
+          <view class="goods-meta" wx:if="{{item.filterStr}}">{{item.filterStr}}</view>
           <view class="product-amount-row">
             <view class="product-price">{{item.pointsPrice}}积分/副</view>
             <view class="stepper">

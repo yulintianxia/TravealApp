@@ -22,11 +22,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "subpackages/mall/pages/cart/index",
-          "pathName": "subpackages/mall/pages/cart/index",
+          "name": "pages/weStore/index",
+          "pathName": "pages/weStore/index",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "subpackages/mall/pages/cart/index",
+          "pathName": "subpackages/mall/pages/cart/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "subpackages/mall/pages/orderConfirm/index",

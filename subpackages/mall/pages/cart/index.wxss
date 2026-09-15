@@ -166,6 +166,16 @@ page {
   font-weight: 600;
   flex: 1;
   min-width: 0;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.goods-meta {
+  margin-bottom: 10rpx;
+  color: #9b9b9b;
+  font-size: 25rpx;
 }
 
 .delete-btn {
