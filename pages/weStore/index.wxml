@@ -1,4 +1,4 @@
-<view class="store-page">
+<!-- <view class="store-page">
 	<view class="store-hero">
 		<view class="hero-copy">
 			<text class="hero-kicker">ZHENGLIAN · PRODUCT</text>
@@ -15,6 +15,8 @@
 			<image class="store-qr" src="/images/new/xiaodian.png" mode="aspectFit" show-menu-by-longpress="true" bindlongpress="onQrLongPress"></image>
 		</view>
 		<view class="qr-caption">扫码进入微店直接购买</view>
-		<!-- <view class="qr-tip">长按二维码，识别后进入微信小店</view> -->
 	</view>
+</view> -->
+<view class='store-home-container'>
+    <store-home class="store-home" appid='wxb74828a7b042024b'></store-home>
 </view>
