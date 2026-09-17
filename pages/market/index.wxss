@@ -143,6 +143,27 @@ page {
   padding:0 10rpx;
 }
 
+.cart-entry {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+  width: 116rpx;
+  height: 58rpx;
+  box-sizing: border-box;
+  margin-right: 8rpx;
+  border: 1px solid #f0e3c0;
+  border-radius: 10rpx;
+  color: #f0e3c0;
+  font-size: 22rpx;
+}
+
+.cart-entry-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
 .tab-item {
   flex: 1;
   min-width: 0;
@@ -167,8 +188,8 @@ page {
   gap: 8rpx;
   text-align: center;
   font-size: 24rpx;
-  padding:  4rpx;
-  width:100rpx;
+  padding:4rpx;
+  width:110rpx;
   color: rgba(255, 255, 255, 0.72);
   border: 1px solid #f0e3c0;
   border-radius: 10rpx;
@@ -176,11 +197,11 @@ page {
 }
 
 .tab-item2 .tab-label {
-  max-width: 100%;
   /* overflow: hidden; */
   /* text-overflow: ellipsis; */
   white-space: nowrap;
   width:130rpx;
+  padding:2rpx 10rpx;
   display: inline-block;
 }
 
@@ -233,9 +254,9 @@ page {
 }
 
 .market-sidebar {
-  width: 140rpx;
+  width: 150rpx;
   flex-shrink: 0;
-  padding: 0 12rpx 0 ;
+  padding: 0 10rpx 0 ;
   box-sizing: border-box;
   border-right: 1rpx solid rgba(255, 255, 255, 0.06);
 }
@@ -248,7 +269,7 @@ page {
   height: 70rpx;
   padding: 0 8rpx;
   box-sizing: border-box;
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: rgba(255, 255, 255, 0.72);
   border: 1rpx solid rgba(255, 255, 255, 0.04);
   border-radius: 16rpx;

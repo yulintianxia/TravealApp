@@ -31,10 +31,10 @@ Page({
         label: "销量",
         value: "sales",
       },
-      {
-        label: "评价",
-        value: "rating",
-      },
+      // {
+      //   label: "评价",
+      //   value: "rating",
+      // },
     ],
     tabs2:[],
     // categories: ["全部", "服饰配件", "生活用品", "菩提", "潮流女包"],
@@ -252,6 +252,10 @@ Page({
     wx.navigateTo({
       url: `/subpackages/mall/pages/productDetail/index?keyId=${productId}`,
     });
+  },
+
+  goCart() {
+    wx.navigateTo({ url: "/subpackages/mall/pages/cart/index" });
   },
 
   onShareAppMessage() {

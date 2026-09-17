@@ -9,7 +9,15 @@
     <swiper class="hero-swiper" current="{{currentMediaIndex}}" indicator-dots="{{mediaList.length > 1}}" indicator-color="rgba(255, 255, 255, 0.45)" indicator-active-color="#f0d79a" bindchange="onMediaChange">
       <swiper-item wx:for="{{mediaList}}" wx:key="index">
         <image wx:if="{{item.type === 'image'}}" class="hero-image" src="{{item.url}}" mode="aspectFill"></image>
-        <video wx:else id="product-video-{{index}}" class="hero-video" src="{{item.url}}" object-fit="cover" controls="{{true}}" show-center-play-btn="{{true}}" enable-progress-gesture="{{true}}"></video>
+        <view wx:else class="video-wrap">
+          <video id="product-video-{{index}}" class="hero-video" src="{{item.url}}" object-fit="cover" controls="{{true}}" show-center-play-btn="{{true}}" show-playback-rate="{{true}}" enable-progress-gesture="{{true}}"></video>
+          <view class="speed-control" catchtap="toggleSpeedMenu">
+            <text>{{videoSpeed}}x</text>
+            <view wx:if="{{showSpeedMenu}}" class="speed-menu" catchtap="stopPropagation">
+              <view wx:for="{{playbackRates}}" wx:key="*this" class="speed-option {{videoSpeed === item ? 'active' : ''}}" data-rate="{{item}}" catchtap="setVideoSpeed">{{item}}x</view>
+            </view>
+          </view>
+        </view>
       </swiper-item>
     </swiper>
   </view>
@@ -33,7 +41,7 @@
     </view>
     <view class="shipping-row" bindtap="goAddressList">
       <text class="shipping-text shopping-send">发货</text>
-      <text class="shipping-text">承诺{{product.deliveryHours || 48}}小时内发货</text>
+      <text class="shipping-text">承诺{{product.deliveryHours || 48}}{{product.deliveryUnit =='hours' ? '小时':'天' }}内发货</text>
       <text class="shipping-text right">{{delivery}}</text>
       <text class="arrow">›</text>
     </view>

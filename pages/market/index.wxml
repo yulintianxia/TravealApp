@@ -7,6 +7,10 @@
     </swiper>
   </view>
   <view class="tab-bar">
+    <view class="cart-entry" bindtap="goCart">
+      <image class="cart-entry-icon" src="../../images/home/22.png" mode="aspectFit"></image>
+      <text>购物车</text>
+    </view>
     <view wx:for="{{tabs}}" wx:key="*this" class="tab-item {{activeTab === item.value ? 'active' : ''}}" data-tab="{{item.value}}" bindtap="onTabChange">
       <text class="tab-label">{{item.label}}</text>
       <text class="tab-sort-icon">{{sortState[item.value] ? '↑' : '↓'}}</text>

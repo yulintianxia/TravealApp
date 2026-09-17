@@ -19,6 +19,9 @@ Page({
     product: {},
     mediaList: [],
     currentMediaIndex: 0,
+    videoSpeed: 1,
+    playbackRates: [0.5, 1, 1.5, 2],
+    showSpeedMenu: false,
     specs: [],
     reviewList: [],
     reviewListOne: {},
@@ -170,7 +173,28 @@ Page({
         this,
       ).stop();
     }
-    this.setData({ currentMediaIndex });
+    this.setData({ currentMediaIndex, showSpeedMenu: false }, () => {
+      if (this.data.mediaList[currentMediaIndex]?.type === "video") {
+        wx.createVideoContext(`product-video-${currentMediaIndex}`, this)
+          .setPlaybackRate(this.data.videoSpeed);
+      }
+    });
+  },
+
+  toggleSpeedMenu() {
+    this.setData({ showSpeedMenu: !this.data.showSpeedMenu });
+  },
+
+  setVideoSpeed(e) {
+    const videoSpeed = Number(e.currentTarget.dataset.rate);
+    if (!videoSpeed) return;
+
+    this.setData({ videoSpeed, showSpeedMenu: false }, () => {
+      wx.createVideoContext(
+        `product-video-${this.data.currentMediaIndex}`,
+        this,
+      ).setPlaybackRate(videoSpeed);
+    });
   },
 
   onTabChange(e) {
@@ -284,8 +308,9 @@ Page({
 
     let res = await RequestApi.cartAdd(params);
     if (res && res.code === 200) {
-      wx.showToast({ title: "已加入购物车", icon: "success", duration: 1000 });
+      
       this.updateCartCount();
+      wx.showToast({ title: "已加入购物车", icon: "success", });
     } else {
       wx.showToast({ title: "加入失败", icon: "none" });
     }

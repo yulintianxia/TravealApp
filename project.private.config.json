@@ -22,11 +22,25 @@
     "miniprogram": {
       "list": [
         {
+          "name": "subpackages/mall/pages/productDetail/index",
+          "pathName": "subpackages/mall/pages/productDetail/index",
+          "query": "keyId=16",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/market/index",
+          "pathName": "pages/market/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/weStore/index",
           "pathName": "pages/weStore/index",
           "query": "",
-          "scene": null,
-          "launchMode": "default"
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "subpackages/mall/pages/cart/index",
