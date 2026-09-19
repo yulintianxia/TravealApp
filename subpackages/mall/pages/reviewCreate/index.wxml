@@ -5,7 +5,7 @@
       <t-rate value="{{score}}" count="5" size="22" gap="10" color="{{['#f4d58f', '#757575']}}" bind:change="onScoreChange" class="score-rate" />
       <text class="score-value">{{score}}.0 分</text>
     </view>
-     <view class="image-section">
+     <!-- <view class="image-section">
       <view class="form-label">是否匿名<text class="required">*</text></view>
       <view class="upload-wrap">
         <t-radio-group  value="{{isAnonymous}}" default-value="1" bind:change="onChange"  borderless t-class-content='t-class-content'  t-class="t-box">
@@ -13,7 +13,7 @@
           <t-radio block="{{false}}" label="非匿名" value="0" />
         </t-radio-group>
       </view>
-    </view>
+    </view> -->
     <view class="image-section">
       <view class="form-label">宝贝图片</view>
       <view class="upload-wrap">

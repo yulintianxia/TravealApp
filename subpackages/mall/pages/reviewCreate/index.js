@@ -7,7 +7,7 @@ Page({
     content: "",
     imageFiles: [],
     goodsId: "",
-    isAnonymous: "1",
+    isAnonymous: "0",
   },
 
   onLoad(options) {
@@ -91,7 +91,8 @@ Page({
       orderId: this.data.orderId,
       content: this.data.content.trim(),
       pictures: JSON.stringify(this.data.imageFiles.map((file) => file.url)),
-      isAnonymous: this.data.isAnonymous
+      // isAnonymous: this.data.
+      isAnonymous: '0',
     };
     console.log("payload", payload);
     // return 
