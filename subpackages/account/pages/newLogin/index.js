@@ -27,7 +27,7 @@ Page({
 
   async oneClicklogin(e) {
     const { encryptedData, iv, errMsg, code } = e.detail;
-
+    console.log('code',  e.detail);
     if (errMsg !== "getPhoneNumber:ok") {
       wx.showToast({ title: "授权失败，请重新操作", icon: "none" });
       return;
@@ -40,7 +40,7 @@ Page({
       if (loginRes.code) {
           console.log('loginRes',loginRes);
 
-        let res = await RequestApi.loginByWeiXinCode({ code });
+        let res = await RequestApi.loginByWeiXinCode({ code, loginCode:loginRes.code });
         if (res.code === 200 ) {
           wx.setStorageSync("token", res.token);
           wx.setStorageSync("isSetAvatar", res.isSetAvatar);
