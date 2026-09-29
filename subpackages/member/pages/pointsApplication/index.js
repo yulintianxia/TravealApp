@@ -32,8 +32,16 @@ Page({
       eventChannel.on("pointData", (data) => {
         let orderPhotoList = [];
         let {
-          isRead, actualPayment, orderPhoto, paymentMoney,
-          phone, purchasePlatform, remark, wxName, wxNumber, keyId,
+          isRead,
+          actualPayment,
+          orderPhoto,
+          paymentMoney,
+          phone,
+          purchasePlatform,
+          remark,
+          wxName,
+          wxNumber,
+          keyId,
         } = data.pointsData;
 
         this.getplatforms(purchasePlatform);
@@ -42,8 +50,16 @@ Page({
         });
         setTimeout(() => {
           this.setData({
-            isRead, actualPayment, paymentMoney, purchasePlatform,
-            remark, wxName, wxNumber, phone, orderPhotoList, keyId,
+            isRead,
+            actualPayment,
+            paymentMoney,
+            purchasePlatform,
+            remark,
+            wxName,
+            wxNumber,
+            phone,
+            orderPhotoList,
+            keyId,
           });
         }, 100);
       });
@@ -66,12 +82,15 @@ Page({
       header: {
         "Content-type": "multipart/form-data",
         authorization: wx.getStorageSync("token")
-          ? `Bearer ${wx.getStorageSync("token")}` : "",
+          ? `Bearer ${wx.getStorageSync("token")}`
+          : "",
       },
       success: (res) => {
         let resData = JSON.parse(res.data);
         fileOrderPhoto.push({
-          name: resData.fileName, type: "image", url: BASE_URL + resData.url,
+          name: resData.fileName,
+          type: "image",
+          url: BASE_URL + resData.url,
         });
         this.setData({
           orderPhotoList: this.data.orderPhotoList.concat(fileOrderPhoto),
@@ -120,12 +139,24 @@ Page({
     }
   },
 
-  bindName(e) { this.setData({ wxName: e.detail.value }); },
-  bindNumber(e) { this.setData({ wxNumber: e.detail.value }); },
-  bindPhone(e) { this.setData({ phone: e.detail.value }); },
-  bindOrder(e) { this.setData({ actualPayment: e.detail.value }); },
-  bindMoney(e) { this.setData({ paymentMoney: e.detail.value }); },
-  bindText(e) { this.setData({ remark: e.detail.value }); },
+  bindName(e) {
+    this.setData({ wxName: e.detail.value });
+  },
+  bindNumber(e) {
+    this.setData({ wxNumber: e.detail.value });
+  },
+  bindPhone(e) {
+    this.setData({ phone: e.detail.value });
+  },
+  bindOrder(e) {
+    this.setData({ actualPayment: e.detail.value });
+  },
+  bindMoney(e) {
+    this.setData({ paymentMoney: e.detail.value });
+  },
+  bindText(e) {
+    this.setData({ remark: e.detail.value });
+  },
 
   errorToast(title) {
     wx.showToast({ title, icon: "warn", duration: 1000 });
@@ -134,25 +165,58 @@ Page({
   submit: async function () {
     if (this.data.isRead) return;
     let {
-      wxName, wxNumber, phone, purchasePlatform,
-      actualPayment, paymentMoney, orderPhotoList,
-      remark, platformText, keyId,
+      wxName,
+      wxNumber,
+      phone,
+      purchasePlatform,
+      actualPayment,
+      paymentMoney,
+      orderPhotoList,
+      remark,
+      platformText,
+      keyId,
     } = this.data;
 
-    let orderPhotoArray = orderPhotoList.map(item => item.url);
+    let orderPhotoArray = orderPhotoList.map((item) => item.url);
 
-    if (!wxName) { this.errorToast("请填写微信昵称"); return; }
-    if (!wxNumber) { this.errorToast("请填写微信号"); return; }
-    if (!phone) { this.errorToast("请填写手机号"); return; }
-    if (!platformText) { this.errorToast("请选择平台"); return; }
-    if (!actualPayment) { this.errorToast("请填写订单号"); return; }
-    if (!paymentMoney) { this.errorToast("请填写实付金额"); return; }
-    if (!orderPhotoArray.length) { this.errorToast("请上传图片"); return; }
+    if (!wxName) {
+      this.errorToast("请填写微信昵称");
+      return;
+    }
+    if (!wxNumber) {
+      this.errorToast("请填写微信号");
+      return;
+    }
+    if (!phone) {
+      this.errorToast("请填写手机号");
+      return;
+    }
+    if (!platformText) {
+      this.errorToast("请选择平台");
+      return;
+    }
+    if (!actualPayment) {
+      this.errorToast("请填写订单号");
+      return;
+    }
+    if (!paymentMoney) {
+      this.errorToast("请填写实付金额");
+      return;
+    }
+    if (!orderPhotoArray.length) {
+      this.errorToast("请上传图片");
+      return;
+    }
 
     let params = {
-      wxName, wxNumber, phone, purchasePlatform,
-      actualPayment, paymentMoney,
-      orderPhoto: orderPhotoArray.join(","), remark,
+      wxName,
+      wxNumber,
+      phone,
+      purchasePlatform,
+      actualPayment,
+      paymentMoney,
+      orderPhoto: orderPhotoArray.join(","),
+      remark,
     };
     let res;
     if (keyId) {
@@ -161,10 +225,37 @@ Page({
     } else {
       res = await RequestApi.addApply(params);
     }
+
     if (res && res.code == "200") {
-      wx.showToast({ title: "成功", icon: "success", duration: 1000 });
-      wx.navigateTo({ url: "/subpackages/member/pages/pointsApplicationList/index" });
-    }
+      wx.requestSubscribeMessage({
+        tmplIds: ["DnleRo7fZC9IuOW4kHEkfh_gEuHHOUPUlQqzn_3d71Y"], // 支持多个模板ID，最多3个
+        success(res) {
+          // res["模板ID"] 返回结果
+          if (res["DnleRo7fZC9IuOW4kHEkfh_gEuHHOUPUlQqzn_3d71Y"] === "accept") {
+            console.log("✅用户同意订阅，可以推送消息了");
+            wx.showToast({ title: "成功", icon: "success", duration: 1500 });
+            wx.navigateTo({
+              url: "/subpackages/member/pages/pointsApplicationList/index",
+            });
+          } else if (
+            res["DnleRo7fZC9IuOW4kHEkfh_gEuHHOUPUlQqzn_3d71Y"] === "reject"
+          ) {
+            // console.log("❌用户拒绝订阅");
+            wx.showToast({
+              title: "用户拒绝订阅",
+              icon: "success",
+              duration: 1500,
+            });
+              wx.navigateTo({
+              url: "/subpackages/member/pages/pointsApplicationList/index",
+            });
+          }
+        },
+        fail(err) {
+          console.error("弹窗调用失败", err);
+        },
+      });
+    } 
   },
 
   onReady() {},
