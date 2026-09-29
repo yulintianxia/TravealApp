@@ -23,6 +23,9 @@ Page({
         isSelected: false,
       }));
       this.setData({ cartList, selectedIds: [], selectedAll: false, totalPoints: 0 }, () => {
+        if(!res.data.length){
+            wx.showToast({ title: "暂无数据", icon: "none" });
+        }
         this.updateSummary();
       });
   },

@@ -24,9 +24,30 @@
         {
           "name": "subpackages/mall/pages/productDetail/index",
           "pathName": "subpackages/mall/pages/productDetail/index",
-          "query": "keyId=16",
+          "query": "keyId=3",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "subpackages/mall/pages/cart/index",
+          "pathName": "subpackages/mall/pages/cart/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/productDetail/index",
+          "pathName": "subpackages/mall/pages/productDetail/index",
+          "query": "keyId=3",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "subpackages/mall/pages/productDetail/index",
+          "pathName": "subpackages/mall/pages/productDetail/index",
+          "query": "keyId=16",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/market/index",

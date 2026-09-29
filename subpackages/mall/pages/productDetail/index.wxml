@@ -52,8 +52,8 @@
         <view class="review-content">
           <view class="review-name">{{reviewListOne.isAnonymous == 1 ? '匿名用户' : (reviewListOne.nickName || reviewListOne.createBy || '用户')}}</view>
           <view class="review-text">{{reviewListOne.content}}</view>
-          <view class="review-text">
-            已购：{{product.name}}{{reviewListOne.quantity}}双，发货于{{deliveryTime}}前
+          <view class="review-text" wx:if="{{reviewListOne.quantity}}">
+            已购：{{product.name}}{{reviewListOne.quantity }}双，发货于{{deliveryTime || ''}}前
           </view>
         </view>
       </view>
@@ -72,7 +72,7 @@
     </view>
     <block wx:if="{{getDate.formatePictursList(product.pictures).length}}">
       <view class='product-detail' hover-class="none" wx:for="{{getDate.formatePictursList(product.pictures)}}" wx:key="index">
-        <image src="{{item}}" mode="scaleToFill" />
+        <image src="{{item}}" mode="widthFix" />
       </view>
     </block>
   </view>

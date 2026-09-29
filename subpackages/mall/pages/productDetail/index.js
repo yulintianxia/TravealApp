@@ -62,7 +62,7 @@ Page({
         reviewList: res.rows || [],
         reviewListOne: res?.rows?.[0] || {},
         totalReviews: res.total || 0,
-        deliveryTime: res?.rows?.[0]?.deliveryTime.slice(0, 10) || "",
+        deliveryTime: res?.rows?.[0]?.deliveryTime?.slice(0, 10) || "",
       });
     }
   },
@@ -175,8 +175,10 @@ Page({
     }
     this.setData({ currentMediaIndex, showSpeedMenu: false }, () => {
       if (this.data.mediaList[currentMediaIndex]?.type === "video") {
-        wx.createVideoContext(`product-video-${currentMediaIndex}`, this)
-          .setPlaybackRate(this.data.videoSpeed);
+        wx.createVideoContext(
+          `product-video-${currentMediaIndex}`,
+          this,
+        ).setPlaybackRate(this.data.videoSpeed);
       }
     });
   },
@@ -282,6 +284,12 @@ Page({
     //   },
     // });
     // this.setData({ showStroe: true });
+
+    wx.showToast({
+      title: "功能还在更新中，暂未开放",
+      icon: "none",
+    });
+    return;
     wx.navigateTo({ url: "/pages/weStore/index" });
   },
   openMicroStoreWeb() {
@@ -308,9 +316,8 @@ Page({
 
     let res = await RequestApi.cartAdd(params);
     if (res && res.code === 200) {
-      
       this.updateCartCount();
-      wx.showToast({ title: "已加入购物车", icon: "success", });
+      wx.showToast({ title: "已加入购物车", icon: "success" });
     } else {
       wx.showToast({ title: "加入失败", icon: "none" });
     }
@@ -359,14 +366,12 @@ Page({
   //   }
   // },
 
-
-    async exchange() {
+  async exchange() {
     if (!this.data.keyId) {
       wx.showToast({ title: "缺少商品信息", icon: "none" });
       return;
     }
-      this.goExchangePage(this.data.keyId, this.data.product);
-  
+    this.goExchangePage(this.data.keyId, this.data.product);
   },
 
   changeExchangeQuantity(e) {
