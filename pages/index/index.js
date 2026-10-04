@@ -34,4 +34,10 @@ Page({
       path: "/pages/index/index",
     };
   },
+
+  onShareTimeline() {
+    return {
+      title: "积分商城",
+    };
+  },
 });

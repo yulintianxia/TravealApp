@@ -264,4 +264,10 @@ Page({
       path: "/pages/market/index",
     };
   },
+
+  onShareTimeline() {
+    return {
+      title: "积分商城，精选好物等你来兑换",
+    };
+  },
 });

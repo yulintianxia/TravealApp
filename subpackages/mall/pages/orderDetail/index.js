@@ -154,6 +154,15 @@ Page({
     };
   },
 
+  onShareTimeline() {
+    const { order, keyId, coverImg } = this.data;
+    return {
+      title: order?.goodsName || order?.name || "订单详情",
+      query: `keyId=${keyId}`,
+      imageUrl: coverImg || "",
+    };
+  },
+
   onShow() {
     if (this.data.keyId) {
       this.loadOrderDetail(this.data.keyId);
