@@ -443,4 +443,13 @@ Page({
       imageUrl: product.coverImage || product.mainPicture || "",
     };
   },
+
+  onShareTimeline() {
+    const { product, keyId } = this.data;
+    return {
+      title: product.name || "商品详情",
+      query: `keyId=${keyId}`,
+      imageUrl: product.coverImage || product.mainPicture || "",
+    };
+  },
 });
