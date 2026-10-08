@@ -43,7 +43,7 @@
           </view>
           <view class="product-price">
             <image class="price-dot" src="../../images/home/points.png" mode="aspectFit"></image>
-            <text class="price-text">{{item.pointsPrice}}积分/{{item.goodsUnit}}</text>
+            <text class="price-text">{{item.pointsPrice}}积分{{ item.goodsUnit ? '/'+ item.goodsUnit:''}}</text>
             <text class="sales-text" wx:if="{{item.sales}}">已售:{{item.sales}}</text>
           </view>
         </view>

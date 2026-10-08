@@ -24,11 +24,11 @@
   <view class='product-info-wrap'>
     <view class="product-info-block" id="anchor-product-info">
       <view class="price-row">
-        <text class="price">{{product.pointsPrice}}积分/{{product.goodsUnit}}
+        <text class="price">{{product.pointsPrice}}积分{{product.goodsUnit? '/' + product.goodsUnit : ''}}
         </text>
-         <text class='limitPerUser' wx:if='{{product.limitPerUser}}'>({{limitType}}/{{product.limitPerUser+product.goodsUnit}})</text>
+         <text class='limitPerUser' wx:if='{{product.limitPerUser}}'>({{limitType}}/{{product.limitPerUser+ product.goodsUnit ? product.goodsUnit:'' }})</text>
         <text wx:if="{{purchaseLimits}}" class="purchase-limit">{{purchaseLimits}}</text>
-        <text class="redeem">已兑换 {{product.sales}}/{{product.stock}}</text>
+        <text class="redeem">已兑换{{product.sales}}/{{product.stock}}</text>
       </view>
       <view class="product-title">{{product.name}}</view>
       <view class="review-tags" wx:if="{{tags.length}}">
