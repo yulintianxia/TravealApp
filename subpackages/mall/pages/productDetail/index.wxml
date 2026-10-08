@@ -28,7 +28,7 @@
         </text>
          <text class='limitPerUser' wx:if='{{product.limitPerUser}}'>({{limitType}}/{{product.limitPerUser+ product.goodsUnit ? product.goodsUnit:'' }})</text>
         <text wx:if="{{purchaseLimits}}" class="purchase-limit">{{purchaseLimits}}</text>
-        <text class="redeem">已兑换{{product.sales}}/{{product.stock}}</text>
+        <text class="redeem">已兑换{{product.sales}}/{{product.stock +product.sales}}</text>
       </view>
       <view class="product-title">{{product.name}}</view>
       <view class="review-tags" wx:if="{{tags.length}}">
