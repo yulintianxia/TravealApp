@@ -72,7 +72,7 @@
       <view class="section-title">我的工具</view>
       <view class="section-card">
         <view class="grid-row">
-          <view class="grid-item" wx:for="{{toolsData}}" wx:key="title" bindtap="handleTool" data-item="{{item}}">
+          <view class="grid-item" wx:for="{{toolsData}}" wx:key="title" bindtap="handleTool" data-title="{{item.title}}" data-url="{{item.url}}">
             <view class="icon-circle">
               <image src="{{item.iconUrl}}" />
             </view>

@@ -231,19 +231,23 @@ Page({
   //   }
   // },
   handleTool(e) {
-    const item = e.currentTarget.dataset.item;
-    if (item.title === "设置") {
+    const { title, url } = e.currentTarget.dataset;
+    if (!title) {
+      wx.showToast({ title: "正在开发中...", icon: "none" });
+      return;
+    }
+    if (title === "设置") {
       wx.navigateTo({ url: "/subpackages/account/pages/setting/index" });
-    } else if (item.title === "咨询客服") {
+    } else if (title === "咨询客服") {
       this.setData({ showQrCode: true });
-    } else if (item.title === "公众号") {
+    } else if (title === "公众号") {
       this.confirmOpenOfficialAccount();
-    } else if (item.title === "签到") {
+    } else if (title === "签到") {
       wx.navigateTo({
         url: "/subpackages/member/pages/checkin/index",
       });
-    } else if (item.url) {
-      wx.navigateTo({ url: item.url });
+    } else if (url) {
+      wx.navigateTo({ url });
     } else {
       this.setData({ showTip: true });
     }
