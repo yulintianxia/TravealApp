@@ -124,7 +124,7 @@ Page({
       }
 
       if (res && res.code == 200) {
-        wx.navigateTo({ url: "/subpackages/mall/pages/addressList/index" });
+        wx.navigateBack({ delta: 1 });
       }
     }
   },

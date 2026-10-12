@@ -21,6 +21,7 @@ Page({
       .filter(Boolean)
       .map((id) => Number(id));
     this.setData({ selectedIds, directExchange });
+    this.hasShown = false;
     if (directExchange) {
       const eventChannel = this.getOpenerEventChannel();
       eventChannel.on("directExchangeData", ({ product, quantity = 1 }) => {
@@ -30,6 +31,27 @@ Page({
       return;
     }
     this.loadConfirmData();
+  },
+
+  onShow() {
+    if (this.hasShown) {
+      this.loadAddress();
+    }
+    this.hasShown = true;
+  },
+
+  async loadAddress() {
+    try {
+      const res = await RequestApi.addressList({ pageNum: 1, pageSize: 10 });
+      const addressList = res?.data || [];
+      const address =
+        addressList.find((item) => Number(item.isDefault) === 1) ||
+        addressList[0] ||
+        {};
+      this.setData({ address });
+    } catch (error) {
+      console.error("loadAddress error:", error);
+    }
   },
 
   setDirectExchangeProduct(product, quantity = 1) {
