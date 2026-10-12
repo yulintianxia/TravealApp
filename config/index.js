@@ -1,6 +1,6 @@
 
-export const BASE_URL = 'https://www.zhenglian.vip:8480';
-// export const BASE_URL = 'https://www.zhenglian.vip:8481';
+// export const BASE_URL = 'https://www.zhenglian.vip:8480';
+export const BASE_URL = 'https://www.zhenglian.vip:8481';
 
 export const baseImageUrl = 'https://www.zhenglian.vip/dotm/photo/';
 export const PIC_COMMON_PATH = 'https://images4.c-ctrip.com/target/';
