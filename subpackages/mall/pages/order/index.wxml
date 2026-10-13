@@ -57,7 +57,7 @@
             <view>兑换时间：{{item.createTime}}</view>
           </view>
           <view class="card-action">
-            <view class="confirm-btn review-btn" catchtap="orderChcek" wx:if="{{item.status == 2 }}" data-id="{{item.keyId}}">
+            <view class="confirm-btn review-btn" catchtap="orderChcek" wx:if="{{item.status == 2 }}" data-id="{{item.keyId}}" data-goods="{{item.goodsId}}">
               确认收货
             </view>
             <view class="confirm-btn review-btn" catchtap="goToComment" wx:if="{{!item.reviewed && item.status == 3}}" data-good="{{item.goodsId}}" data-id="{{item.keyId}}">
@@ -66,7 +66,7 @@
             <view class="confirm-btn review-btn" catchtap="goToReview" wx:if="{{item.reviewed && item.status == 3}}" data-id="{{item.goodsId}}">
               查看评价
             </view>
-            <view class="confirm-btn fr-btn" catchtap="goDetail" data-description="{{item.description || ''}}" data-filterstr="{{item.filterStr || ''}}" data-img='{{item.coverImage}}' data-id="{{item.keyId}}" data-id="{{item.keyId}}">
+            <view class="confirm-btn fr-btn" catchtap="goDetail" data-goods="{{item.goodsId}}" data-description="{{item.description || ''}}" data-filterstr="{{item.filterStr || ''}}" data-img='{{item.coverImage}}' data-id="{{item.keyId}}" data-goodsId="{{item.goodsId}}" data-id="{{item.keyId}}">
               查看详情
             </view>
           </view>

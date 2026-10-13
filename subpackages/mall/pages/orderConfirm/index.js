@@ -222,10 +222,12 @@ Page({
         }
         return {
           cartId: item.keyId,
+          goodsId: item.goodsId,
         };
       });
 
       let params = {
+        goodsId: this.data.goodsList[0]?.goodsId,
         addressDetail: this.data.address.detailedAddress,
         addressName: this.data.address.consigneeName,
         addressPhone: this.data.address.consigneePhone,

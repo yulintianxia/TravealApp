@@ -201,7 +201,7 @@ class ApiManager extends httpClient {
   
   //查询订单详情
    getOrderDetail(data, config) {
-    return this.get(`/mall/api/order/${data.keyId}`, data, config);
+    return this.get(`/mall/api/order/${data.keyId}/${data.goodsId}`, data, config);
   }
 
    //取消订单

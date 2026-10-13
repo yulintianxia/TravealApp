@@ -13,6 +13,7 @@ Page({
     total: 0,
     showConfirmPopup: false,
     confirmOrderId: null,
+    confirmOrderGoodsId: null,
   },
 
   onLoad(options) {
@@ -68,9 +69,10 @@ Page({
     let img = e.currentTarget.dataset.img;
     let filterstr = e.currentTarget.dataset.filterstr;
     let description = e.currentTarget.dataset.description;
-    if (!keyId) return;
+    let goodsId = e.currentTarget.dataset.goods;
+    if (!keyId || !goodsId) return;
     wx.navigateTo({
-      url: `/subpackages/mall/pages/orderDetail/index?keyId=${keyId}&img=${img}&filterstr=${filterstr}&description=${description}`,
+      url: `/subpackages/mall/pages/orderDetail/index?keyId=${(keyId)}&img=${(img || "")}&filterstr=${(filterstr || "")}&description=${(description || "")}&goodsId=${(goodsId)}`,
     });
   },
 
@@ -100,8 +102,8 @@ Page({
             reviewed: item.reviewed,
             createTime:item.createTime,
             //  specsArray: JSON.parse(JSON.parse(item.items)?.[0]?.specs) || [],
-            filterStr: this.filterData(item.items),
-            ...JSON.parse(item.items)?.[0],
+            filterStr: this.filterData(item),
+            ...item
           });
         })
         .flat();
@@ -126,10 +128,11 @@ Page({
   },
 
   filterData(str) {
+    console.log('strstr',str);
     if (!str) {
       return [];
     }
-    let dataArray = JSON.parse(JSON.parse(str)?.[0]?.specs) || [];
+    let dataArray = str?.specs || [];
     console.log("dataArray111");
     let filterStr = "";
     Array.from(dataArray).forEach((item) => {
@@ -152,20 +155,36 @@ Page({
 
   async orderChcek(e) {
     const orderId = e.currentTarget.dataset.id;
+    const goodsId = e.currentTarget.dataset.goods;
     if (!orderId) return;
-    this.setData({ showConfirmPopup: true, confirmOrderId: orderId });
+    this.setData({
+      showConfirmPopup: true,
+      confirmOrderId: orderId,
+      confirmOrderGoodsId: goodsId,
+    });
   },
 
   closeConfirmPopup() {
-    this.setData({ showConfirmPopup: false, confirmOrderId: null });
+    this.setData({
+      showConfirmPopup: false,
+      confirmOrderId: null,
+      confirmOrderGoodsId: null,
+    });
   },
 
   async confirmReceipt() {
-    const { confirmOrderId } = this.data;
+    const { confirmOrderId, confirmOrderGoodsId } = this.data;
     if (!confirmOrderId) return;
 
-    this.setData({ showConfirmPopup: false, confirmOrderId: null });
-    const result = await RequestApi.receiveOrder({ orderId: confirmOrderId });
+    this.setData({
+      showConfirmPopup: false,
+      confirmOrderId: null,
+      confirmOrderGoodsId: null,
+    });
+    const result = await RequestApi.receiveOrder({
+      orderId: confirmOrderId,
+      goodsId: confirmOrderGoodsId,
+    });
     if (result && result.code == 200) {
       wx.showToast({ title: "成功", icon: "success", duration: 2000 });
       this.getOrderList();

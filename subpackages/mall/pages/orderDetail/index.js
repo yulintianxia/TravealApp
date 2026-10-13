@@ -4,6 +4,7 @@ import { BASE_URL } from "../../../../config/index";
 Page({
   data: {
     keyId: "",
+    goodsId: "",
     order: null,
     loading: true,
     BASE_URL,
@@ -14,11 +15,13 @@ Page({
   },
 
   onLoad(options) {
-    console.log('options',options);
+    console.log('options111',options);
     const keyId = options.keyId || "";
     const img = options.img || "";
+    const goodsId = options.goodsId || "";
     this.setData({
       keyId,
+      goodsId,
       coverImg: img,
       description: options.description || "",
       filterstr: options.filterstr || "",
@@ -27,12 +30,12 @@ Page({
       this.setData({ loading: false });
       return;
     }
-    this.loadOrderDetail(keyId);
+    this.loadOrderDetail(keyId,goodsId);
   },
 
-  async loadOrderDetail(keyId) {
+  async loadOrderDetail(keyId,goodsId) {
     try {
-      const res = await RequestApi.getOrderDetail({ keyId });
+      const res = await RequestApi.getOrderDetail({ keyId, goodsId });
       if (res && res.code == "200") {
         const order = this.normalizeOrder(res.data || res);
 
@@ -122,10 +125,13 @@ Page({
     if (!keyId || !order || Number(order.status) !== 2) return;
 
     this.setData({ showConfirmPopup: false });
-    const result = await RequestApi.receiveOrder({ orderId: keyId });
+    const result = await RequestApi.receiveOrder({
+      orderId: keyId,
+      goodsId: order.goodsId,
+    });
     if (result && result.code == 200) {
       wx.showToast({ title: "成功", icon: "success" });
-      this.loadOrderDetail(keyId);
+      this.loadOrderDetail(keyId, order.goodsId);
     }
   },
 
@@ -165,7 +171,7 @@ Page({
 
   onShow() {
     if (this.data.keyId) {
-      this.loadOrderDetail(this.data.keyId);
+      this.loadOrderDetail(this.data.keyId, this.data.goodsId);
     }
   },
 });
